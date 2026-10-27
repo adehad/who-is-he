@@ -227,6 +227,133 @@ details summary { cursor: pointer; color: var(--lapis); font-weight: 700; }
 .count { color: var(--muted); font-size: .9rem; font-variant-numeric: tabular-nums; }
 .footnote { color: var(--muted); font-size: .85rem; text-align: center; }
 
+/* Mode switch (Learn | Story) and the story's own segmented controls */
+.seg { display: inline-flex; padding: 3px; gap: 2px; border: 2px solid var(--line); background: var(--chip); border-radius: 99px; }
+.seg button {
+  border: 0; background: transparent; border-radius: 99px; padding: 6px 16px; cursor: pointer;
+  font: 700 .95rem/1.2 var(--display); color: var(--muted); transition: background .25s, color .25s;
+}
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--panel); }
+.mode { display: grid; gap: 18px; min-width: 0; }
+.mode[hidden] { display: none; }
+.mode.enter { animation: rise .45s ease both; }
+
+/* Story progress: one dot per beat, a little gap between the four parts */
+.trail { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1px; }
+.trail button { width: 14px; height: 22px; border: 0; padding: 0; background: none; cursor: pointer; display: grid; place-items: center; }
+.trail button::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--line); transition: background .4s, transform .3s; }
+.trail button.seen::before { background: var(--gold); }
+.trail button[aria-current="step"]::before { background: var(--rose); transform: scale(1.5); }
+.trail .gap { width: 8px; }
+.trail .start::before { border-radius: 2px; transform: rotate(45deg); }
+
+/* Story scene: the child in a round mirror (morning, night) or a rounded window (breakfast, outside) */
+.scene { position: relative; overflow: hidden; isolation: isolate; margin-bottom: 4px; }
+.scene::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 3; }
+.scene.mirror {
+  width: min(250px, 66vw); aspect-ratio: 1; border-radius: 50%; border: 3px solid var(--gold);
+  background: radial-gradient(circle at 50% 38%, color-mix(in srgb, var(--gold-soft) 70%, var(--panel)), var(--panel) 72%);
+}
+.scene.mirror::after { box-shadow: inset 0 0 0 7px var(--panel), inset 0 0 0 9px var(--gold-soft); }
+.scene.mirror.night { background: radial-gradient(circle at 50% 38%, color-mix(in srgb, var(--lapis) 26%, var(--panel)), color-mix(in srgb, var(--lapis) 8%, var(--panel)) 75%); }
+.scene.window { width: min(300px, 78vw); aspect-ratio: 5 / 4; border-radius: 26px; border: 3px solid var(--gold); background: var(--panel); }
+.scene.window::after { box-shadow: inset 0 0 0 5px var(--panel), inset 0 0 0 7px var(--gold-soft); }
+.scene svg { display: block; overflow: visible; }
+.scene .back, .scene .front { position: absolute; inset: 0; width: 100%; height: 100%; }
+.scene .front { z-index: 1; top: auto; height: 22%; }
+.window.bd-table .prop { bottom: 12%; }
+.scene .child { position: absolute; z-index: 0; }
+.scene .prop { position: absolute; z-index: 2; }
+.mirror .child { left: 6%; bottom: 3%; width: 64%; }
+.mirror.solo .child { left: 18%; }
+.mirror .prop { right: 9%; bottom: 22%; width: 33%; }
+.window .child { left: 7%; bottom: -2%; width: 54%; }
+.window .prop { right: 7%; bottom: 9%; width: 32%; }
+
+/* The child: colours come from the picker via custom properties on #story */
+#story { --skin: #d39a6a; --feat: #3b2215; --hair: #2b1b12; --cover: var(--lapis); --shirt: var(--sage); --kufi: #f7f2e4; }
+#story[data-cover="hijab"] .cv-kufi, #story[data-cover="hijab"] .cv-bare,
+#story[data-cover="kufi"] .cv-hijab, #story[data-cover="none"] .cv-hijab, #story[data-cover="none"] .cv-kufi { display: none; }
+.kid-bob { animation: breathe 5s ease-in-out infinite; }
+.kid-head { transform-origin: 60px 88px; animation: tilt 9s ease-in-out infinite; }
+@keyframes breathe { 50% { transform: translateY(-1.6px); } }
+@keyframes tilt { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2.5deg); } }
+
+/* Prop idle motion (plus the shared i-* classes above) */
+.p-scrub { animation: scrub 1.4s ease-in-out infinite; }
+.p-swing { transform-origin: 60px 14px; animation: sway 5s ease-in-out infinite; }
+.p-rock { transform-origin: 60px 60px; animation: rock 4s ease-in-out infinite; }
+.p-up { animation: up 2.4s ease-in-out infinite; }
+.p-beat { transform-origin: 60px 72px; animation: beat 2.2s ease-in-out infinite; }
+.p-tap { transform-origin: 70px 92px; animation: tap 2.6s ease-in-out infinite; }
+.p-hop { animation: hop 2.8s ease-in-out infinite; }
+.p-float { animation: up 3.6s ease-in-out infinite; }
+.p-glide { animation: scrub 3.2s ease-in-out infinite; }
+@keyframes scrub { 50% { transform: translateX(-7px); } }
+@keyframes rock { 0%, 100% { transform: rotate(-18deg); } 50% { transform: rotate(18deg); } }
+@keyframes up { 50% { transform: translateY(-5px); } }
+@keyframes beat { 0%, 60%, 100% { transform: none; } 15% { transform: scale(1.08); } 30% { transform: scale(.98); } 45% { transform: scale(1.05); } }
+@keyframes tap { 0%, 70%, 100% { transform: none; } 80% { transform: rotate(-9deg); } 90% { transform: none; } }
+@keyframes hop { 0%, 60%, 100% { transform: none; } 70% { transform: translateY(-9px); } 80% { transform: none; } 88% { transform: translateY(-4px); } }
+@keyframes popIn { from { transform: scale(.4) translateY(12px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes sceneIn { from { transform: scale(.88); opacity: 0; } to { transform: none; opacity: 1; } }
+
+.story-stage.enter .scene.mirror { animation: medIn .7s cubic-bezier(.2,.9,.25,1.2) both; }
+.story-stage.enter .scene.window { animation: sceneIn .6s cubic-bezier(.2,.9,.25,1.15) both; }
+.story-stage.enter .prop { animation: popIn .55s .35s cubic-bezier(.2,.9,.25,1.3) both; }
+.story-stage.enter .station-name, .story-stage.enter .kid-title, .story-stage.enter .kid-line, .story-stage.enter .prompt, .story-stage.enter .links { animation: rise .55s ease both; }
+.story-stage.enter .kid-line { animation-delay: .08s; }
+.story-stage.enter .prompt { animation-delay: .16s; }
+.story-stage.enter .links { animation-delay: .24s; }
+
+.greet { font: 800 1.05rem/1.2 var(--display); color: var(--gold); margin: 0; }
+.story-stage .kid-line { margin: 0; }
+.story-stage .kid-line + .kid-line { margin-top: 4px; }
+.prompt {
+  display: flex; gap: 10px; align-items: flex-start; text-align: left; max-width: 36ch; margin: 8px 0 2px;
+  border: 1.5px dashed var(--lapis); border-radius: 16px; padding: 10px 14px; font-size: 1.02rem;
+}
+.prompt::before { content: ""; flex: none; width: 16px; height: 20px; margin-top: 3px; border-radius: 50%; border: 2.5px solid var(--gold); background: var(--gold-soft); }
+.prompt ul { margin: 0; padding-left: 18px; }
+.links { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 6px; }
+.go-link {
+  display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+  border: 2px solid var(--line); background: var(--chip); border-radius: 99px;
+  padding: 5px 14px 5px 6px; font: 700 .92rem/1.2 var(--display); transition: border-color .2s;
+}
+.go-link:hover { border-color: var(--gold); }
+.saw { font: 400 1.35em/1 var(--ar); }
+.mini { width: 28px; height: 28px; border-radius: 50%; background: var(--gold-soft); display: grid; place-items: center; flex: none; }
+.mini svg { width: 22px; height: 22px; display: block; }
+.mini svg * { animation: none !important; }
+.recap { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; max-width: 380px; margin-top: 8px; }
+.recap button {
+  width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--gold); background: radial-gradient(circle at 50% 40%, var(--gold-soft), var(--panel) 80%);
+  padding: 6px; cursor: pointer; transition: transform .2s;
+}
+.recap button:hover { transform: translateY(-2px); }
+.recap svg { width: 100%; height: 100%; display: block; }
+.recap svg * { animation: none !important; }
+.story-stage.enter .recap button { animation: popIn .45s cubic-bezier(.2,.9,.25,1.3) both; animation-delay: calc(.3s + var(--k) * 45ms); }
+
+/* Picker */
+.picker { display: grid; gap: 14px; justify-items: center; width: 100%; max-width: 420px; margin-top: 6px; }
+.picker fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; justify-items: center; min-width: 0; }
+.picker legend, .picker label > span { font: 700 .8rem/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); padding: 0; margin-bottom: 8px; }
+.swatches { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.swatches button {
+  width: 38px; height: 38px; border-radius: 50%; cursor: pointer; background: var(--sw);
+  border: 3px solid var(--panel); box-shadow: 0 0 0 2px var(--line); transition: box-shadow .2s, transform .2s;
+}
+.swatches button[aria-checked="true"] { box-shadow: 0 0 0 3px var(--gold); transform: scale(1.08); }
+.picker label { display: grid; justify-items: center; }
+.picker input[type="text"] {
+  font: 700 1.1rem/1.2 var(--display); color: var(--ink); background: var(--chip); text-align: center;
+  border: 2px solid var(--line); border-radius: 14px; padding: 8px 14px; width: min(240px, 70vw);
+}
+.picker input[type="text"]:focus { border-color: var(--gold); outline: none; }
+.start-btn { border: 0; border-radius: 16px; padding: 12px 22px; cursor: pointer; font: 800 1.05rem/1 var(--display); background: var(--ink); color: var(--panel); }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
@@ -235,6 +362,9 @@ details summary { cursor: pointer; color: var(--lapis); font-weight: 700; }
 <div class="wrap" id="app">
   <header class="top">
     <div class="brand"><h1>Little Hilya</h1><span lang="ar">حِلْيَة</span></div>
+    <div class="seg" id="modes" role="group" aria-label="Mode">
+      <button data-mode="learn" aria-pressed="true">Learn</button><button data-mode="story" aria-pressed="false">Story</button>
+    </div>
     <label class="toggle" for="grown">
       <input type="checkbox" id="grown">
       <span class="switch" aria-hidden="true"></span>
@@ -242,6 +372,7 @@ details summary { cursor: pointer; color: var(--lapis); font-weight: 700; }
     </label>
   </header>
 
+  <div class="mode" id="learn">
   <nav class="index" id="index" aria-label="Stations"></nav>
 
   <section class="hilya stage" id="stage" aria-live="polite">
@@ -278,6 +409,20 @@ details summary { cursor: pointer; color: var(--lapis); font-weight: 700; }
     <span class="count" id="count"></span>
     <button id="next">Next</button>
   </nav>
+  </div>
+
+  <div class="mode" id="story" data-cover="hijab" hidden>
+    <nav class="trail" id="trail" aria-label="Story progress"></nav>
+    <section class="hilya story-stage" id="sstage" aria-live="polite">
+      <div class="hilya-inner" id="sinner"></div>
+    </section>
+    <section class="adult adult-section" id="sadult"></section>
+    <nav class="nav" aria-label="Story">
+      <button class="back" id="sback">Back</button>
+      <span class="count" id="scount"></span>
+      <button id="snext">Next</button>
+    </nav>
+  </div>
 
   <p class="footnote">Concept prototype. All content is draft and awaits scholarly review. Texts from the open <a href="https://github.com/AhmedBaset/hadith-json">hadith-json</a> dataset.</p>
 </div>
@@ -305,6 +450,58 @@ const ICONS = {
   rose: `<svg viewBox="0 0 120 120"><g class="i-sway"><path d="M60 112V64" fill="none" stroke="var(--sage)" stroke-width="5" stroke-linecap="round"/><path d="M60 94C46 92 40 82 42 74C54 76 60 84 60 94Z" fill="var(--sage)"/><circle cx="60" cy="44" r="24" fill="var(--rose)"/><path d="M48 44a12 12 0 0 1 24 0a8 8 0 0 1-16 0a4 4 0 0 1 8 0" fill="none" stroke="var(--panel)" stroke-width="3" stroke-linecap="round" opacity=".5"/></g><g fill="var(--lapis)"><path class="i-drop" d="M40 64q4 7 0 10q-4-3 0-10z"/><path class="i-drop" d="M80 64q4 7 0 10q-4-3 0-10z"/><path class="i-drop" d="M70 70q4 7 0 10q-4-3 0-10z"/></g></svg>`
 };
 const CORNER = `<svg viewBox="0 0 26 26"><path d="M13 1l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="currentColor"/></svg>`;
+
+// Story art. Only the child is ever drawn; the Prophet ﷺ is never depicted.
+// Skin, features and covering come from custom properties / data-cover on #story.
+const CHILD = `<svg class="child" viewBox="0 0 120 120"><g class="kid-bob">
+<path d="M10 124C10 100 32 88 60 88S110 100 110 124Z" fill="var(--shirt)"/>
+<rect class="cv-kufi cv-bare" x="51" y="72" width="18" height="20" rx="7" fill="var(--skin)"/>
+<g class="kid-head">
+<path class="cv-hijab" d="M60 14C86 14 98 34 98 58C98 76 95 88 103 101C90 111 30 111 17 101C25 88 22 76 22 58C22 34 34 14 60 14Z" fill="var(--cover)"/>
+<g class="cv-kufi cv-bare" fill="var(--skin)"><circle cx="32" cy="58" r="6"/><circle cx="88" cy="58" r="6"/></g>
+<circle cx="60" cy="56" r="28" fill="var(--skin)"/>
+<path class="cv-kufi cv-bare" d="M31 58C29 35 42 24 60 24S91 35 89 58C86 47 79 41 70 41C64 37 53 37 47 41C40 43 34 49 31 58Z" fill="var(--hair)"/>
+<path class="cv-kufi" d="M34 44C34 28 46 20 60 20S86 28 86 44Z" fill="var(--kufi)" stroke="var(--gold)" stroke-width="2"/>
+<path class="cv-kufi" d="M41 35h38" stroke="var(--gold)" stroke-width="2.5" stroke-dasharray="1 6" stroke-linecap="round"/>
+<path class="cv-hijab" d="M32 57C32 36 45 27 60 27S88 36 88 57C82 44 72 38 60 38S38 44 32 57Z" fill="var(--cover)"/>
+<path d="M45 59q5.5-6 11 0M64 59q5.5-6 11 0M53 68q7 7 14 0" fill="none" stroke="var(--feat)" stroke-width="3" stroke-linecap="round"/>
+<g fill="#e57f8d" opacity=".45"><circle cx="43" cy="67" r="5"/><circle cx="77" cy="67" r="5"/></g>
+</g></g></svg>`;
+
+const STAR = (x, y, s = 1) => `<path transform="translate(${x} ${y}) scale(${s})" d="M0-10l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/>`;
+const PROPS = {
+  sun: `<svg viewBox="0 0 120 120"><circle class="i-glow" cx="60" cy="60" r="42" fill="var(--gold-soft)"/><g class="i-spin" stroke="var(--gold)" stroke-width="6" stroke-linecap="round"><path d="M60 8v12M60 100v12M8 60h12M100 60h12M23 23l9 9M88 88l9 9M23 97l9-9M88 32l9-9"/></g><circle cx="60" cy="60" r="24" fill="var(--gold)"/></svg>`,
+  siwak: `<svg viewBox="0 0 120 120"><g class="p-scrub"><rect x="12" y="56" width="76" height="13" rx="6.5" fill="var(--gold)"/><path d="M88 58l18-8M88 62.5h20M88 67l18 8" stroke="var(--sage)" stroke-width="4.5" stroke-linecap="round"/></g><g fill="var(--lapis)" opacity=".6"><circle class="i-twinkle" cx="30" cy="36" r="6"/><circle class="i-twinkle" cx="56" cy="28" r="4"/><circle class="i-twinkle" cx="78" cy="40" r="5"/></g></svg>`,
+  splash: `<svg viewBox="0 0 120 120"><path d="M14 74h92a46 30 0 0 1-92 0z" fill="var(--lapis)"/><ellipse class="i-ripple" cx="60" cy="74" rx="34" ry="6" fill="none" stroke="var(--panel)" stroke-width="2.5"/><g fill="var(--lapis)"><path class="i-drop" d="M42 22q5 9 0 13q-5-4 0-13z"/><path class="i-drop" d="M60 14q5 9 0 13q-5-4 0-13z"/><path class="i-drop" d="M78 22q5 9 0 13q-5-4 0-13z"/></g></svg>`,
+  comb: `<svg viewBox="0 0 120 120"><g class="p-glide"><rect x="16" y="38" width="88" height="18" rx="8" fill="var(--rose)"/><path d="M26 54v26M36 54v26M46 54v26M56 54v26M66 54v26M76 54v26M86 54v26M96 54v20" stroke="var(--rose)" stroke-width="4.5" stroke-linecap="round"/></g></svg>`,
+  ruler: `<svg viewBox="0 0 120 120"><rect x="34" y="18" width="34" height="96" rx="6" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="3"/><path d="M34 34h12M34 50h18M34 66h12M34 82h18M34 98h12" stroke="var(--gold)" stroke-width="3"/><path class="p-up" d="M94 70V36m-11 11 11-11 11 11" fill="none" stroke="var(--sage)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g fill="var(--rose)">${STAR(94, 16)}</g></svg>`,
+  shirt: `<svg viewBox="0 0 120 120"><g class="p-swing"><path d="M60 38V28a7 7 0 1 1 7-7" fill="none" stroke="var(--gold)" stroke-width="3.5" stroke-linecap="round"/><path d="M44 38 24 50l8 16 10-5v50h36V61l10 5 8-16-20-12c-3 7-9 10-16 10s-13-3-16-10z" fill="var(--rose)"/><g fill="var(--panel)"><circle cx="60" cy="62" r="2.6"/><circle cx="60" cy="78" r="2.6"/><circle cx="60" cy="94" r="2.6"/></g></g></svg>`,
+  turn: `<svg viewBox="0 0 120 120"><g class="p-rock"><path d="M92 62a32 32 0 1 1-10-24" fill="none" stroke="var(--gold)" stroke-width="7" stroke-linecap="round"/><path d="M93 48 89 24 69 42z" fill="var(--gold)"/></g></svg>`,
+  perfume: `<svg viewBox="0 0 120 120"><rect x="30" y="52" width="46" height="56" rx="13" fill="var(--rose)"/><rect x="43" y="40" width="20" height="14" rx="3" fill="var(--gold)"/><path d="M49 40v-8h12" fill="none" stroke="var(--gold)" stroke-width="4" stroke-linecap="round"/><path d="M40 74c0-8 4-12 10-14" fill="none" stroke="var(--panel)" stroke-width="4" stroke-linecap="round" opacity=".45"/><g fill="var(--gold)"><circle class="i-spark" cx="74" cy="28" r="4"/><circle class="i-spark" cx="88" cy="22" r="3"/><circle class="i-spark" cx="86" cy="36" r="3.5"/></g></svg>`,
+  heart: `<svg viewBox="0 0 120 120"><path class="p-beat" d="M60 100C28 80 18 62 26 46c8-14 26-12 34 2 8-14 26-16 34-2 8 16-2 34-34 54z" fill="var(--rose)"/><g fill="var(--gold)"><g class="i-twinkle">${STAR(18, 22)}</g><g class="i-twinkle">${STAR(102, 18, .7)}</g><g class="i-twinkle">${STAR(104, 98, .7)}</g></g></svg>`,
+  plate: `<svg viewBox="0 0 120 120"><ellipse cx="60" cy="82" rx="52" ry="16" fill="var(--panel)" stroke="var(--gold)" stroke-width="3"/><ellipse cx="60" cy="80" rx="34" ry="9" fill="none" stroke="var(--gold-soft)" stroke-width="3"/><g fill="#9a5a33"><ellipse cx="46" cy="75" rx="9" ry="5.5" transform="rotate(-15 46 75)"/><ellipse cx="62" cy="71" rx="9" ry="5.5" transform="rotate(10 62 71)"/><ellipse cx="75" cy="78" rx="9" ry="5.5" transform="rotate(-8 75 78)"/></g><g fill="var(--gold)"><g class="i-twinkle">${STAR(30, 36)}</g><g class="i-twinkle">${STAR(90, 30, .7)}</g><g class="i-twinkle">${STAR(60, 20, .7)}</g></g></svg>`,
+  cup: `<svg viewBox="0 0 120 120"><path d="M28 54h54l-6 48a8 8 0 0 1-8 7H42a8 8 0 0 1-8-7z" fill="var(--lapis)"/><path d="M81 64h7a12 12 0 0 1 0 24h-9" fill="none" stroke="var(--lapis)" stroke-width="6"/><ellipse cx="55" cy="54" rx="27" ry="5" fill="var(--panel)" opacity=".45"/><g fill="none" stroke="var(--muted)" stroke-width="3"><circle class="i-spark" cx="42" cy="32" r="5"/><circle class="i-spark" cx="56" cy="26" r="6"/><circle class="i-spark" cx="70" cy="32" r="5"/></g></svg>`,
+  salam: `<svg viewBox="0 0 120 120"><g class="p-float"><path d="M20 22h80a12 12 0 0 1 12 12v34a12 12 0 0 1-12 12H54l-20 16 3-16H20a12 12 0 0 1-12-12V34a12 12 0 0 1 12-12z" fill="var(--panel)" stroke="var(--gold)" stroke-width="3"/><text x="60" y="60" text-anchor="middle" font-family="Amiri, serif" font-size="25" font-weight="700" fill="var(--ink)">السَّلامُ</text></g></svg>`,
+  shoes: `<svg viewBox="0 0 120 120"><g fill="var(--lapis)"><path d="M8 92V74c0-8 6-12 12-12 4 0 6 6 12 8 10 3 22 6 22 16v6z"/><path class="p-tap" d="M62 92V74c0-8 6-12 12-12 4 0 6 6 12 8 10 3 22 6 22 16v6z"/></g><path d="M6 95h50M60 95h50" stroke="var(--gold)" stroke-width="5" stroke-linecap="round"/></svg>`,
+  gift: `<svg viewBox="0 0 120 120"><circle class="i-glow" cx="60" cy="68" r="46" fill="var(--gold-soft)"/><rect x="28" y="58" width="64" height="48" rx="6" fill="var(--sage)"/><rect x="22" y="46" width="76" height="16" rx="5" fill="var(--sage)"/><path d="M60 46v60" stroke="var(--rose)" stroke-width="8"/><path d="M60 46c-8-16-26-16-22-4 2 6 14 6 22 4zm0 0c8-16 26-16 22-4-2 6-14 6-22 4z" fill="var(--rose)"/></svg>`,
+  sparrow: `<svg viewBox="0 0 120 120"><g class="p-hop"><path d="M32 74 8 62l8 20z" fill="var(--gold)"/><ellipse cx="56" cy="72" rx="30" ry="24" fill="var(--gold)"/><circle cx="80" cy="52" r="16" fill="var(--gold)"/><path d="M95 50l13 4-13 4z" fill="var(--rose)"/><circle cx="85" cy="49" r="2.8" fill="#2a1d17"/><path d="M38 66c10-4 24-2 30 8-12 6-24 4-30-8z" fill="var(--gold-soft)"/><path d="M50 94v10M62 94v10" stroke="var(--rose)" stroke-width="3" stroke-linecap="round"/></g></svg>`,
+  stars: `<svg viewBox="0 0 120 120"><g fill="var(--gold)"><g class="i-twinkle">${STAR(40, 40, 1.5)}</g><g class="i-twinkle">${STAR(86, 64, 1.1)}</g><g class="i-twinkle">${STAR(46, 94, .9)}</g></g></svg>`,
+  pillow: `<svg viewBox="0 0 120 120"><circle class="i-glow" cx="80" cy="32" r="24" fill="var(--gold-soft)"/><path d="M86 14a18 18 0 1 0 9 32a15 15 0 1 1-9-32z" fill="var(--gold)"/><path d="M12 84c0-12 10-17 48-17s48 5 48 17-10 18-48 18-48-6-48-18z" fill="var(--lapis)"/><path d="M28 82c12-4 52-4 64 0" fill="none" stroke="var(--panel)" stroke-width="3" stroke-linecap="round" opacity=".45"/><g fill="var(--gold)" class="i-twinkle">${STAR(30, 30, .9)}</g></svg>`
+};
+
+// Window backdrops for the breakfast and outdoor beats (front = drawn over the child).
+const BACKDROPS = {
+  table: {
+    back: `<svg class="back" viewBox="0 0 160 128" preserveAspectRatio="xMidYMid slice"><rect width="160" height="128" fill="var(--gold-soft)" opacity=".7"/><rect x="104" y="14" width="40" height="36" rx="5" fill="var(--lapis)" opacity=".25"/><path d="M124 14v36M104 32h40" stroke="var(--panel)" stroke-width="3"/><path d="M38 0v6" stroke="var(--gold)" stroke-width="2"/><circle class="i-glow" cx="38" cy="14" r="10" fill="var(--gold)" opacity=".3"/><path d="M28 14h20l-4-8h-12z" fill="var(--gold)"/></svg>`,
+    front: `<svg class="front" viewBox="0 0 160 30" preserveAspectRatio="none"><rect y="5" width="160" height="25" fill="var(--gold)" opacity=".7"/><rect width="160" height="7" rx="3" fill="var(--gold)"/></svg>`
+  },
+  path: {
+    back: `<svg class="back" viewBox="0 0 160 128" preserveAspectRatio="xMidYMid slice"><rect width="160" height="128" fill="var(--lapis)" opacity=".18"/><circle class="i-glow" cx="134" cy="24" r="13" fill="var(--gold)" opacity=".75"/><g class="i-bob" fill="var(--panel)" opacity=".9"><ellipse cx="54" cy="24" rx="18" ry="7"/><ellipse cx="62" cy="19" rx="10" ry="7"/></g><path d="M0 90c40-18 90-22 160-8v46H0z" fill="var(--sage)" opacity=".75"/><path d="M112 128c-4-14-26-22-12-38h10c-8 12 20 22 24 38z" fill="var(--gold-soft)"/></svg>`
+  },
+  door: {
+    back: `<svg class="back" viewBox="0 0 160 128" preserveAspectRatio="xMidYMid slice"><rect width="160" height="128" fill="var(--rose)" opacity=".1"/><rect x="16" y="18" width="28" height="28" rx="14" fill="var(--lapis)" opacity=".22"/><path d="M98 128V60a24 24 0 0 1 48 0v68z" fill="var(--rose)" opacity=".85"/><path d="M106 128V62a16 16 0 0 1 32 0v66" fill="none" stroke="var(--panel)" stroke-width="2" opacity=".35"/><circle cx="133" cy="94" r="3.5" fill="var(--gold)"/><rect x="88" y="120" width="70" height="8" rx="3" fill="var(--gold)" opacity=".6"/></svg>`
+  }
+};
 
 const KINDS = {
   mujiza: { label: "Mu‘jiza", explain: "A miracle that showed he was truly Allah’s Messenger." },
@@ -626,6 +823,130 @@ const STATIONS = [
   }
 ];
 
+// Story mode: "A Day with the Hilya" (concept/story/a-day-with-the-hilya.md).
+// refs = sources for the grown-up layer; stations = station ids the beat links to.
+const SKINS = [
+  { skin: "#f6dcc7", feat: "#5a3526" },
+  { skin: "#eabf98", feat: "#4a2a1a" },
+  { skin: "#cf9566", feat: "#3b2215" },
+  { skin: "#9c6239", feat: "#2a160c" },
+  { skin: "#6b3f24", feat: "#1c0e07" }
+];
+const COVERS = [{ id: "hijab", label: "Hijab" }, { id: "kufi", label: "Kufi" }, { id: "none", label: "None" }];
+
+const PARTS = {
+  1: { label: "Morning · at the mirror" },
+  2: { label: "Breakfast · at the table", backdrop: "table" },
+  3: { label: "Out in the world", backdrop: "path" },
+  4: { label: "Night · back at the mirror", night: true }
+};
+
+const STORY = [
+  {
+    part: 1, title: "Wake up", prop: "sun", greet: "Good morning, {name}!",
+    lines: ["You open your eyes and rub the sleepy tears away. His eyes had tears too: when he prayed at night, and when he felt mercy for people he loved.",
+      "Say the waking du‘ā’ like he did: “Praise be to Allah, who gave us life again.”"],
+    prompt: "What is the first thing your eyes see today?",
+    refs: ["shamail:247", "shamail:310", "shamail:313", "shamail:315"], stations: ["eyes", "tears"]
+  },
+  {
+    part: 1, title: "Brush your teeth", prop: "siwak",
+    lines: ["Scrub, scrub! When he woke at night, he cleaned his mouth with a siwak stick."],
+    prompt: "Show the mirror your cleanest smile.",
+    refs: ["bukhari:245"], stations: ["mouth"]
+  },
+  {
+    part: 1, title: "Wash your face", prop: "splash",
+    lines: ["Splash! Your forehead, your eyebrows, your nose. His face shone like the full moon."],
+    prompt: "Look at your clean, bright face. Who will you be kind to today?",
+    refs: ["shamail:7", "shamail:9"], stations: ["face", "brow"]
+  },
+  {
+    part: 1, title: "Comb your hair", prop: "comb",
+    lines: ["Start on the right side. He loved to begin with the right: when combing, putting on shoes, and washing for prayer."],
+    prompt: "Which side did you start with?",
+    refs: ["shamail:83"], stations: ["hair"]
+  },
+  {
+    part: 1, title: "Stand up tall", prop: "ruler",
+    lines: ["Stand straight and look at how tall you are. He was neither very tall nor short, but just right."],
+    prompt: "Stand tall like someone who keeps their promises.",
+    refs: ["shamail:1", "shamail:5"], stations: ["stature"]
+  },
+  {
+    part: 1, title: "Get dressed", prop: "shirt",
+    lines: ["Pull on your shirt and do up the buttons. The shirt was the clothing he loved most."],
+    prompt: "Put your hand on your chest. Keep your heart clean today.",
+    refs: ["shamail:54"], stations: ["chest", "neck"]
+  },
+  {
+    part: 1, title: "Turn around", prop: "turn",
+    lines: ["Can you see your own back in the mirror? Try! Between his shoulders was a special mark, the Seal of Prophethood."],
+    prompt: "Some things we can’t see ourselves. Who helps you see them?",
+    refs: [], note: "Sources are on the Seal station (Shamāʾil ch. 2).", stations: ["seal"]
+  },
+  {
+    part: 1, title: "A little perfume", prop: "perfume",
+    lines: ["One little spray. He had a small bottle he used for perfume, and he never said no when someone offered him perfume."],
+    prompt: "How can you leave a sweet feeling wherever you go?",
+    refs: ["shamail:211", "shamail:212"], stations: ["fragrance"]
+  },
+  {
+    part: 1, title: "Smile", prop: "heart",
+    lines: ["Give the mirror your biggest smile. When he laughed, it was usually a happy smile."],
+    prompt: "Whose day will your smile brighten?",
+    refs: ["shamail:222"], stations: ["smile"]
+  },
+  {
+    part: 2, title: "Bismillah, right hand", prop: "plate",
+    lines: ["He told a young boy at a meal: “Say Bismillah, eat with your right hand, and eat what is in front of you.”"],
+    prompt: "Did you remember all three?",
+    refs: ["shamail:185"], stations: ["hands"]
+  },
+  {
+    part: 2, title: "Drink in three breaths", prop: "cup",
+    lines: ["Sip, breathe, sip, breathe, sip. He drank in three breaths and said it was more refreshing."],
+    note: "Dataset English says “breathe into the vessel”. Commentators explain it as pausing to breathe outside the cup. The children’s line follows that reading, so it needs a scholar check.",
+    refs: ["shamail:205", "shamail:208"], stations: ["mouth"]
+  },
+  {
+    part: 3, title: "Say salām first", prop: "salam",
+    lines: ["“As-salāmu ‘alaykum!” He was always the first to greet anyone he met."],
+    prompt: "Who will you greet first today?",
+    refs: ["shamail:7"], stations: ["speech", "voice"]
+  },
+  {
+    part: 3, title: "Shoes on, out the door", prop: "shoes", backdrop: "door",
+    lines: ["Right shoe first! Then off you go. He walked briskly, leaning forward a little, as if walking downhill."],
+    refs: ["shamail:82", "shamail:5"], stations: ["feet"]
+  },
+  {
+    part: 3, title: "Kind to everyone", prop: "gift",
+    lines: ["He visited people who were sick, and he said yes to invitations even from servants."],
+    prompt: "Is there someone you could visit or help this week?",
+    refs: ["shamail:320"], stations: ["hands", "feet"]
+  },
+  {
+    part: 3, title: "Play and joke, but only the truth", prop: "sparrow",
+    lines: ["He loved a little boy called Abū ‘Umayr and asked him about his pet sparrow. He joked with people too, but he only ever said what was true."],
+    prompt: "Can you make someone laugh today without saying anything untrue?",
+    refs: ["shamail:230", "shamail:231"], stations: ["smile", "speech"]
+  },
+  {
+    part: 4, title: "Look back at your day", prop: "stars", greet: "What a day, {name}!", recap: true,
+    lines: ["Back at the mirror in your pyjamas."],
+    prompt: ["What did your hands give today?", "What did your eyes look at?", "Who did you greet first?"],
+    refs: [], stations: []
+  },
+  {
+    part: 4, title: "Bedtime", prop: "pillow", greet: "Good night, {name}.",
+    lines: ["Lie on your right side with your right hand under your cheek, like he did.",
+      "Cup your hands, blow gently into them, recite Qul huwa Allāhu aḥad, and wipe them over yourself."],
+    note: "Dataset English for shamail:248 labels the sūra “(Al-Qur'an;114:1)”. “Say: He is Allah, One” is 112:1.",
+    refs: ["shamail:246", "shamail:248"], stations: ["hands"]
+  }
+];
+
 const BOOKS = {
   shamail: { name: "Shamāʾil" },
   bukhari: { name: "Bukhārī", books: {
@@ -810,20 +1131,192 @@ function go(i) {
   render(true);
 }
 
+/* ---- Story mode ---- */
+
+const story = { i: 0, seen: new Set([0]), child: { skin: 2, cover: "hijab", name: "" } };
+try {
+  const c = JSON.parse(localStorage.getItem("child") ?? "null");
+  if (SKINS[c?.skin]) story.child.skin = c.skin;
+  if (COVERS.some(v => v.id === c?.cover)) story.child.cover = c.cover;
+  if (typeof c?.name === "string") story.child.name = c.name.slice(0, 20);
+} catch {}
+let mode = "learn";
+try { if (localStorage.getItem("mode") === "story") mode = "story"; } catch {}
+
+const stationById = id => STATIONS.find(s => s.id === id);
+const shortName = s => s.name.replace(/^(His|The) /, "").toLowerCase();
+const withName = str => str.replace("{name}", story.child.name.trim() || "you");
+const raw = (tag, attrs, html) => { const el = h(tag, attrs); el.innerHTML = html; return el; };
+const corners = () => ["c1", "c2", "c3", "c4"].map(c => raw("span", { class: `corner ${c}` }, CORNER));
+
+function applyChild() {
+  const el = $("story"), sk = SKINS[story.child.skin];
+  el.style.setProperty("--skin", sk.skin);
+  el.style.setProperty("--feat", sk.feat);
+  el.dataset.cover = story.child.cover;
+  try { localStorage.setItem("child", JSON.stringify(story.child)); } catch {}
+}
+
+function scene(b) {
+  const part = PARTS[b.part], key = b.backdrop ?? part.backdrop, bd = BACKDROPS[key];
+  const cls = bd ? `window bd-${key}` : `mirror${part.night ? " night" : ""}${b.prop ? "" : " solo"}`;
+  return raw("div", { class: `scene ${cls}`, "aria-hidden": "true" },
+    (bd?.back ?? "") + CHILD + (bd?.front ?? "") + (b.prop ? `<div class="prop">${PROPS[b.prop]}</div>` : ""));
+}
+
+function openStation(id) {
+  const i = STATIONS.findIndex(s => s.id === id);
+  if (i < 0) return;
+  state.i = i; state.seen.add(i); state.tab = "char";
+  setMode("learn");
+}
+
+function pickerView() {
+  const swatches = SKINS.map((s, k) => {
+    const b = h("button", { type: "button", role: "radio", "aria-checked": String(k === story.child.skin), "aria-label": `Skin tone ${k + 1}`, style: `--sw:${s.skin}` });
+    b.addEventListener("click", () => {
+      story.child.skin = k; applyChild();
+      [...b.parentNode.children].forEach((x, j) => x.setAttribute("aria-checked", String(j === k)));
+    });
+    return b;
+  });
+  const covers = COVERS.map(c => {
+    const b = h("button", { type: "button", "aria-pressed": String(c.id === story.child.cover) }, c.label);
+    b.addEventListener("click", () => {
+      story.child.cover = c.id; applyChild();
+      [...b.parentNode.children].forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    });
+    return b;
+  });
+  const greet = h("p", { class: "greet" }, withName("Hello, {name}!"));
+  const name = h("input", { type: "text", maxlength: "20", autocomplete: "off", placeholder: "you", value: story.child.name });
+  name.addEventListener("input", () => { story.child.name = name.value; applyChild(); greet.textContent = withName("Hello, {name}!"); });
+  return [
+    h("div", { class: "station-name" }, "Before the day begins"),
+    scene({ part: 1 }),
+    h("h2", { class: "kid-title" }, "Choose your child"),
+    greet,
+    h("p", { class: "kid-line" }, "Who is looking in the mirror today? Pick how you look, then follow your day."),
+    h("div", { class: "picker" },
+      h("fieldset", {}, h("legend", {}, "Skin"), h("div", { class: "swatches", role: "radiogroup", "aria-label": "Skin tone" }, swatches)),
+      h("fieldset", {}, h("legend", {}, "Head covering"), h("div", { class: "seg" }, covers)),
+      h("label", {}, h("span", {}, "Your name"), name)
+    )
+  ];
+}
+
+function beatView(b) {
+  const prompts = [b.prompt ?? []].flat();
+  let links;
+  if (b.recap) {
+    const day = [...new Set(STORY.flatMap(x => x.stations))].map(stationById);
+    links = h("div", { class: "recap", role: "group", "aria-label": "Today’s stations" }, day.map((s, k) => {
+      const btn = raw("button", { type: "button", title: s.name, "aria-label": `Learn about ${s.name.toLowerCase()}`, style: `--k:${k}` }, ICONS[s.icon]);
+      btn.addEventListener("click", () => openStation(s.id));
+      return btn;
+    }));
+  } else {
+    links = h("div", { class: "links" }, b.stations.map(id => {
+      const s = stationById(id);
+      const btn = h("button", { type: "button", class: "go-link" }, raw("span", { class: "mini", "aria-hidden": "true" }, ICONS[s.icon]), "Learn about his ", h("span", { class: "saw", lang: "ar" }, "ﷺ"), ` ${shortName(s)} →`);
+      btn.addEventListener("click", () => openStation(id));
+      return btn;
+    }));
+  }
+  return [
+    h("div", { class: "station-name" }, PARTS[b.part].label),
+    scene(b),
+    b.greet ? h("p", { class: "greet" }, withName(b.greet)) : null,
+    h("h2", { class: "kid-title" }, b.title),
+    ...b.lines.map(l => h("p", { class: "kid-line" }, l)),
+    prompts.length ? h("div", { class: "prompt" }, prompts.length > 1 ? h("ul", {}, prompts.map(p => h("li", {}, p))) : h("span", {}, prompts[0])) : null,
+    links
+  ];
+}
+
+function renderTrail() {
+  const kids = [];
+  for (let k = 0; k <= STORY.length; k++) {
+    if (k > 1 && STORY[k - 1].part !== STORY[k - 2].part) kids.push(h("span", { class: "gap" }));
+    const b = h("button", {
+      type: "button", class: `${k === 0 ? "start " : ""}${story.seen.has(k) ? "seen" : ""}`,
+      "aria-current": k === story.i ? "step" : null,
+      "aria-label": k === 0 ? "Choose your child" : `${k}. ${STORY[k - 1].title}`
+    });
+    b.addEventListener("click", () => storyGo(k));
+    kids.push(b);
+  }
+  $("trail").replaceChildren(...kids);
+}
+
+function renderStoryAdult() {
+  const b = STORY[story.i - 1];
+  const banner = h("div", { class: "banner" }, "Draft. Awaiting scholarly review. Only the child is drawn: the Prophet ﷺ is never pictured, only described in his Companions’ words.");
+  if (!b) { $("sadult").replaceChildren(banner); return; }
+  const have = b.refs.filter(r => TEXTS[r]), missing = b.refs.filter(r => !TEXTS[r]);
+  $("sadult").replaceChildren(...[banner,
+    h("h2", {}, "Sources for this moment"),
+    b.note ? h("p", { class: "note" }, b.note) : null,
+    ...have.map(r => h("article", { class: "card" }, sourceBlock(r))),
+    missing.length ? h("p", { class: "k-explain" }, `Not yet in our checked texts: ${missing.join(", ")}.`) : null,
+    b.recap ? h("p", { class: "k-explain" }, "A look back at the day. Each icon opens its station, with its sources.") : null
+  ].filter(Boolean));
+}
+
+function renderStory(animate = false) {
+  $("sinner").replaceChildren(...corners(), ...(story.i === 0 ? pickerView() : beatView(STORY[story.i - 1])).filter(Boolean));
+  renderTrail(); renderStoryAdult();
+  $("sback").disabled = story.i === 0;
+  $("snext").disabled = story.i === STORY.length;
+  $("snext").textContent = story.i === 0 ? "Start the day" : "Next";
+  $("scount").textContent = story.i === 0 ? "Start" : `${story.i} of ${STORY.length}`;
+  if (animate) {
+    const st = $("sstage");
+    st.classList.remove("enter"); void st.offsetWidth; st.classList.add("enter");
+  }
+}
+
+function storyGo(i) {
+  if (i < 0 || i > STORY.length || i === story.i) return;
+  story.i = i; story.seen.add(i);
+  renderStory(true);
+}
+
+function setMode(m, animate = true) {
+  mode = m;
+  for (const id of ["learn", "story"]) $(id).hidden = id !== m;
+  document.querySelectorAll("#modes button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.mode === m)));
+  try { localStorage.setItem("mode", m); } catch {}
+  if (m === "learn") render(animate); else renderStory(animate);
+  if (animate) {
+    const el = $(m);
+    el.classList.remove("enter"); void el.offsetWidth; el.classList.add("enter");
+    window.scrollTo(0, 0);
+  }
+}
+
+/* ---- Wiring ---- */
+
+const step = d => mode === "story" ? storyGo(story.i + d) : go(state.i + d);
 $("back").addEventListener("click", () => go(state.i - 1));
 $("next").addEventListener("click", () => go(state.i + 1));
+$("sback").addEventListener("click", () => storyGo(story.i - 1));
+$("snext").addEventListener("click", () => storyGo(story.i + 1));
+document.querySelectorAll("#modes button").forEach(b => b.addEventListener("click", () => { if (b.dataset.mode !== mode) setMode(b.dataset.mode); }));
 document.addEventListener("keydown", e => {
   if (e.target.closest("input, summary")) return;
-  if (e.key === "ArrowRight") go(state.i + 1);
-  if (e.key === "ArrowLeft") go(state.i - 1);
+  if (e.key === "ArrowRight") step(1);
+  if (e.key === "ArrowLeft") step(-1);
 });
 let x0 = null;
-$("stage").addEventListener("pointerdown", e => { x0 = e.clientX; });
-$("stage").addEventListener("pointerup", e => {
-  if (x0 == null) return;
-  const dx = e.clientX - x0; x0 = null;
-  if (Math.abs(dx) > 50) go(state.i + (dx < 0 ? 1 : -1));
-});
+for (const id of ["stage", "sstage"]) {
+  $(id).addEventListener("pointerdown", e => { x0 = e.clientX; });
+  $(id).addEventListener("pointerup", e => {
+    if (x0 == null) return;
+    const dx = e.clientX - x0; x0 = null;
+    if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
+  });
+}
 
 const grown = $("grown");
 try { grown.checked = localStorage.getItem("grown") === "1"; } catch {}
@@ -834,5 +1327,6 @@ const applyGrown = () => {
 grown.addEventListener("change", applyGrown);
 applyGrown();
 document.querySelectorAll(".corner").forEach(c => { c.innerHTML = CORNER; });
-render(false);
+applyChild();
+setMode(mode, false);
 </script>
