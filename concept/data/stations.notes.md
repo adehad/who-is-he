@@ -67,6 +67,8 @@ Suggestion: the hands station's research card could point to tirmidhi:3722. Keep
 
 ## Translation issues noticed (dataset English)
 
+These are recorded in `corrections.json`. `build.py` applies only the "clear" ones to the page; the "scholar-check" ones wait for review.
+
 - #2: "brown of color" is attached to the hair, but أسمر اللون is his complexion.
 - #3: the narrator appears as "Ibn Ishaq" (should be Abū Isḥāq), and the English adds "neither curly nor lank-haired", which this Arabic does not have. The Arabic also has an odd اليسرى ("left") after أذنيه.
 - #7: "would consider him haughty" for أشمّ, which describes a high-bridged nose. The "maternal aunt" error is already flagged in intro.

@@ -3,7 +3,9 @@
 Collects every `book:number` ref used by the stations in little-hilya.src.html
 and data/stations.draft.json, looks each up in the dataset files and writes
 {ref: {ar, narrator, en, ch, ch_en, ch_ar}}. Also checks that every Arabic
-`phrase` in the draft stations occurs verbatim in its hadith.
+`phrase` in the draft stations occurs verbatim in its hadith, and that every
+`find` in data/corrections.json occurs in the raw dataset text. texts.json stays
+the raw dataset copy; build.py applies the corrections.
 
 Usage: python -I concept/scripts/extract_texts.py DATASET_DIR [DATASET_DIR ...]
 
@@ -21,6 +23,7 @@ CONCEPT = Path(__file__).resolve().parent.parent
 SRC = CONCEPT / "little-hilya.src.html"
 DRAFT = CONCEPT / "data" / "stations.draft.json"
 OUT = CONCEPT / "data" / "texts.json"
+CORRECTIONS = CONCEPT / "data" / "corrections.json"
 BOOK_ORDER = ["shamail", "bukhari", "muslim", "tirmidhi", "abudawud"]
 SAW = "صلى الله عليه وسلم"
 
@@ -39,10 +42,7 @@ def walk(node):
             yield from walk(v)
 
 
-def main(dirs):
-    stations = json.loads(DRAFT.read_text(encoding="utf-8"))
-    refs = refs_in_src() | {n["ref"] for n in walk(stations) if "ref" in n}
-
+def lookup(dirs, refs):
     wanted = {}
     for ref in refs:
         book, n = ref.split(":")
@@ -73,6 +73,20 @@ def main(dirs):
             }
     if missing:
         sys.exit(f"missing refs: {', '.join(missing)}")
+    return out
+
+
+def main(dirs):
+    stations = json.loads(DRAFT.read_text(encoding="utf-8"))
+    refs = refs_in_src() | {n["ref"] for n in walk(stations) if "ref" in n}
+    out = lookup(dirs, refs)
+
+    # Every correction's `find` must be in the raw dataset text, including refs not on the page.
+    corrections = json.loads(CORRECTIONS.read_text(encoding="utf-8"))
+    raw = lookup(dirs, {c["ref"] for c in corrections})
+    stale = [f'{c["ref"]} {c["field"]}: {c["find"]}' for c in corrections if c["find"] not in raw[c["ref"]][c["field"]]]
+    if stale:
+        sys.exit("corrections not found in dataset:\n  " + "\n  ".join(stale))
 
     bad = []
     for node in walk(stations):

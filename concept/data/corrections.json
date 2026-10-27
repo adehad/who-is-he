@@ -1,0 +1,154 @@
+[
+  {
+    "ref": "shamail:2",
+    "field": "en",
+    "find": "his hair was neither crisply curled nor smooth, brown of color.",
+    "replace": "his hair was neither crisply curled nor smooth. He was brown of complexion.",
+    "reason": "أَسْمَرَ اللَّوْنِ describes his complexion, not his hair. It is accusative like رَبْعَةً and حَسَنَ الْجِسْمِ, and the same hadith with the same isnad in Jāmi‘ al-Tirmidhī places أسمر اللون before the hair clause (dataset English there: “brown in complexion”).",
+    "confidence": "clear"
+  },
+  {
+    "ref": "shamail:3",
+    "field": "narrator",
+    "find": "Ibn Ishaq said:",
+    "replace": "Abu Ishaq said:",
+    "reason": "The isnad reads عَنْ أَبِي إِسْحَاقَ (Abū Isḥāq), not Ibn Isḥāq.",
+    "confidence": "clear"
+  },
+  {
+    "ref": "shamail:3",
+    "field": "en",
+    "find": "was neither curly nor lank-haired, of medium height",
+    "replace": "was of medium height",
+    "reason": "The Arabic has no hair-texture phrase (no جعد / سبط); it goes straight from رَجُلا مَرْبُوعًا to بَعِيدَ مَا بَيْنَ الْمَنْكِبَيْنِ. The English may follow a different manuscript, so a scholar should confirm before removing it. Separately, the Arabic has an odd الْيُسْرَى (“the left”) after أُذُنَيْهِ.",
+    "confidence": "scholar-check"
+  },
+  {
+    "ref": "shamail:7",
+    "field": "en",
+    "find": "My maternal aunt Hind asked the son of Abu Hala",
+    "replace": "I asked my maternal uncle Hind, the son of Abu Hala",
+    "reason": "سَأَلْتُ خَالِي هِنْدَ بْنَ أَبِي هَالَةَ: al-Ḥasan is the one asking (سألتُ, “I asked”), and خالي is “my maternal uncle”. Hind ibn Abī Hāla is a man, Khadīja’s son and so al-Ḥasan’s uncle.",
+    "confidence": "clear"
+  },
+  {
+    "ref": "shamail:7",
+    "field": "en",
+    "find": "someone who did not reflect on him would consider him haughty",
+    "replace": "someone who did not look at him carefully would think his nose high-bridged",
+    "reason": "يَحْسَبُهُ مَنْ لَمْ يَتَأَمَّلْهُ أَشَمَّ comes straight after أَقْنَى الْعِرْنَيْنِ (the nose). أشمّ usually means a high, raised nose bridge in this context; “haughty” takes the figurative sense. Interpretive, so needs a scholar.",
+    "confidence": "scholar-check"
+  },
+  {
+    "ref": "shamail:8",
+    "field": "en",
+    "find": "He replied:\" endowed with a lean heel.”",
+    "replace": null,
+    "reason": "Shu‘ba’s question about ضَلِيعَ الْفَمِ is answered with the explanation of مَنْهُوسَ الْعَقِبِ; the other two answers are missing. The dataset Arabic has no Q&A at all. The parallel in Ṣaḥīḥ Muslim has it: مَا ضَلِيعُ الْفَمِ قَالَ عَظِيمُ الْفَمِ … مَا أَشْكَلُ الْعَيْنِ قَالَ طَوِيلُ شَقِّ الْعَيْنِ … مَا مَنْهُوسُ الْعَقِبِ قَالَ قَلِيلُ لَحْمِ الْعَقِبِ. Needs the full Arabic and a translator.",
+    "confidence": "scholar-check"
+  },
+  {
+    "ref": "shamail:20",
+    "field": "en",
+    "find": "The date palms then bore their annual crop,",
+    "replace": "The date palms then bore fruit that same year,",
+    "reason": "فَحَمَلَتِ النَّخْلُ مِنْ عَامِهَا: مِنْ عَامِهَا means “in that same year” (date palms normally take years to fruit), which is the point of the report.",
+    "confidence": "clear"
+  },
+  {
+    "ref": "shamail:20",
+    "field": "en",
+    "find": "so it bore its annual crop.",
+    "replace": "so it bore fruit that same year.",
+    "reason": "فَحَمَلَتْ مِنْ عَامِهَا: “it bore fruit in that same year”, not “its annual crop”.",
+    "confidence": "clear"
+  },
+  {
+    "ref": "shamail:27",
+    "field": "narrator",
+    "find": "Umm Hani bint 'Ali ibn Talib said:",
+    "replace": "Umm Hani bint Abi Talib said:",
+    "reason": "The isnad reads أُمِّ هَانِئٍ بِنْتِ أَبِي طَالِبٍ. Umm Hāni’ is the daughter of Abū Ṭālib (‘Alī’s sister), not of ‘Alī.",
+    "confidence": "clear"
+  },
+  {
+    "ref": "shamail:27",
+    "field": "en",
+    "find": "arrived boldly at Mecca",
+    "replace": "came to Mecca on one occasion",
+    "reason": "قَدِمَ … مَكَّةَ قَدْمَةً: قَدْمَةً is a noun of single occurrence (“one arrival / once”). Nothing in the Arabic means “boldly”.",
+    "confidence": "clear"
+  },
+  {
+    "ref": "shamail:40",
+    "field": "en",
+    "find": "(Al-Qur'an; 74))",
+    "replace": "(Al-Qur'an; 78))",
+    "reason": "عَمَّ يَتَسَاءَلُونَ is the opening of Sūrat al-Naba’, sūra 78, not 74 (al-Muddaththir).",
+    "confidence": "clear"
+  },
+  {
+    "ref": "shamail:42",
+    "field": "en",
+    "find": "with a son of mine, who said: 'So I was shown him, and I said when I saw him:",
+    "replace": "with a son of mine, and I pointed him out to him, and I said when I saw him:",
+    "reason": "وَمَعِي ابْنٌ لِي، قَالَ: فَأَرَيْتُهُ، فَقُلْتُ لَمَّا رَأَيْتُهُ: the قال is the narrator Abū Rimtha resuming, not his son speaking. The dataset vocalises فَأَرَيْتُهُ (“I showed him [to my son]”); other versions read فَأُرِيتُهُ (“I was shown him”), so the exact wording needs a scholar.",
+    "confidence": "scholar-check"
+  },
+  {
+    "ref": "shamail:49",
+    "field": "en",
+    "find": "\"Color the edges of the eyelids with antimony ,and three times in that.",
+    "replace": null,
+    "reason": "Truncated. The Arabic continues: فَإِنَّهُ يَجْلُو الْبَصَرَ، وَيُنْبِتُ الشَّعْرَ وَزَعَمَ أَنَّ النَّبِيَّ ﷺ كَانَتْ لَهُ مُكْحُلَةٌ يَكْتَحِلُ مِنْهَا كُلَّ لَيْلَةٍ، ثَلاثَةً فِي هَذِهِ، وَثَلاثَةً فِي هَذِهِ. The English drops the benefits, the kohl-pot and the nightly use. Needs a full translation.",
+    "confidence": "scholar-check"
+  },
+  {
+    "ref": "shamail:217",
+    "field": "en",
+    "find": "he would pause periodically, so that",
+    "replace": "he would speak clearly and distinctly, so that",
+    "reason": "يَتَكَلَّمُ بِكَلامٍ بَيِّنٍ فَصْلٍ: بَيِّن is “clear” and فَصْل “distinct / separated”. “Pause periodically” is one reading of فصل but drops بيّن.",
+    "confidence": "scholar-check"
+  },
+  {
+    "ref": "shamail:221",
+    "field": "en",
+    "find": "anyone with a more cheerful countenance than",
+    "replace": "anyone who smiled more than",
+    "reason": "أَكْثَرَ تَبَسُّمًا is literally “more smiling”. “A more cheerful countenance” is a paraphrase that loses تبسّم, which the chapter on his smiling contrasts with ضحك.",
+    "confidence": "scholar-check"
+  },
+  {
+    "ref": "shamail:225",
+    "field": "en",
+    "find": "Same as the above hadith.",
+    "replace": null,
+    "reason": "The English only says “Same as the above hadith”, but this Arabic differs from the one before it: it ends إِلا تَبَسَّمَ (“without smiling”) where the previous one has إِلا ضَحِكَ (“without laughing”), and the word order differs. The narrator (عَنْ جَرِيرٍ) is also blank. Needs its own translation.",
+    "confidence": "scholar-check"
+  },
+  {
+    "ref": "shamail:307",
+    "field": "en",
+    "find": "He recited in a quivering voice.",
+    "replace": "He recited with tarjī‘ (repeating and modulating his voice).",
+    "reason": "فَقَرَأَ وَرَجَّعَ. The same verb رجّع is rendered “quivering voice” here and “quavering tone” in shamail:308 (لا يُرَجِّعُ). Neither is standard; tarjī‘ is the technical term. A scholar should pick one rendering for both.",
+    "confidence": "scholar-check"
+  },
+  {
+    "ref": "shamail:308",
+    "field": "en",
+    "find": "he did not chant in a quavering tone.",
+    "replace": "he did not use tarjī‘ (repeating and modulating his voice).",
+    "reason": "وَكَانَ لا يُرَجِّعُ: same verb as فَقَرَأَ وَرَجَّعَ in shamail:307, which is rendered differently. The two reports look contradictory and commentators reconcile them, so the rendering should be decided with a scholar.",
+    "confidence": "scholar-check"
+  },
+  {
+    "ref": "abudawud:1958",
+    "field": "en",
+    "find": "Our ears were open and we were listening to what he was saying, while we were in our dwellings.",
+    "replace": "Our hearing was opened, so that we could hear what he was saying while we were in our dwellings.",
+    "reason": "فَفُتِحَتْ أَسْمَاعُنَا حَتَّى كُنَّا نَسْمَعُ مَا يَقُولُ وَنَحْنُ فِي مَنَازِلِنَا: فُتِحَتْ is passive (“was opened”) and حَتَّى gives the result (“so that we could hear”). The English loses that their hearing was opened for them.",
+    "confidence": "clear"
+  }
+]

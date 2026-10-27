@@ -287,8 +287,7 @@ const STATIONS = [
     phrase: "حِلْيَةُ رَسُولِ اللهِ ﷺ",
     title: "Something to hold on to",
     line: "Long ago, a boy called al-Ḥasan asked his uncle to describe the Prophet ﷺ, so he would have something to hold on to. A description like this is called a hilya.",
-    physical: [{ ref: "shamail:7", phrase: "عَنْ حِلْيَةِ رَسُولِ اللهِ ﷺ، وَأَنَا أَشْتَهِي أَنْ يَصِفَ لِي مِنْهَا شَيْئًا أَتَعَلَّقُ بِهِ",
-      note: "The dataset English reads “my maternal aunt Hind”. The Arabic says خالي, “my maternal uncle”: Hind ibn Abī Hāla." }],
+    physical: [{ ref: "shamail:7", phrase: "عَنْ حِلْيَةِ رَسُولِ اللهِ ﷺ، وَأَنَا أَشْتَهِي أَنْ يَصِفَ لِي مِنْهَا شَيْئًا أَتَعَلَّقُ بِهِ" }],
     character: [], signs: [], mirror: null
   },
   {
@@ -396,12 +395,15 @@ function sourceBlock(ref, extra = []) {
     h("a", { class: "cite", href: c.url, target: "_blank", rel: "noopener" }, c.label),
     c.exact ? null : h("span", {}, "(opens the book; number to verify)"),
     ...extra,
+    t.corrected ? h("span", { class: "badge" }, "Translation corrected") : null,
     h("span", { class: "badge draft" }, "Draft"),
     h("details", { style: "flex-basis:100%" },
       h("summary", {}, "Read the full hadith"),
       h("div", { class: "src" },
         h("p", { lang: "ar" }, t.ar),
         h("p", { class: "en" }, h("strong", {}, t.narrator), " ", t.en),
+        ...(t.corrected ?? []).map(c => h("p", { class: "note" },
+          `We corrected the dataset English: “${c.original}” → “${c.replacement}”. `, c.reason)),
         h("small", {}, `Chapter: ${t.ch_en} · `, h("span", { lang: "ar" }, t.ch_ar))
       )
     )
