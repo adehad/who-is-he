@@ -171,7 +171,10 @@ button { font: inherit; color: inherit; }
 .k-mujiza { color: var(--gold); } .k-karama { color: var(--rose); } .k-khasisa { color: var(--lapis); }
 .k-research { color: var(--muted); } .k-trait { color: var(--sage); }
 .k-explain { color: var(--muted); font-size: .9rem; }
-.empty { color: var(--muted); text-align: center; margin: 4px 0; }
+.group { display: grid; gap: 10px; }
+.group + .group { margin-top: 8px; }
+.group-head { margin: 0; }
+.group > .k-explain { margin: -4px 0 0; }
 
 /* Grown-up layer */
 .adult { display: none; }
@@ -475,12 +478,20 @@ function renderCards() {
       h("h3", {}, h("span", { class: "pill k-research" }, KINDS.research.label)),
       h("p", {}, "We are still looking for checked reports that link this to his character."))];
   } else if (state.tab === "sign") {
-    cards = s.signs.map(g => h("article", { class: `card ${g.kind === "research" ? "research" : ""}` },
-      h("h3", {}, h("span", { class: `pill k-${g.kind}` }, KINDS[g.kind].label), g.title),
-      h("p", {}, g.line),
-      h("p", { class: "k-explain" }, KINDS[g.kind].explain, g.trait ? ` Reminds us he was ${g.trait.toLowerCase()}.` : ""),
-      g.ref ? h("div", { class: "adult" }, sourceBlock(g.ref, [h("span", { class: "badge" }, "Category: ours")])) : null
-    ));
+    cards = Object.keys(KINDS).flatMap(kind => {
+      const group = s.signs.filter(g => g.kind === kind);
+      if (!group.length) return [];
+      return [h("div", { class: "group" },
+        h("h3", { class: "group-head" }, h("span", { class: `pill k-${kind}` }, KINDS[kind].label)),
+        h("p", { class: "k-explain" }, KINDS[kind].explain),
+        ...group.map(g => h("article", { class: `card ${kind === "research" ? "research" : ""}` },
+          h("h3", {}, g.title),
+          h("p", {}, g.line),
+          g.trait ? h("p", { class: "k-explain" }, `Reminds us he was ${g.trait.toLowerCase()}.`) : null,
+          g.ref ? h("div", { class: "adult" }, sourceBlock(g.ref, [h("span", { class: "badge" }, "Category: ours")])) : null
+        ))
+      )];
+    });
   } else {
     cards = [h("article", { class: "card mirror" },
       h("h3", {}, h("span", { class: "pill k-khasisa" }, "Mirror"), "Coming soon"),
