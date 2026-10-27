@@ -65,7 +65,8 @@ def main():
         inbook = next((r for r in best["refs"] if r.startswith("In-book")), None)
         out[ref] = {"sunnah_ref": best["ref"].strip("/"), "url": "https://sunnah.com" + best["ref"],
                     "in_book": inbook.split(":", 1)[1].strip() if inbook else None,
-                    "grade": best["grade"], "score": round(s, 3), "en_sunnah": best["en"]}
+                    "grade": best["grade"], "score": round(s, 3), "en_sunnah": best["en"],
+                    "narrator_sunnah": best.get("narrator")}
         if s < 0.6:
             weak.append((ref, best["ref"], round(s, 3)))
 

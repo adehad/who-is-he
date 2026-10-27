@@ -12,6 +12,17 @@ here = Path(__file__).parent
 texts = json.loads((here / "data/texts.json").read_text(encoding="utf-8"))
 corrections = json.loads((here / "data/corrections.json").read_text(encoding="utf-8"))
 
+# Prefer sunnah.com's English: the dataset's scraper drops text between square brackets.
+sunnah = json.loads((here / "data/sunnah_refs.json").read_text(encoding="utf-8"))
+for ref, t in texts.items():
+    m = sunnah.get(ref)
+    if m:
+        t["sunnah"] = {"ref": m["sunnah_ref"], "in_book": m["in_book"], "grade": m["grade"]}
+        if m.get("en_sunnah"):
+            t["en"], t["en_source"] = m["en_sunnah"], "sunnah.com"
+            t["narrator"] = m.get("narrator_sunnah") or t["narrator"]
+unmatched = sorted(r for r in texts if r not in sunnah)
+
 errors, applied, skipped = [], 0, 0
 for c in corrections:
     if c["field"] not in ("en", "narrator") or c["confidence"] not in ("clear", "scholar-check"):
@@ -35,13 +46,6 @@ for c in corrections:
     applied += 1
 if errors:
     sys.exit("corrections failed:\n  " + "\n  ".join(errors))
-
-sunnah = json.loads((here / "data/sunnah_refs.json").read_text(encoding="utf-8"))
-for ref, t in texts.items():
-    m = sunnah.get(ref)
-    if m:
-        t["sunnah"] = {"ref": m["sunnah_ref"], "in_book": m["in_book"], "grade": m["grade"]}
-unmatched = sorted(r for r in texts if r not in sunnah)
 
 src = (here / "little-hilya.src.html").read_text(encoding="utf-8")
 blob = json.dumps(texts, ensure_ascii=False).replace("</", r"<\/")

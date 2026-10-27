@@ -1,7 +1,8 @@
 # A Day with the Hilya — mirror story concept
 
-Status: draft concept, 2026-10-27. Not yet built. All references are dataset numbers
-(hadith-json export of sunnah.com); Shamail = `shamail:N`. Content awaits scholarly review.
+Status: draft concept, 2026-10-27. Not yet built. References are sunnah.com numbers
+(e.g. `shamail:84` = https://sunnah.com/shamail:84). The page's code keys texts by dataset number;
+`concept/data/sunnah_refs.json` maps between the two. Content awaits scholarly review.
 
 ## Idea
 
@@ -30,7 +31,7 @@ the sunnah tie-in with its reference, and linked station(s).
   when he prayed at night, and when he felt mercy for people he loved.
 - **Then:** Say the waking du‘ā’ like he did: "Praise be to Allah, who gave us life again."
 - **Prompt:** What is the first thing your eyes see today?
-- **Refs:** shamail:247 (waking du‘ā’); shamail:310 (weeping in prayer); shamail:313, shamail:315 (tears of mercy)
+- **Refs:** shamail:255 (waking du‘ā’); shamail:321 (weeping in prayer); shamail:324, shamail:326 (tears of mercy)
 - **Stations:** eyes, tears
 
 ### 2. Brush your teeth
@@ -42,14 +43,14 @@ the sunnah tie-in with its reference, and linked station(s).
 ### 3. Wash your face
 - **Story:** Splash! Your forehead, your eyebrows, your nose. His face shone like the full moon.
 - **Prompt:** Look at your clean, bright face. Who will you be kind to today?
-- **Refs:** shamail:7, shamail:9
+- **Refs:** shamail:8, shamail:10
 - **Stations:** face, brow
 
 ### 4. Comb your hair
 - **Story:** Start on the right side. He loved to begin with the right: when combing,
   putting on shoes, and washing for prayer.
 - **Prompt:** Which side did you start with?
-- **Refs:** shamail:83
+- **Refs:** shamail:84
 - **Stations:** hair
 
 ### 5. Stand up tall
@@ -62,7 +63,7 @@ the sunnah tie-in with its reference, and linked station(s).
 ### 6. Get dressed
 - **Story:** Pull on your shirt and do up the buttons. The shirt was the clothing he loved most.
 - **Prompt:** Put your hand on your chest. Keep your heart clean today.
-- **Refs:** shamail:54
+- **Refs:** shamail:55
 - **Stations:** chest, neck
 
 ### 7. Turn around
@@ -76,13 +77,13 @@ the sunnah tie-in with its reference, and linked station(s).
 - **Story:** One little spray. He had a small bottle he used for perfume, and he never
   said no when someone offered him perfume.
 - **Prompt:** How can you leave a sweet feeling wherever you go?
-- **Refs:** shamail:211, shamail:212
+- **Refs:** shamail:215, shamail:216
 - **Stations:** fragrance
 
 ### 9. Smile
 - **Story:** Give the mirror your biggest smile. When he laughed, it was usually a happy smile.
 - **Prompt:** Whose day will your smile brighten?
-- **Refs:** shamail:222
+- **Refs:** shamail:227
 - **Stations:** smile
 
 ## Part 2 — Breakfast
@@ -91,7 +92,7 @@ the sunnah tie-in with its reference, and linked station(s).
 - **Story:** He told a young boy at a meal: "Say Bismillah, eat with your right hand,
   and eat what is in front of you."
 - **Prompt:** Did you remember all three?
-- **Refs:** shamail:185
+- **Refs:** shamail:189
 - **Stations:** hands
 
 ### 11. Drink in three breaths
@@ -99,7 +100,7 @@ the sunnah tie-in with its reference, and linked station(s).
   more refreshing.
 - **Note:** Dataset English says "breathe into the vessel". Commentators explain it as
   pausing to breathe *outside* the cup. Kid copy follows that reading, so it needs a scholar check.
-- **Refs:** shamail:205, shamail:208
+- **Refs:** shamail:209, shamail:212
 - **Stations:** mouth
 
 ## Part 3 — Out in the world
@@ -107,26 +108,26 @@ the sunnah tie-in with its reference, and linked station(s).
 ### 12. Say salām first
 - **Story:** "As-salāmu ‘alaykum!" He was always the first to greet anyone he met.
 - **Prompt:** Who will you greet first today?
-- **Refs:** shamail:7
+- **Refs:** shamail:8
 - **Stations:** speech, voice
 
 ### 13. Shoes on, out the door
 - **Story:** Right shoe first! Then off you go. He walked briskly, leaning forward a
   little, as if walking downhill.
-- **Refs:** shamail:82, shamail:5
+- **Refs:** shamail:83, shamail:5
 - **Stations:** feet
 
 ### 14. Kind to everyone
 - **Story:** He visited people who were sick, and he said yes to invitations even from servants.
 - **Prompt:** Is there someone you could visit or help this week?
-- **Refs:** shamail:320
+- **Refs:** shamail:331
 - **Stations:** hands (generosity), feet
 
 ### 15. Play and joke, but only the truth
 - **Story:** He loved a little boy called Abū ‘Umayr and asked him about his pet sparrow.
   He joked with people too, but he only ever said what was true.
 - **Prompt:** Can you make someone laugh today without saying anything untrue?
-- **Refs:** shamail:230, shamail:231
+- **Refs:** shamail:235, shamail:236
 - **Stations:** smile, speech
 
 ## Part 4 — Night, back at the mirror
@@ -138,10 +139,10 @@ the sunnah tie-in with its reference, and linked station(s).
 
 ### 17. Bedtime
 - **Story:** Lie on your right side with your right hand under your cheek, like he did.
-  Cup your hands, blow gently into them, recite Qul huwa Allāhu aḥad, and wipe them over yourself.
-- **Note:** Dataset English for shamail:248 labels the sūra "(Al-Qur'an;114:1)". "Say: He is
-  Allah, One" is 112:1. Add to corrections.json / the sunnah.com report list.
-- **Refs:** shamail:246, shamail:248
+  Cup your hands, blow gently into them, recite the three Quls (Ikhlāṣ, Falaq and Nās), and wipe them over yourself.
+- **Note:** sunnah.com's English names all three sūras (112, 113, 114). The dataset copy had
+  lost the middle of the sentence to a bracket-stripping bug, so the page uses sunnah.com's text.
+- **Refs:** shamail:253, shamail:256
 - **Stations:** hands
 
 ## Optional extensions (more chapters)
@@ -156,5 +157,5 @@ the sunnah tie-in with its reference, and linked station(s).
   (the day seen through a looking-glass), or switch to full scenes outside the mirror?
 - Should the night recap remember what the child tapped during the day (per-viewer only)?
 - Beat 7 (seal): is a "turn around" game appropriate, or too playful for the subject?
-- Age-appropriateness review for tears beats (death of his daughter in shamail:313/315 is
+- Age-appropriateness review for tears beats (death of his daughter in shamail:324/315 is
   referenced only as "mercy for people he loved"; full text stays in the grown-up layer).
