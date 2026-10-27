@@ -1,0 +1,547 @@
+<title>Little Hilya</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Baloo+2:wght@500;700;800&display=swap">
+<style>
+/* Layout: one Hilya panel (basmala band, medallion, crescent, verse band) as the stage; chips and grown-up notes flow beneath it. */
+:root {
+  --bg: #e6f0ea;        /* marbled-paper mint */
+  --panel: #fbfcf7;
+  --ink: #1d3836;
+  --muted: #566d69;
+  --gold: #a87a22;
+  --gold-soft: #f1e2bd;
+  --rose: #c2577a;
+  --lapis: #2b5888;
+  --sage: #7fb096;
+  --line: #cadfd3;
+  --chip: #ffffff;
+  --display: "Baloo 2", "Trebuchet MS", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --ar: "Amiri", "Traditional Arabic", "Times New Roman", serif;
+  --ar-display: "Aref Ruqaa", "Amiri", "Traditional Arabic", serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111a2c; --panel: #19233d; --ink: #eef1e7; --muted: #a6b1c6;
+    --gold: #e2b65a; --gold-soft: #3a3420; --rose: #ee93ad; --lapis: #92b7ea;
+    --sage: #6fa489; --line: #2b385a; --chip: #212d4b; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111a2c; --panel: #19233d; --ink: #eef1e7; --muted: #a6b1c6;
+  --gold: #e2b65a; --gold-soft: #3a3420; --rose: #ee93ad; --lapis: #92b7ea;
+  --sage: #6fa489; --line: #2b385a; --chip: #212d4b; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(60rem 30rem at 10% -10%, color-mix(in srgb, var(--sage) 22%, transparent), transparent 70%),
+    radial-gradient(50rem 30rem at 110% 20%, color-mix(in srgb, var(--rose) 12%, transparent), transparent 70%);
+  color: var(--ink);
+  font: 17px/1.55 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 40px;
+}
+.wrap { max-width: 760px; margin: 0 auto; display: grid; gap: 18px; }
+[lang="ar"] { font-family: var(--ar); direction: rtl; }
+a { color: var(--lapis); }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--lapis); outline-offset: 3px; border-radius: 8px; }
+
+/* Header */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.brand { display: flex; align-items: baseline; gap: 10px; }
+.brand h1 { font: 800 1.7rem/1 var(--display); margin: 0; letter-spacing: -0.01em; }
+.brand span { font: 700 1.5rem/1 var(--ar-display); color: var(--gold); }
+.toggle { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.95rem; color: var(--muted); user-select: none; }
+.toggle input { position: absolute; opacity: 0; pointer-events: none; }
+.switch { width: 44px; height: 26px; border-radius: 99px; background: var(--line); position: relative; transition: background .2s; flex: none; }
+.switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: var(--panel); box-shadow: 0 1px 3px rgb(0 0 0 / .25); transition: transform .2s; }
+.toggle input:checked + .switch { background: var(--lapis); }
+.toggle input:checked + .switch::after { transform: translateX(18px); }
+.toggle input:focus-visible + .switch { outline: 3px solid var(--lapis); outline-offset: 2px; }
+
+/* Station index */
+.index { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; }
+.index button {
+  flex: none; display: inline-flex; align-items: center; gap: 8px;
+  border: 2px solid var(--line); background: var(--chip); border-radius: 99px;
+  padding: 6px 14px 6px 8px; cursor: pointer; font: 600 0.95rem/1.2 var(--display);
+}
+.index .dot { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: .75rem; background: var(--line); color: var(--muted); }
+.index button.seen .dot { background: var(--gold-soft); color: var(--gold); }
+.index button[aria-current="step"] { border-color: var(--gold); }
+.index button[aria-current="step"] .dot { background: var(--gold); color: var(--panel); }
+
+/* Hilya panel */
+.hilya {
+  background: var(--panel);
+  border-radius: 28px;
+  padding: 10px;
+  box-shadow: 0 10px 30px -12px color-mix(in srgb, var(--ink) 30%, transparent);
+  position: relative;
+}
+.hilya-inner {
+  border: 2px solid var(--gold);
+  outline: 1px solid var(--gold); outline-offset: -8px;
+  border-radius: 22px;
+  padding: 18px 18px 14px;
+  display: grid; justify-items: center; gap: 6px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.corner { position: absolute; width: 26px; height: 26px; color: var(--line); transition: color .4s; }
+.corner.lit { color: var(--gold); }
+.corner svg { width: 100%; height: 100%; display: block; }
+.c1 { top: 14px; left: 14px; } .c2 { top: 14px; right: 14px; } .c3 { bottom: 14px; left: 14px; } .c4 { bottom: 14px; right: 14px; }
+.basmala { font: 400 1.25rem/1.6 var(--ar); color: var(--muted); }
+.medallion {
+  width: min(250px, 66vw); aspect-ratio: 1; max-width: 100%;
+  border-radius: 50%;
+  border: 3px solid var(--gold);
+  box-shadow: inset 0 0 0 7px var(--panel), inset 0 0 0 9px var(--gold-soft);
+  background: radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--gold-soft) 70%, var(--panel)), var(--panel) 72%);
+  display: grid; place-items: center; align-content: center; gap: 2px;
+  padding: 26px;
+}
+.medallion svg { width: 52%; height: auto; overflow: visible; }
+.phrase { font: 700 clamp(1.25rem, 4.6vw, 1.6rem)/1.5 var(--ar); color: var(--ink); text-wrap: balance; }
+.crescent { width: min(290px, 76vw); height: 26px; margin-top: -8px; color: var(--gold); }
+.crescent svg { width: 100%; height: 100%; display: block; }
+.station-name { font: 700 .8rem/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--rose); margin-top: 2px; }
+.kid-title { font: 800 clamp(1.6rem, 6vw, 2.2rem)/1.1 var(--display); margin: 2px 0 0; text-wrap: balance; }
+.kid-line { font-size: 1.12rem; max-width: 34ch; margin: 4px 0 6px; text-wrap: pretty; }
+.verse { border-top: 1px dashed var(--line); padding-top: 10px; margin-top: 6px; width: 100%; display: grid; gap: 0; }
+.verse [lang="ar"] { font-size: 1.2rem; color: var(--gold); }
+.verse small { color: var(--muted); font-size: .82rem; }
+
+/* Enter animation */
+.stage.enter .medallion { animation: medIn .7s cubic-bezier(.2,.9,.25,1.2) both; }
+.stage.enter .kid-title, .stage.enter .kid-line, .stage.enter .station-name { animation: rise .55s ease both; }
+.stage.enter .kid-line { animation-delay: .08s; }
+@keyframes medIn { from { transform: scale(.7) rotate(-25deg); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes rise { from { transform: translateY(10px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+/* Icon idle motion */
+.i-spin { transform-origin: 60px 60px; animation: spin 60s linear infinite; }
+.i-glow { animation: glow 4s ease-in-out infinite; }
+.i-twinkle { animation: twinkle 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.i-twinkle:nth-of-type(2) { animation-delay: .8s; } .i-twinkle:nth-of-type(3) { animation-delay: 1.6s; }
+.i-sway { transform-origin: 60px 112px; animation: sway 6s ease-in-out infinite; }
+.i-drop { animation: fall 1.8s ease-in infinite; }
+.i-drop:nth-of-type(2) { animation-delay: .6s; } .i-drop:nth-of-type(3) { animation-delay: 1.2s; }
+.i-spark { animation: float 3s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+.i-spark:nth-of-type(2) { animation-delay: 1s; } .i-spark:nth-of-type(3) { animation-delay: 2s; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes glow { 50% { opacity: .55; } }
+@keyframes twinkle { 50% { transform: scale(.4); opacity: .4; } }
+@keyframes sway { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(3deg); } }
+@keyframes fall { 0% { transform: translateY(-4px); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateY(26px); opacity: 0; } }
+@keyframes float { 0% { transform: translateY(6px) scale(.6); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(-22px) scale(1); opacity: 0; } }
+
+/* Chips */
+.chips { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.chip {
+  border: 2px solid var(--line); background: var(--chip); border-radius: 18px;
+  padding: 10px 16px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+  font: 700 1rem/1.2 var(--display);
+}
+.chip .n { font: 700 .75rem/1 var(--body); background: var(--line); color: var(--muted); border-radius: 99px; padding: 3px 7px; }
+.chip[aria-selected="true"] { border-color: var(--ink); background: var(--ink); color: var(--panel); }
+.chip[aria-selected="true"] .n { background: var(--panel); color: var(--ink); }
+.chip.c-char { --tint: var(--sage); } .chip.c-sign { --tint: var(--gold); } .chip.c-mirror { --tint: var(--lapis); }
+.chip::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--tint); }
+
+/* Cards */
+.cards { display: grid; gap: 12px; }
+.card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 18px;
+  padding: 14px 16px; display: grid; gap: 6px; min-width: 0;
+}
+.card h3 { margin: 0; font: 700 1.2rem/1.25 var(--display); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.card p { margin: 0; }
+.card.research { border-style: dashed; background: transparent; }
+.card.mirror { border-color: var(--lapis); border-style: dashed; }
+.pill { font: 700 .7rem/1 var(--body); letter-spacing: .08em; text-transform: uppercase; border-radius: 99px; padding: 5px 9px; border: 1.5px solid currentColor; }
+.k-mujiza { color: var(--gold); } .k-karama { color: var(--rose); } .k-khasisa { color: var(--lapis); }
+.k-research { color: var(--muted); } .k-trait { color: var(--sage); }
+.k-explain { color: var(--muted); font-size: .9rem; }
+.empty { color: var(--muted); text-align: center; margin: 4px 0; }
+
+/* Grown-up layer */
+.adult { display: none; }
+.grown .adult { display: grid; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-size: .88rem; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 8px; margin-top: 2px; }
+.badge { font: 700 .68rem/1 var(--body); letter-spacing: .06em; text-transform: uppercase; padding: 4px 7px; border-radius: 6px; background: var(--line); color: var(--ink); }
+.badge.draft { background: var(--gold-soft); color: var(--gold); }
+.cite { font-weight: 700; }
+details { font-size: .95rem; }
+details summary { cursor: pointer; color: var(--lapis); font-weight: 700; }
+.src { display: grid; gap: 8px; padding-top: 8px; }
+.src [lang="ar"] { font-size: 1.15rem; line-height: 1.9; }
+.src .en { color: var(--ink); }
+.note { font-size: .88rem; color: var(--rose); }
+.adult-section { gap: 10px; }
+.adult-section h2 { font: 800 1.3rem/1.2 var(--display); margin: 6px 0 0; }
+.quote { display: grid; gap: 4px; }
+.quote [lang="ar"] { font-size: 1.35rem; font-weight: 700; }
+.banner {
+  border: 1.5px solid var(--gold); background: var(--gold-soft); color: var(--ink);
+  border-radius: 14px; padding: 10px 14px; font-size: .92rem;
+}
+
+/* Footer nav */
+.nav { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.nav button {
+  border: 0; border-radius: 16px; padding: 12px 20px; cursor: pointer;
+  font: 800 1.05rem/1 var(--display); background: var(--ink); color: var(--panel);
+}
+.nav button:disabled { opacity: .35; cursor: default; }
+.nav .back { background: transparent; color: var(--ink); border: 2px solid var(--line); }
+.count { color: var(--muted); font-size: .9rem; font-variant-numeric: tabular-nums; }
+.footnote { color: var(--muted); font-size: .85rem; text-align: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+
+<div class="wrap" id="app">
+  <header class="top">
+    <div class="brand"><h1>Little Hilya</h1><span lang="ar">حِلْيَة</span></div>
+    <label class="toggle" for="grown">
+      <input type="checkbox" id="grown">
+      <span class="switch" aria-hidden="true"></span>
+      Grown-up notes
+    </label>
+  </header>
+
+  <nav class="index" id="index" aria-label="Stations"></nav>
+
+  <section class="hilya stage" id="stage" aria-live="polite">
+    <div class="hilya-inner">
+      <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+      <div class="basmala" lang="ar">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيمِ</div>
+      <div class="medallion">
+        <div id="icon" aria-hidden="true"></div>
+        <div class="phrase" lang="ar" id="phrase"></div>
+      </div>
+      <div class="crescent" aria-hidden="true">
+        <svg viewBox="0 0 290 26" preserveAspectRatio="none"><path d="M4 2 Q145 44 286 2 Q145 26 4 2Z" fill="currentColor"/></svg>
+      </div>
+      <div class="station-name" id="sname"></div>
+      <h2 class="kid-title" id="ktitle"></h2>
+      <p class="kid-line" id="kline"></p>
+      <div class="verse">
+        <span lang="ar">وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍ</span>
+        <small>“And indeed, you are of a great moral character.” (Qur’an 68:4)</small>
+      </div>
+    </div>
+  </section>
+
+  <div class="chips" role="tablist" id="chips"></div>
+  <section class="cards" id="cards" role="tabpanel"></section>
+
+  <section class="adult adult-section" id="adult"></section>
+
+  <nav class="nav" aria-label="Walkthrough">
+    <button class="back" id="back">Back</button>
+    <span class="count" id="count"></span>
+    <button id="next">Next</button>
+  </nav>
+
+  <p class="footnote">Concept prototype. All content is draft and awaits scholarly review. Texts from the open <a href="https://github.com/AhmedBaset/hadith-json">hadith-json</a> dataset.</p>
+</div>
+
+<script>
+const TEXTS = {"shamail:5": {"ar": "حَدَّثَنَا مُحَمَّدُ بْنُ إِسْمَاعِيلَ، قَالَ‏:‏ حَدَّثَنَا أَبُو نُعَيْمٍ، قَالَ‏:‏ حَدَّثَنَا الْمَسْعُودِيُّ، عَنْ عُثْمَانَ بْنِ مُسْلِمِ بْنِ هُرْمُزَ، عَنْ نَافِعِ بْنِ جُبَيْرِ بْنِ مُطْعِمٍ، عَنْ عَلِيِّ بْنِ أَبِي طَالِبٍ، قَالَ‏:‏ لَمْ يَكُنِ النَّبِيُّ صلى الله عليه وسلم بِالطَّوِيلِ، وَلا بِالْقَصِيرِ، شَثْنُ الْكَفَّيْنِ وَالْقَدَمَيْنِ، ضَخْمُ الرَّأْسِ، ضَخْمُ الْكَرَادِيسِ، طَوِيلُ الْمَسْرُبَةِ، إِذَا مَشَى تَكَفَّأَ تَكَفُّؤًا، كَأَنَّمَا يَنْحَطُّ مِنْ صَبَبٍ، لَمْ أَرَ قَبْلَهُ، وَلا بَعْدَهُ مِثْلَهُ، صلى الله عليه وسلم‏.‏\n\nحَدَّثَنَا سُفْيَانُ بْنُ وَكِيعٍ، قَالَ‏:‏ حَدَّثَنَا أَبِي، عَنِ الْمَسْعُودِيِّ، بِهَذَا الإِسْنَادِ، نَحْوَهُ، بِمَعْنَاهُ‏.‏", "narrator": "Ali ibn Abi Talib said:", "en": "“The Prophet (Allah bless him and give him peace) was neither tall nor short, endowed with sturdy hands and feet, stout head and limbs, and lengthy hair on the chest. When he walked, he inclined forward, as if he were descending a downward slope. I have never seen the like of him, neither before him nor after him.”", "ch": 1, "ch_en": "The Noble Features Of Rasoolullah", "ch_ar": "باب ما جاء في خلق رسول الله صلى الله عليه وسلم"}, "shamail:6": {"ar": "حَدَّثَنَا أَحْمَدُ بْنُ عَبْدَةَ الضَّبِّيُّ الْبَصْرِيُّ، وَعَلِيُّ بْنُ حُجْرٍ، وَأَبُو جَعْفَرٍ مُحَمَّدُ بْنُ الْحُسَيْنِ وَهُوَ ابْنُ أَبِي حَلِيمَةَ، وَالْمَعْنَى وَاحِدٌ، قَالُوا‏:‏ حَدَّثَنَا عِيسَى بْنُ يُونُسَ، عَنْ عُمَرَ بْنِ عَبْدِ اللهِ مَوْلَى غُفْرَةَ، قَالَ‏:‏ حَدَّثَنِي إِبْرَاهِيمُ بْنُ مُحَمَّدٍ مِنْ وَلَدِ عَلِيِّ بْنِ أَبِي طَالِبٍ، قَالَ‏:‏ كَانَ عَلِيٌّ إِذَا وَصَفَ رَسُولَ اللهِ صلى الله عليه وسلم، قَالَ‏:‏ لَمْ يَكُنْ رَسُولُ اللهِ صلى الله عليه وسلم بِالطَّوِيلِ الْمُمَّغِطِ، وَلا بِالْقَصِيرِ الْمُتَرَدِّدِ، وَكَانَ رَبْعَةً مِنَ الْقَوْمِ، لَمْ يَكُنْ بِالْجَعْدِ الْقَطَطِ، وَلا بِالسَّبْطِ، كَانَ جَعْدًا رَجِلا، وَلَمْ يَكُنْ بِالْمُطَهَّمِ، وَلا بِالْمُكَلْثَمِ، وَكَانَ فِي وَجْهِهِ تَدْوِيرٌ، أَبْيَضُ مُشَرَبٌ، أَدْعَجُ الْعَيْنَيْنِ، أَهْدَبُ الأَشْفَارِ، جَلِيلُ الْمُشَاشِ وَالْكَتَدِ، أَجْرَدُ، ذُو مَسْرُبَةٍ، شَثْنُ الْكَفَّيْنِ وَالْقَدَمَيْنِ، إِذَا مَشَى كَأَنَّمَا يَنْحَطُّ فِي صَبَبٍ، وَإِذَا الْتَفَتَ الْتَفَتَ مَعًا، بَيْنَ كَتِفَيْهِ خَاتَمُ النُّبُوَّةِ، وَهُوَ خَاتَمُ النَّبِيِّينَ، أَجْوَدُ النَّاسِ صَدْرًا، وَأَصْدَقُ النَّاسِ لَهْجَةً، وَأَلْيَنُهُمْ عَرِيكَةً، وَأَكْرَمُهُمْ عِشْرَةً، مَنْ رَآهُ بَدِيهَةً هَابَهُ، وَمَنْ خَالَطَهُ مَعْرِفَةً أَحَبَّهُ، يَقُولُ نَاعِتُهُ‏:‏ لَمْ أَرَ قَبْلَهُ، وَلا بَعْدَهُ مِثْلَهُ صلى الله عليه وسلم‏.‏", "narrator": "On the authority of 'Umar ibn 'Abdi’llah, the Mawla of Ghufra:", "en": "1 have been told by Ibrahim ibn Muhammad, one of the offspring of 'Ali ibn Abi Talib (may Allah be well pleased with him): “When 'Ali described Allah’s Messenger (Allah bless him and give him peace),he said:\n\"Allah’s Messenger (Allah bless him and give him peace) was neither assertively tall, nor reticently short, and he was an average-sized member of the population. His hair was neither crisply curled nor lank; it was loosely curled. He was neither plump nor chubby-cheeked, and in his face there was a rounded quality. He was white with a reddish tinge, dark black-eyed, with long eyelashes. He had splendid kneecaps, elbow joints and shoulder blades, free from hair. He had a strip of hair from the top of the chest to the navel. The palms of his hands and the soles of his feet were thickset. When he walked, he moved as if he were descending a declivity, and when he looked around, he looked around altogether. Between his shoulders was the Seal of Prophethood, for he is the Seal of the Prophets. He was the best of the people in generosity, the most truthful of the people in speech, the gentlest of them in temperament, and the noblest of them in social intercourse. If someone saw him unexpectedly, he was awestruck by him, and if someone came to know him, he loved him. His describer says: “I have never seen the like of him (Allah bless him and give him peace), neither before him nor after him.”", "ch": 1, "ch_en": "The Noble Features Of Rasoolullah", "ch_ar": "باب ما جاء في خلق رسول الله صلى الله عليه وسلم"}, "shamail:7": {"ar": "حَدَّثَنَا سُفْيَانُ بْنُ وَكِيعٍ، قَالَ‏:‏ حَدَّثَنَا جُمَيْعُ بْنُ عُمَرَ بْنِ عَبْدِ الرَّحْمَنِ الْعِجْلِيُّ، إِمْلاءً عَلَيْنَا مِنْ كِتَابِهِ، قَالَ‏:‏ أَخْبَرَنِي رَجُلٌ مِنْ بَنِي تَمِيمٍ، مِنْ وَلَدِ أَبِي هَالَةَ زَوْجِ خَدِيجَةَ، يُكَنَى أَبَا عَبْدِ اللهِ، عَنِ ابْنٍ لأَبِي هَالَةَ، عَنِ الْحَسَنِ بْنِ عَلِيٍّ، قَالَ‏:‏ سَأَلْتُ خَالِي هِنْدَ بْنَ أَبِي هَالَةَ، وَكَانَ وَصَّافًا، عَنْ حِلْيَةِ رَسُولِ اللهِ صلى الله عليه وسلم، وَأَنَا أَشْتَهِي أَنْ يَصِفَ لِي مِنْهَا شَيْئًا أَتَعَلَّقُ بِهِ، فَقَالَ‏:‏ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم فَخْمًا مُفَخَّمًا، يَتَلأْلأُ وَجْهُهُ، تَلأْلُؤَ الْقَمَرِ لَيْلَةَ الْبَدْرِ، أَطْوَلُ مِنَ الْمَرْبُوعِ، وَأَقْصَرُ مِنَ الْمُشَذَّبِ، عَظِيمُ الْهَامَةِ، رَجِلُ الشَّعْرِ، إِنِ انْفَرَقَتْ عَقِيقَتُهُ فَرَّقَهَا، وَإِلا فَلا يُجَاوِزُ شَعَرُهُ شَحْمَةَ أُذُنَيْهِ، إِذَا هُوَ وَفَّرَهُ، أَزْهَرُ اللَّوْنِ، وَاسِعُ الْجَبِينِ، أَزَجُّ الْحَوَاجِبِ، سَوَابِغَ فِي غَيْرِ قَرَنٍ، بَيْنَهُمَا عِرْقٌ، يُدِرُّهُ الْغَضَبُ، أَقْنَى الْعِرْنَيْنِ، لَهُ نُورٌ يَعْلُوهُ، يَحْسَبُهُ مَنْ لَمْ يَتَأَمَّلْهُ أَشَمَّ، كَثُّ اللِّحْيَةِ، سَهْلُ الْخدَّيْنِ، ضَلِيعُ الْفَمِ، مُفْلَجُ الأَسْنَانِ، دَقِيقُ الْمَسْرُبَةِ، كَأَنَّ عُنُقَهُ جِيدُ دُمْيَةٍ، فِي صَفَاءِ الْفِضَّةِ، مُعْتَدِلُ الْخَلْقِ، بَادِنٌ مُتَمَاسِكٌ، سَوَاءُ الْبَطْنِ وَالصَّدْرِ، عَرِيضُ الصَّدْرِ، بَعِيدُ مَا بَيْنَ الْمَنْكِبَيْنِ، ضَخْمُ الْكَرَادِيسِ، أَنْوَرُ الْمُتَجَرَّدِ، مَوْصُولُ مَا بَيْنَ اللَّبَّةِ وَالسُّرَّةِ بِشَعَرٍ يَجْرِي كَالْخَطِّ، عَارِي الثَّدْيَيْنِ وَالْبَطْنِ مِمَّا سِوَى ذَلِكَ، أَشْعَرُ الذِّرَاعَيْنِ، وَالْمَنْكِبَيْنِ، وَأَعَالِي الصَّدْرِ، طَوِيلُ الزَّنْدَيْنِ، رَحْبُ الرَّاحَةِ، شَثْنُ الْكَفَّيْنِ وَالْقَدَمَيْنِ، سَائِلُ الأَطْرَافِ أَوْ قَالَ‏:‏ شَائِلُ الأَطْرَافِ خَمْصَانُ الأَخْمَصَيْنِ، مَسِيحُ الْقَدَمَيْنِ، يَنْبُو عَنْهُمَا الْمَاءُ، إِذَا زَالَ، زَالَ قَلِعًا، يَخْطُو تَكَفِّيًا، وَيَمْشِي هَوْنًا، ذَرِيعُ الْمِشْيَةِ، إِذَا مَشَى كَأَنَّمَا يَنْحَطُّ مِنْ صَبَبٍ، وَإِذَا الْتَفَتَ الْتَفَتَ جَمِيعًا، خَافِضُ الطَّرْفِ، نَظَرُهُ إِلَى الأَرْضِ، أَطْوَلُ مِنْ نَظَرِهِ إِلَى السَّمَاءِ، جُلُّ نَظَرِهِ الْمُلاحَظَةُ، يَسُوقُ أَصْحَابَهُ، وَيَبْدَأُ مَنْ لَقِيَ بِالسَّلامِ‏.‏", "narrator": "Al-Hasan ibn 'Ali (may Allah be well pleased with him and his father) said:", "en": "“My maternal aunt Hind asked the son of Abu Hala, who was a describer of the finery of Allah’s Messenger (Allah bless him and give him peace), to describe something of it that would be of interest to me, so he said:\nAllah’s Messenger (Allah bless him and give him peace) was an honored dignitary, whose face shone with the radiance of the moon on the night of the full moon. He was taller than medium-sized, and shorter than the slender giant. His head was grand and impressive, with loosely curled hair. If his forelock became divided, he would part it. Otherwise his hair would not cross over his earlobes, and he would let it grow plentiful and long. He was bright of color, broad of forehead, endowed with arched eyebrows, perfect without being conjoined, with a vein between them that anger would cause to pulsate. The bridge of his nose was curved. He had a light that would rise over him, and someone who did not reflect on him would consider him haughty. He was thickly bearded, endowed with smooth cheeks, a wide mouth, cleft teeth, and a delicate strip of hair from the top of the chest to the navel. It was as if his neck were the neck of a statue shaped in pure silver. He was well proportioned in physique, firmly cohesive, with the stomach and the breast in even balance. He was wide-chested, broad-shouldered, endowed with stout limbs and very shiny bare skin. Between the top of the chest and the navel by a strip of hair like a line of writing, while his breasts and stomach were bare apart from that. He had hair on his arms and shoulders and the upper parts of his chest. His forearms were long. He had a sensitive touch of the hand. The palms of his hands and the soles of his feet were thickset. His extremities were well formed . The hollows of his soles were very deep-set. His feet were so smooth that water bounced off them. When he left a place, he would go away striding decisively. He would tread inclining forward and walk comfortably. His gait was brisk. When he walked, it was as if he were descending a declivity, and when he looked around, he looked around altogether. He lowered his eyesight, and he spent more time looking at the ground than he did looking at the sky. The majority of his looking was observation. He would urge his Companions to proceed ahead of him, and he would be the first to greet anyone he encountered with the salutation of peace.”", "ch": 1, "ch_en": "The Noble Features Of Rasoolullah", "ch_ar": "باب ما جاء في خلق رسول الله صلى الله عليه وسلم"}, "shamail:9": {"ar": "حَدَّثَنَا هَنَّادُ بْنُ السَّرِيِّ، قَالَ‏:‏ حَدَّثَنَا عَبْثَرُ بْنُ الْقَاسِمِ، عَنْ أَشْعَثَ يَعْنِي ابْنَ سَوَّارٍ، عَنْ أَبِي إِسْحَاقَ، عَنْ جَابِرِ بْنِ سَمُرَةَ، قَالَ‏:‏ رَأَيْتُ رَسُولَ اللهِ صلى الله عليه وسلم، فِي لَيْلَةٍ إِضْحِيَانٍ، وَعَلَيْهِ حُلَّةٌ حَمْرَاءُ، فَجَعَلْتُ أَنْظُرُ إِلَيْهِ وَإِلَى الْقَمَرِ، فَلَهُوَ عِنْدِي أَحْسَنُ مِنَ الْقَمَرِ‏.‏", "narrator": "Jabir ibn Samura said:", "en": "\"I saw Allah’s Messenger (Allah bless him and give him peace) on a cloudless night, and he was wearing a red suit of clothes, so I started looking at him as well as at the moon, for he is indeed more beautiful, in my opinion, than the moon!”", "ch": 1, "ch_en": "The Noble Features Of Rasoolullah", "ch_ar": "باب ما جاء في خلق رسول الله صلى الله عليه وسلم"}, "shamail:10": {"ar": "حَدَّثَنَا سُفْيَانُ بْنُ وَكِيعٍ، حَدَّثَنَا حُمَيْدُ بْنُ عَبْدِ الرَّحْمَنِ الرُّؤَاسِيُّ، عَنْ زُهَيْرٍ، عَنْ أَبِي إِسْحَاقَ، قَالَ‏:‏ سَأَلَ رَجُلٌ الْبَرَاءَ بْنَ عَازِبٍ‏:‏ أَكَانَ وَجْهُ رَسُولِ اللهِ صلى الله عليه وسلم مِثْلَ السَّيْفِ‏؟‏ قَالَ‏:‏ لا، بَلْ مِثْلَ الْقَمَرِ‏.‏", "narrator": "Abu Ishaq said:", "en": "A man asked al-Bara’ ibn 'Azib: “Was the face of Allah’s Messenger (Allah bless him and give him peace) like the sword?” He said: “No, it was rather like the moon!”", "ch": 1, "ch_en": "The Noble Features Of Rasoolullah", "ch_ar": "باب ما جاء في خلق رسول الله صلى الله عليه وسلم"}, "shamail:197": {"ar": "حَدَّثَنَا مُحَمَّدُ بْنُ حُمَيْدٍ الرَّازِيُّ، قَالَ‏:‏ حَدَّثَنَا إِبْرَاهِيمُ بْنُ الْمُخْتَارِ، عَنْ مُحَمَّدِ بْنِ إِسْحَاقَ، عَنْ أَبِي عُبَيْدَةَ بْنِ مُحَمَّدِ بْنِ عَمَّارِ بْنِ يَاسِرٍ، عَنِ الرُّبَيِّعِ بِنْتِ مُعَوِّذِ بْنِ عَفْرَاءَ، قَالَتْ‏:‏ بَعَثَنِي مُعَاذُ بْنُ عَفْرَاءَ بِقِنَاعٍ مِنْ رُطَبٍ وَعَلَيْهِ أَجْرٌ مِنْ قِثَّاءِ زُغْبٍ وَكَانَ النَّبِيُّ صلى الله عليه وسلم يُحِبُّ الْقِثَّاءَ، فَأَتَيْتُهُ بِهِ وَعِنْدَهُ حِلْيَةٌ قَدْ قَدِمَتْ عَلَيْهِ مِنَ الْبَحْرَيْنِ، فَمَلأَ يَدَهُ مِنْهَا فَأَعْطَانِيهِ‏.‏", "narrator": "Ar-Rubai bint Mu'awwidh ibn 'Afra’ said:", "en": "\"Mu'adh ibn 'Afra sent me with a tray of ripe dates, and on it there were pieces of fluffy cucumber. He  (Allah bless him and give him peace) used to love cucumbers, so I brought them to him. He had with him some ornaments that had come to him from Bahrain, so he took a handful of them and gave it to me.\"", "ch": 29, "ch_en": "The Fruits Eaten By Rasoolullah", "ch_ar": "باب ما جاء في صفة فاكهة رسول الله صلى الله عليه وسلم"}, "shamail:222": {"ar": "حَدَّثَنَا أَحْمَدُ بْنُ خَالِدٍ الْخَلالُ، قَالَ‏:‏ حَدَّثَنَا يَحْيَى بْنُ إِسْحَاقَ السَّيْلَحَانِيُّ، قَالَ‏:‏ حَدَّثَنَا لَيْثُ بْنُ سَعْدٍ، عَنْ يَزِيدَ بْنِ أَبِي حَبِيبٍ، عَنْ عَبْدِ اللهِ بْنِ الْحَارِثِ، قَالَ‏:‏ مَا كَانَ ضَحِكُ رَسُولِ اللهِ صلى الله عليه وسلم إِلا تَبَسُّمًا‏.‏‏.‏", "narrator": "Abdullah ibn al-Harith said (may Allah be well pleased with him):", "en": "“The laughter of Allah’s Messenger (Allah bless him and give him peace) was nothing but a joyful smile.”", "ch": 34, "ch_en": "The Laughing Of Rasoolullah", "ch_ar": "باب ما جاء في ضحك رسول الله صلى الله عليه وسلم"}, "shamail:333": {"ar": "حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ، قَالَ‏:‏ حَدَّثَنَا جَعْفَرُ بْنُ سُلَيْمَانَ الضُّبَعِيُّ، عَنْ ثَابِتٍ، عَنْ أَنَسِ بْنِ مَالِكٍ، قَالَ‏:‏ خَدَمْتُ رَسُولَ اللهِ صلى الله عليه وسلم عَشْرَ سِنِينَ، فَمَا قَالَ لِي أُفٍّ قَطُّ، وَمَا قَالَ لِشَيْءٍ صَنَعْتُهُ، لِمَ صَنَعْتَهُ، وَلا لِشَيْءٍ تَرَكْتُهُ، لِمَ تَرَكْتَهُ‏؟‏ وَكَانَ رَسُولُ اللهِ صلى الله عليه وسلم، مِنْ أَحْسَنِ النَّاسِ خُلُقًا، وَلا مَسَسْتُ خَزًّا وَلا حَرِيرًا، وَلا شَيْئًا كَانَ أَلْيَنَ مِنْ كَفِّ رَسُولِ اللهِ صلى الله عليه وسلم، وَلا شَمَمْتُ مِسْكًا قَطُّ، وَلا عِطْرًا كَانَ أَطْيَبَ مِنْ عَرَقِ رسول الله صلى الله عليه وسلم‏.‏", "narrator": "Anas ibn Maik said (may Allah be well pleased with him):", "en": "\"I served Allah’s Messenger (Allah bless him and give him peace) for ten years, and he never said “Uff!” to me. He never asked me about something I had done, saying: “Why did you do it?” nor about something I had left undone, saying: “Why did you leave it undone?” Allah’s Messenger (Allah bless him and give him peace) was the finest of human beings in character. I never felt any silk, or anything at all. that was softer than the palm of the hand of Allah’s Messenger (Allah bless him and give him peace). I never smelled any musk, nor any perfume, more fragrant than the sweat of the Prophet (Allah bless him and give him peace)!”", "ch": 48, "ch_en": "Noble Character And Habits Of Sayyidina Rasoolullah", "ch_ar": "باب ماجاء في خلق رسول الله صلى الله عليه وسلم"}, "shamail:336": {"ar": "حَدَّثَنَا هَارُونُ بْنُ إِسْحَاقَ الْهَمْدَانِيُّ، قَالَ‏:‏ حَدَّثَنَا عَبْدَةُ، عَنْ هِشَامِ بْنِ عُرْوَةَ، عَنْ أَبِيهِ، عَنْ عَائِشَةَ، قَالَتْ‏:‏ مَا ضَرَبَ رَسُولُ اللهِ صلى الله عليه وسلم، بِيَدِهِ شَيْئًا قَطُّ، إِلا أَنْ يُجَاهِدَ فِي سَبِيلِ اللهِ، وَلا ضَرَبَ خَادِمًا َوِلا امْرَأَةً‏.‏", "narrator": "'A’isha said (may Allah be well pleased with her):", "en": "\"Allah’s Messenger (Allah bless him and give him peace) never struck anything with his hand unless he was struggling in the cause of Allah , nor did he ever strike a servant or a woman.”", "ch": 48, "ch_en": "Noble Character And Habits Of Sayyidina Rasoolullah", "ch_ar": "باب ماجاء في خلق رسول الله صلى الله عليه وسلم"}, "shamail:346": {"ar": "حَدَّثَنَا مَحْمُودُ بْنُ غَيْلانَ، قَالَ‏:‏ حَدَّثَنَا أَبُو دَاوُدَ، قَالَ‏:‏ حَدَّثَنَا شُعْبَةُ، عَنْ قَتَادَةَ، قَالَ‏:‏ سَمِعْتُ عَبْدَ اللهِ بْنَ أَبِي عُتْبَةَ، يُحَدِّثُ عَنْ أَبِي سَعِيدٍ الْخُدْرِيِّ، قَالَ‏:‏ كَانَ النَّبِيُّ صلى الله عليه وسلم أَشدَّ حَيَاءً مِنَ الْعَذرَاءِ فِي خِدْرِهَا، وَكَانَ إِذَا كَرِهَ شَيْئًا عَرَفْنَاهُ فِي وَجْهِهِ‏.‏", "narrator": "Abu Sa'id al-Khudri said:", "en": "\"He (Allah bless him and give him peace) was more bashful than the virgin in her boudoir, and when he disapproved of something, we knew it from the expression on his face.”", "ch": 49, "ch_en": "Modesty Of Sayyidina Rasoolullah", "ch_ar": "باب ماجاء في حياء رسول الله صلى الله عليه وسلم"}, "bukhari:169": {"ar": "حَدَّثَنَا عَبْدُ اللَّهِ بْنُ يُوسُفَ، قَالَ أَخْبَرَنَا مَالِكٌ، عَنْ إِسْحَاقَ بْنِ عَبْدِ اللَّهِ بْنِ أَبِي طَلْحَةَ، عَنْ أَنَسِ بْنِ مَالِكٍ، أَنَّهُ قَالَ رَأَيْتُ رَسُولَ اللَّهِ صلى الله عليه وسلم وَحَانَتْ صَلاَةُ الْعَصْرِ، فَالْتَمَسَ النَّاسُ الْوَضُوءَ فَلَمْ يَجِدُوهُ، فَأُتِيَ رَسُولُ اللَّهِ صلى الله عليه وسلم بِوَضُوءٍ، فَوَضَعَ رَسُولُ اللَّهِ صلى الله عليه وسلم فِي ذَلِكَ الإِنَاءِ يَدَهُ، وَأَمَرَ النَّاسَ أَنْ يَتَوَضَّئُوا مِنْهُ‏.‏ قَالَ فَرَأَيْتُ الْمَاءَ يَنْبُعُ مِنْ تَحْتِ أَصَابِعِهِ حَتَّى تَوَضَّئُوا مِنْ عِنْدِ آخِرِهِمْ‏.‏", "narrator": "Narrated Anas bin Malik:", "en": "saw Allah's Messenger (ﷺ) when the `Asr prayer was due and the people searched for water to perform \nablution but they could not find it. Later on (a pot full of) water for ablution was brought to Allah's \nApostle . He put his hand in that pot and ordered the people to perform ablution from it. I saw the \nwater springing out from underneath his fingers till all of them performed the ablution (it was one of \nthe miracles of the Prophet).", "ch": 4, "ch_en": "Ablutions (Wudu')", "ch_ar": "كتاب الوضوء"}, "bukhari:701": {"ar": "حَدَّثَنَا أَبُو مَعْمَرٍ، قَالَ حَدَّثَنَا عَبْدُ الْوَارِثِ، عَنْ عَبْدِ الْعَزِيزِ، عَنْ أَنَسٍ، أَنَّ النَّبِيَّ صلى الله عليه وسلم قَالَ ‏\n\"‏ أَقِيمُوا الصُّفُوفَ فَإِنِّي أَرَاكُمْ خَلْفَ ظَهْرِي ‏\"‏‏.‏", "narrator": "Narrated Anas:", "en": "The Prophet (ﷺ) said, \"Straighten your rows, for I see you from behind my back.'", "ch": 10, "ch_en": "Call to Prayers (Adhaan)", "ch_ar": "كتاب الأذان"}, "bukhari:1115": {"ar": "حَدَّثَنَا عَبْدُ اللَّهِ بْنُ يُوسُفَ، قَالَ أَخْبَرَنَا مَالِكٌ، عَنْ سَعِيدِ بْنِ أَبِي سَعِيدٍ الْمَقْبُرِيِّ، عَنْ أَبِي سَلَمَةَ بْنِ عَبْدِ الرَّحْمَنِ، أَنَّهُ أَخْبَرَهُ أَنَّهُ، سَأَلَ عَائِشَةَ ـ رضى الله عنها ـ كَيْفَ كَانَتْ صَلاَةُ رَسُولِ اللَّهِ صلى الله عليه وسلم فِي رَمَضَانَ فَقَالَتْ مَا كَانَ رَسُولُ اللَّهِ صلى الله عليه وسلم يَزِيدُ فِي رَمَضَانَ وَلاَ فِي غَيْرِهِ عَلَى إِحْدَى عَشْرَةَ رَكْعَةً، يُصَلِّي أَرْبَعًا فَلاَ تَسَلْ عَنْ حُسْنِهِنَّ وَطُولِهِنَّ، ثُمَّ يُصَلِّي أَرْبَعًا فَلاَ تَسَلْ عَنْ حُسْنِهِنَّ وَطُولِهِنَّ، ثُمَّ يُصَلِّي ثَلاَثًا، قَالَتْ عَائِشَةُ فَقُلْتُ يَا رَسُولَ اللَّهِ أَتَنَامُ قَبْلَ أَنْ تُوتِرَ‏.‏ فَقَالَ ‏\n\"‏ يَا عَائِشَةُ، إِنَّ عَيْنَىَّ تَنَامَانِ وَلاَ يَنَامُ قَلْبِي ‏\"‏‏.‏", "narrator": "Narrated Abu Salma bin `Abdur Rahman:", "en": "I asked `Aisha, \"How is the prayer of Allah's Messenger (ﷺ) during the month of Ramadan.\" She said, \n\"Allah's Messenger (ﷺ) never exceeded eleven rak`at in Ramadan or in other months; he used to offer four \nrak`at-- do not ask me about their beauty and length, then four rak`at, do not ask me about their beauty \nand length, and then three rak`at.\" Aisha further said, \"I said, 'O Allah's Messenger (ﷺ)! Do you sleep before \noffering the witr prayer?' He replied, 'O `Aisha! My eyes sleep but my heart remains awake'!\"", "ch": 19, "ch_en": "Prayer at Night (Tahajjud)", "ch_ar": "كتاب التهجد"}, "muslim:5896": {"ar": "حَدَّثَنَا عَمْرُو بْنُ حَمَّادِ بْنِ طَلْحَةَ الْقَنَّادُ، حَدَّثَنَا أَسْبَاطٌ، - وَهُوَ ابْنُ نَصْرٍ الْهَمْدَانِيُّ\n - عَنْ سِمَاكٍ، عَنْ جَابِرِ بْنِ سَمُرَةَ، قَالَ صَلَّيْتُ مَعَ رَسُولِ اللَّهِ صلى الله عليه وسلم صَلاَةَ\n الأُولَى ثُمَّ خَرَجَ إِلَى أَهْلِهِ وَخَرَجْتُ مَعَهُ فَاسْتَقْبَلَهُ وِلْدَانٌ فَجَعَلَ يَمْسَحُ خَدَّىْ أَحَدِهِمْ وَاحِدًا\n وَاحِدًا - قَالَ - وَأَمَّا أَنَا فَمَسَحَ خَدِّي - قَالَ - فَوَجَدْتُ لِيَدِهِ بَرْدًا أَوْ رِيحًا كَأَنَّمَا أَخْرَجَهَا\n مِنْ جُؤْنَةِ عَطَّارٍ ‏.‏", "narrator": "Jabir b. Samura reported:", "en": "I prayed along with Allah's Messenger (ﷺ) the first prayer. He then went to his family and I also went along with him when he met some children (on the way). He began to pat the cheeks of each one of them. He also patted my cheek and I experienced a coolness or a fragrance of his hand as if it had been brought out from the scent bag of a perfumer.", "ch": 43, "ch_en": "The Book of Virtues", "ch_ar": "كتاب الفضائل"}, "muslim:5899": {"ar": "حَدَّثَنِي زُهَيْرُ بْنُ حَرْبٍ، حَدَّثَنَا هَاشِمٌ، - يَعْنِي ابْنَ الْقَاسِمِ - عَنْ سُلَيْمَانَ، عَنْ \n ثَابِتٍ، عَنْ أَنَسِ بْنِ مَالِكٍ، قَالَ دَخَلَ عَلَيْنَا النَّبِيُّ صلى الله عليه وسلم فَقَالَ عِنْدَنَا فَعَرِقَ\n وَجَاءَتْ أُمِّي بِقَارُورَةٍ فَجَعَلَتْ تَسْلُتُ الْعَرَقَ فِيهَا فَاسْتَيْقَظَ النَّبِيُّ صلى الله عليه وسلم\n فَقَالَ ‏\n\"‏ يَا أُمَّ سُلَيْمٍ مَا هَذَا الَّذِي تَصْنَعِينَ ‏\"‏ ‏.‏ قَالَتْ هَذَا عَرَقُكَ نَجْعَلُهُ فِي طِيبِنَا وَهُوَ\n مِنْ أَطْيَبِ الطِّيبِ ‏.‏", "narrator": "Anas b. Malik reported that Allah's Apostle (ﷺ) used to come to our house and there was perspiration upon his body. My mother brought a bottle and began to pour the sweat in that. When Allah's Apostle (ﷺ) got up he said:", "en": "Umm Sulaim, what is this that you are doing? Thereupon she said: That is your sweat which we mix in our perfume and it becomes the most fragrant perfume.", "ch": 43, "ch_en": "The Book of Virtues", "ch_ar": "كتاب الفضائل"}};
+
+const ICONS = {
+  star: `<svg viewBox="0 0 120 120"><g class="i-spin"><rect x="28" y="28" width="64" height="64" rx="6" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="3"/><rect x="28" y="28" width="64" height="64" rx="6" transform="rotate(45 60 60)" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="3"/></g><circle cx="60" cy="60" r="16" fill="var(--rose)"/><circle cx="60" cy="60" r="7" fill="var(--panel)"/></svg>`,
+  moon: `<svg viewBox="0 0 120 120"><circle class="i-glow" cx="60" cy="60" r="50" fill="var(--gold-soft)"/><circle cx="60" cy="60" r="36" fill="var(--gold)"/><circle cx="48" cy="52" r="6" fill="var(--gold-soft)" opacity=".55"/><circle cx="70" cy="72" r="4" fill="var(--gold-soft)" opacity=".55"/><g fill="var(--lapis)"><path class="i-twinkle" d="M14 18l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/><path class="i-twinkle" d="M104 26l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path class="i-twinkle" d="M100 96l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></g></svg>`,
+  tulip: `<svg viewBox="0 0 120 120"><g class="i-sway"><path d="M60 112 C60 80 62 64 74 50" fill="none" stroke="var(--sage)" stroke-width="5" stroke-linecap="round"/><path d="M58 96 C44 92 36 80 38 70 C50 74 58 84 58 96Z" fill="var(--sage)"/><g transform="rotate(38 76 44)"><path d="M60 46 C58 26 66 16 76 12 C86 16 94 26 92 46 C88 56 64 56 60 46Z" fill="var(--rose)"/><path d="M76 12 C72 24 72 40 76 54 C80 40 80 24 76 12Z" fill="var(--panel)" opacity=".35"/></g></g></svg>`,
+  cloud: `<svg viewBox="0 0 120 120"><path d="M30 66 C16 66 12 48 26 44 C26 28 46 22 56 32 C62 18 88 20 90 40 C106 40 108 66 92 66Z" fill="var(--lapis)"/><path d="M36 58 C32 58 30 52 34 50" fill="none" stroke="var(--panel)" stroke-width="3" stroke-linecap="round" opacity=".5"/><g fill="var(--lapis)" opacity=".85"><path class="i-drop" d="M42 78 q4 7 0 10 q-4 -3 0 -10z"/><path class="i-drop" d="M60 78 q4 7 0 10 q-4 -3 0 -10z"/><path class="i-drop" d="M78 78 q4 7 0 10 q-4 -3 0 -10z"/></g></svg>`,
+  bottle: `<svg viewBox="0 0 120 120"><rect x="52" y="24" width="16" height="12" rx="3" fill="var(--gold)"/><path d="M56 36 h8 v8 c16 4 24 16 24 32 c0 18 -12 30 -28 30 s-28 -12 -28 -30 c0 -16 8 -28 24 -32z" fill="var(--rose)"/><path d="M44 76 c0 -10 6 -18 14 -20" fill="none" stroke="var(--panel)" stroke-width="4" stroke-linecap="round" opacity=".45"/><g fill="var(--gold)"><path class="i-spark" d="M36 20l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path class="i-spark" d="M84 14l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path class="i-spark" d="M62 4l2 4 4 2-4 2-2 4-2-4-4-2 4-2z"/></g></svg>`
+};
+const CORNER = `<svg viewBox="0 0 26 26"><path d="M13 1l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="currentColor"/></svg>`;
+
+const KINDS = {
+  mujiza: { label: "Mu‘jiza", explain: "A miracle that showed he was truly Allah’s Messenger." },
+  karama: { label: "Karāma", explain: "A blessing that came through his touch or presence." },
+  khasisa: { label: "Khaṣīṣa", explain: "Something special that only he had." },
+  research: { label: "Still researching", explain: "We have not found and checked a source for this yet." }
+};
+
+// Stations follow Tirmidhi's order: chapter 1 (al-Khalq) descriptions first, roughly head to toe.
+const STATIONS = [
+  {
+    id: "intro", name: "The Hilya", icon: "star",
+    phrase: "حِلْيَةُ رَسُولِ اللهِ ﷺ",
+    title: "Something to hold on to",
+    line: "Long ago, a boy called al-Ḥasan asked his uncle to describe the Prophet ﷺ, so he would have something to hold on to. A description like this is called a hilya.",
+    physical: [{ ref: "shamail:7", phrase: "عَنْ حِلْيَةِ رَسُولِ اللهِ ﷺ، وَأَنَا أَشْتَهِي أَنْ يَصِفَ لِي مِنْهَا شَيْئًا أَتَعَلَّقُ بِهِ",
+      note: "The dataset English reads “my maternal aunt Hind”. The Arabic says خالي, “my maternal uncle”: Hind ibn Abī Hāla." }],
+    character: [], signs: [], mirror: null
+  },
+  {
+    id: "face", name: "His face", icon: "moon",
+    phrase: "يَتَلأْلأُ وَجْهُهُ تَلأْلُؤَ الْقَمَرِ لَيْلَةَ الْبَدْرِ",
+    title: "Like the full moon",
+    line: "His face shone like the full moon. One Companion looked at the moon, then at him, and said he was more beautiful than the moon!",
+    physical: [
+      { ref: "shamail:7", phrase: "يَتَلأْلأُ وَجْهُهُ تَلأْلُؤَ الْقَمَرِ لَيْلَةَ الْبَدْرِ", gloss: "His face shone with the radiance of the moon on the night of the full moon." },
+      { ref: "shamail:9", phrase: "فَلَهُوَ عِنْدِي أَحْسَنُ مِنَ الْقَمَرِ", gloss: "He is indeed more beautiful, in my opinion, than the moon." },
+      { ref: "shamail:10", phrase: "بَلْ مِثْلَ الْقَمَرِ", gloss: "Was his face like a sword? No, it was like the moon." }
+    ],
+    character: [
+      { trait: "Cheerful", line: "When he laughed, it was nearly always a happy smile.", ref: "shamail:222", basis: "reflection" }
+    ],
+    signs: [
+      { kind: "research", title: "Signs connected to his face", line: "We are still looking for checked reports to put here." }
+    ],
+    mirror: "Smile at yourself in the mirror. Who can you share that smile with today?"
+  },
+  {
+    id: "eyes", name: "His eyes", icon: "tulip",
+    phrase: "أَدْعَجُ الْعَيْنَيْنِ، أَهْدَبُ الأَشْفَارِ",
+    title: "Dark eyes, long lashes",
+    line: "His eyes were deep black with long eyelashes. He often looked gently down, like a tulip bowing its head, because he was so modest.",
+    physical: [
+      { ref: "shamail:6", phrase: "أَدْعَجُ الْعَيْنَيْنِ، أَهْدَبُ الأَشْفَارِ", gloss: "Dark black-eyed, with long eyelashes." },
+      { ref: "shamail:7", phrase: "خَافِضُ الطَّرْفِ", gloss: "He lowered his eyesight." }
+    ],
+    character: [
+      { trait: "Modest", line: "His Companions said he was even shyer than a girl in her own private room.", ref: "shamail:346", basis: "reflection" }
+    ],
+    signs: [
+      { kind: "khasisa", title: "He could see behind him", line: "In prayer he told the people: “Straighten your rows, for I see you from behind my back.”", ref: "bukhari:701" },
+      { kind: "khasisa", title: "A heart that stays awake", line: "He told ‘Ā’isha: “My eyes sleep, but my heart remains awake.”", ref: "bukhari:1115" }
+    ],
+    mirror: "Look into your own eyes. What good things will they look at today?"
+  },
+  {
+    id: "hands", name: "His hands", icon: "cloud",
+    phrase: "شَثْنُ الْكَفَّيْنِ",
+    title: "Big hands, soft as silk",
+    line: "His hands were big and strong, yet softer than silk. He loved to give with them, like a rain cloud giving rain.",
+    physical: [
+      { ref: "shamail:5", phrase: "شَثْنُ الْكَفَّيْنِ وَالْقَدَمَيْنِ", gloss: "Endowed with sturdy hands and feet." },
+      { ref: "shamail:7", phrase: "رَحْبُ الرَّاحَةِ", gloss: "Wide of palm." },
+      { ref: "shamail:333", phrase: "وَلا شَيْئًا كَانَ أَلْيَنَ مِنْ كَفِّ رَسُولِ اللهِ ﷺ", gloss: "I never felt silk, or anything at all, softer than the palm of his hand." }
+    ],
+    character: [
+      { trait: "Generous", line: "When a girl brought him dates and cucumbers, he gave her a whole handful of gifts back.", ref: "shamail:197", basis: "reflection" },
+      { trait: "Gentle", line: "Anas served him for ten years, and he never once said “uff!” to him.", ref: "shamail:333", basis: "reflection" },
+      { trait: "Gentle", line: "He never hit a servant.", ref: "shamail:336", basis: "reflection" }
+    ],
+    signs: [
+      { kind: "mujiza", title: "Water from his fingers", line: "When there was not enough water, he put his hand in a small pot. Water sprang out from under his fingers until everyone had made wuḍū’.", ref: "bukhari:169", trait: "Generous" },
+      { kind: "karama", title: "A pat that smelled like perfume", line: "He patted children’s cheeks. Jābir said his hand felt cool and smelled as if it came out of a perfume seller’s bag.", ref: "muslim:5896", trait: "Gentle" },
+      { kind: "research", title: "Hair that stayed black", line: "There is a report of a Companion whose hair stayed black where the Prophet ﷺ touched it, even in old age. We have not found and checked its source yet." }
+    ],
+    mirror: "Hold up your hands. What can you give with them today?"
+  },
+  {
+    id: "fragrance", name: "His fragrance", icon: "bottle",
+    phrase: "أَزْهَرُ اللَّوْنِ",
+    title: "Sweeter than musk",
+    line: "His skin was bright and glowing, and he smelled sweeter than musk, even when he was hot and sweaty!",
+    physical: [
+      { ref: "shamail:7", phrase: "أَزْهَرُ اللَّوْنِ", gloss: "He was bright of colour." },
+      { ref: "shamail:333", phrase: "وَلا شَمَمْتُ مِسْكًا قَطُّ، وَلا عِطْرًا كَانَ أَطْيَبَ مِنْ عَرَقِ رَسُولِ اللهِ ﷺ", gloss: "I never smelled musk or perfume more fragrant than his sweat." }
+    ],
+    character: [],
+    signs: [
+      { kind: "karama", title: "Umm Sulaym’s perfume bottle", line: "Umm Sulaym collected drops of his sweat in a little bottle and mixed them into her perfume. It became the best perfume of all!", ref: "muslim:5899" }
+    ],
+    mirror: "Take a deep breath. How can you leave a sweet feeling wherever you go?"
+  }
+];
+
+const BOOKS = {
+  shamail: { name: "Shamāʾil" },
+  bukhari: { name: "Bukhārī", books: { 4: "Wuḍūʾ", 10: "Adhān", 19: "Tahajjud" } },
+  muslim: { name: "Muslim", books: { 43: "Faḍāʾil" } }
+};
+
+function cite(ref) {
+  const t = TEXTS[ref];
+  const [col, n] = ref.split(":");
+  if (col === "shamail") return { label: `Shamāʾil, ch. ${t.ch}: ${n}`, url: `https://sunnah.com/shamail:${n}`, exact: true };
+  const b = BOOKS[col];
+  return { label: `${b.name}, ${b.books[t.ch] ?? "Book"} (${t.ch}): ${n}`, url: `https://sunnah.com/${col}/${t.ch}`, exact: false };
+}
+
+function h(tag, attrs = {}, ...kids) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (v == null || v === false) continue;
+    if (k === "class") el.className = v; else el.setAttribute(k, v === true ? "" : v);
+  }
+  for (const kid of kids.flat()) if (kid != null && kid !== false) el.append(kid);
+  return el;
+}
+
+function sourceBlock(ref, extra = []) {
+  const c = cite(ref), t = TEXTS[ref];
+  return h("div", { class: "meta" },
+    h("a", { class: "cite", href: c.url, target: "_blank", rel: "noopener" }, c.label),
+    c.exact ? null : h("span", {}, "(opens the book; number to verify)"),
+    ...extra,
+    h("span", { class: "badge draft" }, "Draft"),
+    h("details", { style: "flex-basis:100%" },
+      h("summary", {}, "Read the full hadith"),
+      h("div", { class: "src" },
+        h("p", { lang: "ar" }, t.ar),
+        h("p", { class: "en" }, h("strong", {}, t.narrator), " ", t.en),
+        h("small", {}, `Chapter: ${t.ch_en} · `, h("span", { lang: "ar" }, t.ch_ar))
+      )
+    )
+  );
+}
+
+const state = { i: 0, tab: "char", seen: new Set([0]) };
+const $ = id => document.getElementById(id);
+
+function renderIndex() {
+  $("index").replaceChildren(...STATIONS.map((s, i) =>
+    h("button", {
+      class: state.seen.has(i) ? "seen" : "",
+      "aria-current": i === state.i ? "step" : null,
+      onclick: null
+    }, h("span", { class: "dot" }, i === 0 ? "★" : String(i)), s.name)
+  ));
+  [...$("index").children].forEach((b, i) => b.addEventListener("click", () => go(i)));
+  $("index").children[state.i]?.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+}
+
+function renderStage(animate) {
+  const s = STATIONS[state.i];
+  $("icon").innerHTML = ICONS[s.icon];
+  $("phrase").textContent = s.phrase;
+  $("sname").textContent = s.name;
+  $("ktitle").textContent = s.title;
+  $("kline").textContent = s.line;
+  document.querySelectorAll(".corner").forEach((c, k) => {
+    c.innerHTML = CORNER;
+    c.classList.toggle("lit", state.seen.has(k + 1));
+  });
+  if (animate) {
+    const st = $("stage");
+    st.classList.remove("enter"); void st.offsetWidth; st.classList.add("enter");
+  }
+}
+
+function renderChips() {
+  const s = STATIONS[state.i];
+  const tabs = [
+    { id: "char", label: "Character", n: s.character.length, cls: "c-char" },
+    { id: "sign", label: "Special signs", n: s.signs.length, cls: "c-sign" },
+    { id: "mirror", label: "Mirror", n: null, cls: "c-mirror" }
+  ];
+  $("chips").replaceChildren(...tabs.map(t => {
+    const b = h("button", { class: `chip ${t.cls}`, role: "tab", "aria-selected": String(state.tab === t.id) },
+      t.label, t.n != null ? h("span", { class: "n" }, String(t.n)) : null);
+    b.addEventListener("click", () => { state.tab = t.id; renderChips(); renderCards(); });
+    return b;
+  }));
+  $("chips").hidden = state.i === 0;
+}
+
+function renderCards() {
+  const s = STATIONS[state.i];
+  const box = $("cards");
+  if (state.i === 0) {
+    box.replaceChildren(h("div", { class: "card" },
+      h("h3", {}, "How it works"),
+      h("p", {}, "Each stop starts with how he looked, as his Companions described him. Then tap the buttons to see the good character it reminds us of, the special signs Allah gave him, and a little mirror challenge for you."),
+      h("p", { class: "k-explain" }, "Following the order of Imam al-Tirmidhī’s book al-Shamāʾil al-Muḥammadiyya.")
+    ));
+    return;
+  }
+  let cards = [];
+  if (state.tab === "char") {
+    cards = s.character.map(c => h("article", { class: "card" },
+      h("h3", {}, h("span", { class: "pill k-trait" }, c.trait)),
+      h("p", {}, c.line),
+      h("div", { class: "adult" }, sourceBlock(c.ref, [h("span", { class: "badge" }, c.basis === "classical" ? "Classical link" : "Our reflection")]))
+    ));
+    if (!cards.length) cards = [h("article", { class: "card research" },
+      h("h3", {}, h("span", { class: "pill k-research" }, KINDS.research.label)),
+      h("p", {}, "We are still looking for checked reports that link this to his character."))];
+  } else if (state.tab === "sign") {
+    cards = s.signs.map(g => h("article", { class: `card ${g.kind === "research" ? "research" : ""}` },
+      h("h3", {}, h("span", { class: `pill k-${g.kind}` }, KINDS[g.kind].label), g.title),
+      h("p", {}, g.line),
+      h("p", { class: "k-explain" }, KINDS[g.kind].explain, g.trait ? ` Reminds us he was ${g.trait.toLowerCase()}.` : ""),
+      g.ref ? h("div", { class: "adult" }, sourceBlock(g.ref, [h("span", { class: "badge" }, "Category: ours")])) : null
+    ));
+  } else {
+    cards = [h("article", { class: "card mirror" },
+      h("h3", {}, h("span", { class: "pill k-khasisa" }, "Mirror"), "Coming soon"),
+      h("p", {}, s.mirror),
+      h("p", { class: "k-explain" }, "Placeholder for the mirror story: a child looking at themselves from head to toe.")
+    )];
+  }
+  box.replaceChildren(...cards);
+}
+
+function renderAdult() {
+  const s = STATIONS[state.i];
+  $("adult").replaceChildren(
+    h("div", { class: "banner" }, "Draft. Awaiting scholarly review. Links to character are our own reflections unless marked “Classical link”, and sign categories are ours unless a source states one."),
+    h("h2", {}, "What the Companions described"),
+    ...s.physical.map(p => h("article", { class: "card quote" },
+      h("p", { lang: "ar" }, p.phrase),
+      p.gloss ? h("p", {}, p.gloss) : null,
+      p.note ? h("p", { class: "note" }, p.note) : null,
+      sourceBlock(p.ref)
+    )),
+    h("p", { class: "k-explain" }, "Numbers come from the hadith-json dataset. Its Bukhārī and Muslim numbers differ from sunnah.com, so those links open the book page.")
+  );
+}
+
+function render(animate = false) {
+  renderIndex(); renderStage(animate); renderChips(); renderCards(); renderAdult();
+  $("back").disabled = state.i === 0;
+  $("next").disabled = state.i === STATIONS.length - 1;
+  $("next").textContent = state.i === 0 ? "Begin" : "Next";
+  $("count").textContent = state.i === 0 ? "Start" : `${state.i} of ${STATIONS.length - 1}`;
+}
+
+function go(i) {
+  if (i < 0 || i >= STATIONS.length || i === state.i) return;
+  state.i = i; state.seen.add(i); state.tab = "char";
+  render(true);
+}
+
+$("back").addEventListener("click", () => go(state.i - 1));
+$("next").addEventListener("click", () => go(state.i + 1));
+document.addEventListener("keydown", e => {
+  if (e.target.closest("input, summary")) return;
+  if (e.key === "ArrowRight") go(state.i + 1);
+  if (e.key === "ArrowLeft") go(state.i - 1);
+});
+let x0 = null;
+$("stage").addEventListener("pointerdown", e => { x0 = e.clientX; });
+$("stage").addEventListener("pointerup", e => {
+  if (x0 == null) return;
+  const dx = e.clientX - x0; x0 = null;
+  if (Math.abs(dx) > 50) go(state.i + (dx < 0 ? 1 : -1));
+});
+
+const grown = $("grown");
+try { grown.checked = localStorage.getItem("grown") === "1"; } catch {}
+const applyGrown = () => {
+  $("app").classList.toggle("grown", grown.checked);
+  try { localStorage.setItem("grown", grown.checked ? "1" : "0"); } catch {}
+};
+grown.addEventListener("change", applyGrown);
+applyGrown();
+render(false);
+</script>
