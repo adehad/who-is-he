@@ -36,8 +36,15 @@ for c in corrections:
 if errors:
     sys.exit("corrections failed:\n  " + "\n  ".join(errors))
 
+sunnah = json.loads((here / "data/sunnah_refs.json").read_text(encoding="utf-8"))
+for ref, t in texts.items():
+    m = sunnah.get(ref)
+    if m:
+        t["sunnah"] = {"ref": m["sunnah_ref"], "in_book": m["in_book"], "grade": m["grade"]}
+unmatched = sorted(r for r in texts if r not in sunnah)
+
 src = (here / "little-hilya.src.html").read_text(encoding="utf-8")
 blob = json.dumps(texts, ensure_ascii=False).replace("</", r"<\/")
 assert src.count("/*TEXTS*/null") == 1
 (here / "little-hilya.html").write_text(src.replace("/*TEXTS*/null", blob), encoding="utf-8")
-print("ok", len(blob), f"corrections applied {applied}, refs not on page {skipped}")
+print("ok", len(blob), f"corrections applied {applied}, refs not on page {skipped}, no sunnah.com match {unmatched}")

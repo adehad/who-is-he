@@ -199,6 +199,7 @@ button { font: inherit; color: inherit; }
 .meta { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-size: .88rem; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 8px; margin-top: 2px; }
 .badge { font: 700 .68rem/1 var(--body); letter-spacing: .06em; text-transform: uppercase; padding: 4px 7px; border-radius: 6px; background: var(--line); color: var(--ink); }
 .badge.draft { background: var(--gold-soft); color: var(--gold); }
+.badge.weak { background: transparent; color: var(--rose); box-shadow: inset 0 0 0 1.5px var(--rose); }
 .cite { font-weight: 700; }
 details { font-size: .95rem; }
 details summary { cursor: pointer; color: var(--lapis); font-weight: 700; }
@@ -638,10 +639,14 @@ const BOOKS = {
 function cite(ref) {
   const t = TEXTS[ref];
   const [col, n] = ref.split(":");
-  if (col === "shamail") return { label: `Shamāʾil, ch. ${t.ch}: ${n}`, url: `https://sunnah.com/shamail:${n}`, exact: true };
+  // t.sunnah is the real sunnah.com reference, matched by Arabic text (scripts/match_sunnah.py).
+  const num = t.sunnah ? t.sunnah.ref.split(":")[1] : n;
+  const url = t.sunnah ? `https://sunnah.com/${t.sunnah.ref}` : `https://sunnah.com/${col}/${t.ch}`;
+  const grade = t.sunnah?.grade ?? null;
+  if (col === "shamail") return { label: `Shamāʾil ${num} (ch. ${t.ch})`, url, exact: !!t.sunnah, grade };
   const b = BOOKS[col] ?? { name: col };
   const book = b.books?.[t.ch] ?? t.ch_en ?? "Book";
-  return { label: `${b.name}, ${book} (${t.ch}): ${n}`, url: `https://sunnah.com/${col}/${t.ch}`, exact: false };
+  return { label: `${b.name}, ${book} (${t.ch}): ${num}`, url, exact: !!t.sunnah, grade };
 }
 
 function h(tag, attrs = {}, ...kids) {
@@ -659,6 +664,7 @@ function sourceBlock(ref, extra = []) {
   return h("div", { class: "meta" },
     h("a", { class: "cite", href: c.url, target: "_blank", rel: "noopener" }, c.label),
     c.exact ? null : h("span", {}, "(opens the book; number to verify)"),
+    c.grade ? h("span", { class: `badge ${/da.?if/i.test(c.grade) ? "weak" : ""}`, title: "Grade as shown on sunnah.com" }, c.grade) : null,
     ...extra,
     t.corrected ? h("span", { class: "badge" }, "Translation corrected") : null,
     h("span", { class: "badge draft" }, "Draft"),
@@ -786,7 +792,7 @@ function renderAdult() {
       p.note ? h("p", { class: "note" }, p.note) : null,
       sourceBlock(p.ref)
     )),
-    h("p", { class: "k-explain" }, "Numbers come from the hadith-json dataset. Its Bukhārī and Muslim numbers differ from sunnah.com, so those links open the book page.")
+    h("p", { class: "k-explain" }, "Numbers, links and grades are sunnah.com’s, matched to our copy of each text. Some detailed descriptions in the Shamāʾil have a weak (ḍaʿīf) chain. Many scholars accept such reports for describing his appearance and manners, while others are stricter, so the grade is shown for grown-ups to weigh.")
   );
 }
 
