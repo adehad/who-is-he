@@ -322,7 +322,9 @@ details summary { cursor: pointer; color: var(--lapis); font-weight: 700; }
   padding: 5px 14px 5px 6px; font: 700 .92rem/1.2 var(--display); transition: border-color .2s;
 }
 .go-link:hover { border-color: var(--gold); }
-.saw { font: 400 1.35em/1 var(--ar); }
+.go-text { text-align: left; }
+.saw { font: 400 1.2em/1 var(--ar); vertical-align: -0.1em; }
+.story-stage .links { margin-bottom: 22px; }
 .card .go-link { justify-self: start; }
 .mini { width: 28px; height: 28px; border-radius: 50%; background: var(--gold-soft); display: grid; place-items: center; flex: none; }
 .mini svg { width: 22px; height: 22px; display: block; }
@@ -1231,7 +1233,7 @@ function beatView(b) {
   } else {
     links = h("div", { class: "links" }, b.stations.map(id => {
       const s = stationById(id);
-      const btn = h("button", { type: "button", class: "go-link" }, raw("span", { class: "mini", "aria-hidden": "true" }, ICONS[s.icon]), "Learn about his ", h("span", { class: "saw", lang: "ar" }, "ﷺ"), ` ${shortName(s)} →`);
+      const btn = h("button", { type: "button", class: "go-link" }, raw("span", { class: "mini", "aria-hidden": "true" }, ICONS[s.icon]), h("span", { class: "go-text" }, "Learn about his ", h("span", { class: "saw", lang: "ar" }, "ﷺ"), ` ${shortName(s)} →`));
       btn.addEventListener("click", () => openStation(id));
       return btn;
     }));

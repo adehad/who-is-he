@@ -31,6 +31,14 @@
   "score": 1.0,
   "en_sunnah": "(the mother of the faithful believers) Al-Harith bin Hisham asked Allah's Messenger (ﷺ) \"O Allah's Messenger (ﷺ)! How is the Divine Inspiration revealed to you?\" Allah's Messenger (ﷺ) replied, \"Sometimes it is (revealed) like the ringing of a bell, this form of Inspiration is the hardest of all and then this state passes off after I have grasped what is inspired. Sometimes the Angel comes in the form of a man and talks to me and I grasp whatever he says.\" 'Aisha added: Verily I saw the Prophet (ﷺ) being inspired divinely on a very cold day and noticed the sweat dropping from his forehead (as the Inspiration was over)."
  },
+ "bukhari:245": {
+  "sunnah_ref": "bukhari:245",
+  "url": "https://sunnah.com/bukhari:245",
+  "in_book": "Book 4, Hadith 111",
+  "grade": null,
+  "score": 1.0,
+  "en_sunnah": "Whenever the Prophet (ﷺ) got up at night, he used to clean his mouth with Siwak."
+ },
  "bukhari:2855": {
   "sunnah_ref": "bukhari:2977",
   "url": "https://sunnah.com/bukhari:2977",
@@ -135,6 +143,14 @@
   "score": 1.0,
   "en_sunnah": "Umm Sulaim, what is this that you are doing? Thereupon she said: That is your sweat which we mix in our perfume and it becomes the most fragrant perfume."
  },
+ "shamail:1": {
+  "sunnah_ref": "shamail:1",
+  "url": "https://sunnah.com/shamail:1",
+  "in_book": "Book 1, Hadith 1",
+  "grade": "Sahih Isnād (Zubair `Aliza'i)",
+  "score": 1.0,
+  "en_sunnah": "“Allah’s Messenger (Allah bless him and give him peace) was neither very tall of stature, nor short. His skin was neither pale white, nor tawny, and his hair was neither crisply curled, nor lank. Allah (Exalted is He) sent him [to serve as His Messenger] at the end of forty years of life, so he stayed in Mecca for ten years and in Medina for ten years, and Allah took him unto Himself at the end of sixty years, with fewer than twenty white hairs on his head and his beard.”"
+ },
  "shamail:10": {
   "sunnah_ref": "shamail:11",
   "url": "https://sunnah.com/shamail:11",
@@ -191,6 +207,14 @@
   "score": 1.0,
   "en_sunnah": "“When 'Ali described Allah’s Messenger (Allah bless him and give him peace)— then he related the tradition in full—he said: 'Between his shoulders was the Seal of Prophethood, for he is the Seal of the Prophets'.\""
  },
+ "shamail:185": {
+  "sunnah_ref": "shamail:189",
+  "url": "https://sunnah.com/shamail:189",
+  "in_book": "Book 27, Hadith 3",
+  "grade": "Sahih (Zubair `Aliza'i)",
+  "score": 1.0,
+  "en_sunnah": "'O my dear son, pronounce the Name of Allah(Exalted is He), eat with your right hand, and eat what is directly in front of you!’”"
+ },
  "shamail:19": {
   "sunnah_ref": "shamail:20",
   "url": "https://sunnah.com/shamail:20",
@@ -222,6 +246,38 @@
   "grade": "Hasan Isnād (Zubair `Aliza'i)",
   "score": 1.0,
   "en_sunnah": "“Salman al-Farisi brought Allah’s Messenger (Allah bless him and give him peace), when he reached Medina, a table with ripe dates upon it, and he placed it in front of Allah’s Messenger (Allah bless him and give him peace), so he said: ‘O Salman, what is this?’ He replied: A charitable gift for you and for your Companions’ ‘Take it away,’ said the Prophet, ‘for we will not eat a charitable gift.’ He therefore took it away. Then he came the next day with the like of it, and placed it in front of Allah’s Messenger (Allah bless him and give him peace), who said: ‘What is this, O Salman?’ He replied: ‘A present for you,’ so Allah’s Messenger (Allah bless him and give him peace) said to his Companions: ‘Spread out!’ Then Salman looked at the Seal on the back of Allah’s Messenger (Allah bless him and give him peace), so he believed in him. He was a slave of the Jews, however, so Allah’s Messenger (Allah bless him and give him peace) purchased his freedom at such-and-such a price of silver coin, on condition that he [the Prophet] would plant date palms for them, and Salman would work on them until they bore edible fruit. Allah’s Messenger (Allah bless him and give him peace) then planted the date palms, apart from one date palm that 'Umar planted. The date palms then bore their annual crop, but one date palm did not bear fruit, so Allah’s Messenger said (Allah bless him and give him peace): ‘What is the matter with this date palm?’ 'Umar said: ‘O Messenger of Allah, I planted it!’ Allah’s Messenger (Allah bless him and give him peace) therefore uprooted it and replanted it, so it bore its annual crop.\""
+ },
+ "shamail:205": {
+  "sunnah_ref": "shamail:209",
+  "url": "https://sunnah.com/shamail:209",
+  "in_book": "Book 31, Hadith 5",
+  "grade": "Sahih Isnād (Zubair `Aliza'i)",
+  "score": 1.0,
+  "en_sunnah": "\"The Prophet (Allah bless him and give him peace) used to breathe into the vessel three times when he drank, and he would say: 'It is more wholesome and more thirst-quenching!’”"
+ },
+ "shamail:208": {
+  "sunnah_ref": "shamail:212",
+  "url": "https://sunnah.com/shamail:212",
+  "in_book": "Book 31, Hadith 8",
+  "grade": "Sahih Isnād (Zubair `Aliza'i)",
+  "score": 1.0,
+  "en_sunnah": "“Anas ibn Malik used to breathe into the vessel three times, and Anas ibn Malik maintained that the Prophet (Allah bless him and give him peace) likewise used to breathe into the vessel three times.”"
+ },
+ "shamail:211": {
+  "sunnah_ref": "shamail:215",
+  "url": "https://sunnah.com/shamail:215",
+  "in_book": "Book 32, Hadith 1",
+  "grade": "Hasan Isnād (Zubair `Aliza'i)",
+  "score": 1.0,
+  "en_sunnah": "“Allah’s Messenger (Allah bless him and give him peace) had a vial from which he used to perfume himself.”"
+ },
+ "shamail:212": {
+  "sunnah_ref": "shamail:216",
+  "url": "https://sunnah.com/shamail:216",
+  "in_book": "Book 32, Hadith 2",
+  "grade": "Sahih Isnād (Zubair `Aliza'i)",
+  "score": 1.0,
+  "en_sunnah": "“Anas ibn Malik did not reject perfume. Anas also said: ‘The Prophet (Allah bless him and give him peace) did not reject perfume'.”"
  },
  "shamail:217": {
   "sunnah_ref": "shamail:222",
@@ -286,6 +342,46 @@
   "grade": "Sahih (Zubair `Aliza'i)",
   "score": 1.0,
   "en_sunnah": "\"I was present when 'Ali (may Allah be well pleased with him) had an animal brought for him to ride. When he placed his foot in the stirrup, he said: “In the Name of Allah [Bismillah],” and when he settled on its back, he said: “Praise be to Allah!” Then he said: “Glory be to the One who has placed this at our disposal, for we would not have been equal to the task [Subhanalladhi sakhkhara la-na hadha wa ma kunna la-hu muqrinin], and to our Lord we are surely returning [wa inna ila Rabbina la-munqalibun]. (Al-Qur'an;43:13-14)Then he said: “Praise be to Allah,” three times, and: “Allah is Supremely Great,” three times, then: “Glory be to You! I have wronged myself, so forgive me, for no one forgives sins but You!” Then he laughed, so I said to him: “What has made you laugh, O Commander of the Believers?” He said: “I saw Allah’s Messenger (Allah bless him and give him peace) do just as I did now, after which he laughed, so I said: \"What has made you laugh, O Messenger of Allah?\" He replied: ‘Your Lord surely marvels at His servant when he says: “My Lord, forgive me my sins, knowing that no one but He forgives sins'!”"
+ },
+ "shamail:230": {
+  "sunnah_ref": "shamail:235",
+  "url": "https://sunnah.com/shamail:235",
+  "in_book": "Book 35, Hadith 2",
+  "grade": "Sahih Isnād (Zubair `Aliza'i)",
+  "score": 1.0,
+  "en_sunnah": "\"Allah’s Messenger (Allah bless him and give him peace) would associate so closely with us that he said to a young brother of mine: “O Abu 'Umair, what has the little red- beaked sparrow done?’”"
+ },
+ "shamail:231": {
+  "sunnah_ref": "shamail:236",
+  "url": "https://sunnah.com/shamail:236",
+  "in_book": "Book 35, Hadith 3",
+  "grade": "Hasan Isnād (Zubair `Aliza'i)",
+  "score": 1.0,
+  "en_sunnah": "“They said: ‘O Messenger of Allah, are you teasing us?’ He said: ‘Yes, except that I am telling nothing but the truth'!”"
+ },
+ "shamail:246": {
+  "sunnah_ref": "shamail:253",
+  "url": "https://sunnah.com/shamail:253",
+  "in_book": "Book 39, Hadith 1",
+  "grade": "Sahih (Zubair `Aliza'i)",
+  "score": 1.0,
+  "en_sunnah": "“When the Prophet (Allah bless him and give him peace) lay down to sleep, he placed the palm of his right hand under his right cheek and said: ‘O my Lord, preserve me from Your torment on the day when You resurrect Your servants!'”"
+ },
+ "shamail:247": {
+  "sunnah_ref": "shamail:255",
+  "url": "https://sunnah.com/shamail:255",
+  "in_book": "Book 39, Hadith 2",
+  "grade": "Sahih (Zubair `Aliza'i)",
+  "score": 1.0,
+  "en_sunnah": "“When the Prophet (Allah bless him and give him peace) went to his mattress, he would say: ‘O Allah, in Your Name I shall die and live,’ and when he woke up, he would say: ‘Praise be to Allah, who has revived us after He caused us to die, and to Him is the resurrection!'”"
+ },
+ "shamail:248": {
+  "sunnah_ref": "shamail:256",
+  "url": "https://sunnah.com/shamail:256",
+  "in_book": "Book 39, Hadith 3",
+  "grade": "Sahih (Zubair `Aliza'i)",
+  "score": 1.0,
+  "en_sunnah": "\"When Allah’s Messenger (Allah bless him and give him peace) went to his mattress each night, he joined the palms of his hands, then breathed into them and recited into them: “Say: ‘He is Allah, One [qul Huwa'llahu Ahad]!' (Al-Qur'an;112:1), and: “Say: ‘I take refuge with the Lord of the Daybreak [qul a'udhu bi-Rabbil-falaq]!' (Al-Qur'an;113:1), and: “Say: ‘I take refuge with the Lord of humankind [qul a'udhu bi-Rabbi’n-nas]!' (Al-Qur'an;114:1), Then he passed them over as much of his body as he could, beginning with his head and his face and the front of his body, doing that three times.”"
  },
  "shamail:252": {
   "sunnah_ref": "shamail:260",
@@ -399,6 +495,14 @@
   "score": 1.0,
   "en_sunnah": "“Allah’s Messenger (Allah bless him and give him peace) took hold of a daughter of his who was dying, then embraced her and she died in his arms. Umm Aiman cried, so he, meaning the Prophet (Allah bless him and give him peace), said: 'Are you weeping in the presence of Allah’s Messenger?’ She replied: 'Am I not seeing you weep?’ He said: 'I am not weeping. It is actually a mercy. The believer has every benefit in every situation. His soul is removed within him as he praises Allah (Almighty and Glorious is He)!'”"
  },
+ "shamail:315": {
+  "sunnah_ref": "shamail:326",
+  "url": "https://sunnah.com/shamail:326",
+  "in_book": "Book 45, Hadith 6",
+  "grade": "Hasan Isnād (Zubair `Aliza'i)",
+  "score": 1.0,
+  "en_sunnah": "“We saw Allah’s Messenger (Allah bless him and give him peace), sitting on the tomb of a daughter of his, and I saw his eyes shedding tears. Then he said: 'Is there any man among you who has not had intercourse with his wife tonight?’ Abu Talha said: ‘I haven't!’ He told him: ‘Come down,’ so he came down into her tomb.”"
+ },
  "shamail:32": {
   "sunnah_ref": "shamail:33",
   "url": "https://sunnah.com/shamail:33",
@@ -406,6 +510,14 @@
   "grade": "Da'if Isnād (Zubair `Aliza'i)",
   "score": 1.0,
   "en_sunnah": "“Allah’s Messenger (Allah bless him and give him peace) made a frequent practice of oiling his head and combing his beard, and he often wore the head veil, so it was as if his robe was the robe of an oil dealer.”"
+ },
+ "shamail:320": {
+  "sunnah_ref": "shamail:331",
+  "url": "https://sunnah.com/shamail:331",
+  "in_book": "Book 47, Hadith 3",
+  "grade": "Da'if Isnād (Zubair `Aliza'i)",
+  "score": 1.0,
+  "en_sunnah": "\"Allah’s Messenger (Allah bless him and give him peace) used to visit the sick, attend funerals, ride a donkey, and accept invitations from slaves. On the Day of Banu Quraiza, he was mounted on a donkey bridled with a rope of palm- tree fibers and saddled with palm-tree fibers.”"
  },
  "shamail:333": {
   "sunnah_ref": "shamail:344",
@@ -479,6 +591,14 @@
   "score": 1.0,
   "en_sunnah": "“The Prophet (Allah bless him and give him peace) was neither tall nor short, endowed with sturdy hands and feet, stout head and limbs, and lengthy hair on the chest. When he walked, he inclined forward, as if he were descending a downward slope. I have never seen the like of him, neither before him nor after him.”"
  },
+ "shamail:54": {
+  "sunnah_ref": "shamail:55",
+  "url": "https://sunnah.com/shamail:55",
+  "in_book": "Book 8, Hadith 1",
+  "grade": "Hasan (Zubair `Aliza'i)",
+  "score": 1.0,
+  "en_sunnah": "\"The apparel dearest to Allah’s Messenger (Allah bless him and give him peace) was the shirt [qamis].”"
+ },
  "shamail:6": {
   "sunnah_ref": "shamail:7",
   "url": "https://sunnah.com/shamail:7",
@@ -502,6 +622,22 @@
   "grade": "Sahih Isnād (Zubair `Aliza'i)",
   "score": 1.0,
   "en_sunnah": "“I heard Jabir ibn Samura say: \"Allah’s Messenger (Allah bless him and give him peace) was dali al-fam, ashkal al-'ain, manhus al-'aqib.” Shu'ba said: “I asked Simak: ‘What is dali al-fam?\" He replied:\"[It means] endowed with a grand and impressive mouth.\" I asked: \"What is ashkal al 'ain?\" He replied: \"[It means] long in the slit of the eye.\" I asked: \"What is manhus al-'aqib?\" He said: \"[It means] endowed with a lean heel.”"
+ },
+ "shamail:82": {
+  "sunnah_ref": "shamail:83",
+  "url": "https://sunnah.com/shamail:83",
+  "in_book": "Book 10, Hadith 9",
+  "grade": "Sahih Isnād (Zubair `Aliza'i)",
+  "score": 1.0,
+  "en_sunnah": "“The Prophet said (Allah bless him and give him peace): \"When one of you puts on sandals, let him begin with the right, and when he takes them off, let him begin with the left, for the right must be the first of them to be put on, and the last of them to be taken off.”"
+ },
+ "shamail:83": {
+  "sunnah_ref": "shamail:84",
+  "url": "https://sunnah.com/shamail:84",
+  "in_book": "Book 10, Hadith 10",
+  "grade": "Sahih Isnād (Zubair `Aliza'i)",
+  "score": 1.0,
+  "en_sunnah": "\"Allah’s Messenger (Allah bless him and give him peace) would love to start whatever he could on the right side, in his combing, his footwear and his purification.”"
  },
  "shamail:9": {
   "sunnah_ref": "shamail:10",

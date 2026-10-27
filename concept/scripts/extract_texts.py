@@ -29,7 +29,8 @@ SAW = "صلى الله عليه وسلم"
 
 
 def refs_in_src():
-    return set(re.findall(r'ref:\s*"([a-z]+:\d+)"', SRC.read_text(encoding="utf-8")))
+    # station `ref:` fields and story `refs: [...]` arrays alike
+    return set(re.findall(r'"((?:shamail|bukhari|muslim|tirmidhi|abudawud):\d+)"', SRC.read_text(encoding="utf-8")))
 
 
 def walk(node):
