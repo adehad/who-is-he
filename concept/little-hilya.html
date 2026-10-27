@@ -323,6 +323,7 @@ details summary { cursor: pointer; color: var(--lapis); font-weight: 700; }
 }
 .go-link:hover { border-color: var(--gold); }
 .saw { font: 400 1.35em/1 var(--ar); }
+.card .go-link { justify-self: start; }
 .mini { width: 28px; height: 28px; border-radius: 50%; background: var(--gold-soft); display: grid; place-items: center; flex: none; }
 .mini svg { width: 22px; height: 22px; display: block; }
 .mini svg * { animation: none !important; }
@@ -1093,10 +1094,17 @@ function renderCards() {
       )];
     });
   } else {
-    cards = [h("article", { class: "card mirror" },
-      h("h3", {}, h("span", { class: "pill k-khasisa" }, "Mirror"), "Coming soon"),
-      h("p", {}, s.mirror),
-      h("p", { class: "k-explain" }, "Placeholder for the mirror story: a child looking at themselves from head to toe.")
+    // Story beats that link here (and have a prompt) replace the station's own mirror line.
+    cards = STORY.map((b, k) => [b, k + 1]).filter(([b]) => b.prompt && b.stations.includes(s.id)).map(([b, k]) => {
+      const btn = h("button", { type: "button", class: "go-link" }, raw("span", { class: "mini", "aria-hidden": "true" }, PROPS[b.prop]), "See it in the story →");
+      btn.addEventListener("click", () => openStory(k));
+      return h("article", { class: "card mirror" },
+        h("h3", {}, h("span", { class: "pill k-khasisa" }, "Mirror"), b.title),
+        h("p", {}, [b.prompt].flat()[0]), btn);
+    });
+    if (!cards.length) cards = [h("article", { class: "card mirror" },
+      h("h3", {}, h("span", { class: "pill k-khasisa" }, "Mirror"), "Your turn"),
+      h("p", {}, s.mirror)
     )];
   }
   box.replaceChildren(...cards);
@@ -1162,6 +1170,11 @@ function scene(b) {
   const cls = bd ? `window bd-${key}` : `mirror${part.night ? " night" : ""}${b.prop ? "" : " solo"}`;
   return raw("div", { class: `scene ${cls}`, "aria-hidden": "true" },
     (bd?.back ?? "") + CHILD + (bd?.front ?? "") + (b.prop ? `<div class="prop">${PROPS[b.prop]}</div>` : ""));
+}
+
+function openStory(k) {
+  story.i = k; story.seen.add(k);
+  setMode("story");
 }
 
 function openStation(id) {
