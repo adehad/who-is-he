@@ -143,6 +143,15 @@ button { font: inherit; color: inherit; }
 @keyframes sway { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(3deg); } }
 @keyframes fall { 0% { transform: translateY(-4px); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateY(26px); opacity: 0; } }
 @keyframes float { 0% { transform: translateY(6px) scale(.6); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(-22px) scale(1); opacity: 0; } }
+/* Also stopped by the reduced-motion rule at the end. */
+.i-flow { animation: flow 1.6s linear infinite; }
+.i-bob { animation: bob 4s ease-in-out infinite; }
+.i-bob:nth-of-type(2) { animation-delay: -1.3s; } .i-bob:nth-of-type(3) { animation-delay: -2.6s; }
+.i-ripple { transform-box: fill-box; transform-origin: center; animation: ripple 3s ease-out infinite; }
+.i-ripple:nth-of-type(2) { animation-delay: 1s; } .i-ripple:nth-of-type(3) { animation-delay: 2s; }
+@keyframes flow { to { stroke-dashoffset: -18; } }
+@keyframes bob { 50% { transform: translate(6px, -2px); } }
+@keyframes ripple { 0% { transform: scale(.15); opacity: 0; } 30% { opacity: 1; } 100% { transform: scale(1); opacity: 0; } }
 
 /* Chips */
 .chips { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
@@ -269,7 +278,19 @@ const ICONS = {
   moon: `<svg viewBox="0 0 120 120"><circle class="i-glow" cx="60" cy="60" r="50" fill="var(--gold-soft)"/><circle cx="60" cy="60" r="36" fill="var(--gold)"/><circle cx="48" cy="52" r="6" fill="var(--gold-soft)" opacity=".55"/><circle cx="70" cy="72" r="4" fill="var(--gold-soft)" opacity=".55"/><g fill="var(--lapis)"><path class="i-twinkle" d="M14 18l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/><path class="i-twinkle" d="M104 26l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path class="i-twinkle" d="M100 96l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></g></svg>`,
   tulip: `<svg viewBox="0 0 120 120"><g class="i-sway"><path d="M60 112 C60 80 62 64 74 50" fill="none" stroke="var(--sage)" stroke-width="5" stroke-linecap="round"/><path d="M58 96 C44 92 36 80 38 70 C50 74 58 84 58 96Z" fill="var(--sage)"/><g transform="rotate(38 76 44)"><path d="M60 46 C58 26 66 16 76 12 C86 16 94 26 92 46 C88 56 64 56 60 46Z" fill="var(--rose)"/><path d="M76 12 C72 24 72 40 76 54 C80 40 80 24 76 12Z" fill="var(--panel)" opacity=".35"/></g></g></svg>`,
   cloud: `<svg viewBox="0 0 120 120"><path d="M30 66 C16 66 12 48 26 44 C26 28 46 22 56 32 C62 18 88 20 90 40 C106 40 108 66 92 66Z" fill="var(--lapis)"/><path d="M36 58 C32 58 30 52 34 50" fill="none" stroke="var(--panel)" stroke-width="3" stroke-linecap="round" opacity=".5"/><g fill="var(--lapis)" opacity=".85"><path class="i-drop" d="M42 78 q4 7 0 10 q-4 -3 0 -10z"/><path class="i-drop" d="M60 78 q4 7 0 10 q-4 -3 0 -10z"/><path class="i-drop" d="M78 78 q4 7 0 10 q-4 -3 0 -10z"/></g></svg>`,
-  bottle: `<svg viewBox="0 0 120 120"><rect x="52" y="24" width="16" height="12" rx="3" fill="var(--gold)"/><path d="M56 36 h8 v8 c16 4 24 16 24 32 c0 18 -12 30 -28 30 s-28 -12 -28 -30 c0 -16 8 -28 24 -32z" fill="var(--rose)"/><path d="M44 76 c0 -10 6 -18 14 -20" fill="none" stroke="var(--panel)" stroke-width="4" stroke-linecap="round" opacity=".45"/><g fill="var(--gold)"><path class="i-spark" d="M36 20l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path class="i-spark" d="M84 14l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path class="i-spark" d="M62 4l2 4 4 2-4 2-2 4-2-4-4-2 4-2z"/></g></svg>`
+  bottle: `<svg viewBox="0 0 120 120"><rect x="52" y="24" width="16" height="12" rx="3" fill="var(--gold)"/><path d="M56 36 h8 v8 c16 4 24 16 24 32 c0 18 -12 30 -28 30 s-28 -12 -28 -30 c0 -16 8 -28 24 -32z" fill="var(--rose)"/><path d="M44 76 c0 -10 6 -18 14 -20" fill="none" stroke="var(--panel)" stroke-width="4" stroke-linecap="round" opacity=".45"/><g fill="var(--gold)"><path class="i-spark" d="M36 20l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path class="i-spark" d="M84 14l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path class="i-spark" d="M62 4l2 4 4 2-4 2-2 4-2-4-4-2 4-2z"/></g></svg>`,
+  scales: `<svg viewBox="0 0 120 120"><circle class="i-glow" cx="60" cy="24" r="9" fill="var(--rose)"/><rect x="57" y="28" width="6" height="68" rx="3" fill="var(--gold)"/><path d="M40 106h40l-7-12h-26z" fill="var(--gold)"/><rect x="18" y="32" width="84" height="6" rx="3" fill="var(--gold)"/><path d="M28 38L16 68M28 38L40 68M92 38L80 68M92 38L104 68" fill="none" stroke="var(--gold)" stroke-width="2"/><path d="M12 68h32a16 12 0 0 1-32 0zM76 68h32a16 12 0 0 1-32 0z" fill="var(--sage)"/></svg>`,
+  lamp: `<svg viewBox="0 0 120 120"><g fill="none" stroke="var(--lapis)" stroke-width="5" stroke-linecap="round"><path d="M16 38Q35 20 54 34"/><path d="M66 34Q85 20 104 38"/></g><circle class="i-glow" cx="60" cy="68" r="22" fill="var(--gold-soft)"/><path d="M60 50C71 64 68 76 60 80C52 76 49 64 60 50Z" fill="var(--gold)"/><path d="M28 84Q60 108 94 86L108 80Q98 78 90 84Q60 92 28 84Z" fill="var(--rose)"/><rect x="52" y="80" width="16" height="6" rx="3" fill="var(--gold)"/></svg>`,
+  lantern: `<svg viewBox="0 0 120 120"><circle cx="60" cy="12" r="6" fill="none" stroke="var(--gold)" stroke-width="3"/><circle class="i-glow" cx="60" cy="58" r="40" fill="var(--gold-soft)"/><path d="M42 30L60 18L78 30Z" fill="var(--gold)"/><path d="M42 32h36l6 50h-48z" fill="var(--lapis)"/><path d="M50 40h20l3 34h-26z" fill="var(--gold)"/><path d="M38 82h44l-6 10h-32z" fill="var(--gold)"/></svg>`,
+  vase: `<svg viewBox="0 0 120 120"><path d="M50 12h20v5h-4v22c18 8 24 22 24 38c0 18-12 30-30 30s-30-12-30-30c0-16 6-30 24-38v-22h-4z" fill="var(--panel)" stroke="var(--lapis)" stroke-width="3"/><rect x="52" y="30" width="16" height="5" rx="2" fill="var(--gold)"/><path d="M42 78c0-10 4-18 12-24" fill="none" stroke="var(--lapis)" stroke-width="3" stroke-linecap="round" opacity=".4"/><g fill="var(--gold)"><path class="i-twinkle" d="M24 30l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/><path class="i-twinkle" d="M96 44l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path class="i-twinkle" d="M94 96l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></g></svg>`,
+  chest: `<svg viewBox="0 0 120 120"><path d="M26 58L34 30h52l8 28z" fill="var(--lapis)"/><ellipse cx="60" cy="58" rx="34" ry="9" fill="var(--gold)"/><rect x="22" y="58" width="76" height="42" rx="6" fill="var(--rose)"/><rect x="22" y="58" width="76" height="8" fill="var(--gold)"/><rect x="54" y="64" width="12" height="14" rx="3" fill="var(--gold)"/><g fill="var(--gold)"><path class="i-spark" d="M42 40l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path class="i-spark" d="M60 34l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path class="i-spark" d="M78 40l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></g></svg>`,
+  stream: `<svg viewBox="0 0 120 120"><path d="M8 102C28 42 50 28 70 28C90 28 104 50 112 102Z" fill="var(--sage)"/><path d="M68 32C60 50 82 58 68 74C54 88 76 96 60 106" fill="none" stroke="var(--panel)" stroke-width="11" stroke-linecap="round"/><path class="i-flow" d="M68 32C60 50 82 58 68 74C54 88 76 96 60 106" fill="none" stroke="var(--lapis)" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 8"/></svg>`,
+  nest: `<svg viewBox="0 0 120 120"><circle class="i-glow" cx="60" cy="56" r="40" fill="var(--gold-soft)"/><ellipse cx="60" cy="56" rx="16" ry="21" fill="var(--rose)"/><ellipse cx="54" cy="48" rx="4" ry="6" fill="var(--panel)" opacity=".45"/><path d="M18 66C24 98 96 98 102 66Z" fill="var(--gold)"/><g fill="none" stroke="var(--gold-soft)" stroke-width="2.5" stroke-linecap="round"><path d="M26 74Q60 84 94 74"/><path d="M34 84Q60 92 86 84"/></g></svg>`,
+  waves: `<svg viewBox="0 0 120 120"><g fill="none" stroke-width="6" stroke-linecap="round"><path class="i-bob" stroke="var(--lapis)" d="M14 42q11.5-12 23 0t23 0t23 0t23 0"/><path class="i-bob" stroke="var(--sage)" d="M14 62q11.5-12 23 0t23 0t23 0t23 0"/><path class="i-bob" stroke="var(--lapis)" d="M14 82q11.5-12 23 0t23 0t23 0t23 0"/></g></svg>`,
+  pearls: `<svg viewBox="0 0 120 120"><path d="M14 40Q60 100 106 40" fill="none" stroke="var(--gold)" stroke-width="2"/><circle cx="14" cy="40" r="4" fill="var(--gold)"/><circle cx="106" cy="40" r="4" fill="var(--gold)"/><g fill="var(--panel)" stroke="var(--gold)" stroke-width="2"><circle cx="29" cy="57" r="7"/><circle cx="45" cy="67" r="7"/><circle cx="60" cy="70" r="7"/><circle cx="75" cy="67" r="7"/><circle cx="91" cy="57" r="7"/></g><g fill="var(--rose)"><path class="i-twinkle" d="M60 18l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/><path class="i-twinkle" d="M30 90l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path class="i-twinkle" d="M90 90l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></g></svg>`,
+  sunrise: `<svg viewBox="0 0 120 120"><g class="i-glow" fill="none" stroke="var(--gold)" stroke-width="5" stroke-linecap="round"><path d="M60 22v12M27 43l8 7M93 43l-8 7M10 62l12 3M110 62l-12 3"/></g><path d="M30 76a30 30 0 0 1 60 0z" fill="var(--gold)"/><rect x="10" y="78" width="100" height="6" rx="3" fill="var(--sage)"/><rect x="26" y="92" width="68" height="5" rx="2.5" fill="var(--sage)" opacity=".6"/></svg>`,
+  ripples: `<svg viewBox="0 0 120 120"><ellipse cx="60" cy="70" rx="52" ry="22" fill="var(--sage)" opacity=".35"/><g fill="none" stroke="var(--lapis)" stroke-width="3"><ellipse class="i-ripple" cx="60" cy="70" rx="44" ry="17"/><ellipse class="i-ripple" cx="60" cy="70" rx="44" ry="17"/><ellipse class="i-ripple" cx="60" cy="70" rx="44" ry="17"/></g><path class="i-drop" d="M60 30q5 9 0 13q-5-4 0-13z" fill="var(--lapis)"/></svg>`,
+  rose: `<svg viewBox="0 0 120 120"><g class="i-sway"><path d="M60 112V64" fill="none" stroke="var(--sage)" stroke-width="5" stroke-linecap="round"/><path d="M60 94C46 92 40 82 42 74C54 76 60 84 60 94Z" fill="var(--sage)"/><circle cx="60" cy="44" r="24" fill="var(--rose)"/><path d="M48 44a12 12 0 0 1 24 0a8 8 0 0 1-16 0a4 4 0 0 1 8 0" fill="none" stroke="var(--panel)" stroke-width="3" stroke-linecap="round" opacity=".5"/></g><g fill="var(--lapis)"><path class="i-drop" d="M40 64q4 7 0 10q-4-3 0-10z"/><path class="i-drop" d="M80 64q4 7 0 10q-4-3 0-10z"/><path class="i-drop" d="M70 70q4 7 0 10q-4-3 0-10z"/></g></svg>`
 };
 const CORNER = `<svg viewBox="0 0 26 26"><path d="M13 1l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="currentColor"/></svg>`;
 
@@ -291,6 +312,25 @@ const STATIONS = [
     character: [], signs: [], mirror: null
   },
   {
+    id: "stature", name: "His height", icon: "scales",
+    phrase: "رَبْعَةً، لَيْسَ بِالطَّوِيلِ وَلا بِالْقَصِيرِ",
+    title: "Just the right height",
+    line: "He was not too tall and not too short, but just right. Al-Barā’ said he had never seen anything more beautiful than him!",
+    physical: [
+      { ref: "shamail:2", phrase: "رَبْعَةً، لَيْسَ بِالطَّوِيلِ وَلا بِالْقَصِيرِ، حَسَنَ الْجِسْمِ", gloss: "He was of medium height, neither tall nor short. He was of handsome physique.", note: "Dataset English attaches “brown of color” to his hair; in the Arabic أَسْمَرَ اللَّوْنِ describes his complexion." },
+      { ref: "shamail:7", phrase: "أَطْوَلُ مِنَ الْمَرْبُوعِ، وَأَقْصَرُ مِنَ الْمُشَذَّبِ", gloss: "He was taller than medium-sized, and shorter than the slender giant." },
+      { ref: "shamail:7", phrase: "مُعْتَدِلُ الْخَلْقِ", gloss: "He was well proportioned in physique." },
+      { ref: "shamail:3", phrase: "مَا رَأَيْتُ شَيْئًا قَطُّ أَحْسَنَ مِنْهُ", gloss: "I have never seen anything more beautiful than him!", note: "Dataset English names the narrator “Ibn Ishaq” (Arabic: Abū Isḥāq) and adds “neither curly nor lank-haired”, which is not in this Arabic." }
+    ],
+    character: [
+      { trait: "Lovable", line: "‘Alī said that people who saw him suddenly felt in awe of him, but anyone who got to know him loved him.", ref: "shamail:6", basis: "reflection" }
+    ],
+    signs: [
+      { kind: "research", title: "Never looking shorter", line: "There is a report that when he walked with tall people, he looked taller than them. We have not found and checked its source yet." }
+    ],
+    mirror: "Stand up straight in front of the mirror. Whatever your size, how can you make people glad to know you?"
+  },
+  {
     id: "face", name: "His face", icon: "moon",
     phrase: "يَتَلأْلأُ وَجْهُهُ تَلأْلُؤَ الْقَمَرِ لَيْلَةَ الْبَدْرِ",
     title: "Like the full moon",
@@ -309,6 +349,25 @@ const STATIONS = [
     mirror: "Smile at yourself in the mirror. Who can you share that smile with today?"
   },
   {
+    id: "brow", name: "His forehead and brows", icon: "lamp",
+    phrase: "وَاسِعُ الْجَبِينِ، أَزَجُّ الْحَوَاجِبِ",
+    title: "A wide, bright brow",
+    line: "His forehead was wide, and his eyebrows were long, fine arches that did not join in the middle. A light seemed to shine over him.",
+    physical: [
+      { ref: "shamail:7", phrase: "وَاسِعُ الْجَبِينِ", gloss: "Broad of forehead." },
+      { ref: "shamail:7", phrase: "أَزَجُّ الْحَوَاجِبِ، سَوَابِغَ فِي غَيْرِ قَرَنٍ", gloss: "Endowed with arched eyebrows, perfect without being conjoined." },
+      { ref: "shamail:7", phrase: "بَيْنَهُمَا عِرْقٌ، يُدِرُّهُ الْغَضَبُ", gloss: "With a vein between them that anger would cause to pulsate." },
+      { ref: "shamail:7", phrase: "أَقْنَى الْعِرْنَيْنِ، لَهُ نُورٌ يَعْلُوهُ", gloss: "The bridge of his nose was curved. He had a light that would rise over him.", note: "Dataset English goes on: “someone who did not reflect on him would consider him haughty”. The Arabic أَشَمَّ describes a high-bridged nose (at a glance it looked raised), not haughtiness." }
+    ],
+    character: [
+      { trait: "Angry only for what is right", line: "He never got angry for his own sake. He only became angry when something wrong was done, until it was put right.", ref: "shamail:219", basis: "reflection" }
+    ],
+    signs: [
+      { kind: "khasisa", title: "Sweat on a cold day", line: "‘Ā’isha saw revelation come to him on a very cold day. When it was over, drops of sweat were running down his forehead.", ref: "bukhari:2" }
+    ],
+    mirror: "Look at your forehead and eyebrows. When you feel cross, how can you keep your face calm?"
+  },
+  {
     id: "eyes", name: "His eyes", icon: "tulip",
     phrase: "أَدْعَجُ الْعَيْنَيْنِ، أَهْدَبُ الأَشْفَارِ",
     title: "Dark eyes, long lashes",
@@ -325,6 +384,61 @@ const STATIONS = [
       { kind: "khasisa", title: "A heart that stays awake", line: "He told ‘Ā’isha: “My eyes sleep, but my heart remains awake.”", ref: "bukhari:1115" }
     ],
     mirror: "Look into your own eyes. What good things will they look at today?"
+  },
+  {
+    id: "mouth", name: "His mouth", icon: "lantern",
+    phrase: "إِذَا تَكَلَّمَ رُئِيَ كَالنُّورِ يَخْرُجُ مِنْ بَيْنِ ثَنَايَاهُ",
+    title: "Light when he spoke",
+    line: "His cheeks were smooth and his mouth was wide. When he spoke, it seemed as if light came out from between his front teeth!",
+    physical: [
+      { ref: "shamail:7", phrase: "سَهْلُ الْخدَّيْنِ", gloss: "Endowed with smooth cheeks." },
+      { ref: "shamail:7", phrase: "ضَلِيعُ الْفَمِ، مُفْلَجُ الأَسْنَانِ", gloss: "A wide mouth, cleft teeth." },
+      { ref: "shamail:14", phrase: "إِذَا تَكَلَّمَ رُئِيَ كَالنُّورِ يَخْرُجُ مِنْ بَيْنِ ثَنَايَاهُ", gloss: "When he spoke, it seemed as if light were emerging from between his middle teeth." }
+    ],
+    character: [
+      { trait: "Truthful", line: "‘Alī said he was the most truthful of all people in what he said.", ref: "shamail:6", basis: "reflection" }
+    ],
+    signs: [
+      { kind: "mujiza", title: "‘Alī’s sore eyes", line: "At Khaybar ‘Alī had sore eyes. The Prophet ﷺ put a little of his saliva on them and prayed, and they were healed at once, as if nothing had been wrong.", ref: "bukhari:2887" },
+      { kind: "mujiza", title: "Food for a thousand", line: "At the Battle of the Trench, Jābir had only a little food. The Prophet ﷺ put a little of his saliva in the dough and the pot and prayed for blessing. A thousand people ate, and the pot was still full!", ref: "bukhari:3930" },
+      { kind: "karama", title: "A baby’s first taste", line: "When baby ‘Abdullāh ibn al-Zubayr was born, the Prophet ﷺ chewed a date, put a little in his mouth, and prayed for blessings for him.", ref: "bukhari:3746" }
+    ],
+    mirror: "Say something kind to your reflection. What true words will you speak today?"
+  },
+  {
+    id: "neck", name: "His neck", icon: "vase",
+    phrase: "كَأَنَّ عُنُقَهُ جِيدُ دُمْيَةٍ، فِي صَفَاءِ الْفِضَّةِ",
+    title: "Like pure silver",
+    line: "Hind said his neck was beautifully shaped and shone like pure silver. When he turned to look at someone, he turned all the way round.",
+    physical: [
+      { ref: "shamail:7", phrase: "كَأَنَّ عُنُقَهُ جِيدُ دُمْيَةٍ، فِي صَفَاءِ الْفِضَّةِ", gloss: "It was as if his neck were the neck of a statue shaped in pure silver." },
+      { ref: "shamail:11", phrase: "أَبْيَضَ كَأَنَّمَا صِيغَ مِنْ فِضَّةٍ", gloss: "He was white, as if he were fashioned from silver." },
+      { ref: "shamail:6", phrase: "وَإِذَا الْتَفَتَ الْتَفَتَ مَعًا", gloss: "When he looked around, he looked around altogether." }
+    ],
+    character: [
+      { trait: "Attentive", line: "When he turned to someone, he turned all the way round to face them.", ref: "shamail:7", basis: "reflection" }
+    ],
+    signs: [],
+    mirror: "Turn all the way round to face the mirror. Who will you turn to and really listen to today?"
+  },
+  {
+    id: "chest", name: "His chest and shoulders", icon: "chest",
+    phrase: "عَرِيضُ الصَّدْرِ، بَعِيدُ مَا بَيْنَ الْمَنْكِبَيْنِ",
+    title: "A wide chest, a big heart",
+    line: "He had a broad chest and wide shoulders. ‘Alī said he was the most generous-hearted of all people.",
+    physical: [
+      { ref: "shamail:7", phrase: "عَرِيضُ الصَّدْرِ، بَعِيدُ مَا بَيْنَ الْمَنْكِبَيْنِ", gloss: "He was wide-chested, broad-shouldered." },
+      { ref: "shamail:7", phrase: "سَوَاءُ الْبَطْنِ وَالصَّدْرِ", gloss: "With the stomach and the breast in even balance." },
+      { ref: "shamail:6", phrase: "جَلِيلُ الْمُشَاشِ وَالْكَتَدِ", gloss: "He had splendid joints and shoulder blades." }
+    ],
+    character: [
+      { trait: "Big-hearted", line: "‘Alī said he was the best of people in generosity: in Arabic, the most generous “of chest”.", ref: "shamail:6", basis: "reflection" }
+    ],
+    signs: [
+      { kind: "khasisa", title: "Washed with Zamzam", line: "The angel Jibrīl opened his chest, washed it with Zamzam water, and filled it with wisdom and faith.", ref: "bukhari:345" },
+      { kind: "karama", title: "Jarīr stays on his horse", line: "Jarīr could not sit firmly on a horse. The Prophet ﷺ pressed his hand on Jarīr’s chest and prayed for him, and Jarīr never fell off a horse again.", ref: "bukhari:4167", trait: "Big-hearted" }
+    ],
+    mirror: "Put your hand on your chest. What will you share with an open heart today?"
   },
   {
     id: "hands", name: "His hands", icon: "cloud",
@@ -362,21 +476,161 @@ const STATIONS = [
       { kind: "karama", title: "Umm Sulaym’s perfume bottle", line: "Umm Sulaym collected drops of his sweat in a little bottle and mixed them into her perfume. It became the best perfume of all!", ref: "muslim:5899" }
     ],
     mirror: "Take a deep breath. How can you leave a sweet feeling wherever you go?"
+  },
+  {
+    id: "feet", name: "His feet and walk", icon: "stream",
+    phrase: "كَأَنَّمَا يَنْحَطُّ مِنْ صَبَبٍ",
+    title: "Walking as if downhill",
+    line: "His feet were so smooth that water ran off them. He walked quickly and firmly, as if going down a slope, and his Companions had to hurry to keep up!",
+    physical: [
+      { ref: "shamail:7", phrase: "خَمْصَانُ الأَخْمَصَيْنِ، مَسِيحُ الْقَدَمَيْنِ، يَنْبُو عَنْهُمَا الْمَاءُ", gloss: "The hollows of his soles were deep-set. His feet were so smooth that water bounced off them." },
+      { ref: "shamail:7", phrase: "إِذَا مَشَى كَأَنَّمَا يَنْحَطُّ مِنْ صَبَبٍ", gloss: "When he walked, it was as if he were descending a declivity." },
+      { ref: "shamail:7", phrase: "يَخْطُو تَكَفِّيًا، وَيَمْشِي هَوْنًا", gloss: "He would tread inclining forward and walk comfortably.", note: "هَوْنًا is usually understood as “gently, with calm dignity” (compare Qur’an 25:63); “comfortably” undersells it." },
+      { ref: "shamail:119", phrase: "كَأَنَّمَا الأَرْضُ تُطْوَى لَهُ", gloss: "The earth seemed to be folded up for him. We must strenuously exert ourselves, while he is not subject to any stress." }
+    ],
+    character: [
+      { trait: "Grateful", line: "He prayed at night until his feet swelled. When asked why, he said: “Shall I not be a thankful servant?”", ref: "shamail:252", basis: "reflection" },
+      { trait: "Humble", line: "He let his Companions walk ahead of him, and he was the first to say salām to anyone he met.", ref: "shamail:7", basis: "reflection" }
+    ],
+    signs: [
+      { kind: "mujiza", title: "“Be firm, Uḥud!”", line: "When the mountain of Uḥud shook beneath him and his Companions, he struck it with his foot and said: “Be firm, Uḥud!”", ref: "bukhari:3528" }
+    ],
+    mirror: "Look down at your feet. Where will they take you to do good today, and who will you greet first?"
+  },
+  {
+    id: "seal", name: "The Seal", icon: "nest",
+    phrase: "بَيْنَ كَتِفَيْهِ خَاتَمُ النُّبُوَّةِ، وَهُوَ خَاتَمُ النَّبِيِّينَ",
+    title: "The Seal of Prophethood",
+    line: "Between his shoulders was a special mark, about the size of a dove’s egg, called the Seal of Prophethood. It showed that he is the last of all the prophets.",
+    physical: [
+      { ref: "shamail:18", phrase: "بَيْنَ كَتِفَيْهِ خَاتَمُ النُّبُوَّةِ، وَهُوَ خَاتَمُ النَّبِيِّينَ", gloss: "Between his shoulders was the Seal of Prophethood, for he is the Seal of the Prophets." },
+      { ref: "shamail:16", phrase: "غُدَّةً حَمْرَاءَ، مِثْلَ بَيْضَةِ الْحَمَامَةِ", gloss: "A red swelling like the egg of the dove." },
+      { ref: "shamail:15", phrase: "فَإِذَا هُوَ مِثْلُ زِرِّ الْحَجَلَةِ", gloss: "It was like the button of the bridal canopy.", note: "زِرّ الحَجَلة is explained two ways: the button of a canopy, or a partridge’s egg (Tirmidhi’s own gloss in his Jāmi‘ says “egg”)." },
+      { ref: "shamail:19", phrase: "شَعَرَاتٌ مُجْتَمِعَاتٌ", gloss: "Intertwined hairs.", note: "Literally “hairs gathered together”." }
+    ],
+    character: [
+      { trait: "Caring", line: "When a little boy, as-Sā’ib, was unwell, he stroked his head and prayed for blessings for him.", ref: "shamail:15", basis: "reflection" },
+      { trait: "Understanding", line: "When ‘Abdullāh ibn Sarjis walked round behind him hoping to see the Seal, he understood and moved his cloak so he could see it.", ref: "shamail:22", basis: "reflection" }
+    ],
+    signs: [
+      { kind: "khasisa", title: "A sign for Salmān", line: "Salmān al-Fārisī looked at the Seal on his back, and then he believed in him.", ref: "shamail:20" },
+      { kind: "mujiza", title: "Date palms in one year", line: "To free Salmān, the Prophet ﷺ planted date palms, and they gave fruit in that very same year.", ref: "shamail:20", note: "Dataset English says the palms “bore their annual crop”; the Arabic مِنْ عَامِهَا means “in that same year”, which is the point of the story." },
+      { kind: "karama", title: "Strong at ninety-four", line: "As-Sā’ib, the boy he prayed for, was still strong and straight at 94. He said he could hear and see well only because of the Prophet’s ﷺ prayer for him.", ref: "bukhari:3390", trait: "Caring" }
+    ],
+    mirror: "A seal means something is complete and true. What promise will you keep today?"
+  },
+  {
+    id: "hair", name: "His hair and beard", icon: "waves",
+    phrase: "لَمْ يَكُنْ بِالْجَعْدِ، وَلا بِالسَّبْطِ",
+    title: "Soft waves, few white hairs",
+    line: "His hair was gently wavy, not tightly curled and not straight, and reached his earlobes. His beard was thick, and Anas counted only fourteen white hairs.",
+    physical: [
+      { ref: "shamail:26", phrase: "لَمْ يَكُنْ بِالْجَعْدِ، وَلا بِالسَّبْطِ، كَانَ يَبْلُغُ شَعَرُهُ شَحْمَةَ أُذُنَيْهِ", gloss: "It was neither crisply curled nor lank. His hair used to reach the lobes of his ears." },
+      { ref: "shamail:30", phrase: "ذَا ضَفَائِرَ أَرْبَعٍ", gloss: "With four braids of hair." },
+      { ref: "shamail:7", phrase: "كَثُّ اللِّحْيَةِ", gloss: "He was thickly bearded." },
+      { ref: "shamail:37", phrase: "مَا عَدَدْتُ فِي رَأْسِ رَسُولِ اللهِ ﷺ وَلِحْيَتِهِ، إِلا أَرْبَعَ عَشْرَةَ شَعَرَةً بَيْضَاءَ", gloss: "On his head and his beard, I counted only fourteen white hairs." }
+    ],
+    character: [
+      { trait: "Neat", line: "He often oiled his hair and combed his beard.", ref: "shamail:32", basis: "reflection" },
+      { trait: "Moved by the Qur’an", line: "When his Companions noticed a few grey hairs, he said: “Hūd and its sister sūras have made me grey.”", ref: "shamail:41", basis: "reflection" }
+    ],
+    signs: [
+      { kind: "karama", title: "Umm Salama’s little silver box", line: "Umm Salama kept a few of his hairs in a small silver container. When someone was ill, people sent a cup of water to her.", ref: "bukhari:5669" },
+      { kind: "karama", title: "Hardly a white hair at 120", line: "He wiped his hand over Abū Zayd’s face and prayed for him. Abū Zayd lived to 120, with only a few white hairs on his head.", ref: "tirmidhi:3722", note: "Tirmidhi grades it ḥasan gharīb. The “120 years” is a comment by the narrator ‘Azra, not Abū Zayd himself." }
+    ],
+    mirror: "Comb your hair in the mirror. How can you look neat and clean today?"
+  },
+  {
+    id: "speech", name: "His words", icon: "pearls",
+    phrase: "كَلامُهُ فَصْلٌ، لا فُضُولَ، وَلا تَقْصِيرَ",
+    title: "Clear, careful words",
+    line: "He spoke clearly, so anyone sitting with him could remember what he said. He never said too much or too little, and was often quiet.",
+    physical: [
+      { ref: "shamail:219", phrase: "كَلامُهُ فَصْلٌ، لا فُضُولَ، وَلا تَقْصِيرَ", gloss: "His speech was concise, neither excessive nor abridged." },
+      { ref: "shamail:217", phrase: "يَتَكَلَّمُ بِكَلامٍ بَيِّنٍ فَصْلٍ، يَحْفَظُهُ مَنْ جَلَسَ إِلَيْهِ", gloss: "He would pause periodically, so that those who sat with him would remember what he said.", note: "The Arabic says “he spoke clear, distinct speech that whoever sat with him could memorise”; “pause periodically” is an interpretation." },
+      { ref: "shamail:219", phrase: "طَوِيلُ السَّكْتِ، لا يَتَكَلَّمُ فِي غَيْرِ حَاجَةٍ", gloss: "Prolonged in silence. He would not speak unnecessarily." }
+    ],
+    character: [
+      { trait: "Patient teacher", line: "He would repeat his words three times so that everyone could understand.", ref: "shamail:218", basis: "reflection" },
+      { trait: "Thankful", line: "He made much of every blessing, however small, and never found fault with it.", ref: "shamail:219", basis: "reflection" }
+    ],
+    signs: [
+      { kind: "khasisa", title: "Short words, huge meanings", line: "He said he was sent with jawāmi‘ al-kalim: short sayings that hold the widest meanings.", ref: "bukhari:2855" }
+    ],
+    mirror: "Say one kind sentence slowly and clearly to the mirror. Who needs to hear it today?"
+  },
+  {
+    id: "smile", name: "His smile", icon: "sunrise",
+    phrase: "جُلُّ ضَحِكِهِ التَّبَسُّمُ",
+    title: "Mostly a smile",
+    line: "When he laughed, it was mostly a smile, showing teeth as white as hailstones. Nobody smiled more than he did!",
+    physical: [
+      { ref: "shamail:219", phrase: "جُلُّ ضَحِكِهِ التَّبَسُّمُ، يَفْتَرُّ عَنْ مِثْلِ حَبِّ الْغَمَامِ", gloss: "Most of his laughter was in the form of a smile that revealed teeth as white as hailstones." },
+      { ref: "shamail:221", phrase: "مَا رَأَيْتُ أَحَدًا أَكْثَرَ تَبَسُّمًا مِنْ رَسُولِ اللهِ ﷺ", gloss: "I have not seen anyone with a more cheerful countenance than Allah’s Messenger!", note: "The Arabic is more direct: “I have not seen anyone who smiled more”." }
+    ],
+    character: [
+      { trait: "Friendly", line: "Jarīr said that from the day he became Muslim, the Prophet ﷺ never once saw him without smiling at him.", ref: "shamail:225", basis: "reflection", note: "Dataset English for #225 is only “Same as the above hadith” (#224, which has ضَحِكَ “laughed”); #225’s Arabic has تَبَسَّمَ “smiled”." },
+      { trait: "Hopeful", line: "He laughed and explained: “Your Lord surely marvels at His servant when he says: My Lord, forgive me my sins.”", ref: "shamail:227", basis: "reflection" }
+    ],
+    signs: [],
+    mirror: "Practise a smile that reaches your eyes. Who could use one today?"
+  },
+  {
+    id: "voice", name: "His voice", icon: "ripples",
+    phrase: "حَسَنَ الْوَجْهِ، حَسَنَ الصَّوْتِ",
+    title: "A beautiful voice",
+    line: "He had a beautiful voice. He recited the Qur’an slowly and clearly, letter by letter, stretching out the long sounds.",
+    physical: [
+      { ref: "shamail:308", phrase: "حَسَنَ الْوَجْهِ، حَسَنَ الصَّوْتِ", gloss: "Endowed with a handsome face and a beautiful voice.", note: "These are the words of Qatāda (a Successor), not a Companion. Its last clause “he did not chant in a quavering tone” sits oddly beside #307, where the same verb رَجَّعَ is translated “recited in a quivering voice”." },
+      { ref: "shamail:302", phrase: "قِرَاءَةً مُفَسَّرَةً حَرْفًا حَرْفًا", gloss: "A recitation that was explained letter by letter.", note: "مُفَسَّرَة here means “clear, distinct”." },
+      { ref: "shamail:303", phrase: "مَدًّا", gloss: "With the voice drawn out over the long vowels." },
+      { ref: "shamail:306", phrase: "كُنْتُ أَسْمَعُ قِرَاءَةَ النَّبِيِّ ﷺ، بِاللَّيْلِ وَأَنَا عَلَى عَرِيشِي", gloss: "I used to hear the recitation of the Prophet during the night while I was on my pallet." }
+    ],
+    character: [
+      { trait: "Unhurried", line: "He paused after each verse of al-Fātiḥa, taking his time with every word.", ref: "shamail:304", basis: "reflection" }
+    ],
+    signs: [
+      { kind: "mujiza", title: "Heard from far away", line: "At Minā, the people could hear what he said even while they were sitting in their own tents.", ref: "abudawud:1958", note: "Arabic فَفُتِحَتْ أَسْمَاعُنَا, “our ears were opened (for us)”; dataset English “Our ears were open” loses that." }
+    ],
+    mirror: "Read a few words to the mirror, slowly and clearly. How does it feel to take your time?"
+  },
+  {
+    id: "tears", name: "His tears", icon: "rose",
+    phrase: "فَرَأَيْتُ عَيْنَيْ رَسُولِ اللهِ تَهْمِلانِ",
+    title: "A tender heart",
+    line: "His eyes filled with tears when he listened to the Qur’an, and when someone he loved was dying. He called such tears a mercy.",
+    physical: [
+      { ref: "shamail:311", phrase: "فَرَأَيْتُ عَيْنَيْ رَسُولِ اللهِ تَهْمِلانِ", gloss: "Then I saw the eyes of Allah’s Messenger bathed in tears." },
+      { ref: "shamail:310", phrase: "وَلِجَوْفِهِ أَزِيزٌ كَأَزِيزِ الْمِرْجَلِ مِنَ الْبُكَاءِ", gloss: "His inner body was producing a humming sound like the humming of the cauldron due to his weeping." }
+    ],
+    character: [
+      { trait: "Good listener", line: "He asked Ibn Mas‘ūd to recite to him, saying: “I like to hear it from someone other than myself.”", ref: "shamail:311", basis: "reflection" },
+      { trait: "Merciful", line: "When someone saw him cry, he said: “It is a mercy.”", ref: "shamail:313", basis: "reflection" }
+    ],
+    signs: [
+      { kind: "mujiza", title: "The palm trunk that cried", line: "He used to give his talks standing by a palm-tree trunk. When he moved to a new pulpit, the trunk cried like a camel, until he came down and put his hand on it.", ref: "bukhari:896", trait: "Merciful" }
+    ],
+    mirror: "It is okay to cry. When you feel sad, what gentle words can you say to yourself?"
   }
 ];
 
 const BOOKS = {
   shamail: { name: "Shamāʾil" },
-  bukhari: { name: "Bukhārī", books: { 4: "Wuḍūʾ", 10: "Adhān", 19: "Tahajjud" } },
-  muslim: { name: "Muslim", books: { 43: "Faḍāʾil" } }
+  bukhari: { name: "Bukhārī", books: {
+    1: "Badʾ al-Waḥy", 4: "Wuḍūʾ", 8: "Ṣalāt", 10: "Adhān", 11: "Jumuʿa", 19: "Tahajjud", 56: "Jihād",
+    61: "Manāqib", 62: "Faḍāʾil al-Ṣaḥāba", 63: "Manāqib al-Anṣār", 64: "Maghāzī", 77: "Libās" } },
+  muslim: { name: "Muslim", books: { 43: "Faḍāʾil" } },
+  tirmidhi: { name: "Jāmiʿ al-Tirmidhī", books: { 49: "Manāqib" } },
+  abudawud: { name: "Abū Dāwūd", books: { 11: "Manāsik" } }
 };
 
 function cite(ref) {
   const t = TEXTS[ref];
   const [col, n] = ref.split(":");
   if (col === "shamail") return { label: `Shamāʾil, ch. ${t.ch}: ${n}`, url: `https://sunnah.com/shamail:${n}`, exact: true };
-  const b = BOOKS[col];
-  return { label: `${b.name}, ${b.books[t.ch] ?? "Book"} (${t.ch}): ${n}`, url: `https://sunnah.com/${col}/${t.ch}`, exact: false };
+  const b = BOOKS[col] ?? { name: col };
+  const book = b.books?.[t.ch] ?? t.ch_en ?? "Book";
+  return { label: `${b.name}, ${book} (${t.ch}): ${n}`, url: `https://sunnah.com/${col}/${t.ch}`, exact: false };
 }
 
 function h(tag, attrs = {}, ...kids) {
@@ -474,7 +728,7 @@ function renderCards() {
     cards = s.character.map(c => h("article", { class: "card" },
       h("h3", {}, h("span", { class: "pill k-trait" }, c.trait)),
       h("p", {}, c.line),
-      h("div", { class: "adult" }, sourceBlock(c.ref, [h("span", { class: "badge" }, c.basis === "classical" ? "Classical link" : "Our reflection")]))
+      h("div", { class: "adult" }, c.note ? h("p", { class: "note" }, c.note) : null, sourceBlock(c.ref, [h("span", { class: "badge" }, c.basis === "classical" ? "Classical link" : "Our reflection")]))
     ));
     if (!cards.length) cards = [h("article", { class: "card research" },
       h("h3", {}, h("span", { class: "pill k-research" }, KINDS.research.label)),
@@ -490,7 +744,7 @@ function renderCards() {
           h("h3", {}, g.title),
           h("p", {}, g.line),
           g.trait ? h("p", { class: "k-explain" }, `Reminds us he was ${g.trait.toLowerCase()}.`) : null,
-          g.ref ? h("div", { class: "adult" }, sourceBlock(g.ref, [h("span", { class: "badge" }, "Category: ours")])) : null
+          g.ref ? h("div", { class: "adult" }, g.note ? h("p", { class: "note" }, g.note) : null, sourceBlock(g.ref, [h("span", { class: "badge" }, "Category: ours")])) : null
         ))
       )];
     });
