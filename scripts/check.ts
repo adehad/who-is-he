@@ -49,6 +49,7 @@ const DIST_PAGES = [
   "index.html",
   "story/index.html",
   ...STATIONS.slice(1).map((s) => `learn/${s.id}/index.html`),
+  "404.html",
 ];
 
 // Built pages carry og meta, noindex, the draft strip and a real absolute og:image.

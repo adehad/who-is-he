@@ -6,7 +6,8 @@ const { count, size, warnings } = await generateSW({
   globDirectory: "dist",
   // woff (non-woff2) font duplicates are left out deliberately.
   globPatterns: ["**/*.{html,js,css,json,woff2,svg,ico,png,webmanifest}"],
-  globIgnores: ["og/**", "screenshots/**", "share/**"],
+  // 404.html is only ever served by the host for unknown URLs, never requested by the site itself.
+  globIgnores: ["og/**", "screenshots/**", "share/**", "404.html"],
   swDest: "dist/sw.js",
   modifyURLPrefix: { "": base },
   // Astro's hashed assets change name when their content changes, so no revision cache-busting needed.
