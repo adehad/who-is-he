@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { STATIONS } from "@/data/stations";
+import pkg from "../package.json";
 
 // Anything that changes a card's pixels goes into its hash.
 const SHARED_FILES = [
@@ -9,11 +10,19 @@ const SHARED_FILES = [
   "src/styles/global.css",
   "src/styles/fonts.ts",
   "src/art/icons.ts",
-  "bun.lock",
 ];
 
+// Fonts are the only dependencies that change card pixels, so hash their exact versions.
+const FONT_VERSIONS = Object.entries(pkg.dependencies)
+  .filter(([name]) => name.startsWith("@fontsource/"))
+  .map(([name, version]) => `${name}@${version}`)
+  .join("\n");
+
 export function ogHashes(): Record<string, string> {
-  const shared = SHARED_FILES.map((f) => readFileSync(f, "utf8").replace(/\r\n/g, "\n")).join("\0");
+  const shared = [
+    ...SHARED_FILES.map((f) => readFileSync(f, "utf8").replace(/\r\n/g, "\n")),
+    FONT_VERSIONS,
+  ].join("\0");
   return Object.fromEntries(
     STATIONS.map((s) => {
       const card = JSON.stringify({

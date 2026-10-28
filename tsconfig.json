@@ -4,5 +4,5 @@
     "paths": { "@/*": ["./src/*"], "#data/*": ["./data/*"] },
     "types": ["bun"]
   },
-  "include": ["src", "scripts", "astro.config.mjs", ".astro/types.d.ts"]
+  "include": ["src", "scripts", "astro.config.mjs", "pwa-assets.config.ts", ".astro/types.d.ts"]
 }
