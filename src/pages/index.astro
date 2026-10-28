@@ -1,13 +1,6 @@
 ---
 import Shell from "@/components/Shell.astro";
 import Base from "@/layouts/Base.astro";
-
-const meta = {
-  title: "Little Hilya",
-  description: "A child-friendly walk through the Shamāʾil of the Prophet ﷺ.",
-  path: "",
-  image: "og/intro.png",
-  imageAlt: "Little Hilya",
-};
+import { stationMeta } from "@/lib/meta";
 ---
-<Base meta={meta}><Shell mode="learn" station={0} honourStoredMode /></Base>
+<Base meta={stationMeta(0)}><Shell mode="learn" station={0} honourStoredMode /></Base>

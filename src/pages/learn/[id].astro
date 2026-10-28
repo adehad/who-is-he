@@ -1,0 +1,12 @@
+---
+import Shell from "@/components/Shell.astro";
+import { STATIONS } from "@/data/stations";
+import Base from "@/layouts/Base.astro";
+import { stationMeta } from "@/lib/meta";
+
+export function getStaticPaths() {
+  return STATIONS.slice(1).map((s) => ({ params: { id: s.id } }));
+}
+const i = STATIONS.findIndex((s) => s.id === Astro.params.id);
+---
+<Base meta={stationMeta(i)}><Shell mode="learn" station={i} honourStoredMode={false} /></Base>

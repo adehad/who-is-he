@@ -6,9 +6,7 @@ import { STORY } from "@/data/story";
 import type { Kind, Station } from "@/models/station";
 import { sourceBlock } from "./cite";
 import { $, $as, h, raw, replay } from "./dom";
-import { handlers } from "./handlers";
-
-export { setHandlers } from "./handlers";
+import { pathFor, push } from "./router";
 
 type Tab = "char" | "sign" | "mirror";
 export const state: { i: number; tab: Tab; seen: Set<number> } = {
@@ -196,19 +194,24 @@ function renderCards(): void {
     cards = STORY.map((b, k) => [b, k + 1] as const)
       .filter(([b]) => b.prompt && (b.stations ?? []).includes(s.id))
       .map(([b, k]) => {
-        const btn = h(
-          "button",
-          { type: "button", class: "go-link" },
+        // A real link (new tab works); app.ts intercepts plain clicks and opens beat k in place.
+        const link = h(
+          "a",
+          {
+            class: "go-link",
+            href: pathFor({ mode: "story" }),
+            "data-route": true,
+            "data-beat": String(k),
+          },
           raw("span", { class: "mini", "aria-hidden": "true" }, b.prop ? PROPS[b.prop] : ""),
           "See it in the story →",
         );
-        btn.addEventListener("click", () => handlers.openStory(k));
         return h(
           "article",
           { class: "card mirror" },
           h("h3", {}, h("span", { class: "pill k-khasisa" }, "Mirror"), b.title),
           h("p", {}, [b.prompt ?? []].flat()[0]),
-          btn,
+          link,
         );
       });
     if (!cards.length)
@@ -270,4 +273,5 @@ export function go(i: number): void {
   state.seen.add(i);
   state.tab = "char";
   render(true);
+  push({ mode: "learn", station: i });
 }

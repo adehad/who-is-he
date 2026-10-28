@@ -1,8 +1,8 @@
 import { CORNER } from "@/art/corner";
-import { STATIONS, type StationId } from "@/data/stations";
+import { STATIONS } from "@/data/stations";
 import { $, $as, replay } from "./dom";
-import { setHandlers } from "./handlers";
 import { go, render, state } from "./learn";
+import { parse, push } from "./router";
 import { applyChild, renderStory, story, storyGo } from "./story";
 
 type Mode = "learn" | "story";
@@ -27,31 +27,39 @@ function openStory(k: number): void {
   setMode("story");
 }
 
-function openStation(id: StationId): void {
-  const i = STATIONS.findIndex((s) => s.id === id);
-  if (i < 0) return;
+function openStationAt(i: number): void {
+  if (!STATIONS[i]) return;
   state.i = i;
   state.seen.add(i);
   state.tab = "char";
   setMode("learn");
 }
 
-setHandlers({ openStation, openStory });
-
 const modeButtons = () => document.querySelectorAll<HTMLButtonElement>("#modes button");
 
-function setMode(m: Mode, animate = true): void {
+/**
+ * Show mode `m`. `animate` is false only for the initial render, which neither
+ * touches history nor stores the mode: only explicit user choices persist it, so
+ * opening /learn/<id>/ or going Back never overwrites the mode stored at `/`.
+ */
+function setMode(
+  m: Mode,
+  animate = true,
+  { push: pushRoute = true, persist = animate }: { push?: boolean; persist?: boolean } = {},
+): void {
   mode = m;
   for (const id of ["learn", "story"] as const) $(id).hidden = id !== m;
   for (const b of modeButtons()) b.setAttribute("aria-pressed", String(b.dataset.mode === m));
-  try {
-    localStorage.setItem("mode", m);
-  } catch {}
+  if (persist)
+    try {
+      localStorage.setItem("mode", m);
+    } catch {}
   if (m === "learn") render(animate);
   else renderStory(animate);
   if (animate) {
     replay($(m));
     window.scrollTo(0, 0);
+    if (pushRoute) push(m === "story" ? { mode: "story" } : { mode: "learn", station: state.i });
   }
 }
 
@@ -67,6 +75,28 @@ for (const b of modeButtons())
     const m = b.dataset.mode;
     if (isMode(m) && m !== mode) setMode(m);
   });
+window.addEventListener("popstate", () => {
+  const r = parse(location.pathname);
+  if (!r) return;
+  if (r.mode === "learn" && r.station !== state.i) {
+    state.i = r.station;
+    state.seen.add(r.station);
+    state.tab = "char";
+  }
+  setMode(r.mode, true, { push: false, persist: false });
+});
+// In-app links are real <a data-route href> (so new tab / copy link work); plain clicks open in place.
+document.addEventListener("click", (e) => {
+  if (!(e.target instanceof Element)) return;
+  const a = e.target.closest("a[data-route]");
+  if (!(a instanceof HTMLAnchorElement)) return;
+  if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+  const r = parse(new URL(a.href).pathname);
+  if (!r) return;
+  e.preventDefault();
+  if (r.mode === "story") openStory(Number(a.dataset.beat ?? 0));
+  else openStationAt(r.station);
+});
 document.addEventListener("keydown", (e) => {
   if (e.target instanceof Element && e.target.closest("input, summary")) return;
   if (e.key === "ArrowRight") step(1);

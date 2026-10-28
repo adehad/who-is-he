@@ -10,9 +10,7 @@ import { TEXTS } from "@/data/texts";
 import type { Beat } from "@/models/story";
 import { sourceBlock } from "./cite";
 import { $, $as, corners, h, raw, replay } from "./dom";
-import { handlers } from "./handlers";
-
-export { setHandlers } from "./handlers";
+import { pathFor } from "./router";
 
 export const story: {
   i: number;
@@ -150,18 +148,17 @@ function beatView(b: Beat): (HTMLElement | null)[] {
       "div",
       { class: "recap", role: "group", "aria-label": "Today’s stations" },
       day.map((s, k) => {
-        const btn = raw(
-          "button",
+        return raw(
+          "a",
           {
-            type: "button",
+            href: pathFor({ mode: "learn", station: STATIONS.indexOf(s) }),
+            "data-route": true,
             title: s.name,
             "aria-label": `Learn about ${s.name.toLowerCase()}`,
             style: `--k:${k}`,
           },
           ICONS[s.icon],
         );
-        btn.addEventListener("click", () => handlers.openStation(s.id));
-        return btn;
       }),
     );
   } else {
@@ -170,9 +167,14 @@ function beatView(b: Beat): (HTMLElement | null)[] {
       { class: "links" },
       (b.stations ?? []).map((id) => {
         const s = stationById(id);
-        const btn = h(
-          "button",
-          { type: "button", class: "go-link" },
+        // Real links (new tab works); app.ts intercepts plain clicks on a[data-route] and opens in place.
+        return h(
+          "a",
+          {
+            class: "go-link",
+            href: pathFor({ mode: "learn", station: STATIONS.indexOf(s) }),
+            "data-route": true,
+          },
           raw("span", { class: "mini", "aria-hidden": "true" }, ICONS[s.icon]),
           h(
             "span",
@@ -182,8 +184,6 @@ function beatView(b: Beat): (HTMLElement | null)[] {
             ` ${shortName(s)} →`,
           ),
         );
-        btn.addEventListener("click", () => handlers.openStation(id));
-        return btn;
       }),
     );
   }
