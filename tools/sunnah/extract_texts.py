@@ -1,13 +1,15 @@
-"""Regenerate concept/data/texts.json from the hadith-json dataset.
+"""Regenerate data/texts.json from the hadith-json dataset.
+
+Legacy: reads concept/little-hilya.src.html; superseded by scripts/check.ts.
 
 Collects every `book:number` ref used by the stations in little-hilya.src.html
-and data/stations.draft.json, looks each up in the dataset files and writes
+and data/notes/stations.draft.json, looks each up in the dataset files and writes
 {ref: {ar, narrator, en, ch, ch_en, ch_ar}}. Also checks that every Arabic
 `phrase` in the draft stations occurs verbatim in its hadith, and that every
 `find` in data/corrections.json occurs in the raw dataset text. texts.json stays
 the raw dataset copy; build.py applies the corrections.
 
-Usage: python -I concept/scripts/extract_texts.py DATASET_DIR [DATASET_DIR ...]
+Usage: python -I tools/sunnah/extract_texts.py DATASET_DIR [DATASET_DIR ...]
 
 Each DATASET_DIR holds files from github.com/AhmedBaset/hadith-json
 (db/by_book/...), named <book>.json, e.g. shamail.json, bukhari.json,
@@ -19,11 +21,11 @@ import re
 import sys
 from pathlib import Path
 
-CONCEPT = Path(__file__).resolve().parent.parent
-SRC = CONCEPT / "little-hilya.src.html"
-DRAFT = CONCEPT / "data" / "stations.draft.json"
-OUT = CONCEPT / "data" / "texts.json"
-CORRECTIONS = CONCEPT / "data" / "corrections.json"
+root = Path(__file__).resolve().parents[2]
+SRC = root / "concept" / "little-hilya.src.html"
+DRAFT = root / "data" / "notes" / "stations.draft.json"
+OUT = root / "data" / "texts.json"
+CORRECTIONS = root / "data" / "corrections.json"
 BOOK_ORDER = ["shamail", "bukhari", "muslim", "tirmidhi", "abudawud"]
 SAW = "صلى الله عليه وسلم"
 
@@ -98,7 +100,7 @@ def main(dirs):
         sys.exit("phrases not found verbatim:\n  " + "\n  ".join(bad))
 
     OUT.write_text(json.dumps(out, ensure_ascii=False), encoding="utf-8")
-    print(f"wrote {len(out)} texts to {OUT.relative_to(CONCEPT.parent)}")
+    print(f"wrote {len(out)} texts to {OUT.relative_to(root)}")
 
 
 if __name__ == "__main__":

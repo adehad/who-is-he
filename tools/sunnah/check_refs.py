@@ -1,11 +1,13 @@
-"""Check that every ref in little-hilya.src.html is in data/texts.json.
+"""Legacy: reads concept/little-hilya.src.html; superseded by scripts/check.ts.
+
+Check that every ref in little-hilya.src.html is in data/texts.json.
 
 Also fails if a station's icon is not defined in ICONS, and warns when a quoted
 `phrase` does not occur verbatim in its hadith (ﷺ expanded, NFC).
 For STORY beats it fails on unknown station links, props or backdrops, and warns
 about story refs not yet in texts.json.
 
-Usage: python -I concept/scripts/check_refs.py
+Usage: python -I tools/sunnah/check_refs.py
 """
 import json
 import re
@@ -13,9 +15,9 @@ import sys
 import unicodedata
 from pathlib import Path
 
-CONCEPT = Path(__file__).resolve().parent.parent
-src = (CONCEPT / "little-hilya.src.html").read_text(encoding="utf-8")
-texts = json.loads((CONCEPT / "data" / "texts.json").read_text(encoding="utf-8"))
+root = Path(__file__).resolve().parents[2]
+src = (root / "concept" / "little-hilya.src.html").read_text(encoding="utf-8")
+texts = json.loads((root / "data" / "texts.json").read_text(encoding="utf-8"))
 SAW = "صلى الله عليه وسلم"
 # NFC so that shadda+fatha and fatha+shadda (same rendering) compare equal.
 nfc = lambda s: unicodedata.normalize("NFC", s)

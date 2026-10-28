@@ -9,11 +9,12 @@ import sys
 from pathlib import Path
 
 here = Path(__file__).parent
-texts = json.loads((here / "data/texts.json").read_text(encoding="utf-8"))
-corrections = json.loads((here / "data/corrections.json").read_text(encoding="utf-8"))
+root = here.parent
+texts = json.loads((root / "data/texts.json").read_text(encoding="utf-8"))
+corrections = json.loads((root / "data/corrections.json").read_text(encoding="utf-8"))
 
 # Prefer sunnah.com's English: the dataset's scraper drops text between square brackets.
-sunnah = json.loads((here / "data/sunnah_refs.json").read_text(encoding="utf-8"))
+sunnah = json.loads((root / "data/sunnah_refs.json").read_text(encoding="utf-8"))
 for ref, t in texts.items():
     m = sunnah.get(ref)
     if m:

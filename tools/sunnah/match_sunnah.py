@@ -2,15 +2,15 @@
 
 Matches by normalised Arabic text against pages read from sunnah.com.
 
-Usage: python -I match_sunnah.py <dataset_dir> <sunnah_json> [<sunnah_json> ...]
-Writes concept/data/sunnah_refs.json and prints a summary.
+Usage: python -I tools/sunnah/match_sunnah.py <dataset_dir> <sunnah_json> [<sunnah_json> ...]
+Writes data/sunnah_refs.json and prints a summary.
 """
 import json
 import re
 import sys
 from pathlib import Path
 
-here = Path(__file__).resolve().parent.parent
+root = Path(__file__).resolve().parents[2]
 DIACRITICS = re.compile(r"[ؐ-ًؚ-ٰٟۖ-ۭـ‏‎]")
 NON_LETTER = re.compile(r"[^ء-ي ]+")
 FOLD = str.maketrans({"أ": "ا", "إ": "ا", "آ": "ا", "ٱ": "ا", "ى": "ي", "ة": "ه", "ؤ": "و", "ئ": "ي"})
@@ -43,8 +43,8 @@ def main():
         row["tokens"] = norm(row["ar"])
         by_col.setdefault(col, []).append(row)
 
-    texts = json.loads((here / "data/texts.json").read_text(encoding="utf-8"))
-    corrections = json.loads((here / "data/corrections.json").read_text(encoding="utf-8"))
+    texts = json.loads((root / "data/texts.json").read_text(encoding="utf-8"))
+    corrections = json.loads((root / "data/corrections.json").read_text(encoding="utf-8"))
     wanted = set(texts) | {c["ref"] for c in corrections}
 
     datasets = {}
@@ -70,7 +70,7 @@ def main():
         if s < 0.6:
             weak.append((ref, best["ref"], round(s, 3)))
 
-    (here / "data/sunnah_refs.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+    (root / "data/sunnah_refs.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     moved = [(k, v["sunnah_ref"]) for k, v in out.items() if k != v["sunnah_ref"]]
     print(f"matched {len(out)}; numbers differ for {len(moved)}; weak matches {len(weak)}")
     for w in weak:

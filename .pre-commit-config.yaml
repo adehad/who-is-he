@@ -30,7 +30,7 @@ repos:
     hooks:
       - id: arabic-presentation-form
         types_or: [text, ts, json, markdown]
-        args: [--excluded-chars, "(ﷺ)"]
+        args: [--excluded-chars, "(ﷺ|﴿|﴾)"]
         files: ^(src/data/|data/)
   - repo: local
     hooks:
