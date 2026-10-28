@@ -1,0 +1,37 @@
+---
+import { ICONS } from "@/art/icons";
+import type { Station } from "@/models/station";
+
+interface Props {
+  station: Station;
+}
+const { station: s } = Astro.props;
+const trait = s.character[0]?.trait;
+---
+<div class="share">
+  <div class="share-left">
+    <div class="medallion"><div class="share-icon" set:html={ICONS[s.icon]} /><div class="phrase share-phrase" lang="ar">{s.phrase}</div></div>
+  </div>
+  <div class="share-right">
+    <div class="station-name">{s.name}</div>
+    <h1 class="kid-title">{s.title}</h1>
+    {trait && <p class="share-trait">{trait}</p>}
+    <p class="share-line">{s.line}</p>
+    <p class="share-mark">Little Hilya · <span lang="ar">الشمائل</span></p>
+  </div>
+</div>
+<style>
+  .share { width: 1200px; height: 630px; display: grid; grid-template-columns: 560px 1fr; background: var(--bg); overflow: hidden; }
+  .share-left { display: grid; place-items: center; background: var(--panel); border-right: 6px solid var(--gold); }
+  .share-left .medallion { transform: scale(1.6); }
+  .share-icon { display: grid; place-items: center; width: 100%; }
+  .share-phrase { text-align: center; }
+  .share-right { display: flex; flex-direction: column; justify-content: center; gap: 18px; padding: 56px; }
+  .share-right .kid-title { font-size: 3.8rem; margin: 0; }
+  .share-right .station-name { font-size: 1.6rem; }
+  .share-phrase { font-family: var(--ar-display); }
+  .share-trait { font: 700 2.1rem/1.2 var(--display); color: var(--rose); margin: 0; }
+  .share-line { font: 400 1.5rem/1.4 var(--body); color: var(--muted); margin: 0; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }
+  .share-mark { margin-top: auto; font: 700 1.5rem/1 var(--body); color: var(--muted); }
+  :global(*) { animation: none !important; transition: none !important; }
+</style>
