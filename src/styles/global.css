@@ -169,8 +169,17 @@ button {
   display: flex;
   gap: 8px;
   overflow-x: auto;
-  padding-bottom: 4px;
+  padding: 2px 24px 8px;
   scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--gold) 55%, transparent) transparent;
+  /* Fade both ends so a cut-off chip reads as "more this way"; padding keeps the first and last chips clear of it. */
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 24px,
+    #000 calc(100% - 24px),
+    transparent
+  );
   scroll-snap-type: x proximity;
   scroll-padding-inline: 24px;
   overscroll-behavior-x: contain;
