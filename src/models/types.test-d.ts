@@ -1,3 +1,4 @@
+import type { StationId } from "@/data/stations";
 import { draft } from "@/models/review";
 import { defineStation } from "@/models/station";
 
@@ -73,3 +74,6 @@ export const _noCharTrait = defineStation({
     { kind: "karama", trait: "Brave", title: "t", line: "l" },
   ],
 });
+
+// @ts-expect-error not a station id
+export const _badStationId: StationId = "anything-goes";

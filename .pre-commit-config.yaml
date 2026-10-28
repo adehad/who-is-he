@@ -25,6 +25,8 @@ repos:
         types: [text]
         # data/ is upstream sunnah.com text (concept/ is excluded globally).
         exclude: ^(data/|bun\.lock$)
+        # "tread" is correct English in a sunnah.com gloss.
+        args: [--ignore-words-list, tread]
   - repo: https://github.com/adehad/pre-commit-hooks
     rev: e66da79af48d09c0c6a64016a636e1db5afc3b53
     hooks:

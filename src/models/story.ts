@@ -1,5 +1,6 @@
 import type { BackdropId } from "@/art/backdrops";
 import type { PropId } from "@/art/props";
+import type { StationId } from "@/data/stations";
 import type { Ref } from "@/models/ref";
 import type { Review } from "@/models/review";
 
@@ -18,7 +19,7 @@ export interface Beat {
   lines: string[];
   prompt?: string | string[];
   refs?: Ref[];
-  stations?: string[];
+  stations?: StationId[];
   recap?: boolean;
   note?: string;
   review?: Review;
