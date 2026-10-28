@@ -42,3 +42,25 @@ repos:
         entry: bunx --bun biome check --write --no-errors-on-unmatched --files-ignore-unknown=true
         language: system
         files: \.(ts|js|mjs|json|jsonc|astro|css)$
+      # Slow checks run on push, not every commit.
+      - id: astro-check
+        name: astro check (types)
+        entry: bun --bun astro check
+        language: system
+        pass_filenames: false
+        files: \.(ts|astro|json)$
+        stages: [pre-push]
+      - id: site-checks
+        name: site checks (order, refs, og freshness)
+        entry: bun scripts/check.ts
+        language: system
+        pass_filenames: false
+        files: ^(src/|scripts/|public/og/|data/)
+        stages: [pre-push]
+      - id: bun-test
+        name: bun test
+        entry: bun test
+        language: system
+        pass_filenames: false
+        files: ^(src/|data/)
+        stages: [pre-push]

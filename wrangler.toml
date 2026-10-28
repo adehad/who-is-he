@@ -1,0 +1,11 @@
+# Cloudflare Workers Builds: branch preview URLs.
+# Dashboard build command: bun install && bun run build (package scripts run Astro on Bun).
+# The Workers Builds image ships Bun (default 1.4.4, checked 2026-10-28); it picks the version
+# from the packageManager field in package.json (exact version) or a BUN_VERSION build variable,
+# so no extra setup is needed and it stays in step with package.json.
+name = "who-is-he"
+compatibility_date = "2026-10-28"
+
+[assets]
+directory = "./dist/"
+not_found_handling = "404-page"
