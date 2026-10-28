@@ -5,7 +5,7 @@ const base = (process.env.BASE_PATH || "/").replace(/\/?$/, "/");
 const { count, size, warnings } = await generateSW({
   globDirectory: "dist",
   // woff (non-woff2) font duplicates are left out deliberately.
-  globPatterns: ["**/*.{html,js,css,woff2,svg,ico,png,webmanifest}"],
+  globPatterns: ["**/*.{html,js,css,json,woff2,svg,ico,png,webmanifest}"],
   globIgnores: ["og/**", "screenshots/**", "share/**"],
   swDest: "dist/sw.js",
   modifyURLPrefix: { "": base },

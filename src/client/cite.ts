@@ -1,7 +1,7 @@
 import { BOOKS } from "@/data/books";
-import { TEXTS } from "@/data/texts";
 import type { Ref } from "@/models/ref";
 import { h, type Kid } from "./dom";
+import { textFor } from "./texts";
 
 export interface Cite {
   label: string;
@@ -11,7 +11,7 @@ export interface Cite {
 }
 
 export function cite(ref: Ref): Cite {
-  const t = TEXTS[ref];
+  const t = textFor(ref);
   const [col = "", n = ""] = ref.split(":");
   // t.sunnah is the real sunnah.com reference, matched by Arabic text (scripts/match_sunnah.py).
   const num = t.sunnah ? (t.sunnah.ref.split(":")[1] ?? "") : n;
@@ -26,7 +26,7 @@ export function cite(ref: Ref): Cite {
 
 export function sourceBlock(ref: Ref, extra: Kid[] = []): HTMLDivElement {
   const c = cite(ref);
-  const t = TEXTS[ref];
+  const t = textFor(ref);
   return h(
     "div",
     { class: "meta" },

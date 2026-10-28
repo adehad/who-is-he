@@ -53,6 +53,7 @@ const DIST_PAGES = [
 
 // Built pages carry og meta, noindex, the draft strip and a real absolute og:image.
 function checkDistPages() {
+  if (!existsSync("dist/texts.json")) fail("missing dist/texts.json");
   for (const p of DIST_PAGES) {
     const f = `dist/${p}`;
     if (!existsSync(f)) {

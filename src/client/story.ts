@@ -6,11 +6,11 @@ import { COVERS, type CoverId, SKINS } from "@/art/skins";
 import { STATIONS, type StationId } from "@/data/stations";
 import { STORY } from "@/data/story";
 import { PARTS } from "@/data/story/parts";
-import { TEXTS } from "@/data/texts";
 import type { Beat } from "@/models/story";
 import { sourceBlock } from "./cite";
 import { $, $as, corners, h, raw, replay } from "./dom";
 import { pathFor } from "./router";
+import { hasText } from "./texts";
 
 export const story: {
   i: number;
@@ -238,9 +238,9 @@ function renderStoryAdult(): void {
     return;
   }
   const refs = b.refs ?? [];
-  const have = refs.filter((r) => TEXTS[r]);
+  const have = refs.filter(hasText);
   // Guards JSON/type drift: Ref is typed from texts.json, but a stale build could still miss one.
-  const missing = refs.filter((r) => !TEXTS[r]);
+  const missing = refs.filter((r) => !hasText(r));
   $("sadult").replaceChildren(
     ...[
       banner,

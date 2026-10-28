@@ -4,6 +4,7 @@ import { $, $as, replay } from "./dom";
 import { go, render, state } from "./learn";
 import { parse, push } from "./router";
 import { applyChild, renderStory, story, storyGo } from "./story";
+import { loadTexts, showTextsError } from "./texts";
 
 type Mode = "learn" | "story";
 const isMode = (m: string | null | undefined): m is Mode => m === "learn" || m === "story";
@@ -63,70 +64,74 @@ function setMode(
   }
 }
 
-/* ---- Wiring ---- */
+/* ---- Wiring and first render, once the texts have loaded ---- */
 
-const step = (d: number) => (mode === "story" ? storyGo(story.i + d) : go(state.i + d));
-$("back").addEventListener("click", () => go(state.i - 1));
-$("next").addEventListener("click", () => go(state.i + 1));
-$("sback").addEventListener("click", () => storyGo(story.i - 1));
-$("snext").addEventListener("click", () => storyGo(story.i + 1));
-for (const b of modeButtons())
-  b.addEventListener("click", () => {
-    const m = b.dataset.mode;
-    if (isMode(m) && m !== mode) setMode(m);
+function start(): void {
+  const step = (d: number) => (mode === "story" ? storyGo(story.i + d) : go(state.i + d));
+  $("back").addEventListener("click", () => go(state.i - 1));
+  $("next").addEventListener("click", () => go(state.i + 1));
+  $("sback").addEventListener("click", () => storyGo(story.i - 1));
+  $("snext").addEventListener("click", () => storyGo(story.i + 1));
+  for (const b of modeButtons())
+    b.addEventListener("click", () => {
+      const m = b.dataset.mode;
+      if (isMode(m) && m !== mode) setMode(m);
+    });
+  window.addEventListener("popstate", () => {
+    const r = parse(location.pathname);
+    if (!r) return;
+    if (r.mode === "learn" && r.station !== state.i) {
+      state.i = r.station;
+      state.seen.add(r.station);
+      state.tab = "char";
+    }
+    setMode(r.mode, true, { push: false, persist: false });
   });
-window.addEventListener("popstate", () => {
-  const r = parse(location.pathname);
-  if (!r) return;
-  if (r.mode === "learn" && r.station !== state.i) {
-    state.i = r.station;
-    state.seen.add(r.station);
-    state.tab = "char";
+  // In-app links are real <a data-route href> (so new tab / copy link work); plain clicks open in place.
+  document.addEventListener("click", (e) => {
+    if (!(e.target instanceof Element)) return;
+    const a = e.target.closest("a[data-route]");
+    if (!(a instanceof HTMLAnchorElement)) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    const r = parse(new URL(a.href).pathname);
+    if (!r) return;
+    e.preventDefault();
+    if (r.mode === "story") openStory(Number(a.dataset.beat ?? 0));
+    else openStationAt(r.station);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.target instanceof Element && e.target.closest("input, summary")) return;
+    if (e.key === "ArrowRight") step(1);
+    if (e.key === "ArrowLeft") step(-1);
+  });
+  let x0: number | null = null;
+  for (const id of ["stage", "sstage"]) {
+    $(id).addEventListener("pointerdown", (e) => {
+      x0 = e.clientX;
+    });
+    $(id).addEventListener("pointerup", (e) => {
+      if (x0 == null) return;
+      const dx = e.clientX - x0;
+      x0 = null;
+      if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
+    });
   }
-  setMode(r.mode, true, { push: false, persist: false });
-});
-// In-app links are real <a data-route href> (so new tab / copy link work); plain clicks open in place.
-document.addEventListener("click", (e) => {
-  if (!(e.target instanceof Element)) return;
-  const a = e.target.closest("a[data-route]");
-  if (!(a instanceof HTMLAnchorElement)) return;
-  if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-  const r = parse(new URL(a.href).pathname);
-  if (!r) return;
-  e.preventDefault();
-  if (r.mode === "story") openStory(Number(a.dataset.beat ?? 0));
-  else openStationAt(r.station);
-});
-document.addEventListener("keydown", (e) => {
-  if (e.target instanceof Element && e.target.closest("input, summary")) return;
-  if (e.key === "ArrowRight") step(1);
-  if (e.key === "ArrowLeft") step(-1);
-});
-let x0: number | null = null;
-for (const id of ["stage", "sstage"]) {
-  $(id).addEventListener("pointerdown", (e) => {
-    x0 = e.clientX;
-  });
-  $(id).addEventListener("pointerup", (e) => {
-    if (x0 == null) return;
-    const dx = e.clientX - x0;
-    x0 = null;
-    if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
-  });
+
+  const grown = $as("grown", HTMLInputElement);
+  try {
+    grown.checked = localStorage.getItem("grown") === "1";
+  } catch {}
+  const applyGrown = () => {
+    app.classList.toggle("grown", grown.checked);
+    try {
+      localStorage.setItem("grown", grown.checked ? "1" : "0");
+    } catch {}
+  };
+  grown.addEventListener("change", applyGrown);
+  applyGrown();
+  for (const c of document.querySelectorAll(".corner")) c.innerHTML = CORNER;
+  applyChild();
+  setMode(mode, false);
 }
 
-const grown = $as("grown", HTMLInputElement);
-try {
-  grown.checked = localStorage.getItem("grown") === "1";
-} catch {}
-const applyGrown = () => {
-  app.classList.toggle("grown", grown.checked);
-  try {
-    localStorage.setItem("grown", grown.checked ? "1" : "0");
-  } catch {}
-};
-grown.addEventListener("change", applyGrown);
-applyGrown();
-for (const c of document.querySelectorAll(".corner")) c.innerHTML = CORNER;
-applyChild();
-setMode(mode, false);
+loadTexts().then(start, showTextsError);
