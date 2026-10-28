@@ -1,0 +1,42 @@
+# concept/ is the frozen prototype; hooks must not rewrite it.
+exclude: ^concept/
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: end-of-file-fixer
+        exclude: ^data/.*\.json$
+      - id: trailing-whitespace
+        exclude: ^data/.*\.json$
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: fix-byte-order-marker
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-vcs-permalinks
+      - id: check-yaml
+      - id: check-json
+        exclude: ^tsconfig\.json$
+      - id: check-toml
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.4.3
+    hooks:
+      - id: codespell
+        types: [text]
+        # data/ is upstream sunnah.com text (concept/ is excluded globally).
+        exclude: ^(data/|bun\.lock$)
+  - repo: https://github.com/adehad/pre-commit-hooks
+    rev: e66da79af48d09c0c6a64016a636e1db5afc3b53
+    hooks:
+      - id: arabic-presentation-form
+        types_or: [text, ts, json, markdown]
+        args: [--excluded-chars, "(ﷺ)"]
+        files: ^(src/data/|data/)
+  - repo: local
+    hooks:
+      # Biome from our own devDependency, run by Bun (the biomejs/pre-commit hook needs Node).
+      - id: biome-check
+        name: biome check
+        entry: bunx --bun biome check --write --no-errors-on-unmatched --files-ignore-unknown=true
+        language: system
+        files: \.(ts|js|mjs|json|jsonc|astro|css)$
