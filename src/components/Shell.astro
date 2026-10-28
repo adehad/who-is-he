@@ -1,0 +1,78 @@
+---
+interface Props {
+  mode: "learn" | "story";
+  station: number;
+  honourStoredMode: boolean;
+}
+const { mode, station, honourStoredMode } = Astro.props;
+---
+<div class="wrap" id="app" data-mode={mode} data-station={station} data-honour-stored-mode={honourStoredMode ? "1" : "0"}>
+  <header class="top">
+    <div class="brand"><h1>Little Hilya</h1><span lang="ar">حِلْيَة</span></div>
+    <div class="seg" id="modes" role="group" aria-label="Mode">
+      <button data-mode="learn" aria-pressed="true">Learn</button><button data-mode="story" aria-pressed="false">Story</button>
+    </div>
+    <label class="toggle" for="grown">
+      <input type="checkbox" id="grown">
+      <span class="switch" aria-hidden="true"></span>
+      Grown-up notes
+    </label>
+  </header>
+
+  <div class="mode" id="learn" hidden={mode !== "learn"}>
+  <nav class="index" id="index" aria-label="Stations"></nav>
+
+  <section class="hilya stage" id="stage" aria-live="polite">
+    <div class="hilya-inner">
+      <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+      <div class="basmala" lang="ar">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيمِ</div>
+      <div class="medal-wrap">
+        <svg class="ring" id="ring" viewBox="0 0 100 100" aria-hidden="true"></svg>
+        <div class="medallion">
+          <div id="icon" aria-hidden="true"></div>
+          <div class="phrase" lang="ar" id="phrase"></div>
+        </div>
+      </div>
+      <div class="crescent" aria-hidden="true">
+        <svg viewBox="0 0 290 26" preserveAspectRatio="none"><path d="M4 2 Q145 44 286 2 Q145 26 4 2Z" fill="currentColor"/></svg>
+      </div>
+      <div class="station-name" id="sname"></div>
+      <h2 class="kid-title" id="ktitle"></h2>
+      <p class="kid-line" id="kline"></p>
+      <div class="verse">
+        <span lang="ar">وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍ</span>
+        <small>“And indeed, you are of a great moral character.” (Qur’an 68:4)</small>
+      </div>
+    </div>
+  </section>
+
+  <div class="chips" role="tablist" id="chips"></div>
+  <section class="cards" id="cards" role="tabpanel"></section>
+
+  <section class="adult adult-section" id="adult"></section>
+
+  <nav class="nav" aria-label="Walkthrough">
+    <button class="back" id="back">Back</button>
+    <span class="count" id="count"></span>
+    <button id="next">Next</button>
+  </nav>
+  </div>
+
+  <div class="mode" id="story" data-cover="hijab" hidden={mode !== "story"}>
+    <nav class="trail" id="trail" aria-label="Story progress"></nav>
+    <section class="hilya story-stage" id="sstage" aria-live="polite">
+      <div class="hilya-inner" id="sinner"></div>
+    </section>
+    <section class="adult adult-section" id="sadult"></section>
+    <nav class="nav" aria-label="Story">
+      <button class="back" id="sback">Back</button>
+      <span class="count" id="scount"></span>
+      <button id="snext">Next</button>
+    </nav>
+  </div>
+
+  <p class="footnote">All content is draft and awaits scholarly review. Texts, references and grades from <a href="https://sunnah.com">sunnah.com</a>, used with permission.</p>
+</div>
+<script>
+  import "@/client/app";
+</script>

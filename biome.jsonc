@@ -5,5 +5,26 @@
     "includes": ["src/**", "scripts/**", "astro.config.mjs", "biome.jsonc", "tsconfig.json"]
   },
   "formatter": { "enabled": true, "indentStyle": "space", "lineEnding": "lf", "lineWidth": 100 },
-  "linter": { "enabled": true, "rules": { "preset": "recommended" } }
+  "linter": { "enabled": true, "rules": { "preset": "recommended" } },
+  "overrides": [
+    {
+      // Biome only sees the frontmatter of .astro files, so template usage looks "unused".
+      "includes": ["**/*.astro"],
+      "linter": {
+        "rules": {
+          "correctness": { "noUnusedVariables": "off", "noUnusedImports": "off" }
+        }
+      }
+    },
+    {
+      // Concept CSS is ported verbatim: !important is used for reduced-motion, ordering is deliberate.
+      "includes": ["src/styles/global.css"],
+      "linter": {
+        "rules": {
+          "complexity": { "noImportantStyles": "off" },
+          "style": { "noDescendingSpecificity": "off" }
+        }
+      }
+    }
+  ]
 }

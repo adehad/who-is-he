@@ -1,0 +1,9 @@
+import "@fontsource/amiri/400.css";
+import "@fontsource/amiri/700.css";
+import "@fontsource/aref-ruqaa/700.css";
+import "@fontsource/atkinson-hyperlegible/400.css";
+import "@fontsource/atkinson-hyperlegible/400-italic.css";
+import "@fontsource/atkinson-hyperlegible/700.css";
+import "@fontsource/baloo-2/500.css";
+import "@fontsource/baloo-2/700.css";
+import "@fontsource/baloo-2/800.css";
