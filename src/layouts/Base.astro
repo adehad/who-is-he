@@ -9,6 +9,7 @@ interface Props {
 const { meta } = Astro.props;
 const url = absolute(Astro.site, meta.path);
 const image = absolute(Astro.site, meta.image);
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 ---
 <!doctype html>
 <html lang="en">
@@ -29,9 +30,16 @@ const image = absolute(Astro.site, meta.image);
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content={meta.imageAlt}>
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="manifest" href={`${base}manifest.webmanifest`}>
+  <link rel="icon" href={`${base}icons/favicon.ico`} sizes="48x48">
+  <link rel="apple-touch-icon" href={`${base}icons/apple-touch-icon-180x180.png`}>
+  <meta name="theme-color" content="#e6f0ea">
 </head>
 <body>
   <div class="draft-strip" data-draft-strip>Draft, pending scholarly review</div>
   <slot />
+  <script>
+    import "@/client/sw";
+  </script>
 </body>
 </html>

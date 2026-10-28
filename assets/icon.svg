@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- App icon: the star medallion from src/art/icons.ts (light theme) on parchment, within the central 80% safe zone. -->
+  <rect width="512" height="512" fill="#fbfcf7"/>
+  <circle cx="256" cy="256" r="186" fill="none" stroke="#a87a22" stroke-width="14"/>
+  <g transform="translate(256 256) scale(2.85) translate(-60 -60)">
+    <rect x="28" y="28" width="64" height="64" rx="6" fill="#f1e2bd" stroke="#a87a22" stroke-width="3"/>
+    <rect x="28" y="28" width="64" height="64" rx="6" transform="rotate(45 60 60)" fill="#f1e2bd" stroke="#a87a22" stroke-width="3"/>
+    <circle cx="60" cy="60" r="16" fill="#c2577a"/>
+    <circle cx="60" cy="60" r="7" fill="#fbfcf7"/>
+  </g>
+</svg>

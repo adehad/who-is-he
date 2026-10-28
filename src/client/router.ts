@@ -1,4 +1,5 @@
 import { STATIONS } from "@/data/stations";
+import { swUpdated } from "./sw";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 export type Route = { mode: "learn"; station: number } | { mode: "story" };
@@ -18,8 +19,13 @@ export function parse(pathname: string): Route | null {
   return i > 0 ? { mode: "learn", station: i } : null;
 }
 
-/** Push only when the path changes, so re-renders don't flood history. */
+/**
+ * Push only when the path changes, so re-renders don't flood history. After a service worker
+ * update the page's HTML may be stale, so load the route as a full page instead.
+ */
 export function push(r: Route): void {
   const p = pathFor(r);
-  if (location.pathname !== p) history.pushState(r, "", p);
+  if (location.pathname === p) return;
+  if (swUpdated()) location.assign(p);
+  else history.pushState(r, "", p);
 }
