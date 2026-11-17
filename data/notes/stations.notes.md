@@ -136,3 +136,14 @@ Open points:
 - بسط / سبط الكفين (bukhari:5907): the rendering, and whether the sunnah.com "soft" should be replaced.
 - The touched-hair chains (see Black hair report).
 - Not used: the generosity reading of رحب الراحة as a physiognomic sign (qari-jam:1/40 gives it only as «قيل»); lisan:سبط's "open-handed", which Ibn Ḥajar says is not meant here; quran:48:10 and 8:17, which put a divine attribute or a battle in front of children; Ḥanẓala's healing palm (ahmad:20665), kept back to avoid crowding the station.
+
+## Feet
+
+Physical: Hind's feet and walk (shamail:8), Anas's ṣaḥīḥ "when he walked he leaned forward" (muslim:2330b) and Abū Hurayra's "the earth seemed folded up for him" (shamail:122). The notes carry the lexical meanings (خمص, مسيح, صبب, قلع, هون) and say which readings are open.
+
+Character: the swollen feet (shamail:260, with the 17:3 echo of Nūḥ, framed as an echo), walking with the widow and the poor (nasai:1414), and walking behind his Companions and greeting first (shamail:8, Ḍa‘īf, with al-Qārī's shepherd reading). Signs: Uḥud (bukhari:3686) and Jābir's tired camel (ahmad:14195; Muslim has it without the foot).
+
+Open points:
+- The hollow of the foot: Hind's خمصان الأخمصين against Abū Hurayra's "no hollow" (adab:1155, ungraded; bayhaqi-dalail:1/274-2 has a gap in its chain). The gloss says "drawn in" without taking a side.
+- Which صبب wording to show (من صبب, في صبب) and whether to give Ibn ‘Abbās's "strength of body" reading.
+- Not used: the footprint likened to Ibrāhīm's at the Maqām and the rabbi who knew his walk (ibnsad:1/117-3, 5/458, 1/412-2), all through al-Wāqidī (matrūk); Ḥirā’ (abunuaym-dalail:337) and Thabīr (tirmidhi:3703), which repeat Uḥud; ‘Alī healed with a nudge of the foot (tirmidhi:3564), whose context is a prayer to die; Qur’an 17:37, 5:6, 38:42, 34:10 and 57:28, which are about others or only images.
