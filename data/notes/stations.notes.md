@@ -40,7 +40,7 @@ Chapter 1 follows the long descriptions (#7 ‘Alī, #8 Hind) from head to toe. 
 
 ## Signs
 
-26 cited signs (9 mujiza, 7 karama, 10 khasisa) and 1 research card (hands). The kind on every card is our own classification, not the source's.
+31 cited signs (11 mujiza, 8 karama, 12 khasisa) and 1 research card (hands). The kind on every card is our own classification, not the source's.
 
 Needing a scholar:
 - **stature**: “Never looking shorter” rests on one route, al-Bayhaqī’s Dalāʾil (bayhaqi-dalail:1/285) through Ṣubayḥ al-Farghānī, whom al-Bayhaqī calls not well known. Al-Qārī counts it a miracle (mujiza); whether to present it as one is open. ‘Alī’s «إذا جاء مع القوم غمرهم» (ahmad:1300) is separate and sits in the station’s descriptions.
@@ -48,7 +48,6 @@ Needing a scholar:
 Other candidates found but not used:
 - Dream khasisa: "whoever sees me in a dream has seen me, for Satan cannot take my form" (shamail:407, bukhari:110). It could close the walkthrough or go on **face**.
 - Hudaybiyya well: he spat into a bucket from the well and the well then watered everyone (bukhari:4151). This could be a 4th sign for **mouth**.
-- Hair shared out at Hajj (muslim:1305b) and Abu Ṭalḥa taking his hair (bukhari:171). These could go on **hair**.
 
 `cite()` needs these new `BOOKS` entries:
 - `tirmidhi` ("Jāmi‘ al-Tirmidhī", ch 49)
