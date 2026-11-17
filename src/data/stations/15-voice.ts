@@ -5,15 +5,14 @@ export default defineStation({
   id: "voice",
   name: "His voice",
   icon: "ripples",
-  phrase: "حَسَنَ الْوَجْهِ، حَسَنَ الصَّوْتِ",
+  phrase: "مَا سَمِعْتُ أَحَدًا أَحْسَنَ صَوْتًا مِنْهُ",
   title: "A beautiful voice",
   line: "He had a beautiful voice. He recited the Qur’an slowly and clearly, letter by letter, stretching out the long sounds.",
   physical: [
     {
-      ref: "shamail:319",
-      phrase: "حَسَنَ الْوَجْهِ، حَسَنَ الصَّوْتِ",
-      gloss: "Endowed with a handsome face and a beautiful voice.",
-      note: "These are the words of Qatāda (a Successor), not a Companion. Its last clause “he did not chant in a quavering tone” sits oddly beside #307, where the same verb رَجَّعَ is translated “recited in a quivering voice”.",
+      ref: "bukhari:769",
+      phrase: "وَمَا سَمِعْتُ أَحَدًا أَحْسَنَ صَوْتًا مِنْهُ أَوْ قِرَاءَةً",
+      gloss: "I never heard anyone with a more beautiful voice or recitation than him.",
     },
     {
       ref: "shamail:313",
@@ -49,6 +48,12 @@ export default defineStation({
       line: "At Minā, the people could hear what he said even while they were sitting in their own tents.",
       ref: "abudawud:1957",
       note: "Arabic فَفُتِحَتْ أَسْمَاعُنَا, “our ears were opened (for us)”; dataset English “Our ears were open” loses that.",
+    },
+    {
+      kind: "khasisa",
+      title: "Described before he came",
+      line: "The Torah described him long before he was born: not harsh, not rough, and never shouting in the markets.",
+      ref: "bukhari:2125",
     },
   ],
   mirror: "Read a few words to the mirror, slowly and clearly. How does it feel to take your time?",

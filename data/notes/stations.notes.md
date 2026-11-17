@@ -23,7 +23,7 @@ Chapter 1 follows the long descriptions (#7 ‘Alī, #8 Hind) from head to toe. 
 | 13 | hair | ch3–6 + ch1 #8 | seal |
 | 14 | speech | ch33 #222–224 | hair |
 | 15 | smile | ch34 #224–232 | speech |
-| 16 | voice | ch44 #313–319 | smile |
+| 16 | voice | ch44 #313–317 + bukhari:769 | smile |
 | 17 | tears | ch45 #321–324 | voice |
 
 ## Merges
@@ -40,7 +40,7 @@ Chapter 1 follows the long descriptions (#7 ‘Alī, #8 Hind) from head to toe. 
 
 ## Signs
 
-15 cited signs (6 mujiza, 5 karama, 4 khasisa) and 1 research card. The kind on every card is our own classification, not the source's.
+24 cited signs (8 mujiza, 7 karama, 9 khasisa) and 2 research cards (stature, hands). The kind on every card is our own classification, not the source's.
 
 Research needed:
 - **stature**: the report that he looked taller than tall people walking beside him. It is not in Bukhari, Muslim, Tirmidhi, Abu Dawud, Mishkat or the dataset's partial Ahmad.
@@ -87,7 +87,6 @@ These are recorded in `corrections.json`. `src/data/texts.ts` applies only the "
 - **chest** sign bukhari:349 (Jibrīl opening and washing his chest). muslim:162c (number from the add-on, not yet checked on sunnah.com), the childhood version, is more graphic ("took out the heart… blood-clot"), so I used the Isrā’ version instead.
 - **seal**: "A sign for Salmān" is labelled khasisa because the Seal itself is unique to him. The date palms are labelled mujiza.
 - **voice**: Minā (abudawud:1957) is labelled mujiza. It could equally be karama.
-- **voice** physical shamail:319 is Qatāda's own statement (a Successor), not a Companion's description.
 - **neck**: "turned all the way round" is my reading of الْتَفَتَ مَعًا/جميعا, following the usual commentary.
 - **feet** and **mouth** use saliva and foot-strike reports. The kid lines say "put a little of his saliva" and "struck it with his foot", matching the dataset English.
 - Station phrases were copied from the dataset. `bun run check` checks that each one occurs in its hadith's Arabic, ignoring voweling and punctuation.
