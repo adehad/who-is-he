@@ -8,6 +8,6 @@ export default defineBeat({
     "One little spray. He had a small bottle he used for perfume, and he never said no when someone offered him perfume.",
   ],
   prompt: "How can you leave a sweet feeling wherever you go?",
-  refs: ["shamail:211", "shamail:212"],
+  refs: ["shamail:215", "shamail:216"],
   stations: ["fragrance"],
 });

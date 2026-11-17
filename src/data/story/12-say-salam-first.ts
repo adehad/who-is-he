@@ -6,6 +6,6 @@ export default defineBeat({
   prop: "salam",
   lines: ["“As-salāmu ‘alaykum!” He was always the first to greet anyone he met."],
   prompt: "Who will you greet first today?",
-  refs: ["shamail:7"],
+  refs: ["shamail:8"],
   stations: ["speech", "voice"],
 });

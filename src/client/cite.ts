@@ -6,22 +6,17 @@ import { textFor } from "./texts";
 export interface Cite {
   label: string;
   url: string;
-  exact: boolean;
   grade: string | null;
 }
 
 export function cite(ref: Ref): Cite {
   const t = textFor(ref);
-  const [col = "", n = ""] = ref.split(":");
-  // t.sunnah is the real sunnah.com reference, matched by Arabic text (scripts/match_sunnah.py).
-  const num = t.sunnah ? (t.sunnah.ref.split(":")[1] ?? "") : n;
-  const url = t.sunnah ? `https://sunnah.com/${t.sunnah.ref}` : `https://sunnah.com/${col}/${t.ch}`;
-  const grade = t.sunnah?.grade ?? null;
-  if (col === "shamail")
-    return { label: `Shamāʾil ${num} (ch. ${t.ch})`, url, exact: !!t.sunnah, grade };
+  const [col = "", num = ""] = ref.split(":");
+  const url = `https://sunnah.com/${ref}`;
+  if (col === "shamail") return { label: `Shamāʾil ${num} (ch. ${t.ch})`, url, grade: t.grade };
   const b = BOOKS[col] ?? { name: col };
   const book = b.books?.[t.ch] ?? t.ch_en ?? "Book";
-  return { label: `${b.name}, ${book} (${t.ch}): ${num}`, url, exact: !!t.sunnah, grade };
+  return { label: `${b.name}, ${book} (${t.ch}): ${num}`, url, grade: t.grade };
 }
 
 export function sourceBlock(ref: Ref, extra: Kid[] = []): HTMLDivElement {
@@ -31,7 +26,6 @@ export function sourceBlock(ref: Ref, extra: Kid[] = []): HTMLDivElement {
     "div",
     { class: "meta" },
     h("a", { class: "cite", href: c.url, target: "_blank", rel: "noopener" }, c.label),
-    c.exact ? null : h("span", {}, "(opens the book; number to verify)"),
     c.grade
       ? h(
           "span",

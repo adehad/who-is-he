@@ -3,6 +3,7 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import rawTexts from "#data/texts.json";
 import { STATIONS } from "@/data/stations";
 import { STORY } from "@/data/story";
+import { normaliseArabic } from "./corpus/arabic";
 import { ogHashes } from "./og-hash";
 
 const problems: string[] = [];
@@ -32,6 +33,20 @@ const INTENTIONALLY_UNUSED = new Set<string>([]); // add refs here with a commen
 function checkTextsShown() {
   for (const ref of Object.keys(rawTexts))
     if (!used.has(ref) && !INTENTIONALLY_UNUSED.has(ref)) fail(`text not shown: ${ref}`);
+}
+
+// Each station phrase is quoted from its hadith, voweling and punctuation aside.
+const letters = (s: string) =>
+  normaliseArabic(s)
+    .replace(/[^\u0621-\u064a ]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+function checkPhrasesQuoted() {
+  const texts: Record<string, { ar: string }> = rawTexts;
+  for (const s of STATIONS)
+    for (const p of s.physical)
+      if (!letters(texts[p.ref]?.ar ?? "").includes(letters(p.phrase)))
+        fail(`${s.id}: phrase not in ${p.ref}: ${p.phrase}`);
 }
 
 // og images up to date.
@@ -114,6 +129,7 @@ function checkDistPwa() {
 
 checkStationOrder();
 checkTextsShown();
+checkPhrasesQuoted();
 checkOgFresh();
 if (withDist) {
   checkDistPages();

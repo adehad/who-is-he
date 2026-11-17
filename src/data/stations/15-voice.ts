@@ -10,24 +10,24 @@ export default defineStation({
   line: "He had a beautiful voice. He recited the Qur’an slowly and clearly, letter by letter, stretching out the long sounds.",
   physical: [
     {
-      ref: "shamail:308",
+      ref: "shamail:319",
       phrase: "حَسَنَ الْوَجْهِ، حَسَنَ الصَّوْتِ",
       gloss: "Endowed with a handsome face and a beautiful voice.",
       note: "These are the words of Qatāda (a Successor), not a Companion. Its last clause “he did not chant in a quavering tone” sits oddly beside #307, where the same verb رَجَّعَ is translated “recited in a quivering voice”.",
     },
     {
-      ref: "shamail:302",
+      ref: "shamail:313",
       phrase: "قِرَاءَةً مُفَسَّرَةً حَرْفًا حَرْفًا",
       gloss: "A recitation that was explained letter by letter.",
       note: "مُفَسَّرَة here means “clear, distinct”.",
     },
     {
-      ref: "shamail:303",
+      ref: "shamail:314",
       phrase: "مَدًّا",
       gloss: "With the voice drawn out over the long vowels.",
     },
     {
-      ref: "shamail:306",
+      ref: "shamail:317",
       phrase: "كُنْتُ أَسْمَعُ قِرَاءَةَ النَّبِيِّ ﷺ، بِاللَّيْلِ وَأَنَا عَلَى عَرِيشِي",
       gloss:
         "I used to hear the recitation of the Prophet during the night while I was on my pallet.",
@@ -37,7 +37,7 @@ export default defineStation({
     {
       trait: "Unhurried",
       line: "He paused after each verse of al-Fātiḥa, taking his time with every word.",
-      ref: "shamail:304",
+      ref: "shamail:315",
       basis: "reflection",
       review: draft(),
     },
@@ -47,7 +47,7 @@ export default defineStation({
       kind: "mujiza",
       title: "Heard from far away",
       line: "At Minā, the people could hear what he said even while they were sitting in their own tents.",
-      ref: "abudawud:1958",
+      ref: "abudawud:1957",
       note: "Arabic فَفُتِحَتْ أَسْمَاعُنَا, “our ears were opened (for us)”; dataset English “Our ears were open” loses that.",
     },
   ],

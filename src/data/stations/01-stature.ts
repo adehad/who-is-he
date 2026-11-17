@@ -16,12 +16,12 @@ export default defineStation({
       note: "Dataset English attaches “brown of color” to his hair; in the Arabic أَسْمَرَ اللَّوْنِ describes his complexion.",
     },
     {
-      ref: "shamail:7",
+      ref: "shamail:8",
       phrase: "أَطْوَلُ مِنَ الْمَرْبُوعِ، وَأَقْصَرُ مِنَ الْمُشَذَّبِ",
       gloss: "He was taller than medium-sized, and shorter than the slender giant.",
     },
     {
-      ref: "shamail:7",
+      ref: "shamail:8",
       phrase: "مُعْتَدِلُ الْخَلْقِ",
       gloss: "He was well proportioned in physique.",
     },
@@ -36,7 +36,7 @@ export default defineStation({
     {
       trait: "Lovable",
       line: "‘Alī said that people who saw him suddenly felt in awe of him, but anyone who got to know him loved him.",
-      ref: "shamail:6",
+      ref: "shamail:7",
       basis: "reflection",
       review: draft(),
     },

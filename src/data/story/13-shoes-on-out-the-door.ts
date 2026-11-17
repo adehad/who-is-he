@@ -8,6 +8,6 @@ export default defineBeat({
   lines: [
     "Right shoe first! Then off you go. He walked briskly, leaning forward a little, as if walking downhill.",
   ],
-  refs: ["shamail:82", "shamail:5"],
+  refs: ["shamail:83", "shamail:5"],
   stations: ["feet"],
 });

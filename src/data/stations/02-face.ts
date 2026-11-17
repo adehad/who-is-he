@@ -10,17 +10,17 @@ export default defineStation({
   line: "His face shone like the full moon. One Companion looked at the moon, then at him, and said he was more beautiful than the moon!",
   physical: [
     {
-      ref: "shamail:7",
+      ref: "shamail:8",
       phrase: "يَتَلأْلأُ وَجْهُهُ، تَلأْلُؤَ الْقَمَرِ لَيْلَةَ الْبَدْرِ",
       gloss: "His face shone with the radiance of the moon on the night of the full moon.",
     },
     {
-      ref: "shamail:9",
+      ref: "shamail:10",
       phrase: "فَلَهُوَ عِنْدِي أَحْسَنُ مِنَ الْقَمَرِ",
       gloss: "He is indeed more beautiful, in my opinion, than the moon.",
     },
     {
-      ref: "shamail:10",
+      ref: "shamail:11",
       phrase: "بَلْ مِثْلَ الْقَمَرِ",
       gloss: "Was his face like a sword? No, it was like the moon.",
     },
@@ -29,7 +29,7 @@ export default defineStation({
     {
       trait: "Cheerful",
       line: "When he laughed, it was nearly always a happy smile.",
-      ref: "shamail:222",
+      ref: "shamail:227",
       basis: "reflection",
       review: draft(),
     },

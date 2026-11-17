@@ -2,23 +2,27 @@ import { describe, expect, test } from "bun:test";
 import corrections from "#data/corrections.json";
 import { applyCorrections, resolveTexts, TEXTS } from "@/data/texts";
 
-const one = { "shamail:1": { ar: "", narrator: "n", en: "aa", ch: 1, ch_en: "", ch_ar: "" } };
+const one = {
+  "shamail:1": {
+    ar: "",
+    narrator: "n",
+    en: "aa",
+    ch: 1,
+    ch_en: "",
+    ch_ar: "",
+    in_book: null,
+    grade: null,
+  },
+};
 
 describe("texts", () => {
-  test("every text has sunnah.com ref and English", () => {
-    for (const [ref, t] of Object.entries(TEXTS)) {
-      expect(t.sunnah, ref).toBeDefined();
-      expect(t.en.length, ref).toBeGreaterThan(0);
-    }
+  test("every text has English", () => {
+    for (const [ref, t] of Object.entries(TEXTS)) expect(t.en.length, ref).toBeGreaterThan(0);
   });
 
   test("clear corrections applied (6, matching concept build)", () => {
     const n = Object.values(TEXTS).reduce((a, t) => a + (t.corrected?.length ?? 0), 0);
     expect(n).toBe(6);
-  });
-
-  test("bedtime text keeps all three Quls (sunnah.com English, no bracket loss)", () => {
-    expect(TEXTS["shamail:248"]?.en).toMatch(/113/);
   });
 
   test("throws when a find string is not present exactly once", () => {

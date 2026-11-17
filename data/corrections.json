@@ -24,7 +24,7 @@
     "confidence": "scholar-check"
   },
   {
-    "ref": "shamail:7",
+    "ref": "shamail:8",
     "field": "en",
     "find": "My maternal aunt Hind asked the son of Abu Hala",
     "replace": "I asked my maternal uncle Hind, the son of Abu Hala",
@@ -32,7 +32,7 @@
     "confidence": "clear"
   },
   {
-    "ref": "shamail:7",
+    "ref": "shamail:8",
     "field": "en",
     "find": "someone who did not reflect on him would consider him haughty",
     "replace": "someone who did not look at him carefully would think his nose high-bridged",
@@ -40,15 +40,7 @@
     "confidence": "scholar-check"
   },
   {
-    "ref": "shamail:8",
-    "field": "en",
-    "find": "He replied:\" endowed with a lean heel.”",
-    "replace": null,
-    "reason": "Shu‘ba’s question about ضَلِيعَ الْفَمِ is answered with the explanation of مَنْهُوسَ الْعَقِبِ; the other two answers are missing. The dataset Arabic has no Q&A at all. The parallel in Ṣaḥīḥ Muslim has it: مَا ضَلِيعُ الْفَمِ قَالَ عَظِيمُ الْفَمِ … مَا أَشْكَلُ الْعَيْنِ قَالَ طَوِيلُ شَقِّ الْعَيْنِ … مَا مَنْهُوسُ الْعَقِبِ قَالَ قَلِيلُ لَحْمِ الْعَقِبِ. Needs the full Arabic and a translator.",
-    "confidence": "scholar-check"
-  },
-  {
-    "ref": "shamail:20",
+    "ref": "shamail:21",
     "field": "en",
     "find": "The date palms then bore their annual crop,",
     "replace": "The date palms then bore fruit that same year,",
@@ -56,7 +48,7 @@
     "confidence": "clear"
   },
   {
-    "ref": "shamail:20",
+    "ref": "shamail:21",
     "field": "en",
     "find": "so it bore its annual crop.",
     "replace": "so it bore fruit that same year.",
@@ -64,7 +56,7 @@
     "confidence": "clear"
   },
   {
-    "ref": "shamail:27",
+    "ref": "shamail:28",
     "field": "narrator",
     "find": "Umm Hani bint 'Ali ibn Talib said:",
     "replace": "Umm Hani bint Abi Talib said:",
@@ -72,7 +64,7 @@
     "confidence": "clear"
   },
   {
-    "ref": "shamail:27",
+    "ref": "shamail:28",
     "field": "en",
     "find": "arrived boldly at Mecca",
     "replace": "came to Mecca on one occasion",
@@ -80,7 +72,7 @@
     "confidence": "clear"
   },
   {
-    "ref": "shamail:40",
+    "ref": "shamail:41",
     "field": "en",
     "find": "(Al-Qur'an; 74))",
     "replace": "(Al-Qur'an; 78))",
@@ -88,7 +80,7 @@
     "confidence": "clear"
   },
   {
-    "ref": "shamail:42",
+    "ref": "shamail:43",
     "field": "en",
     "find": "with a son of mine, who said: 'So I was shown him, and I said when I saw him:",
     "replace": "with a son of mine, and I pointed him out to him, and I said when I saw him:",
@@ -96,15 +88,7 @@
     "confidence": "scholar-check"
   },
   {
-    "ref": "shamail:49",
-    "field": "en",
-    "find": "\"Color the edges of the eyelids with antimony ,and three times in that.",
-    "replace": null,
-    "reason": "Truncated. The Arabic continues: فَإِنَّهُ يَجْلُو الْبَصَرَ، وَيُنْبِتُ الشَّعْرَ وَزَعَمَ أَنَّ النَّبِيَّ ﷺ كَانَتْ لَهُ مُكْحُلَةٌ يَكْتَحِلُ مِنْهَا كُلَّ لَيْلَةٍ، ثَلاثَةً فِي هَذِهِ، وَثَلاثَةً فِي هَذِهِ. The English drops the benefits, the kohl-pot and the nightly use. Needs a full translation.",
-    "confidence": "scholar-check"
-  },
-  {
-    "ref": "shamail:217",
+    "ref": "shamail:222",
     "field": "en",
     "find": "he would pause periodically, so that",
     "replace": "he would speak clearly and distinctly, so that",
@@ -112,7 +96,7 @@
     "confidence": "scholar-check"
   },
   {
-    "ref": "shamail:221",
+    "ref": "shamail:226",
     "field": "en",
     "find": "anyone with a more cheerful countenance than",
     "replace": "anyone who smiled more than",
@@ -120,7 +104,7 @@
     "confidence": "scholar-check"
   },
   {
-    "ref": "shamail:225",
+    "ref": "shamail:230",
     "field": "en",
     "find": "Same as the above hadith.",
     "replace": null,
@@ -128,23 +112,23 @@
     "confidence": "scholar-check"
   },
   {
-    "ref": "shamail:307",
+    "ref": "shamail:318",
     "field": "en",
     "find": "He recited in a quivering voice.",
     "replace": "He recited with tarjī‘ (repeating and modulating his voice).",
-    "reason": "فَقَرَأَ وَرَجَّعَ. The same verb رجّع is rendered “quivering voice” here and “quavering tone” in shamail:308 (لا يُرَجِّعُ). Neither is standard; tarjī‘ is the technical term. A scholar should pick one rendering for both.",
+    "reason": "فَقَرَأَ وَرَجَّعَ. The same verb رجّع is rendered “quivering voice” here and “quavering tone” in shamail:319 (لا يُرَجِّعُ). Neither is standard; tarjī‘ is the technical term. A scholar should pick one rendering for both.",
     "confidence": "scholar-check"
   },
   {
-    "ref": "shamail:308",
+    "ref": "shamail:319",
     "field": "en",
     "find": "he did not chant in a quavering tone.",
     "replace": "he did not use tarjī‘ (repeating and modulating his voice).",
-    "reason": "وَكَانَ لا يُرَجِّعُ: same verb as فَقَرَأَ وَرَجَّعَ in shamail:307, which is rendered differently. The two reports look contradictory and commentators reconcile them, so the rendering should be decided with a scholar.",
+    "reason": "وَكَانَ لا يُرَجِّعُ: same verb as فَقَرَأَ وَرَجَّعَ in shamail:318, which is rendered differently. The two reports look contradictory and commentators reconcile them, so the rendering should be decided with a scholar.",
     "confidence": "scholar-check"
   },
   {
-    "ref": "abudawud:1958",
+    "ref": "abudawud:1957",
     "field": "en",
     "find": "Our ears were open and we were listening to what he was saying, while we were in our dwellings.",
     "replace": "Our hearing was opened, so that we could hear what he was saying while we were in our dwellings.",

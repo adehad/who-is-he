@@ -10,17 +10,17 @@ export default defineStation({
   line: "Hind said his neck was beautifully shaped and shone like pure silver. When he turned to look at someone, he turned all the way round.",
   physical: [
     {
-      ref: "shamail:7",
+      ref: "shamail:8",
       phrase: "كَأَنَّ عُنُقَهُ جِيدُ دُمْيَةٍ، فِي صَفَاءِ الْفِضَّةِ",
       gloss: "It was as if his neck were the neck of a statue shaped in pure silver.",
     },
     {
-      ref: "shamail:11",
+      ref: "shamail:12",
       phrase: "أَبْيَضَ كَأَنَّمَا صِيغَ مِنْ فِضَّةٍ",
       gloss: "He was white, as if he were fashioned from silver.",
     },
     {
-      ref: "shamail:6",
+      ref: "shamail:7",
       phrase: "وَإِذَا الْتَفَتَ الْتَفَتَ مَعًا",
       gloss: "When he looked around, he looked around altogether.",
     },
@@ -29,7 +29,7 @@ export default defineStation({
     {
       trait: "Attentive",
       line: "When he turned to someone, he turned all the way round to face them.",
-      ref: "shamail:7",
+      ref: "shamail:8",
       basis: "reflection",
       review: draft(),
     },

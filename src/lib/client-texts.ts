@@ -4,14 +4,14 @@ import type { Text } from "@/data/texts";
 import type { Ref } from "@/models/ref";
 
 /** Keep exactly the fields src/client/cite.ts reads, so raw dataset fields never reach the page. */
-export const toClientText = ({ ar, narrator, en, ch, ch_en, ch_ar, sunnah, corrected }: Text) => ({
+export const toClientText = ({ ar, narrator, en, ch, ch_en, ch_ar, grade, corrected }: Text) => ({
   ar,
   narrator,
   en,
   ch,
   ch_en,
   ch_ar,
-  ...(sunnah ? { sunnah: { ref: sunnah.ref, grade: sunnah.grade } } : {}),
+  grade,
   ...(corrected ? { corrected } : {}),
 });
 

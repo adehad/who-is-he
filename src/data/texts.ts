@@ -1,5 +1,4 @@
 import corrections from "#data/corrections.json";
-import sunnahRefs from "#data/sunnah_refs.json";
 import rawTexts from "#data/texts.json";
 import type { Ref } from "@/models/ref";
 
@@ -10,6 +9,8 @@ export interface RawText {
   ch: number;
   ch_en: string;
   ch_ar: string;
+  in_book: string | null;
+  grade: string | null;
 }
 export interface Correction {
   ref: string;
@@ -19,24 +20,14 @@ export interface Correction {
   confidence: "clear" | "scholar-check";
   reason: string;
 }
-interface SunnahRef {
-  sunnah_ref: string;
-  url: string;
-  in_book: string | null;
-  grade: string | null;
-  en_sunnah: string | null;
-  narrator_sunnah: string | null;
-}
 export interface Text extends RawText {
-  sunnah?: { ref: string; inBook: string | null; grade: string | null };
-  enSource: "sunnah.com" | "dataset";
   corrected?: { original: string; replacement: string; reason: string }[];
 }
 
 const occurrences = (s: string, find: string) => s.split(find).length - 1;
 
 /**
- * Apply "clear" corrections in place (mirrors concept/build.py).
+ * Apply "clear" corrections in place.
  * Every correction for a text we hold has its `find` checked, scholar-check included.
  * Corrections for refs we do not hold are counted as skipped. Throws listing every bad correction.
  */
@@ -82,21 +73,7 @@ export function applyCorrections(
 }
 
 export function resolveTexts(): Record<Ref, Text> {
-  const out: Record<string, Text> = {};
-  const refs: Record<string, SunnahRef> = sunnahRefs;
-  for (const [ref, raw] of Object.entries<RawText>(rawTexts)) {
-    const t: Text = { ...raw, enSource: "dataset" };
-    const m = refs[ref];
-    if (m) {
-      t.sunnah = { ref: m.sunnah_ref, inBook: m.in_book, grade: m.grade };
-      if (m.en_sunnah) {
-        t.en = m.en_sunnah;
-        t.enSource = "sunnah.com";
-        t.narrator = m.narrator_sunnah || t.narrator;
-      }
-    }
-    out[ref] = t;
-  }
+  const out: Record<string, Text> = structuredClone(rawTexts);
   applyCorrections(out, corrections as Correction[]);
   return out as Record<Ref, Text>;
 }

@@ -15,7 +15,8 @@
     "test": "bun test",
     "icons": "bunx --bun pwa-assets-generator --config pwa-assets.config.ts && mkdir -p public/icons && mv assets/*.png assets/favicon.ico public/icons/",
     "images": "bun scripts/images.ts",
-    "corpus": "bun scripts/corpus/build.ts"
+    "corpus": "bun scripts/corpus/build.ts",
+    "texts": "bun scripts/corpus/import-texts.ts"
   },
   "dependencies": {
     "@fontsource/amiri": "5.3.0",

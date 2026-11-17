@@ -15,12 +15,12 @@ export default defineStation({
       gloss: "Endowed with sturdy hands and feet.",
     },
     {
-      ref: "shamail:7",
+      ref: "shamail:8",
       phrase: "رَحْبُ الرَّاحَةِ",
       gloss: "Wide of palm.",
     },
     {
-      ref: "shamail:333",
+      ref: "shamail:344",
       phrase: "وَلا شَيْئًا كَانَ أَلْيَنَ مِنْ كَفِّ رَسُولِ اللهِ ﷺ",
       gloss: "I never felt silk, or anything at all, softer than the palm of his hand.",
     },
@@ -29,21 +29,21 @@ export default defineStation({
     {
       trait: "Generous",
       line: "When a girl brought him dates and cucumbers, he gave her a whole handful of gifts back.",
-      ref: "shamail:197",
+      ref: "shamail:201",
       basis: "reflection",
       review: draft(),
     },
     {
       trait: "Gentle",
       line: "Anas served him for ten years, and he never once said “uff!” to him.",
-      ref: "shamail:333",
+      ref: "shamail:344",
       basis: "reflection",
       review: draft(),
     },
     {
       trait: "Gentle",
       line: "He never hit a servant.",
-      ref: "shamail:336",
+      ref: "shamail:347",
       basis: "reflection",
       review: draft(),
     },
@@ -60,7 +60,7 @@ export default defineStation({
       kind: "karama",
       title: "A pat that smelled like perfume",
       line: "He patted children’s cheeks. Jābir said his hand felt cool and smelled as if it came out of a perfume seller’s bag.",
-      ref: "muslim:5896",
+      ref: "muslim:2329",
       trait: "Gentle",
     },
     {

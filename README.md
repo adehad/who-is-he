@@ -38,7 +38,9 @@ Edit the typed files, not the generated output:
 
 - `src/data/stations/NN-<id>.ts`: one station per file.
 - `src/data/story/NN-<slug>.ts`: one story beat per file.
-- `data/`: sunnah.com texts, references and translation corrections.
+- `data/texts.json`: the cited hadith, keyed by sunnah.com reference (`shamail:8`). Generated; see
+  below.
+- `data/corrections.json`: translation corrections, applied at build.
 
 Types catch bad references and traits. Run `bun run images` after changing a station card or page
 (it regenerates the link previews and the PWA screenshots; it runs locally and needs Edge). Run
@@ -46,8 +48,26 @@ Types catch bad references and traits. Run `bun run images` after changing a sta
 CI fails on stale previews, so a change to `global.css` or a card needs `bun run images` (and its
 PNGs committed) before CI passes. The install screenshots are not checked for freshness.
 
-`concept/` is the frozen original prototype and `tools/sunnah/` holds the old scrape scripts; neither
-is part of the build.
+`concept/` is the frozen original prototype and is not part of the build.
+
+### Hadith texts
+
+```sh
+bun run corpus   # build the local corpus in .cache/corpus/
+bun run texts    # rewrite data/texts.json from it
+```
+
+`bun run corpus` downloads the two sources at pinned revisions (set in `scripts/corpus/build.ts`)
+and writes one JSON line per hadith to `.cache/corpus/corpus.jsonl`, keyed by sunnah.com reference.
+The Hugging Face dataset holds less than half of Sahih Muslim, so the build adds the rest from
+fawazahmed0/hadith-api, deriving each sunnah.com number from its `arabicnumber` (`2331.01` is
+`2331a`). Rows whose number may not match sunnah.com carry `ref_uncertain`; check them there before
+citing. The add-on is also written in the dataset's own columns to `.cache/corpus/addon/`, with a
+README on how it was made.
+
+`bun run texts` collects every ref cited in `src/data/stations/` and `src/data/story/` and copies
+those hadith from the corpus. It fails on a ref the corpus lacks. Arabic is the source text; English
+is sunnah.com's, with `data/corrections.json` applied at build.
 
 ## Checks
 
@@ -68,5 +88,8 @@ The same checks run in CI and in the prek hooks (commit and push).
 
 ## Credits
 
-Texts, references and grades are from [sunnah.com](https://sunnah.com), used with permission.
+Texts, references and grades are from [sunnah.com](https://sunnah.com), used with permission, via
+the [freococo/sunnah_dataset](https://huggingface.co/datasets/freococo/sunnah_dataset) dataset
+(CC BY-NC-SA 4.0). The rest of Sahih Muslim comes from
+[fawazahmed0/hadith-api](https://github.com/fawazahmed0/hadith-api) (Unlicense).
 Fonts (Amiri, Aref Ruqaa, Atkinson Hyperlegible, Baloo 2) are self-hosted through Fontsource.

@@ -10,17 +10,17 @@ export default defineStation({
   line: "He had a broad chest and wide shoulders. ‘Alī said he was the most generous-hearted of all people.",
   physical: [
     {
-      ref: "shamail:7",
+      ref: "shamail:8",
       phrase: "عَرِيضُ الصَّدْرِ، بَعِيدُ مَا بَيْنَ الْمَنْكِبَيْنِ",
       gloss: "He was wide-chested, broad-shouldered.",
     },
     {
-      ref: "shamail:7",
+      ref: "shamail:8",
       phrase: "سَوَاءُ الْبَطْنِ وَالصَّدْرِ",
       gloss: "With the stomach and the breast in even balance.",
     },
     {
-      ref: "shamail:6",
+      ref: "shamail:7",
       phrase: "جَلِيلُ الْمُشَاشِ وَالْكَتَدِ",
       gloss: "He had splendid joints and shoulder blades.",
     },
@@ -29,7 +29,7 @@ export default defineStation({
     {
       trait: "Big-hearted",
       line: "‘Alī said he was the best of people in generosity: in Arabic, the most generous “of chest”.",
-      ref: "shamail:6",
+      ref: "shamail:7",
       basis: "reflection",
       review: draft(),
     },
@@ -39,13 +39,13 @@ export default defineStation({
       kind: "khasisa",
       title: "Washed with Zamzam",
       line: "The angel Jibrīl opened his chest, washed it with Zamzam water, and filled it with wisdom and faith.",
-      ref: "bukhari:345",
+      ref: "bukhari:349",
     },
     {
       kind: "karama",
       title: "Jarīr stays on his horse",
       line: "Jarīr could not sit firmly on a horse. The Prophet ﷺ pressed his hand on Jarīr’s chest and prayed for him, and Jarīr never fell off a horse again.",
-      ref: "bukhari:4167",
+      ref: "bukhari:4357",
       trait: "Big-hearted",
     },
   ],

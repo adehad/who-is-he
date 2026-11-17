@@ -6,6 +6,6 @@ export default defineBeat({
   prop: "splash",
   lines: ["Splash! Your forehead, your eyebrows, your nose. His face shone like the full moon."],
   prompt: "Look at your clean, bright face. Who will you be kind to today?",
-  refs: ["shamail:7", "shamail:9"],
+  refs: ["shamail:8", "shamail:10"],
   stations: ["face", "brow"],
 });

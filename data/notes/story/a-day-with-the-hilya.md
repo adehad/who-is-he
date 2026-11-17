@@ -1,8 +1,8 @@
 # A Day with the Hilya — mirror story concept
 
 Status: draft concept, 2026-10-27. Not yet built. References are sunnah.com numbers
-(e.g. `shamail:84` = https://sunnah.com/shamail:84). The page's code keys texts by dataset number;
-`concept/data/sunnah_refs.json` maps between the two. Content awaits scholarly review.
+(e.g. `shamail:84` = https://sunnah.com/shamail:84), the same keys the page uses. Content awaits
+scholarly review.
 
 ## Idea
 
@@ -140,8 +140,7 @@ the sunnah tie-in with its reference, and linked station(s).
 ### 17. Bedtime
 - **Story:** Lie on your right side with your right hand under your cheek, like he did.
   Cup your hands, blow gently into them, recite the three Quls (Ikhlāṣ, Falaq and Nās), and wipe them over yourself.
-- **Note:** sunnah.com's English names all three sūras (112, 113, 114). The dataset copy had
-  lost the middle of the sentence to a bracket-stripping bug, so the page uses sunnah.com's text.
+- **Note:** sunnah.com's English names all three sūras (112, 113, 114).
 - **Refs:** shamail:253, shamail:256
 - **Stations:** hands
 
@@ -157,5 +156,5 @@ the sunnah tie-in with its reference, and linked station(s).
   (the day seen through a looking-glass), or switch to full scenes outside the mirror?
 - Should the night recap remember what the child tapped during the day (per-viewer only)?
 - Beat 7 (seal): is a "turn around" game appropriate, or too playful for the subject?
-- Age-appropriateness review for tears beats (death of his daughter in shamail:324/315 is
+- Age-appropriateness review for tears beats (death of his daughter in shamail:324 and shamail:326 is
   referenced only as "mercy for people he loved"; full text stays in the grown-up layer).
