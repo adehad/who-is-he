@@ -16,9 +16,10 @@ export default defineStation({
         "Between his shoulders was the Seal of Prophethood, for he is the Seal of the Prophets.",
     },
     {
-      ref: "shamail:17",
-      phrase: "غُدَّةً حَمْرَاءَ، مِثْلَ بَيْضَةِ الْحَمَامَةِ",
-      gloss: "A red swelling like the egg of the dove.",
+      ref: "muslim:2344b",
+      phrase: "وَرَأَيْتُ الْخَاتَمَ عِنْدَ كَتِفِهِ مِثْلَ بَيْضَةِ الْحَمَامَةِ يُشْبِهُ جَسَدَهُ",
+      gloss:
+        "I saw the Seal near his shoulder, like a dove’s egg, and it looked like the rest of his body.",
     },
     {
       ref: "shamail:16",
@@ -69,6 +70,12 @@ export default defineStation({
       line: "As-Sā’ib, the boy he prayed for, was still strong and straight at 94. He said he could hear and see well only because of the Prophet’s ﷺ prayer for him.",
       ref: "bukhari:3540",
       trait: "Caring",
+    },
+    {
+      kind: "khasisa",
+      title: "The last brick",
+      line: "He said the prophets were like a beautiful house with one brick missing: “I am that brick, and I am the last of the prophets.”",
+      ref: "bukhari:3535",
     },
   ],
   mirror: "A seal means something is complete and true. What promise will you keep today?",

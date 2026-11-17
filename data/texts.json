@@ -149,6 +149,16 @@
     "in_book": "Book 56, Hadith 218",
     "grade": null
   },
+  "bukhari:3535": {
+    "ar": "حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ، حَدَّثَنَا إِسْمَاعِيلُ بْنُ جَعْفَرٍ، عَنْ عَبْدِ اللَّهِ بْنِ دِينَارٍ، عَنْ أَبِي صَالِحٍ، عَنْ أَبِي هُرَيْرَةَ ـ رضى الله عنه ـ أَنَّ رَسُولَ اللَّهِ صلى الله عليه وسلم قَالَ \" إِنَّ مَثَلِي وَمَثَلَ الأَنْبِيَاءِ مِنْ قَبْلِي كَمَثَلِ رَجُلٍ بَنَى بَيْتًا فَأَحْسَنَهُ وَأَجْمَلَهُ، إِلاَّ مَوْضِعَ لَبِنَةٍ مِنْ زَاوِيَةٍ، فَجَعَلَ النَّاسُ يَطُوفُونَ بِهِ وَيَعْجَبُونَ لَهُ، وَيَقُولُونَ هَلاَّ وُضِعَتْ هَذِهِ اللَّبِنَةُ قَالَ فَأَنَا اللَّبِنَةُ، وَأَنَا خَاتِمُ النَّبِيِّينَ \".",
+    "narrator": "Narrated Abu Huraira:",
+    "en": "Allah's Messenger (ﷺ) said, \"My similitude in comparison with the other prophets before me, is that of a man who has built a house nicely and beautifully, except for a place of one brick in a corner. The people go about it and wonder at its beauty, but say: 'Would that this brick be put in its place!' So I am that brick, and I am the last of the Prophets.\"",
+    "ch": 61,
+    "ch_en": "Virtues and Merits of the Prophet (pbuh) and his Companions",
+    "ch_ar": "كتاب المناقب",
+    "in_book": "Book 61, Hadith 44",
+    "grade": null
+  },
   "bukhari:3540": {
     "ar": "حَدَّثَنِي إِسْحَاقُ، أَخْبَرَنَا الْفَضْلُ بْنُ مُوسَى، عَنِ الْجُعَيْدِ بْنِ عَبْدِ الرَّحْمَنِ، رَأَيْتُ السَّائِبَ بْنَ يَزِيدَ ابْنَ أَرْبَعٍ وَتِسْعِينَ جَلْدًا مُعْتَدِلاً فَقَالَ قَدْ عَلِمْتُ مَا مُتِّعْتُ بِهِ سَمْعِي وَبَصَرِي إِلاَّ بِدُعَاءِ رَسُولِ اللَّهِ صلى الله عليه وسلم، إِنَّ خَالَتِي ذَهَبَتْ بِي إِلَيْهِ فَقَالَتْ يَا رَسُولَ اللَّهِ إِنَّ ابْنَ أُخْتِي شَاكٍ فَادْعُ اللَّهَ. قَالَ فَدَعَا لِي.",
     "narrator": "Narrated Al-Ju'aid bin `Abdur Rahman:",
@@ -287,6 +297,16 @@
     "ch_en": "The Book of Virtues",
     "ch_ar": "كتاب الفضائل",
     "in_book": "Book 43, Hadith 113",
+    "grade": null
+  },
+  "muslim:2344b": {
+    "ar": "وَحَدَّثَنَا أَبُو بَكْرِ بْنُ أَبِي شَيْبَةَ، حَدَّثَنَا عُبَيْدُ اللَّهِ، عَنْ إِسْرَائِيلَ، عَنْ سِمَاكٍ، أَنَّهُ سَمِعَ جَابِرَ بْنَ سَمُرَةَ، يَقُولُ كَانَ رَسُولُ اللَّهِ صلى الله عليه وسلم قَدْ شَمِطَ مُقَدَّمُ رَأْسِهِ وَلِحْيَتِهِ وَكَانَ إِذَا ادَّهَنَ لَمْ يَتَبَيَّنْ وَإِذَا شَعِثَ رَأْسُهُ تَبَيَّنَ وَكَانَ كَثِيرَ شَعْرِ اللِّحْيَةِ فَقَالَ رَجُلٌ وَجْهُهُ مِثْلُ السَّيْفِ قَالَ لاَ بَلْ كَانَ مِثْلَ الشَّمْسِ وَالْقَمَرِ وَكَانَ مُسْتَدِيرًا وَرَأَيْتُ الْخَاتَمَ عِنْدَ كَتِفِهِ مِثْلَ بَيْضَةِ الْحَمَامَةِ يُشْبِهُ جَسَدَهُ ‏.‏",
+    "narrator": "",
+    "en": "Jabir b. Samura reported that there had appeared some whiteness on the front part of the head and beard of Allah's Messenger (ﷺ). When he applied oil, it did not become visible, but when he did not (apply) oil, it became apparent. And he had a thick beard. A person said:His face was as (bright) as the sword. Thereupon he (Jabir) said: No, it was round and like the sun and the moon. And I saw the seal near his shoulder of the size of a pigeon's egg and its color was the same as that of his body",
+    "ch": 43,
+    "ch_en": "The Book of Virtues",
+    "ch_ar": "",
+    "in_book": "Book 43, Hadith 142",
     "grade": null
   },
   "muslim:2422a": {
@@ -428,16 +448,6 @@
     "ch_ar": "باب ما جاء في خاتم النبوة",
     "in_book": "Book 2, Hadith 1",
     "grade": "Sahih Isnād (Zubair `Aliza'i)"
-  },
-  "shamail:17": {
-    "ar": "حَدَّثَنَا سَعِيدُ بْنُ يَعْقُوبَ الطَّالْقَانِيُّ، قَالَ: حدَّثَنَا أَيُّوبُ بْنُ جَابِرٍ، عَنْ سِمَاكِ بْنِ حَرْبٍ، عَنْ جَابِرِ بْنِ سَمُرَةَ، قَالَ: رَأَيْتُ الْخَاتَمَ بَيْنَ كَتِفَيْ رَسُولِ اللهِ صلى الله عليه وسلم، غُدَّةً حَمْرَاءَ، مِثْلَ بَيْضَةِ الْحَمَامَةِ.",
-    "narrator": "Jabir ibn Samura said:",
-    "en": "\"I saw the Seal between the shoulders of Allah’s Messenger (Allah bless him and give him peace) as a red swelling like the egg of the dove.”",
-    "ch": 2,
-    "ch_en": "Seal Of Nubuwwah (Prophethood) Of Rasoolullah",
-    "ch_ar": "باب ما جاء في خاتم النبوة",
-    "in_book": "Book 2, Hadith 2",
-    "grade": "Da'if Isnād (Zubair `Aliza'i)"
   },
   "shamail:19": {
     "ar": "حَدَّثَنَا أَحْمَدُ بْنُ عَبْدَةَ الضَّبِّيُّ، وَعَلِيُّ بْنُ حُجْرٍ، وَغَيْرُ وَاحِدٍ، قَالُوا: حَدَّثَنَا عِيسَى بْنُ يُونُسَ، عَنْ عُمَرَ بْنِ عَبْدِ اللهِ مَوْلَى غُفْرَةَ، قَالَ: حَدَّثَنِي إِبْرَاهِيمُ بْنُ مُحَمَّدٍ مِنْ وَلَدِ عَلِيِّ بْنِ أَبِي طَالِبٍ، قَالَ: كَانَ عَلِيٌّ، إِذَا وَصَفَ رَسُولَ اللهِ صلى الله عليه وسلم فَذَكَرَ الْحَدِيثَ بِطُولِهِ، وَقَالَ: بَيْنَ كَتِفَيْهِ خَاتَمُ النُّبُوَّةِ، وَهُوَ خَاتَمُ النَّبِيِّينَ.",
