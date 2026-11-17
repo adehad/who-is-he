@@ -13,7 +13,7 @@ Chapter 1 follows the long descriptions (#7 ‘Alī, #8 Hind) from head to toe. 
 | 3 | face* | ch1 | |
 | 4 | brow | ch1 #8 | face |
 | 5 | eyes* | ch1 | |
-| 6 | mouth | ch1 #8, #15 | eyes |
+| 6 | mouth | ch1 #8, #9 | eyes |
 | 7 | neck | ch1 #7, #8, #12 | mouth |
 | 8 | chest | ch1 #7, #8 | neck |
 | 9 | hands* | ch1 | |
@@ -29,7 +29,7 @@ Chapter 1 follows the long descriptions (#7 ‘Alī, #8 Hind) from head to toe. 
 ## Merges
 
 - **brow** = forehead + eyebrows + nose. In #8 these are three short adjacent phrases, and each one alone is too thin for a station. The "vein that anger makes pulse" gives the character link (bukhari:3560: he never took revenge for his own sake).
-- **mouth** = cheeks + mouth + teeth (#8, #15). It is kept apart from **smile** (ch34) because the saliva signs belong here and the smile hadith sit at a later point in the book.
+- **mouth** = cheeks + mouth + teeth (#8, #9). It is kept apart from **smile** (ch34) because the saliva signs belong here and the smile hadith sit at a later point in the book.
 - **hair** = ch3 hair + ch4 combing + ch5 grey hair + ch6 dye + the beard from #8. The beard alone was one phrase (كث اللحية), and ch5 counts the white hairs of the head and beard together.
 - **feet** = ch1 feet + gait + ch18 walking. #123 and #124 in ch18 repeat #5 and #7. Only #122 ("the earth seemed folded up for him") is new, so the station stays at the ch1 position. The ch40 swollen-feet hadith (#260) supplies the character link.
 - **kohl (ch7)** gets no station. It is about a practice, not a feature. **eyes** shows the natural kohl-dark look instead (shamail:225, أَكْحَلُ الْعَيْنَيْنِ، وَلَيْسَ بِأَكْحَلَ). The practice itself (shamail:51, kohl before sleep, three times in each eye) is not shown.
@@ -45,7 +45,6 @@ Needing a scholar:
 
 Other candidates found but not used:
 - Dream khasisa: "whoever sees me in a dream has seen me, for Satan cannot take my form" (shamail:407, bukhari:110). It could close the walkthrough or go on **face**.
-- Hudaybiyya well: he spat into a bucket from the well and the well then watered everyone (bukhari:4151). This could be a 4th sign for **mouth**.
 
 `cite()` needs these new `BOOKS` entries:
 - `tirmidhi` ("Jāmi‘ al-Tirmidhī", ch 49)
@@ -100,3 +99,7 @@ Points for a scholar on these four stations. Grades are shown on the site, so Da
   - The ʿAlawī route of Hind's description (bayhaqi-dalail:1/285) is cited beside shamail:8 for the downward gaze. Its chain is ungraded.
   - Qatāda's eye (tabarani-kabir:19/12) is grown-up only, as a battle injury. Badr or Uḥud: al-Bayhaqī (3/251) gives both.
   - hakim:4274 (Umm Maʿbad): is the corpus grade صحيح al-Dhahabī's or al-Ḥākim's?
+- **mouth**
+  - The light seen between his teeth when he spoke (shamail:15, with the same chain at darimi:59, bayhaqi-dalail:1/215 and tabarani-kabir:11/12181) is graded Daʿīf Jiddan and is not shown, not even for grown-ups. The bright-teeth entry (tabarani-kabir:10/10397, ungraded) mentions in its note why it is missing. A scholar may still prefer a flagged grown-up card.
+  - ضليع الفم as a kināya for eloquence is al-Qārī's reading (1/45), given in a note rather than as the meaning.
+  - Icon: the lantern now stands for true words. The owner may prefer another.

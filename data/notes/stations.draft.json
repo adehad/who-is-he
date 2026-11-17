@@ -45,20 +45,22 @@
   {
     "after": "eyes",
     "id": "mouth", "name": "His mouth", "icon": "a glowing lantern",
-    "phrase": "إِذَا تَكَلَّمَ رُئِيَ كَالنُّورِ يَخْرُجُ مِنْ بَيْنِ ثَنَايَاهُ",
-    "title": "Light when he spoke",
-    "line": "His cheeks were smooth and his mouth was wide. When he spoke, it seemed as if light came out from between his front teeth!",
+    "phrase": "ضَلِيعُ الْفَمِ، مُفْلَجُ الأَسْنَانِ",
+    "title": "A wide mouth, bright teeth",
+    "line": "His cheeks were smooth, his mouth was wide and his front teeth shone white. Only true words ever came out of it!",
     "physical": [
-      { "ref": "shamail:8", "phrase": "سَهْلُ الْخدَّيْنِ", "gloss": "Endowed with smooth cheeks." },
+      { "ref": "shamail:8", "phrase": "سَهْلُ الْخدَّيْنِ", "gloss": "Endowed with smooth cheeks." },
+      { "ref": "shamail:9", "phrase": "ضَلِيعَ الْفَمِ", "gloss": "Wide-mouthed." },
       { "ref": "shamail:8", "phrase": "ضَلِيعُ الْفَمِ، مُفْلَجُ الأَسْنَانِ", "gloss": "A wide mouth, cleft teeth." },
-      { "ref": "shamail:15", "phrase": "إِذَا تَكَلَّمَ رُئِيَ كَالنُّورِ يَخْرُجُ مِنْ بَيْنِ ثَنَايَاهُ", "gloss": "When he spoke, it seemed as if light were emerging from between his middle teeth." }
+      { "ref": "tabarani-kabir:10/10397", "phrase": "بَرَّاقُ الثَّنَايَا", "gloss": "His front teeth shone." }
     ],
     "character": [
-      { "trait": "Truthful", "line": "‘Alī said he was the most truthful of all people in what he said.", "ref": "shamail:7", "basis": "reflection" }
+      { "trait": "Truthful", "line": "He pointed to his own mouth and said that nothing but the truth ever came out of it, whether he was happy or cross.", "ref": "abudawud:3646", "basis": "classical" }
     ],
     "signs": [
       { "kind": "mujiza", "title": "‘Alī’s sore eyes", "line": "At Khaybar ‘Alī had sore eyes. The Prophet ﷺ put a little of his saliva on them and prayed, and they were healed at once, as if nothing had been wrong.", "ref": "bukhari:3009" },
       { "kind": "mujiza", "title": "Food for a thousand", "line": "At the Battle of the Trench, Jābir had only a little food. The Prophet ﷺ put a little of his saliva in the dough and the pot and prayed for blessing. A thousand people ate, and the pot was still full!", "ref": "bukhari:4102" },
+      { "kind": "mujiza", "title": "The well that filled up", "line": "At Ḥudaybiya the well was empty, and 1,400 people were thirsty. The Prophet ﷺ sat at its edge, rinsed his mouth with a little water and poured it in. Soon everyone, and all their animals, drank their fill.", "ref": "bukhari:3577" },
       { "kind": "karama", "title": "A baby’s first taste", "line": "When baby ‘Abdullāh ibn al-Zubayr was born, the Prophet ﷺ chewed a date, put a little in his mouth, and prayed for blessings for him.", "ref": "bukhari:3909" }
     ],
     "mirror": "Say something kind to your reflection. What true words will you speak today?"
