@@ -1,4 +1,5 @@
 import { STATIONS } from "@/data/stations";
+import { leadTrait } from "@/models/station";
 
 export interface PageMeta {
   title: string;
@@ -14,12 +15,10 @@ export const absolute = (site: URL | undefined, path: string): string => {
   return `${site.href.replace(/\/$/, "")}/${path.replace(/^\//, "")}`;
 };
 
-const firstTrait = (i: number) => STATIONS[i]?.character[0]?.trait;
-
 export function stationMeta(i: number): PageMeta {
   const s = STATIONS[i];
   if (!s) throw new Error(`no station ${i}`);
-  const trait = firstTrait(i);
+  const trait = leadTrait(s);
   return {
     title: i === 0 ? "Little Hilya" : `${s.name} · Little Hilya`,
     description:
