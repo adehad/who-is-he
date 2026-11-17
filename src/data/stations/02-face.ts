@@ -28,17 +28,25 @@ export default defineStation({
   character: [
     {
       trait: "Cheerful",
-      line: "When he laughed, it was nearly always a happy smile.",
-      ref: "shamail:227",
+      line: "When he was happy, his face lit up like a piece of the moon, and everyone could see his joy.",
+      ref: "bukhari:3556",
+      basis: "reflection",
+      review: draft(),
+    },
+    {
+      trait: "Cheerful",
+      line: "He taught: never think any good deed is too small, even meeting your brother with a cheerful face.",
+      ref: "muslim:2626",
       basis: "reflection",
       review: draft(),
     },
   ],
   signs: [
     {
-      kind: "research",
-      title: "Signs connected to his face",
-      line: "We are still looking for checked reports to put here.",
+      kind: "khasisa",
+      title: "A wish answered",
+      line: "He loved to face the Ka‘ba when he prayed, and he kept turning his face towards the sky. Allah sent down a verse: “We have seen the turning of your face towards the sky”, and from then on he prayed towards the Ka‘ba.",
+      ref: "bukhari:399",
     },
   ],
   mirror: "Smile at yourself in the mirror. Who can you share that smile with today?",
