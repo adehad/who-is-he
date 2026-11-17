@@ -55,6 +55,7 @@ PNGs committed) before CI passes. The install screenshots are not checked for fr
 ```sh
 bun run corpus   # build the local corpus in .cache/corpus/
 bun run texts    # rewrite data/texts.json from it
+bun run search -- --root رحم --en mercy --collection shamail   # find hadith; --help for options
 ```
 
 `bun run corpus` downloads the two sources at pinned revisions (set in `scripts/corpus/build.ts`)

@@ -2,15 +2,11 @@
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import type { Correction } from "@/data/texts";
 import { loadCorpus } from "./corpus";
-import type { CorpusRow, Grade } from "./parse";
+import { type CorpusRow, formatGrades } from "./parse";
 
 const SOURCES = ["src/data/stations", "src/data/story"];
 const OUT = "data/texts.json";
 const REF = /"([a-z]+:\d+[a-z]?)"/g;
-
-/** "Sahih (Al-Albani)"; several grades joined with "; "; null when ungraded. */
-const formatGrades = (grades: Grade[]): string | null =>
-  grades.length ? grades.map((g) => `${g.status} (${g.scholar})`).join("; ") : null;
 
 function citedRefs(): Set<string> {
   const refs = new Set<string>();

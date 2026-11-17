@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { arabicSimilarity, normaliseArabic } from "./arabic";
+import { arabicSimilarity, normaliseArabic, normaliseWithOffsets, rootRegex } from "./arabic";
 
 describe("normaliseArabic", () => {
   test("strips harakat, tatweel and Quranic marks", () => {
@@ -24,4 +24,35 @@ describe("normaliseArabic", () => {
 test("arabicSimilarity ignores voweling", () => {
   expect(arabicSimilarity("قَالَ رَسُولُ اللَّهِ", "قال رسول الله")).toBe(1);
   expect(arabicSimilarity("قال", "كتب")).toBe(0);
+});
+
+test("normaliseWithOffsets gives the same text and maps back to the input", () => {
+  const s = "  قَالَ النَّبِيُّ ﷺ:  رَحْمَةٌ ";
+  for (const taMarbuta of [false, true]) {
+    const { text, offsets } = normaliseWithOffsets(s, { taMarbuta });
+    expect(text).toBe(normaliseArabic(s, { taMarbuta }));
+    expect(offsets).toHaveLength(text.length);
+  }
+  const { text, offsets } = normaliseWithOffsets(s);
+  const i = text.indexOf("النبي");
+  expect(s.slice(offsets[i], (offsets[i + 4] ?? 0) + 1)).toBe("النَّبِي");
+});
+
+describe("rootRegex", () => {
+  const hits = (root: string, words: string[]) =>
+    words.filter((w) => rootRegex(root).test(normaliseArabic(w)));
+
+  test("finds derived words with affixes and up to two letters between root letters", () => {
+    expect(hits("رحم", ["رَحْمَةٌ", "الرَّحِيمُ", "فَرَاحِمُ", "يَرْحَمُكُمُ"])).toHaveLength(4);
+  });
+  test("keeps to one word and to the root's order", () => {
+    expect(hits("رحم", ["حرم", "ر حم", "رجل حمل"])).toEqual([]);
+  });
+  test("folds the root like the text, and a root hamza matches any seat", () => {
+    expect(hits("أكل", ["يَأْكُلُ", "أَكَلَ"])).toHaveLength(2);
+    expect(hits("سءل", ["سَأَلَ", "مَسْؤُولٌ", "سَائِلٌ"])).toHaveLength(3);
+  });
+  test("rejects a root that is not 2 to 4 letters", () => {
+    expect(() => rootRegex("ر")).toThrow(/2 to 4/);
+  });
 });

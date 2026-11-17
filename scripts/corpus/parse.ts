@@ -76,6 +76,10 @@ export function parseGrades(json: string | null): Grade[] {
   }));
 }
 
+/** "Sahih (Al-Albani)"; several grades joined with "; "; null when ungraded. */
+export const formatGrades = (grades: Grade[]): string | null =>
+  grades.length ? grades.map((g) => `${g.status} (${g.scholar})`).join("; ") : null;
+
 export type HfRow = Record<string, unknown>;
 
 /** A row of freococo/sunnah_dataset as a corpus row. */
