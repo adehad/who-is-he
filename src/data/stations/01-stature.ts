@@ -40,6 +40,13 @@ export default defineStation({
       basis: "reflection",
       review: draft(),
     },
+    {
+      trait: "Balanced",
+      line: "His prayers were not too long and not too short, and his talks were the same: just right.",
+      ref: "muslim:866a",
+      basis: "reflection",
+      review: draft(),
+    },
   ],
   signs: [
     {
