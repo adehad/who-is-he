@@ -147,3 +147,15 @@ Open points:
 - The hollow of the foot: Hind's خمصان الأخمصين against Abū Hurayra's "no hollow" (adab:1155, ungraded; bayhaqi-dalail:1/274-2 has a gap in its chain). The gloss says "drawn in" without taking a side.
 - Which صبب wording to show (من صبب, في صبب) and whether to give Ibn ‘Abbās's "strength of body" reading.
 - Not used: the footprint likened to Ibrāhīm's at the Maqām and the rabbi who knew his walk (ibnsad:1/117-3, 5/458, 1/412-2), all through al-Wāqidī (matrūk); Ḥirā’ (abunuaym-dalail:337) and Thabīr (tirmidhi:3703), which repeat Uḥud; ‘Alī healed with a nudge of the foot (tirmidhi:3564), whose context is a prayer to die; Qur’an 17:37, 5:6, 38:42, 34:10 and 57:28, which are about others or only images.
+
+## Seal
+
+Physical: ‘Alī's "Seal of Prophethood, for he is the Seal of the Prophets" (shamail:19), the dove's egg in Muslim (muslim:2344b) and in Jābir's Shamā'il wording as a reddish lump (shamail:17, Ḍa‘īf), Abū Sa‘īd's "raised piece of flesh" (shamail:22, the plainest), the canopy button (shamail:16) and the gathered hairs (shamail:20). Al-Qārī's note that all the similes describe one raised piece of flesh is on shamail:22.
+
+Character: as-Sā’ib (shamail:16), Ibn Sarjis (shamail:23) and Umm Khālid playing with the Seal (bukhari:5993, "Patient"). Signs: Salmān (shamail:21), the date palms, the Seal foretold to Salmān by his teacher (ibnsad:4/81-2), as-Sā’ib at 94 (bukhari:3540), the last brick (bukhari:3535), Qur’an 33:40, and a grown-up card on the heart sealed after the childhood washing (darimi:13).
+
+Open points:
+- زر الحجلة: canopy button or partridge's egg.
+- Right or left shoulder: ibnsad:4/81-2 says right, muslim:2346 left.
+- Whether the Seal is the mark of the sealing after the chest-opening (Qāḍī ‘Iyāḍ for, al-Nawawī against).
+- Not used: the inscription reports («محمد رسول الله» written in the Seal; al-‘Asqalānī: none is established) and Baḥīrā kissing the Seal (ibnsad:1/153-2, al-Wāqidī); Rumaytha's "I could have kissed the Seal" (shamail:18, Ḍa‘īf), whose report is about the death of Sa‘d; Abū Rimtha's father offering to treat it as a growth (ahmad:7116), which needs explaining; the musk from the Seal (shifa:1/154, no chain); Wahb ibn Munabbih on the marks of earlier prophets (haytami-ashraf:1/81-2).
