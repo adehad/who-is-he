@@ -28,8 +28,8 @@ export default defineStation({
   character: [
     {
       trait: "Big-hearted",
-      line: "‘Alī said he was the best of people in generosity: in Arabic, the most generous “of chest”.",
-      ref: "shamail:7",
+      line: "Ibn ‘Abbās said he was the most generous of people, and in Ramaḍān he gave good things more freely than the wind blows.",
+      ref: "bukhari:6",
       basis: "reflection",
       review: draft(),
     },
