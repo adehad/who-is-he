@@ -19,6 +19,16 @@
     "in_book": "Book 26, Hadith 6",
     "grade": "Sahih (Al-Albani)"
   },
+  "adab:255": {
+    "ar": "حَدَّثَنَا بِشْرُ بْنُ مُحَمَّدٍ، قَالَ: أَخْبَرَنَا عَبْدُ اللهِ، قَالَ: أَخْبَرَنَا أُسَامَةُ بْنُ زَيْدٍ قَالَ: أَخْبَرَنِي مُوسَى بْنُ مُسْلِمٍ مَوْلَى ابْنَةِ قَارِظٍ، عَنْ أَبِي هُرَيْرَةَ، أَنَّهُ رُبَّمَا حَدَّثَ عَنِ النَّبِيِّ صلى الله عليه وسلم، فَيَقُولُ: حَدَّثَنِيهِ أَهْدَبُ الشُّفْرَيْنِ، أَبْيَضُ الْكَشْحَيْنِ، إِذَا أَقْبَلَ أَقْبَلَ جَمِيعًا، وَإِذَا أَدْبَرَ، أَدْبَرَ جَمِيعًا، لَمْ تَرَ عَيْنٌ مِثْلَهُ، وَلَنْ تَرَاهُ.",
+    "narrator": "",
+    "en": "Abu Hurayra said, \"When he faced someone, he faced him completely. When he turned away, he turned away completely. I have never seen anyone like him and I will never see anyone like them.\"",
+    "ch": 12,
+    "ch_en": "Cheerfulness Towards People",
+    "ch_ar": "كتاب الِانْبِسَاطِ إِلَى النَّاسِ",
+    "in_book": "Book 12, Hadith 18",
+    "grade": null
+  },
   "bukhari:2": {
     "ar": "حَدَّثَنَا عَبْدُ اللَّهِ بْنُ يُوسُفَ، قَالَ أَخْبَرَنَا مَالِكٌ، عَنْ هِشَامِ بْنِ عُرْوَةَ، عَنْ أَبِيهِ، عَنْ عَائِشَةَ أُمِّ الْمُؤْمِنِينَ ـ رضى الله عنها ـ أَنَّ الْحَارِثَ بْنَ هِشَامٍ ـ رضى الله عنه ـ سَأَلَ رَسُولَ اللَّهِ صلى الله عليه وسلم فَقَالَ يَا رَسُولَ اللَّهِ كَيْفَ يَأْتِيكَ الْوَحْىُ فَقَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم \" أَحْيَانًا يَأْتِينِي مِثْلَ صَلْصَلَةِ الْجَرَسِ ـ وَهُوَ أَشَدُّهُ عَلَىَّ ـ فَيُفْصَمُ عَنِّي وَقَدْ وَعَيْتُ عَنْهُ مَا قَالَ، وَأَحْيَانًا يَتَمَثَّلُ لِيَ الْمَلَكُ رَجُلاً فَيُكَلِّمُنِي فَأَعِي مَا يَقُولُ \". قَالَتْ عَائِشَةُ رضى الله عنها وَلَقَدْ رَأَيْتُهُ يَنْزِلُ عَلَيْهِ الْوَحْىُ فِي الْيَوْمِ الشَّدِيدِ الْبَرْدِ، فَيَفْصِمُ عَنْهُ وَإِنَّ جَبِينَهُ لَيَتَفَصَّدُ عَرَقًا.",
     "narrator": "Narrated 'Aisha:",
@@ -97,6 +107,16 @@
     "ch_en": "Prayer at Night (Tahajjud)",
     "ch_ar": "كتاب التهجد",
     "in_book": "Book 19, Hadith 28",
+    "grade": null
+  },
+  "bukhari:2908": {
+    "ar": "حَدَّثَنَا سُلَيْمَانُ بْنُ حَرْبٍ، حَدَّثَنَا حَمَّادُ بْنُ زَيْدٍ، عَنْ ثَابِتٍ، عَنْ أَنَسٍ ـ رضى الله عنه ـ قَالَ كَانَ النَّبِيُّ صلى الله عليه وسلم أَحْسَنَ النَّاسِ وَأَشْجَعَ النَّاسِ، وَلَقَدْ فَزِعَ أَهْلُ الْمَدِينَةِ لَيْلَةً فَخَرَجُوا نَحْوَ الصَّوْتِ فَاسْتَقْبَلَهُمُ النَّبِيُّ صلى الله عليه وسلم وَقَدِ اسْتَبْرَأَ الْخَبَرَ، وَهْوَ عَلَى فَرَسٍ لأَبِي طَلْحَةَ عُرْىٍ وَفِي عُنُقِهِ السَّيْفُ وَهْوَ يَقُولُ \" لَمْ تُرَاعُوا لَمْ تُرَاعُوا \". ثُمَّ قَالَ \" وَجَدْنَاهُ بَحْرًا \". أَوْ قَالَ \" إِنَّهُ لَبَحْرٌ \".",
+    "narrator": "Narrated Anas:",
+    "en": "The 'Prophet was the best and the bravest amongst the people. Once the people of Medina got terrified at night, so they went in the direction of the noise (that terrified them). The Prophet (ﷺ) met them (on his way back) after he had found out the truth. He was riding an unsaddled horse belonging to Abu Talha and a sword was hanging by his neck, and he was saying, \"Don't be afraid! Don't be afraid!\" He further said, \"I found it (i.e. the horse) very fast,\" or said, \"This horse is very fast.\" (Qastala-ni)",
+    "ch": 56,
+    "ch_en": "Fighting for the Cause of Allah (Jihaad)",
+    "ch_ar": "كتاب الجهاد والسير",
+    "in_book": "Book 56, Hadith 121",
     "grade": null
   },
   "bukhari:2977": {
@@ -237,6 +257,16 @@
     "ch_en": "The Book of Virtues",
     "ch_ar": "كتاب الفضائل",
     "in_book": "Book 43, Hadith 113",
+    "grade": null
+  },
+  "muslim:2422a": {
+    "ar": "حَدَّثَنَا عُبَيْدُ اللَّهِ بْنُ مُعَاذٍ، حَدَّثَنَا أَبِي، حَدَّثَنَا شُعْبَةُ، عَنْ عَدِيٍّ، - وَهُوَ ابْنُ ثَابِتٍ - حَدَّثَنَا الْبَرَاءُ بْنُ عَازِبٍ، قَالَ رَأَيْتُ الْحَسَنَ بْنَ عَلِيٍّ عَلَى عَاتِقِ النَّبِيِّ صلى الله عليه وسلم وَهُوَ يَقُولُ \" اللَّهُمَّ إِنِّي أُحِبُّهُ فَأَحِبَّهُ \" .",
+    "narrator": "Al-Bara' b. Azib reported:",
+    "en": "I saw Hasan b. 'Ali upon the shoulders of Allah's Apostle (ﷺ) and he was saying: O Allah, I love him, and love him Thou.",
+    "ch": 44,
+    "ch_en": "The Book of the Merits of the Companions",
+    "ch_ar": "كتاب فضائل الصحابة رضى الله تعالى عنهم",
+    "in_book": "Book 44, Hadith 88",
     "grade": null
   },
   "muslim:2626": {
