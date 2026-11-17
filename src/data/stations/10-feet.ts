@@ -43,8 +43,8 @@ export default defineStation({
     },
     {
       trait: "Humble",
-      line: "He let his Companions walk ahead of him, and he was the first to say salām to anyone he met.",
-      ref: "shamail:8",
+      line: "He was never too proud to walk along with a widow or a poor person to help them with what they needed.",
+      ref: "nasai:1414",
       basis: "reflection",
       review: draft(),
     },
@@ -58,5 +58,5 @@ export default defineStation({
     },
   ],
   mirror:
-    "Look down at your feet. Where will they take you to do good today, and who will you greet first?",
+    "Look down at your feet. Where will they take you to do good today, and who could you walk with and help?",
 });
