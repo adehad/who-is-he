@@ -108,3 +108,10 @@ Points for a scholar on these four stations. Grades are shown on the site, so Da
   - Jarīr's smile is a character card (shamail:230) and his horse a sign (bukhari:6089). The same report has his chest struck, which **chest** may also want; it is shown here only.
   - The Jarīr sign is labelled karāma (blessing through his touch and prayer); it could be mujiza.
   - bayhaqi-dalail:1/274-2 («إذا ضحك يتلألأ») comes through al-Zuhrī from Abū Hurayra, a broken chain.
+- **tears**
+  - The death of his son Ibrāhīm (bukhari:1303) is a grown-up-only character card. The child-facing station line mentions only that he wept "when someone he loved was dying".
+  - The weeping camel (hakim:2485) also appears at abudawud:2549, which the corpus shows ungraded; al-Bayhaqī attributes it to Muslim. A scholar should confirm the grade shown.
+  - hakim:1671 (tears at the Black Stone) runs through Nuʿaym ibn Ḥammād, whom some critics weaken despite al-Ḥākim's grade.
+  - Qatāda's eye on **eyes** also has his tears (دمعت عيناه); it is shown there, not here.
+
+Handed to other stations: the ʿAlawī route of Hind (bayhaqi-dalail:1/285) also covers face, brow, neck, chest, hands, feet, speech; Muḥammad ibn Ḥāṭib's burned hand (hakim:6909) fits **hands**; the eloquence kināya of ضليع الفم fits **speech**.
