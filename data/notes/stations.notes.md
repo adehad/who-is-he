@@ -28,7 +28,7 @@ Chapter 1 follows the long descriptions (#7 ‘Alī, #8 Hind) from head to toe. 
 
 ## Merges
 
-- **brow** = forehead + eyebrows + nose. In #8 these are three short adjacent phrases, and each one alone is too thin for a station. The "vein that anger makes pulse" gives the character link (#224: never angry for himself).
+- **brow** = forehead + eyebrows + nose. In #8 these are three short adjacent phrases, and each one alone is too thin for a station. The "vein that anger makes pulse" gives the character link (bukhari:3560: he never took revenge for his own sake).
 - **mouth** = cheeks + mouth + teeth (#8, #15). It is kept apart from **smile** (ch34) because the saliva signs belong here and the smile hadith sit at a later point in the book.
 - **hair** = ch3 hair + ch4 combing + ch5 grey hair + ch6 dye + the beard from #8. The beard alone was one phrase (كث اللحية), and ch5 counts the white hairs of the head and beard together.
 - **feet** = ch1 feet + gait + ch18 walking. #123 and #124 in ch18 repeat #5 and #7. Only #122 ("the earth seemed folded up for him") is new, so the station stays at the ch1 position. The ch40 swollen-feet hadith (#260) supplies the character link.

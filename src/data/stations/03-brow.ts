@@ -20,6 +20,12 @@ export default defineStation({
       gloss: "Endowed with arched eyebrows, perfect without being conjoined.",
     },
     {
+      ref: "bukhari:3555",
+      phrase: "مَسْرُورًا تَبْرُقُ أَسَارِيرُ وَجْهِهِ",
+      gloss: "Happy, with the lines of his forehead shining.",
+      note: "أَسَارِير are the lines of the face, especially the forehead; the word shares its root with مَسْرُور (happy).",
+    },
+    {
       ref: "shamail:8",
       phrase: "بَيْنَهُمَا عِرْقٌ، يُدِرُّهُ الْغَضَبُ",
       gloss: "With a vein between them that anger would cause to pulsate.",
@@ -34,8 +40,8 @@ export default defineStation({
   character: [
     {
       trait: "Angry only for what is right",
-      line: "He never got angry for his own sake. He only became angry when something wrong was done, until it was put right.",
-      ref: "shamail:224",
+      line: "He never took revenge for his own sake. He only stood up for what was right when something Allah made sacred was broken.",
+      ref: "bukhari:3560",
       basis: "reflection",
       review: draft(),
     },
