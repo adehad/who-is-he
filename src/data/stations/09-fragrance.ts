@@ -1,3 +1,4 @@
+import { draft } from "@/models/review";
 import { defineStation } from "@/models/station";
 
 export default defineStation({
@@ -9,9 +10,9 @@ export default defineStation({
   line: "His skin was bright and glowing, and he smelled sweeter than musk, even when he was hot and sweaty!",
   physical: [
     {
-      ref: "shamail:8",
-      phrase: "أَزْهَرُ اللَّوْنِ",
-      gloss: "He was bright of colour.",
+      ref: "muslim:2330b",
+      phrase: "أَزْهَرَ اللَّوْنِ كَأَنَّ عَرَقَهُ اللُّؤْلُؤُ",
+      gloss: "He was bright of colour, and his drops of sweat were like pearls.",
     },
     {
       ref: "shamail:344",
@@ -19,7 +20,15 @@ export default defineStation({
       gloss: "I never smelled musk or perfume more fragrant than his sweat.",
     },
   ],
-  character: [],
+  character: [
+    {
+      trait: "Gracious",
+      line: "Anas said he never turned down a gift of perfume.",
+      ref: "shamail:216",
+      basis: "reflection",
+      review: draft(),
+    },
+  ],
   signs: [
     {
       kind: "karama",

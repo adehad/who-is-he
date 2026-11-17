@@ -17,7 +17,7 @@ Chapter 1 follows the long descriptions (#7 ‘Alī, #8 Hind) from head to toe. 
 | 7 | neck | ch1 #7, #8, #12 | mouth |
 | 8 | chest | ch1 #7, #8 | neck |
 | 9 | hands* | ch1 | |
-| 10 | fragrance* | ch1 #8 + ch48 | |
+| 10 | fragrance* | ch48 + muslim:2330b | |
 | 11 | feet | ch1 #8 + ch18 #122 + ch40 #260 | fragrance |
 | 12 | seal | ch2 #16–23 | feet |
 | 13 | hair | ch3–6 + ch1 #8 | seal |
