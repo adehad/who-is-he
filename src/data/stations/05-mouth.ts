@@ -28,8 +28,8 @@ export default defineStation({
   character: [
     {
       trait: "Truthful",
-      line: "‘Alī said he was the most truthful of all people in what he said.",
-      ref: "shamail:7",
+      line: "He pointed to his own mouth and said that nothing but the truth ever came out of it, whether he was happy or cross.",
+      ref: "abudawud:3646",
       basis: "reflection",
       review: draft(),
     },
