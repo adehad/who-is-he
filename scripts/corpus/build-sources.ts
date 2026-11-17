@@ -1,5 +1,5 @@
-// Build the sources beside the sunnah.com corpus: the OpenITI books. Each is downloaded at a
-// pinned version into .cache/corpus/downloads/<source>/
+// Build the sources beside the sunnah.com corpus: the OpenITI books and the Quran (Tanzil).
+// Each is downloaded at a pinned version into .cache/corpus/downloads/<source>/
 // and written to .cache/corpus/sources/<source>.jsonl; .cache/corpus/sources.json says how to
 // cite each.
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -15,9 +15,24 @@ import { CACHE, CATALOGUE, SOURCES_DIR, writeRows } from "./corpus";
 import { download } from "./download";
 import { type Draft, parseMarkdown } from "./openiti";
 import { type SourceInfo, type SourceRow, uniqueKeys } from "./sources";
+import { parseTanzil } from "./tanzil";
 
 const DOWNLOADS = `${CACHE}/downloads`;
 const OPENITI_LICENCE = "CC BY-NC-SA 4.0 (OpenITI corpus)";
+
+const TANZIL = {
+  quran: {
+    url: "https://tanzil.net/pub/download/index.php?quranType=uthmani&outType=txt-2&agree=true",
+    file: "quran-uthmani.txt",
+    sha256: "bf4f57b968d03f4131c070b1e285da9be0e0a108a21c910e872801ca273312c8",
+  },
+  en: {
+    url: "https://tanzil.net/trans/?transID=en.pickthall&type=txt-2",
+    file: "en.pickthall.txt",
+    sha256: "4aabbfa9d96796f5a6b0217d2c39dce1a3084f772bf6f2650e37082a774e3cc7",
+  },
+};
+const QURAN_VERSES = 6236;
 
 /** The OpenITI metadata TSV as one record per version id, keyed by column name. */
 function metadataRows(tsv: string): Map<string, Record<string, string>> {
@@ -110,6 +125,41 @@ function toRow(book: OpenitiBook, d: Draft, key: string): SourceRow {
   return row;
 }
 
+async function buildQuran(): Promise<SourceInfo> {
+  const dir = `${DOWNLOADS}/quran`;
+  const read = async (f: { url: string; file: string; sha256: string }) =>
+    parseTanzil(readFileSync(await download(f.url, `${dir}/${f.file}`, f.sha256), "utf8"));
+  const ar = await read(TANZIL.quran);
+  const en = await read(TANZIL.en);
+  if (ar.verses.size !== QURAN_VERSES || en.verses.size !== QURAN_VERSES)
+    throw new Error(`Tanzil: ${ar.verses.size} Arabic and ${en.verses.size} English verses`);
+  writeRows(
+    "quran",
+    [...ar.verses].map(
+      ([key, text]): SourceRow => ({
+        ref: `quran:${key}`,
+        source: "quran",
+        kind: "quran",
+        ar: text,
+        en: en.verses.get(key) ?? "",
+      }),
+    ),
+  );
+  return {
+    id: "quran",
+    kind: "quran",
+    title: "The Quran (Uthmani text) with Pickthall's English",
+    author: "",
+    edition: "Tanzil Quran Text (Uthmani, Version 1.1); translation en.pickthall from Tanzil",
+    licence:
+      "Arabic: CC BY 3.0, verbatim copies only, credit Tanzil Project and link to tanzil.net; " +
+      "English: Tanzil translation terms (non-commercial)",
+    url: "https://tanzil.net",
+    notice: `${ar.notice}\n\n${en.notice}`,
+    records: ar.verses.size,
+  };
+}
+
 /** Download, parse and write every source; returns their catalogue entries and parse reports. */
 export async function buildSources(): Promise<{ infos: SourceInfo[]; reports: OpenitiReport[] }> {
   mkdirSync(SOURCES_DIR, { recursive: true });
@@ -129,6 +179,7 @@ export async function buildSources(): Promise<{ infos: SourceInfo[]; reports: Op
     infos.push(info);
     reports.push(report);
   }
+  infos.push(await buildQuran());
   return { infos, reports };
 }
 

@@ -86,6 +86,7 @@ kind, edition and licence. Refs are `<source>:<key>`:
   the Shama'il commentaries of al-Qari (`qari-jam`) and Ibn Hajar al-Haytami (`haytami-ashraf`).
 - Lexicons by root: Lisan al-'Arab (`lisan:ضلع`), al-Nihaya (`nihaya:شنب`), Maqayis al-Lugha
   (`maqayis`) and Taj al-'Arus (`taj`).
+- The Quran (`quran:68:4`): Tanzil's Uthmani text with Pickthall's English.
 
 The OpenITI texts are unvowelled. A page is the one a record starts on; where the edition marks no
 page, only the volume is known, and al-Tabarani's may be off by one near a volume change.
@@ -117,5 +118,7 @@ The research corpus adds:
 
 - Classical Arabic texts from the [OpenITI](https://github.com/OpenITI/RELEASE) corpus, release
   v2025.1.9 (CC BY-NC-SA 4.0).
+- The Quran text from [Tanzil](https://tanzil.net) (CC BY 3.0): it may be copied only verbatim,
+  with its copyright notice and a link to tanzil.net. Pickthall's translation is also from Tanzil.
 
 Fonts (Amiri, Aref Ruqaa, Atkinson Hyperlegible, Baloo 2) are self-hosted through Fontsource.
