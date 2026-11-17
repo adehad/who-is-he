@@ -4,27 +4,27 @@ Draft input only: nothing here has had scholarly review. References are sunnah.c
 
 ## Order
 
-Chapter 1 follows the long descriptions (#7 ‘Alī, #8 Hind) from head to toe. The later chapters come after it, in Tirmidhi's order. Existing stations are marked *.
+Chapter 1 follows the long descriptions (#7 ‘Alī, #8 Hind) from head to toe. The later chapters come after it, in Tirmidhi's order.
 
-| # | id | Shamail source | after |
-|---|----|----------------|-------|
-| 1 | intro* | ch1 #8 | |
-| 2 | stature | ch1 #2, #3, #7, #8 | intro |
-| 3 | face* | ch1 | |
-| 4 | brow | ch1 #8 | face |
-| 5 | eyes* | ch1 | |
-| 6 | mouth | ch1 #8, #9 | eyes |
-| 7 | neck | ch1 #7, #8, #12 | mouth |
-| 8 | chest | ch1 #7, #8 | neck |
-| 9 | hands* | ch1 | |
-| 10 | fragrance* | ch48 + muslim:2330b | |
-| 11 | feet | ch1 #8 + ch18 #122 + ch40 #260 | fragrance |
-| 12 | seal | ch2 #16–23 | feet |
-| 13 | hair | ch3–6 + ch1 #8 | seal |
-| 14 | speech | ch33 #222–224 | hair |
-| 15 | smile | ch34 #224–232 | speech |
-| 16 | voice | ch44 #313–317 + bukhari:769 | smile |
-| 17 | tears | ch45 #321–324 | voice |
+| # | id | Shamail source |
+|---|----|----------------|
+| 1 | intro | ch1 #8 |
+| 2 | stature | ch1 #2, #3, #7, #8 |
+| 3 | face | ch1 |
+| 4 | brow | ch1 #8 |
+| 5 | eyes | ch1 |
+| 6 | mouth | ch1 #8, #9 |
+| 7 | neck | ch1 #7, #8, #12 |
+| 8 | chest | ch1 #7, #8 |
+| 9 | hands | ch1 |
+| 10 | fragrance | ch48 + muslim:2330b |
+| 11 | feet | ch1 #8 + ch18 #122 + ch40 #260 |
+| 12 | seal | ch2 #16–23 |
+| 13 | hair | ch3–6 + ch1 #8 |
+| 14 | speech | ch33 #222–224 |
+| 15 | smile | ch34 #224–232 |
+| 16 | voice | ch44 #313–317 + bukhari:769 |
+| 17 | tears | ch45 #321–324 |
 
 ## Merges
 
@@ -38,18 +38,13 @@ Chapter 1 follows the long descriptions (#7 ‘Alī, #8 Hind) from head to toe. 
 
 ## Signs
 
-31 cited signs (11 mujiza, 8 karama, 12 khasisa) and 1 research card (hands). The kind on every card is our own classification, not the source's.
+The kind on every sign card is our own classification, not the source's.
 
 Needing a scholar:
 - **stature**: “Never looking shorter” rests on one route, al-Bayhaqī’s Dalāʾil (bayhaqi-dalail:1/285) through Ṣubayḥ al-Farghānī, whom al-Bayhaqī calls not well known. Al-Qārī counts it a miracle (mujiza); whether to present it as one is open. ‘Alī’s «إذا جاء مع القوم غمرهم» (ahmad:1300) is separate and sits in the station’s descriptions.
 
 Other candidates found but not used:
 - Dream khasisa: "whoever sees me in a dream has seen me, for Satan cannot take my form" (shamail:407, bukhari:110). It could close the walkthrough or go on **face**.
-
-`cite()` needs these new `BOOKS` entries:
-- `tirmidhi` ("Jāmi‘ al-Tirmidhī", ch 49)
-- `abudawud` ("Abū Dāwūd", ch 11)
-- bukhari book names for 1, 8, 11, 56, 61, 62, 63, 64, 77
 
 ## Black hair report
 
@@ -65,7 +60,7 @@ These are recorded in `corrections.json`. `src/data/texts.ts` applies only the "
 
 - #2: "brown of color" is attached to the hair, but أسمر اللون is his complexion.
 - #3: the narrator appears as "Ibn Ishaq" (should be Abū Isḥāq), and the English adds "neither curly nor lank-haired", which this Arabic does not have. The Arabic also has an odd اليسرى ("left") after أذنيه.
-- #8: "would consider him haughty" for أشمّ, which describes a high-bridged nose. The "maternal aunt" error is already flagged in intro.
+- #8: "would consider him haughty" for أشمّ, which describes a high-bridged nose. The "maternal aunt" error has its own correction.
 - #21: "bore their annual crop" for مِنْ عَامِهَا, which means "that same year" (the miracle).
 - #28: "Umm Hani bint 'Ali ibn Talib" should be bint Abī Ṭālib. "Arrived boldly" is a mistranslation of قدمة ("once").
 - #41: the surah references are off. عمّ يتساءلون is 78, not 74.
@@ -82,7 +77,6 @@ These are recorded in `corrections.json`. `src/data/texts.ts` applies only the "
 
 ## Unsure / please check
 
-- **chest**: the children's card is the Isrā’ washing (bukhari:349). The childhood opening is a grown-up card in Aḥmad's gentlest wording (ahmad:21261); muslim:162c (number from the add-on, not yet checked on sunnah.com) tells it more vividly ("took out the heart… blood-clot"). How far to tell the opening to children is still to be decided.
 - **seal**: "A sign for Salmān" is labelled khasisa because the Seal itself is unique to him. The date palms are labelled mujiza.
 - **voice**: Minā (abudawud:1957) and Ibn Rawāḥa (abunuaym-dalail:358, ungraded) are labelled mujiza; either could be karama. Tarjīʿ is shown from the sound reports (bukhari:5047, 7540) as a grown-up entry; shamail:319's “he did not” is left out as very weak, and the choice between the three explanations, the source of al-Nihāya's «كان لا يرجع» and Umm Hāniʾ's «يرجع» wait on a scholar. Which reading of Umm Maʿbad's word to prefer, صَهَل or صَحَل, is also open.
 - **neck**: "turned all the way round" follows al-Nihāya and al-Qārī on الْتَفَتَ مَعًا/جَمِيعًا. For a scholar: how to word دُمْيَة for children; whether the ʿAlawī chain in bayhaqi-dalail:1/285 strengthens Hind's جِيدُ دُمْيَة; whose grade the hakim:4274 field is (al-Ḥākim's or al-Dhahabī's) and the chain through Ḥizām ibn Hishām; Ibn Saʿd's unnamed Anṣārī (ibnsad:1/410-2). Umāma (darimi:1399) sits here for its «عَلَى عُنُقِهِ»; Abū Jahl's threat (bukhari:4958) is grown-up only.
@@ -103,7 +97,7 @@ Points for a scholar on these four stations. Grades are shown on the site, so Da
 - **mouth**
   - The light seen between his teeth when he spoke (shamail:15, with the same chain at darimi:59, bayhaqi-dalail:1/215 and tabarani-kabir:11/12181) is graded Daʿīf Jiddan and is not shown, not even for grown-ups. The bright-teeth entry (tabarani-kabir:10/10397, ungraded) mentions in its note why it is missing. A scholar may still prefer a flagged grown-up card.
   - ضليع الفم as a kināya for eloquence is al-Qārī's reading (1/45), given in a note rather than as the meaning.
-  - Icon: the lantern now stands for true words. The owner may prefer another.
+  - Icon: the lantern stands for true words. The owner may prefer another.
 - **smile**
   - shamail:226 ("no one smiled more", Daʿīf) is not shown: tirmidhi:3641 carries the same words from the same Companion with a Ḥasan grade, so it would only repeat.
   - Jarīr's smile is a character card (shamail:230). His horse is a sign on **chest** (bukhari:4357), where the report has his chest struck; it is labelled karāma (blessing through his touch and prayer) and could be mujiza.
@@ -114,7 +108,7 @@ Points for a scholar on these four stations. Grades are shown on the site, so Da
   - hakim:1671 (tears at the Black Stone) runs through Nuʿaym ibn Ḥammād, whom some critics weaken despite al-Ḥākim's grade.
   - Qatāda's eye on **eyes** also has his tears (دمعت عيناه); it is shown there, not here.
 
-Handed to other stations: the ʿAlawī route of Hind (bayhaqi-dalail:1/285) also covers face, brow, neck, chest, hands, feet, speech; Muḥammad ibn Ḥāṭib's burned hand (hakim:6909) fits **hands**; the eloquence kināya of ضليع الفم fits **speech**.
+Not used yet: the ʿAlawī route of Hind (bayhaqi-dalail:1/285) also covers face, hands, feet and speech; Muḥammad ibn Ḥāṭib's burned hand (hakim:6909) could go on **hands**; the eloquence kināya of ضليع الفم could go on **speech**.
 
 ## Chest
 
@@ -124,7 +118,7 @@ Character: Ibn ‘Abbās's wind (bukhari:6), ‘Alī's أجود الناس صد�
 
 Open points:
 - Whether the ‘Alawī route lifts Hind's report (its chain runs through the Ḥusaynī family to Ja‘far al-Ṣādiq).
-- How far to tell the opening of the chest to children.
+- How far to tell the opening of the chest to children. It is a grown-up card in Aḥmad's gentlest wording; muslim:162c (number from the add-on, not yet checked on sunnah.com) tells it more vividly ("took out the heart… blood-clot").
 - Not used: darimi:13 and hakim:4230 (the heart sealed after the opening) are on **seal** as a grown-up card; muslim:468a, because the hadith never says the unease left; quran:94:2–3, 39:22, 6:125, 20:25 and 53:11, which are about others or open disputes.
 
 ## Hands
