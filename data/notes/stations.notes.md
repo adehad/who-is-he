@@ -83,7 +83,7 @@ These are recorded in `corrections.json`. `src/data/texts.ts` applies only the "
 
 ## Unsure / please check
 
-- **chest** sign bukhari:349 (Jibrīl opening and washing his chest). muslim:162c (number from the add-on, not yet checked on sunnah.com), the childhood version, is more graphic ("took out the heart… blood-clot"), so I used the Isrā’ version instead.
+- **chest**: the children's card is the Isrā’ washing (bukhari:349). The childhood opening is a grown-up card in Aḥmad's gentlest wording (ahmad:21261); muslim:162c (number from the add-on, not yet checked on sunnah.com) tells it more vividly ("took out the heart… blood-clot"). How far to tell the opening to children is still to be decided.
 - **seal**: "A sign for Salmān" is labelled khasisa because the Seal itself is unique to him. The date palms are labelled mujiza.
 - **voice**: Minā (abudawud:1957) is labelled mujiza. It could equally be karama.
 - **neck**: "turned all the way round" is my reading of الْتَفَتَ مَعًا/جميعا, following the usual commentary.
@@ -105,8 +105,7 @@ Points for a scholar on these four stations. Grades are shown on the site, so Da
   - Icon: the lantern now stands for true words. The owner may prefer another.
 - **smile**
   - shamail:226 ("no one smiled more", Daʿīf) is not shown: tirmidhi:3641 carries the same words from the same Companion with a Ḥasan grade, so it would only repeat.
-  - Jarīr's smile is a character card (shamail:230) and his horse a sign (bukhari:6089). The same report has his chest struck, which **chest** may also want; it is shown here only.
-  - The Jarīr sign is labelled karāma (blessing through his touch and prayer); it could be mujiza.
+  - Jarīr's smile is a character card (shamail:230). His horse is a sign on **chest** (bukhari:4357), where the report has his chest struck; it is labelled karāma (blessing through his touch and prayer) and could be mujiza.
   - bayhaqi-dalail:1/274-2 («إذا ضحك يتلألأ») comes through al-Zuhrī from Abū Hurayra, a broken chain.
 - **tears**
   - The death of his son Ibrāhīm (bukhari:1303) is a grown-up-only character card. The child-facing station line mentions only that he wept "when someone he loved was dying".
@@ -115,3 +114,14 @@ Points for a scholar on these four stations. Grades are shown on the site, so Da
   - Qatāda's eye on **eyes** also has his tears (دمعت عيناه); it is shown there, not here.
 
 Handed to other stations: the ʿAlawī route of Hind (bayhaqi-dalail:1/285) also covers face, brow, neck, chest, hands, feet, speech; Muḥammad ibn Ḥāṭib's burned hand (hakim:6909) fits **hands**; the eloquence kināya of ضليع الفم fits **speech**.
+
+## Chest
+
+Physical: Hind (shamail:8) with al-Barā’'s ṣaḥīḥ wording for the shoulders (bukhari:3551) and the ‘Alawī route's فسيح الصدر (bayhaqi-dalail:1/285), which avoids the unnamed man in Tirmidhī's chain. جليل المشاش والكتد (shamail:7) is glossed as large joints and upper back, following al-Nihāya on كتد.
+
+Character: Ibn ‘Abbās's wind (bukhari:6), ‘Alī's أجود الناس صدرا (shamail:7, Ḍa‘īf, with al-Qārī's reading) and Qur’an 3:159 ("Soft-hearted"). Signs: the washing (bukhari:349), 94:1, Jarīr (bukhari:4357), ‘Alī sent to Yemen (hakim:4658, on the two Shaykhs' criteria per al-Ḥākim), and the childhood opening as a grown-up card (ahmad:21261, ungraded).
+
+Open points:
+- Whether the ‘Alawī route lifts Hind's report (its chain runs through the Ḥusaynī family to Ja‘far al-Ṣādiq).
+- How far to tell the opening of the chest to children.
+- Not used: darimi:13 and hakim:4230 (the heart sealed after the opening) are on **seal** as a grown-up card; muslim:468a, because the hadith never says the unease left; quran:94:2–3, 39:22, 6:125, 20:25 and 53:11, which are about others or open disputes.

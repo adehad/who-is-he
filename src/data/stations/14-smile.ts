@@ -82,14 +82,6 @@ export default defineStation({
       ref: "bukhari:3582",
     },
     {
-      kind: "karama",
-      title: "Firm on his horse",
-      line: "Jarīr told him that he kept falling off his horse. The Prophet ﷺ, who always smiled at Jarīr, patted his chest and prayed: “O Allah, make him firm.” Jarīr never fell off a horse again.",
-      ref: "bukhari:6089",
-      trait: "Friendly",
-      note: "“I never fell from a horse after that”: Jarīr in bukhari:4357.",
-    },
-    {
       kind: "khasisa",
       title: "A smile for a new sūra",
       line: "He woke from a short doze, smiling. When they asked why, he said: “A sūra has just been sent down to me,” and recited Sūrat al-Kawthar.",
