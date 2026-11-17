@@ -81,6 +81,7 @@ These are recorded in `corrections.json`. `src/data/texts.ts` applies only the "
 - #230: the English is only "Same as the above hadith", but the Arabic differs (تبسم, not ضحك).
 - #318 vs #319: رجّع is translated "quivering voice" in one and "quavering tone" (negated) in the other.
 - abudawud:1957: "Our ears were open" for فَفُتِحَتْ أَسْمَاعُنَا ("our hearing was opened").
+- bukhari:3561: "the sweat of the Prophet" for عَرْف, which is fragrance (sweat is عَرَق).
 
 ## Unsure / please check
 

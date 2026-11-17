@@ -134,5 +134,13 @@
     "replace": "Our hearing was opened, so that we could hear what he was saying while we were in our dwellings.",
     "reason": "فَفُتِحَتْ أَسْمَاعُنَا حَتَّى كُنَّا نَسْمَعُ مَا يَقُولُ وَنَحْنُ فِي مَنَازِلِنَا: فُتِحَتْ is passive (“was opened”) and حَتَّى gives the result (“so that we could hear”). The English loses that their hearing was opened for them.",
     "confidence": "clear"
+  },
+  {
+    "ref": "bukhari:3561",
+    "field": "en",
+    "find": "nor have I smelt a perfume nicer than the sweat of the Prophet.",
+    "replace": "nor have I smelt a scent or fragrance nicer than the scent or fragrance of the Prophet.",
+    "reason": "وَلاَ شَمِمْتُ رِيحًا قَطُّ أَوْ عَرْفًا قَطُّ أَطْيَبَ مِنْ رِيحِ أَوْ عَرْفِ النَّبِيِّ: عَرْف (with fā’) is fragrance; sweat is عَرَق (with qāf). أو is the narrator’s doubt between two words for scent. A scholar should confirm no transmitted copy reads عرقا.",
+    "confidence": "scholar-check"
   }
 ]
