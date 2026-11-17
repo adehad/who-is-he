@@ -229,6 +229,16 @@
     "in_book": "Book 61, Hadith 73",
     "grade": null
   },
+  "bukhari:3582": {
+    "ar": "حَدَّثَنَا مُسَدَّدٌ، حَدَّثَنَا حَمَّادٌ، عَنْ عَبْدِ الْعَزِيزِ، عَنْ أَنَسٍ، وَعَنْ يُونُسَ، عَنْ ثَابِتٍ، عَنْ أَنَسٍ ـ رضى الله عنه ـ قَالَ أَصَابَ أَهْلَ الْمَدِينَةِ قَحْطٌ عَلَى عَهْدِ رَسُولِ اللَّهِ صلى الله عليه وسلم، فَبَيْنَا هُوَ يَخْطُبُ يَوْمَ جُمُعَةٍ إِذْ قَامَ رَجُلٌ فَقَالَ يَا رَسُولَ اللَّهِ هَلَكَتِ الْكُرَاعُ، هَلَكَتِ الشَّاءُ، فَادْعُ اللَّهَ يَسْقِينَا، فَمَدَّ يَدَيْهِ وَدَعَا. قَالَ أَنَسٌ وَإِنَّ السَّمَاءَ لَمِثْلُ الزُّجَاجَةِ فَهَاجَتْ رِيحٌ أَنْشَأَتْ سَحَابًا ثُمَّ اجْتَمَعَ، ثُمَّ أَرْسَلَتِ السَّمَاءُ عَزَالِيَهَا، فَخَرَجْنَا نَخُوضُ الْمَاءَ حَتَّى أَتَيْنَا مَنَازِلَنَا، فَلَمْ نَزَلْ نُمْطَرُ إِلَى الْجُمُعَةِ الأُخْرَى، فَقَامَ إِلَيْهِ ذَلِكَ الرَّجُلُ ـ أَوْ غَيْرُهُ ـ فَقَالَ يَا رَسُولَ اللَّهِ، تَهَدَّمَتِ الْبُيُوتُ، فَادْعُ اللَّهَ يَحْبِسْهُ. فَتَبَسَّمَ ثُمَّ قَالَ \" حَوَالَيْنَا وَلاَ عَلَيْنَا \". فَنَظَرْتُ إِلَى السَّحَابِ تَصَدَّعَ حَوْلَ الْمَدِينَةِ كَأَنَّهُ إِكْلِيلٌ.",
+    "narrator": "Narrated Anas:",
+    "en": "Once during the lifetime of Allah's Messenger (ﷺ), the people of Medina suffered from drought. So while the Prophet was delivering a sermon on a Friday a man got up saying, \"O Allah's Messenger (ﷺ)! The horses and sheep have perished. Will you invoke Allah to bless us with rain?\" The Prophet (ﷺ) lifted both his hands and invoked. The sky at that time was as clear as glass. Suddenly a wind blew, raising clouds that gathered together, and it started raining heavily. We came out (of the Mosque) wading through the flowing water till we reached our homes. It went on raining till the next Friday, when the same man or some other man stood up and said, \"O Allah's Messenger (ﷺ)! The houses have collapsed; please invoke Allah to withhold the rain.\" On that the Prophet (ﷺ) smiled and said, \"O Allah, (let it rain) around us and not on us.\" I then looked at the clouds to see them separating forming a sort of a crown round Medina.",
+    "ch": 61,
+    "ch_en": "Virtues and Merits of the Prophet (pbuh) and his Companions",
+    "ch_ar": "كتاب المناقب",
+    "in_book": "Book 61, Hadith 91",
+    "grade": null
+  },
   "bukhari:3686": {
     "ar": "حَدَّثَنَا مُسَدَّدٌ، حَدَّثَنَا يَزِيدُ بْنُ زُرَيْعٍ، حَدَّثَنَا سَعِيدٌ، وَقَالَ، لِي خَلِيفَةُ حَدَّثَنَا مُحَمَّدُ بْنُ سَوَاءٍ، وَكَهْمَسُ بْنُ الْمِنْهَالِ، قَالاَ حَدَّثَنَا سَعِيدٌ، عَنْ قَتَادَةَ، عَنْ أَنَسِ بْنِ مَالِكٍ ـ رضى الله عنه ـ قَالَ صَعِدَ النَّبِيُّ صلى الله عليه وسلم إِلَى أُحُدٍ وَمَعَهُ أَبُو بَكْرٍ وَعُمَرُ وَعُثْمَانُ فَرَجَفَ بِهِمْ، فَضَرَبَهُ بِرِجْلِهِ، قَالَ \" اثْبُتْ أُحُدُ فَمَا عَلَيْكَ إِلاَّ نَبِيٌّ أَوْ صِدِّيقٌ أَوْ شَهِيدَانِ \".",
     "narrator": "Narrated Anas bin Malik:",
@@ -669,16 +679,6 @@
     "in_book": "Book 33, Hadith 3",
     "grade": "Da'if Isnād (Zubair `Aliza'i)"
   },
-  "shamail:226": {
-    "ar": "حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ، قَالَ: أَخْبَرَنَا ابْنُ لَهِيعَةَ، عَنْ عُبَيْدِ اللهِ بْنِ الْمُغِيرَةِ، عَنْ عَبْدِ اللهِ بْنِ الْحَارِثِ بْنِ جَزْءٍ، أَنَّهُ قَالَ: مَا رَأَيْتُ أَحَدًا أَكْثَرَ تَبَسُّمًا مِنْ رَسُولِ اللهِ صلى الله عليه وسلم..",
-    "narrator": "‘Abdullah ibn al-Harith ibn Jaz said (may Allah be well pleased with him):",
-    "en": "\"I have not seen anyone with a more cheerful countenance than Allah's Messenger (Allah bless him and give him peace)!\"",
-    "ch": 34,
-    "ch_en": "The Laughing Of Rasoolullah",
-    "ch_ar": "باب ما جاء في ضحك رسول الله صلى الله عليه وسلم",
-    "in_book": "Book 34, Hadith 2",
-    "grade": "Da'if Isnād (Zubair `Aliza'i)"
-  },
   "shamail:227": {
     "ar": "حَدَّثَنَا أَحْمَدُ بْنُ خَالِدٍ الْخَلالُ، قَالَ: حَدَّثَنَا يَحْيَى بْنُ إِسْحَاقَ السَّيْلَحَانِيُّ، قَالَ: حَدَّثَنَا لَيْثُ بْنُ سَعْدٍ، عَنْ يَزِيدَ بْنِ أَبِي حَبِيبٍ، عَنْ عَبْدِ اللهِ بْنِ الْحَارِثِ، قَالَ: مَا كَانَ ضَحِكُ رَسُولِ اللهِ صلى الله عليه وسلم إِلا تَبَسُّمًا..",
     "narrator": "Abdullah ibn al-Harith said (may Allah be well pleased with him):",
@@ -908,5 +908,15 @@
     "ch_ar": "كتاب المناقب عن رسول الله صلى الله عليه وسلم",
     "in_book": "Book 49, Hadith 25",
     "grade": "Sahih (Darussalam)"
+  },
+  "tirmidhi:3641": {
+    "ar": "حَدَّثَنَا قُتَيْبَةُ، حَدَّثَنَا ابْنُ لَهِيعَةَ، عَنْ عُبَيْدِ اللَّهِ بْنِ الْمُغِيرَةِ، عَنْ عَبْدِ اللَّهِ بْنِ الْحَارِثِ بْنِ جَزْءٍ، قَالَ مَا رَأَيْتُ أَحَدًا أَكْثَرَ تَبَسُّمًا مِنْ رَسُولِ اللَّهِ صلى الله عليه وسلم . قَالَ أَبُو عِيسَى هَذَا حَدِيثٌ حَسَنٌ غَرِيبٌ .",
+    "narrator": "Narrated Ibn Jaz:",
+    "en": "\"I have not seen anyone who smiled more than the Messenger of Allah (ﷺ).\"",
+    "ch": 49,
+    "ch_en": "Chapters on Virtues",
+    "ch_ar": "كتاب المناقب عن رسول الله صلى الله عليه وسلم",
+    "in_book": "Book 49, Hadith 37",
+    "grade": "Hasan (Darussalam)"
   }
 }

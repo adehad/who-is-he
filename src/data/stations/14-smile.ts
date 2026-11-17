@@ -5,10 +5,15 @@ export default defineStation({
   id: "smile",
   name: "His smile",
   icon: "sunrise",
-  phrase: "جُلُّ ضَحِكِهِ التَّبَسُّمُ",
+  phrase: "مَا كَانَ ضَحِكُ رَسُولِ اللهِ ﷺ إِلا تَبَسُّمًا",
   title: "Mostly a smile",
   line: "When he laughed, it was mostly a smile, showing teeth as white as hailstones. Nobody smiled more than he did!",
   physical: [
+    {
+      ref: "shamail:227",
+      phrase: "مَا كَانَ ضَحِكُ رَسُولِ اللهِ ﷺ إِلا تَبَسُّمًا",
+      gloss: "His laughter was nothing but a smile.",
+    },
     {
       ref: "shamail:224",
       phrase: "جُلُّ ضَحِكِهِ التَّبَسُّمُ، يَفْتَرُّ عَنْ مِثْلِ حَبِّ الْغَمَامِ",
@@ -16,10 +21,9 @@ export default defineStation({
         "Most of his laughter was in the form of a smile that revealed teeth as white as hailstones.",
     },
     {
-      ref: "shamail:226",
-      phrase: "مَا رَأَيْتُ أَحَدًا أَكْثَرَ تَبَسُّمًا مِنْ رَسُولِ اللهِ ﷺ",
-      gloss: "I have not seen anyone with a more cheerful countenance than Allah’s Messenger!",
-      note: "The Arabic is more direct: “I have not seen anyone who smiled more”.",
+      ref: "tirmidhi:3641",
+      phrase: "مَا رَأَيْتُ أَحَدًا أَكْثَرَ تَبَسُّمًا مِنْ رَسُولِ اللَّهِ ﷺ",
+      gloss: "I have not seen anyone who smiled more than the Messenger of Allah.",
     },
   ],
   character: [
@@ -39,6 +43,13 @@ export default defineStation({
       review: draft(),
     },
   ],
-  signs: [],
+  signs: [
+    {
+      kind: "mujiza",
+      title: "Rain around us",
+      line: "It rained for a whole week, and a man asked him to pray for it to stop. He smiled and prayed: “Around us, not on us.” The clouds opened up around Madina like a crown.",
+      ref: "bukhari:3582",
+    },
+  ],
   mirror: "Practise a smile that reaches your eyes. Who could use one today?",
 });
