@@ -28,8 +28,8 @@ export default defineStation({
   character: [
     {
       trait: "Generous",
-      line: "When a girl brought him dates and cucumbers, he gave her a whole handful of gifts back.",
-      ref: "shamail:201",
+      line: "Jābir said that whenever anyone asked him for something, he never once said “no”.",
+      ref: "muslim:2311a",
       basis: "reflection",
       review: draft(),
     },

@@ -12,7 +12,7 @@ export const _ok = defineStation({
   mirror: "m",
   physical: [{ ref: "shamail:5", phrase: "ش", gloss: "g" }],
   character: [
-    { trait: "Generous", ref: "shamail:201", basis: "reflection", review: draft(), line: "l" },
+    { trait: "Generous", ref: "muslim:2311a", basis: "reflection", review: draft(), line: "l" },
   ],
   signs: [{ kind: "mujiza", trait: "Generous", ref: "bukhari:169", title: "t", line: "l" }],
 });
