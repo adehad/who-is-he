@@ -158,5 +158,13 @@
     "replace": "nor have I smelt a scent or fragrance nicer than the scent or fragrance of the Prophet.",
     "reason": "وَلاَ شَمِمْتُ رِيحًا قَطُّ أَوْ عَرْفًا قَطُّ أَطْيَبَ مِنْ رِيحِ أَوْ عَرْفِ النَّبِيِّ: عَرْف (with fā’) is fragrance; sweat is عَرَق (with qāf). أو is the narrator’s doubt between two words for scent. A scholar should confirm no transmitted copy reads عرقا.",
     "confidence": "scholar-check"
+  },
+  {
+    "ref": "bukhari:5907",
+    "field": "en",
+    "find": "and his palms were soft.",
+    "replace": "and his palms were basiṭ (long, without excess).",
+    "reason": "وَكَانَ بَسِطَ الْكَفَّيْنِ: Ibn Ḥajar reads بسط, and the variant سبط, as palms and fingers of a length that is not excessive, and says the sense of open-handed giving is not meant here (quoted by al-Qārī, qari-jam:1/22). Al-Haytamī instead reads the variant سبط as soft palms (لينهما, haytami-ashraf:1/53), which supports the English. The commentators differ, so a scholar should settle the rendering.",
+    "confidence": "scholar-check"
   }
 ]

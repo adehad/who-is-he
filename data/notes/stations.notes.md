@@ -53,13 +53,11 @@ Other candidates found but not used:
 
 ## Black hair report
 
-**Not found** in Bukhari, Muslim, Tirmidhi, Abu Dawud, Mishkat al-Masabih or the dataset's Ahmad, which is partial (about 2 MB) and has no ‘Amr ibn Akhtab entry. I searched for: أخطب; السائب; Arabic سواد/أسود near مسح or شيب; and English "black" near hair or touch.
+The **hands** card "Hair that stayed black" cites Abū Sufyān Madlūk (tabarani-kabir:20/804): where the Prophet ﷺ had stroked his head stayed black when the rest turned white. The same is reported of al-Sā’ib ibn Yazīd (bayhaqi-dalail:6/209), Muḥammad ibn Anas, brought to him as a baby (bayhaqi-dalail:6/213-2), ‘Amr ibn Tha‘laba (tabarani-kabir:17/84) and Qays ibn Zayd (shifa:1/645). None is graded, and ‘Amr’s chain runs through Ya‘qūb al-Zuhrī: a scholar should check the chains.
 
-Closest verified reports:
-- **tirmidhi:3629** (Tirmidhi ch49, graded ḥasan gharīb): Abū Zayd ‘Amr ibn Akhṭab (ﷺ written for صلى الله عليه وسلم): مَسَحَ رَسُولُ اللَّهِ ﷺ يَدَهُ عَلَى وَجْهِي وَدَعَا لِي قَالَ عَزْرَةُ إِنَّهُ عَاشَ مِائَةً وَعِشْرِينَ سَنَةً وَلَيْسَ فِي رَأْسِهِ إِلاَّ شَعَرَاتٌ بِيضٌ. Dataset English: "The Messenger of Allah wiped his hand over my face and supplicated for me." 'Azrah said: "Indeed he lived for one-hundred and twenty years, and there weren't upon his head except for a few small grey hairs." This is used as a sign on **hair**.
-- **bukhari:3540** (dataset): as-Sā’ib ibn Yazīd at 94 was "quite strong and of straight figure", and said his hearing and sight came from the Prophet's invocation. This is used as a sign on **seal**, because his head-stroking story is shamail:16. Hair colour is not mentioned.
-
-Suggestion: the hands station's research card could point to tirmidhi:3629. Keep the card for the specific "black where he touched" wording, which needs a source outside this dataset (it is likely from the Dalā’il or Mu‘jam literature, unverified).
+Related reports used elsewhere:
+- **tirmidhi:3629** (Tirmidhi ch49, graded ḥasan gharīb): Abū Zayd ‘Amr ibn Akhṭab: مَسَحَ رَسُولُ اللَّهِ ﷺ يَدَهُ عَلَى وَجْهِي وَدَعَا لِي قَالَ عَزْرَةُ إِنَّهُ عَاشَ مِائَةً وَعِشْرِينَ سَنَةً وَلَيْسَ فِي رَأْسِهِ إِلاَّ شَعَرَاتٌ بِيضٌ. Used as a sign on **hair**. Al-Bayhaqī gives the same story with «اللهم جمله وأدم جماله» and calls its chain sound and connected (bayhaqi-dalail:6/211): the prayer kept his whole head mostly dark, which is a different kind of report from the touched patch.
+- **bukhari:3540**: as-Sā’ib ibn Yazīd at 94 was "quite strong and of straight figure", and said his hearing and sight came from the Prophet's invocation. Used as a sign on **seal**, because his head-stroking story is shamail:16.
 
 ## Translation issues noticed (dataset English)
 
@@ -79,6 +77,7 @@ These are recorded in `corrections.json`. `src/data/texts.ts` applies only the "
 - #318 vs #319: رجّع is translated "quivering voice" in one and "quavering tone" (negated) in the other.
 - muslim:2340b: "there is one amongst the people of the earth who… had seen him except me" for وما على وجه الأرض رجل رآه غيري ("there is no man left on earth who saw him except me").
 - abudawud:1957: "Our ears were open" for فَفُتِحَتْ أَسْمَاعُنَا ("our hearing was opened").
+- bukhari:5907: "his palms were soft" for بَسِطَ الْكَفَّيْنِ, which Ibn Ḥajar reads as long without excess.
 - bukhari:3561: "the sweat of the Prophet" for عَرْف, which is fragrance (sweat is عَرَق).
 
 ## Unsure / please check
@@ -125,3 +124,15 @@ Open points:
 - Whether the ‘Alawī route lifts Hind's report (its chain runs through the Ḥusaynī family to Ja‘far al-Ṣādiq).
 - How far to tell the opening of the chest to children.
 - Not used: darimi:13 and hakim:4230 (the heart sealed after the opening) are on **seal** as a grown-up card; muslim:468a, because the hadith never says the unease left; quran:94:2–3, 39:22, 6:125, 20:25 and 53:11, which are about others or open disputes.
+
+## Hands
+
+Physical: شثن (shamail:5) with Anas's ṣaḥīḥ "big hands and feet" (bukhari:5907), رحب الراحة (shamail:8, only in Hind), softer than silk (shamail:344) and cooler than snow (bukhari:3553). The notes give the commentators' reconciliation of thick and soft (al-Haytamī: soft skin, strong bones) and teach راحة only as one word family with ريح and رائحة.
+
+Character: never said no (muslim:2311a), the handful of jewellery for ar-Rubayyi‘ (shamail:201, Ḍa‘īf), never "uff" and never hit a servant (shamail:344, 347), and the servant girl who could lead him by the hand (ibnmajah:4177). Signs: water from his fingers (bukhari:169), the cool, fragrant pat (muslim:2329), hair that stayed black (tabarani-kabir:20/804), pebbles glorifying in his palm (bayhaqi-dalail:6/64) and Umm Ma‘bad's ewe (hakim:4274).
+
+Open points:
+- شثن: whether to mention "inclining to short" (al-Nihāya, al-Qārī) or follow Ibn Ḥajar's "thick without shortness or roughness".
+- بسط / سبط الكفين (bukhari:5907): the rendering, and whether the sunnah.com "soft" should be replaced.
+- The touched-hair chains (see Black hair report).
+- Not used: the generosity reading of رحب الراحة as a physiognomic sign (qari-jam:1/40 gives it only as «قيل»); lisan:سبط's "open-handed", which Ibn Ḥajar says is not meant here; quran:48:10 and 8:17, which put a divine attribute or a battle in front of children; Ḥanẓala's healing palm (ahmad:20665), kept back to avoid crowding the station.
