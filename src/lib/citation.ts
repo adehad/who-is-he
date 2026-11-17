@@ -108,7 +108,7 @@ export function cite(ref: string, t: ClientText): Cite {
   const w = workOf(t.source);
   return {
     label: `${w.name}${keyLabel(w.key, key, t)}${w.numbering ? ` (${w.numbering})` : ""}`,
-    url: t.source === "quran" ? `https://tanzil.net/#${key}` : null,
+    url: t.source === "quran" ? `https://quran.com/${key.replace(":", "/")}` : null,
     grade: t.grade,
     gradeBy: w.gradeBy ? `Grade by ${w.gradeBy}` : "Comment printed in this edition",
   };

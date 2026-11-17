@@ -35,7 +35,7 @@ describe("cite", () => {
 
   test("only sunnah.com and Quran refs link out", () => {
     expect(cite("quran:68:4", source("quran", { kind: "quran" })).url).toBe(
-      "https://tanzil.net/#68:4",
+      "https://quran.com/68/4",
     );
     expect(cite("hakim:4274", source("hakim")).url).toBeNull();
   });
