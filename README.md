@@ -85,7 +85,7 @@ kind, edition and licence. Refs are `<source>:<key>`:
   (`bayhaqi-dalail:1/215`), Ibn Sa'd's Tabaqat (`ibnsad`), al-Qadi 'Iyad's al-Shifa (`shifa`) and
   the Shama'il commentaries of al-Qari (`qari-jam`) and Ibn Hajar al-Haytami (`haytami-ashraf`).
 - Lexicons by root: Lisan al-'Arab (`lisan:ضلع`), al-Nihaya (`nihaya:شنب`), Maqayis al-Lugha
-  (`maqayis`) and Taj al-'Arus (`taj`).
+  (`maqayis`), Taj al-'Arus (`taj`) and Lane's Lexicon (`lane:ضلع`, English with Arabic headwords).
 - The Quran (`quran:68:4`): Tanzil's Uthmani text with Pickthall's English.
 
 The OpenITI texts are unvowelled. A page is the one a record starts on; where the edition marks no
@@ -120,5 +120,8 @@ The research corpus adds:
   v2025.1.9 (CC BY-NC-SA 4.0).
 - The Quran text from [Tanzil](https://tanzil.net) (CC BY 3.0): it may be copied only verbatim,
   with its copyright notice and a link to tanzil.net. Pickthall's translation is also from Tanzil.
+- Lane's Lexicon as corrected by [laneslexicon](https://github.com/laneslexicon/lexicon_xml): "Text
+  provided by Perseus Digital Library, with funding from The U.S. Department of Education and The
+  Max Planck Society." Perseus's availability statement is kept in `.cache/corpus/sources.json`.
 
 Fonts (Amiri, Aref Ruqaa, Atkinson Hyperlegible, Baloo 2) are self-hosted through Fontsource.

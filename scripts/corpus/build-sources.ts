@@ -1,5 +1,5 @@
-// Build the sources beside the sunnah.com corpus: the OpenITI books and the Quran (Tanzil).
-// Each is downloaded at a pinned version into .cache/corpus/downloads/<source>/
+// Build the sources beside the sunnah.com corpus: the OpenITI books, the Quran (Tanzil) and
+// Lane's Lexicon. Each is downloaded at a pinned version into .cache/corpus/downloads/<source>/
 // and written to .cache/corpus/sources/<source>.jsonl; .cache/corpus/sources.json says how to
 // cite each.
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -13,6 +13,7 @@ import {
 } from "./classical";
 import { CACHE, CATALOGUE, SOURCES_DIR, writeRows } from "./corpus";
 import { download } from "./download";
+import { laneAvailability, parseLane } from "./lane";
 import { type Draft, parseMarkdown } from "./openiti";
 import { type SourceInfo, type SourceRow, uniqueKeys } from "./sources";
 import { parseTanzil } from "./tanzil";
@@ -33,6 +34,13 @@ const TANZIL = {
   },
 };
 const QURAN_VERSES = 6236;
+
+const LANE_COMMIT = "f3c19fb29f2cf2e12de3f97b7ce2b7a0d6682ea6";
+// The repository's XML files at LANE_COMMIT; the *1 files are Lane's Supplement.
+const LANE_FILES = (
+  "$0 _0 _A0 _D0 _E0 _H0 _S0 _T0 _Y0 _Y1 _Z0 b0 d0 f0 g0 h0 h1 j0 k0 k1 l0 l1 m0 m1 n0 n1 q0 " +
+  "q1 r0 s0 t0 v0 w0 w1 x0 z0"
+).split(" ");
 
 /** The OpenITI metadata TSV as one record per version id, keyed by column name. */
 function metadataRows(tsv: string): Map<string, Record<string, string>> {
@@ -160,6 +168,47 @@ async function buildQuran(): Promise<SourceInfo> {
   };
 }
 
+async function buildLane(): Promise<SourceInfo> {
+  const rows: SourceRow[] = [];
+  const roots: string[] = [];
+  let availability = "";
+  for (const f of LANE_FILES) {
+    const url = `https://raw.githubusercontent.com/laneslexicon/lexicon_xml/${LANE_COMMIT}/${f}.xml`;
+    const xml = readFileSync(await download(url, `${DOWNLOADS}/lane/${f}.xml`), "utf8");
+    availability ||= laneAvailability(xml);
+    for (const e of parseLane(xml)) {
+      roots.push(e.root);
+      const row: SourceRow = {
+        ref: "",
+        source: "lane",
+        kind: "lexicon",
+        ar: e.headwords.join(" "),
+        en: e.text,
+        headword: e.label,
+      };
+      if (f.endsWith("1")) row.heading = "Supplement";
+      if (e.page !== null) row.page = e.page;
+      rows.push(row);
+    }
+  }
+  const { keys } = uniqueKeys(roots);
+  writeRows(
+    "lane",
+    rows.map((r, i) => ({ ...r, ref: `lane:${keys[i]}` })),
+  );
+  return {
+    id: "lane",
+    kind: "lexicon",
+    title: "An Arabic-English Lexicon",
+    author: "Edward William Lane",
+    edition: `Williams and Norgate, London, 1863-1893; Perseus TEI XML as corrected by laneslexicon/lexicon_xml at ${LANE_COMMIT}`,
+    licence: "Perseus Digital Library terms: free distribution with credit to Perseus",
+    url: `https://github.com/laneslexicon/lexicon_xml/tree/${LANE_COMMIT}`,
+    notice: availability,
+    records: rows.length,
+  };
+}
+
 /** Download, parse and write every source; returns their catalogue entries and parse reports. */
 export async function buildSources(): Promise<{ infos: SourceInfo[]; reports: OpenitiReport[] }> {
   mkdirSync(SOURCES_DIR, { recursive: true });
@@ -179,7 +228,7 @@ export async function buildSources(): Promise<{ infos: SourceInfo[]; reports: Op
     infos.push(info);
     reports.push(report);
   }
-  infos.push(await buildQuran());
+  infos.push(await buildQuran(), await buildLane());
   return { infos, reports };
 }
 
