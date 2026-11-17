@@ -37,8 +37,8 @@ export default defineStation({
     },
     {
       trait: "Thankful",
-      line: "He made much of every blessing, however small, and never found fault with it.",
-      ref: "shamail:224",
+      line: "He never said a bad word about any food. If he liked it, he ate it, and if not, he simply left it.",
+      ref: "bukhari:3563",
       basis: "reflection",
       review: draft(),
     },
