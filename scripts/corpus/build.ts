@@ -1,10 +1,13 @@
-// Build the local hadith corpus (bun run corpus): freococo/sunnah_dataset plus the Sahih Muslim
-// add-on from fawazahmed0/hadith-api. Downloads are cached in .cache/corpus and only ever parsed.
-import { existsSync, mkdirSync, renameSync, writeFileSync } from "node:fs";
+// Build the local corpus (bun run corpus): freococo/sunnah_dataset plus the Sahih Muslim add-on
+// from fawazahmed0/hadith-api, then the other sources (build-sources.ts). Downloads are cached in
+// .cache/corpus and only ever parsed.
+import { mkdirSync, writeFileSync } from "node:fs";
 import { asyncBufferFromFile, parquetReadObjects } from "hyparquet";
 import { parquetWriteFile } from "hyparquet-writer";
 import { buildAddon, toHfColumns } from "./addon";
-import { CACHE, CORPUS } from "./corpus";
+import { buildSources, writeCatalogue } from "./build-sources";
+import { CACHE, CATALOGUE, CORPUS, SOURCES_DIR, SUNNAH, writeRows } from "./corpus";
+import { download } from "./download";
 import { type CorpusRow, type FawazHadith, fromHf } from "./parse";
 
 const HF_REV = "cc2f95cc070367c3ad6c5b672a6d16673dab566f";
@@ -13,17 +16,7 @@ const HF_URL = `https://huggingface.co/datasets/freococo/sunnah_dataset/resolve/
 const fawazUrl = (edition: string) =>
   `https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@${FAWAZ_REV}/editions/${edition}.json`;
 
-async function cached(url: string, file: string): Promise<string> {
-  const path = `${CACHE}/${file}`;
-  if (existsSync(path)) return path;
-  console.log(`downloading ${url}`);
-  const r = await fetch(url);
-  if (!r.ok) throw new Error(`${url}: HTTP ${r.status}`);
-  mkdirSync(path.replace(/\/[^/]+$/, ""), { recursive: true });
-  writeFileSync(`${path}.part`, new Uint8Array(await r.arrayBuffer()));
-  renameSync(`${path}.part`, path);
-  return path;
-}
+const cached = (url: string, file: string) => download(url, `${CACHE}/${file}`);
 
 interface FawazEdition {
   metadata: { sections: Record<string, string> };
@@ -61,7 +54,7 @@ const { rows: addon, stats } = buildAddon(
 );
 for (const r of addon) corpus.set(r.ref, r);
 
-writeFileSync(CORPUS, `${[...corpus.values()].map((r) => JSON.stringify(r)).join("\n")}\n`);
+writeRows(SUNNAH, [...corpus.values()]);
 
 mkdirSync(`${CACHE}/addon`, { recursive: true });
 parquetWriteFile({
@@ -121,3 +114,26 @@ console.log(
     `${stats.overlapDisagree.length} shared Muslim numbers with differing Arabic`,
 );
 console.log(`wrote ${CORPUS} and ${CACHE}/addon/`);
+
+const { infos, reports } = await buildSources();
+writeCatalogue([
+  {
+    id: SUNNAH,
+    kind: "hadith",
+    title: "The sunnah.com collections",
+    author: "",
+    edition: `sunnah.com via freococo/sunnah_dataset at ${HF_REV}; Sahih Muslim add-on from fawazahmed0/hadith-api at ${FAWAZ_REV}`,
+    licence: "sunnah.com texts used with permission; dataset CC BY-NC-SA 4.0; add-on Unlicense",
+    url: "https://sunnah.com",
+    records: corpus.size,
+  },
+  ...infos,
+]);
+for (const r of reports)
+  console.log(
+    `${r.id.padEnd(16)} ${String(r.records).padStart(6)}  (${r.repeats} keys suffixed -2…, ${r.noPage} without page, ` +
+      `${r.straddles} volume guessed across a change, ${r.empty} empty dropped, ${r.dropped} chars outside records)`,
+  );
+for (const i of infos.slice(reports.length))
+  console.log(`${i.id.padEnd(16)} ${String(i.records).padStart(6)}`);
+console.log(`wrote ${CATALOGUE} and ${SOURCES_DIR}/`);

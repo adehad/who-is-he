@@ -70,6 +70,26 @@ README on how it was made.
 those hadith from the corpus. It fails on a ref the corpus lacks. Arabic is the source text; English
 is sunnah.com's, with `data/corrections.json` applied at build.
 
+### Other sources
+
+For research only: the site cites sunnah.com refs alone. `bun run corpus` also downloads these at
+pinned versions (each file checked against its sha256) into `.cache/corpus/downloads/<source>/`
+and writes `.cache/corpus/sources/<source>.jsonl`. `.cache/corpus/sources.json` gives each source's
+kind, edition and licence. Refs are `<source>:<key>`:
+
+- Hadith, with the editor's numbering: Musnad Ahmad (`ahmad:N`, al-Arna'ut), al-Darimi
+  (`darimi:N`, Asad, with his grade), al-Hakim's Mustadrak (`hakim:N`, with al-Dhahabi's Talkhis as
+  the grade), al-Tabarani's al-Mu'jam al-Kabir (`tabarani-kabir:V/N`, as numbering restarts by
+  volume) and Abu Nu'aym's Dala'il (`abunuaym-dalail:N`).
+- By volume and page, `-2`, `-3` … for later records on the same page: al-Bayhaqi's Dala'il
+  (`bayhaqi-dalail:1/215`), Ibn Sa'd's Tabaqat (`ibnsad`), al-Qadi 'Iyad's al-Shifa (`shifa`) and
+  the Shama'il commentaries of al-Qari (`qari-jam`) and Ibn Hajar al-Haytami (`haytami-ashraf`).
+- Lexicons by root: Lisan al-'Arab (`lisan:ضلع`), al-Nihaya (`nihaya:شنب`), Maqayis al-Lugha
+  (`maqayis`) and Taj al-'Arus (`taj`).
+
+The OpenITI texts are unvowelled. A page is the one a record starts on; where the edition marks no
+page, only the volume is known, and al-Tabarani's may be off by one near a volume change.
+
 ## Checks
 
 ```sh
@@ -93,4 +113,9 @@ Texts, references and grades are from [sunnah.com](https://sunnah.com), used wit
 the [freococo/sunnah_dataset](https://huggingface.co/datasets/freococo/sunnah_dataset) dataset
 (CC BY-NC-SA 4.0). The rest of Sahih Muslim comes from
 [fawazahmed0/hadith-api](https://github.com/fawazahmed0/hadith-api) (Unlicense).
+The research corpus adds:
+
+- Classical Arabic texts from the [OpenITI](https://github.com/OpenITI/RELEASE) corpus, release
+  v2025.1.9 (CC BY-NC-SA 4.0).
+
 Fonts (Amiri, Aref Ruqaa, Atkinson Hyperlegible, Baloo 2) are self-hosted through Fontsource.
