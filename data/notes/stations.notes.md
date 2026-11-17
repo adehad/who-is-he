@@ -103,3 +103,8 @@ Points for a scholar on these four stations. Grades are shown on the site, so Da
   - The light seen between his teeth when he spoke (shamail:15, with the same chain at darimi:59, bayhaqi-dalail:1/215 and tabarani-kabir:11/12181) is graded Daʿīf Jiddan and is not shown, not even for grown-ups. The bright-teeth entry (tabarani-kabir:10/10397, ungraded) mentions in its note why it is missing. A scholar may still prefer a flagged grown-up card.
   - ضليع الفم as a kināya for eloquence is al-Qārī's reading (1/45), given in a note rather than as the meaning.
   - Icon: the lantern now stands for true words. The owner may prefer another.
+- **smile**
+  - shamail:226 ("no one smiled more", Daʿīf) is not shown: tirmidhi:3641 carries the same words from the same Companion with a Ḥasan grade, so it would only repeat.
+  - Jarīr's smile is a character card (shamail:230) and his horse a sign (bukhari:6089). The same report has his chest struck, which **chest** may also want; it is shown here only.
+  - The Jarīr sign is labelled karāma (blessing through his touch and prayer); it could be mujiza.
+  - bayhaqi-dalail:1/274-2 («إذا ضحك يتلألأ») comes through al-Zuhrī from Abū Hurayra, a broken chain.
