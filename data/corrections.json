@@ -24,6 +24,14 @@
     "confidence": "scholar-check"
   },
   {
+    "ref": "muslim:2340b",
+    "field": "en",
+    "find": "there is one amongst the people of the earth who (are living at the present time and) had seen him except me.",
+    "replace": "there is no man left on the face of the earth who saw him except me.",
+    "reason": "وَمَا عَلَى وَجْهِ الأَرْضِ رَجُلٌ رَآهُ غَيْرِي: “and there is no man on the face of the earth who saw him other than me”. The English drops the negation and says the opposite.",
+    "confidence": "clear"
+  },
+  {
     "ref": "shamail:8",
     "field": "en",
     "find": "My maternal aunt Hind asked the son of Abu Hala",

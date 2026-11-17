@@ -40,10 +40,10 @@ Chapter 1 follows the long descriptions (#7 ‘Alī, #8 Hind) from head to toe. 
 
 ## Signs
 
-24 cited signs (8 mujiza, 7 karama, 9 khasisa) and 2 research cards (stature, hands). The kind on every card is our own classification, not the source's.
+26 cited signs (9 mujiza, 7 karama, 10 khasisa) and 1 research card (hands). The kind on every card is our own classification, not the source's.
 
-Research needed:
-- **stature**: the report that he looked taller than tall people walking beside him. It is not in Bukhari, Muslim, Tirmidhi, Abu Dawud, Mishkat or the dataset's partial Ahmad.
+Needing a scholar:
+- **stature**: “Never looking shorter” rests on one route, al-Bayhaqī’s Dalāʾil (bayhaqi-dalail:1/285) through Ṣubayḥ al-Farghānī, whom al-Bayhaqī calls not well known. Al-Qārī counts it a miracle (mujiza); whether to present it as one is open. ‘Alī’s «إذا جاء مع القوم غمرهم» (ahmad:1300) is separate and sits in the station’s descriptions.
 
 Other candidates found but not used:
 - Dream khasisa: "whoever sees me in a dream has seen me, for Satan cannot take my form" (shamail:407, bukhari:110). It could close the walkthrough or go on **face**.
@@ -80,6 +80,7 @@ These are recorded in `corrections.json`. `src/data/texts.ts` applies only the "
 - #226: "more cheerful countenance" for أكثر تبسما ("smiled more").
 - #230: the English is only "Same as the above hadith", but the Arabic differs (تبسم, not ضحك).
 - #318 vs #319: رجّع is translated "quivering voice" in one and "quavering tone" (negated) in the other.
+- muslim:2340b: "there is one amongst the people of the earth who… had seen him except me" for وما على وجه الأرض رجل رآه غيري ("there is no man left on earth who saw him except me").
 - abudawud:1957: "Our ears were open" for فَفُتِحَتْ أَسْمَاعُنَا ("our hearing was opened").
 - bukhari:3561: "the sweat of the Prophet" for عَرْف, which is fragrance (sweat is عَرَق).
 
