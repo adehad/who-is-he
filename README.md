@@ -56,6 +56,8 @@ PNGs committed) before CI passes. The install screenshots are not checked for fr
 bun run corpus   # build the local corpus in .cache/corpus/
 bun run texts    # rewrite data/texts.json from it
 bun run search -- --root رحم --en mercy --collection shamail   # find hadith; --help for options
+bun run search -- --ar "أفلج الثنيتين" --kind hadith            # every source, or --source darimi
+bun run search -- --lookup ضلع                                  # a root in each lexicon
 ```
 
 `bun run corpus` downloads the two sources at pinned revisions (set in `scripts/corpus/build.ts`)
@@ -88,8 +90,9 @@ kind, edition and licence. Refs are `<source>:<key>`:
   (`maqayis`), Taj al-'Arus (`taj`) and Lane's Lexicon (`lane:ضلع`, English with Arabic headwords).
 - The Quran (`quran:68:4`): Tanzil's Uthmani text with Pickthall's English.
 
-The OpenITI texts are unvowelled. A page is the one a record starts on; where the edition marks no
-page, only the volume is known, and al-Tabarani's may be off by one near a volume change.
+The OpenITI texts are unvowelled; search folds them like the sunnah.com Arabic. A page is the one a
+record starts on; where the edition marks no page, only the volume is known, and al-Tabarani's may
+be off by one near a volume change.
 
 ## Checks
 

@@ -94,3 +94,11 @@ export function rootRegex(root: string, gap = 2): RegExp {
   const body = letters.map((l) => (l === "ء" ? "[ءاوي]" : l)).join(`${LETTER}{0,${gap}}`);
   return new RegExp(`(?<!${LETTER})${LETTER}*?${body}${LETTER}*(?!${LETTER})`);
 }
+
+/**
+ * A root or headword folded for comparing lexicon entries: Arabic letters only, every hamza seat
+ * and alef as ء (lexicons write a hamza radical on different seats), ى as ي.
+ */
+export function rootKey(s: string): string {
+  return normaliseArabic(s.replace(/[أإآٱاؤئ]/g, "ء")).replace(/[^ء-ي]/g, "");
+}

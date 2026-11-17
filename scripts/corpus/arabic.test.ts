@@ -1,5 +1,11 @@
 import { describe, expect, test } from "bun:test";
-import { arabicSimilarity, normaliseArabic, normaliseWithOffsets, rootRegex } from "./arabic";
+import {
+  arabicSimilarity,
+  normaliseArabic,
+  normaliseWithOffsets,
+  rootKey,
+  rootRegex,
+} from "./arabic";
 
 describe("normaliseArabic", () => {
   test("strips harakat, tatweel and Quranic marks", () => {
@@ -55,4 +61,11 @@ describe("rootRegex", () => {
   test("rejects a root that is not 2 to 4 letters", () => {
     expect(() => rootRegex("ر")).toThrow(/2 to 4/);
   });
+});
+
+test("rootKey folds hamza seats and vowels so lexicons' spellings of a root compare equal", () => {
+  expect(rootKey("ضَلَعَ")).toBe(rootKey("ضلع"));
+  expect(rootKey("أبأ")).toBe(rootKey("ءبء"));
+  expect(rootKey("بئر")).toBe(rootKey("بأر"));
+  expect(rootKey("رمى")).toBe(rootKey("رمي"));
 });
