@@ -1,6 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import corrections from "#data/corrections.json";
-import { applyCorrections, resolveTexts, TEXTS } from "@/data/texts";
+import { applyCorrections, type Correction, resolveTexts, TEXTS } from "@/data/texts";
+import type { Ref } from "@/models/ref";
 
 const one = {
   "shamail:1": {
@@ -22,9 +23,19 @@ describe("texts", () => {
       else expect(t.en !== undefined, ref).toBe(t.source === "quran" || t.source === "lane");
   });
 
-  test("clear corrections applied (6, matching concept build)", () => {
+  test("every clear correction to a cited text is applied, and nothing else", () => {
+    const cited = (corrections as Correction[]).filter(
+      (c): c is Correction & { replace: string } =>
+        c.confidence === "clear" && c.ref in TEXTS && typeof c.replace === "string",
+    );
+    for (const c of cited)
+      expect(TEXTS[c.ref as Ref].corrected, c.ref).toContainEqual({
+        original: c.find,
+        replacement: c.replace,
+        reason: c.reason,
+      });
     const n = Object.values(TEXTS).reduce((a, t) => a + (t.corrected?.length ?? 0), 0);
-    expect(n).toBe(6);
+    expect(n).toBe(cited.length);
   });
 
   test("throws when a find string is not present exactly once", () => {
