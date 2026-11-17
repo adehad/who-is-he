@@ -156,8 +156,8 @@
     "field": "en",
     "find": "nor have I smelt a perfume nicer than the sweat of the Prophet.",
     "replace": "nor have I smelt a scent or fragrance nicer than the scent or fragrance of the Prophet.",
-    "reason": "وَلاَ شَمِمْتُ رِيحًا قَطُّ أَوْ عَرْفًا قَطُّ أَطْيَبَ مِنْ رِيحِ أَوْ عَرْفِ النَّبِيِّ: عَرْف (with fā’) is fragrance; sweat is عَرَق (with qāf). أو is the narrator’s doubt between two words for scent. A scholar should confirm no transmitted copy reads عرقا.",
-    "confidence": "scholar-check"
+    "reason": "وَلاَ شَمِمْتُ رِيحًا قَطُّ أَوْ عَرْفًا قَطُّ أَطْيَبَ مِنْ رِيحِ أَوْ عَرْفِ النَّبِيِّ: عَرْف (with fā’) is a scent, mostly a sweet one (Lisān al-ʿArab and Lane, عرف); sweat is عَرَق (with qāf). أو is the narrator’s doubt between two words for scent. Al-Bayhaqī gives this report through the same Sulaymān ibn Ḥarb as «ولا شممت رائحة قط أطيب من ريح رسول الله» (bayhaqi-dalail:1/254), and Muslim’s route from Thābit (muslim:2330a) also has ريح. “Sweat” comes from Ḥumayd’s different wording (shamail:344: أطيب من عرق).",
+    "confidence": "clear"
   },
   {
     "ref": "bukhari:5907",

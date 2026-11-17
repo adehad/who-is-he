@@ -86,6 +86,7 @@ These are recorded in `corrections.json`. `src/data/texts.ts` applies only the "
 - **seal**: "A sign for Salmān" is labelled khasisa because the Seal itself is unique to him. The date palms are labelled mujiza.
 - **voice**: Minā (abudawud:1957) is labelled mujiza. It could equally be karama.
 - **neck**: "turned all the way round" follows al-Nihāya and al-Qārī on الْتَفَتَ مَعًا/جَمِيعًا. For a scholar: how to word دُمْيَة for children; whether the ʿAlawī chain in bayhaqi-dalail:1/285 strengthens Hind's جِيدُ دُمْيَة; whose grade the hakim:4274 field is (al-Ḥākim's or al-Dhahabī's) and the chain through Ḥizām ibn Hishām; Ibn Saʿd's unnamed Anṣārī (ibnsad:1/410-2). Umāma (darimi:1399) sits here for its «عَلَى عُنُقِهِ»; Abū Jahl's threat (bukhari:4958) is grown-up only.
+- **fragrance**: the trail sign (darimi:67) is ungraded and every route runs through Isḥāq ibn al-Faḍl; Abū Yaʿlā and al-Bazzār, which al-Qārī cites «بسند صحيح», are not in the corpus. The hand-and-scent reports (darimi:1407, muslim:2329) are split: the scent here, the touch on **hands**.
 - **feet** and **mouth** use saliva and foot-strike reports. The kid lines say "put a little of his saliva" and "struck it with his foot", matching the dataset English.
 - Station phrases were copied from the dataset. `bun run check` checks that each one occurs in its hadith's Arabic, ignoring voweling and punctuation.
 
