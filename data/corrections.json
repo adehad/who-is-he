@@ -104,6 +104,14 @@
     "confidence": "scholar-check"
   },
   {
+    "ref": "shamail:225",
+    "field": "en",
+    "find": "'His eyes are blackened [with kohl], though and he is not black-eyed'!",
+    "replace": "'His eyes look lined with kohl', though they were not lined with kohl!",
+    "reason": "أَكْحَلُ الْعَيْنَيْنِ، وَلَيْسَ بِأَكْحَلَ: his eyelids were naturally dark, as if lined with kohl (al-Nihāya, كحل: سواد في أجفان العين خلقة), though he had not applied any. “He is not black-eyed” contradicts the first half, and “though and” is garbled.",
+    "confidence": "clear"
+  },
+  {
     "ref": "shamail:226",
     "field": "en",
     "find": "anyone with a more cheerful countenance than",

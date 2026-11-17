@@ -32,9 +32,7 @@ Chapter 1 follows the long descriptions (#7 ‘Alī, #8 Hind) from head to toe. 
 - **mouth** = cheeks + mouth + teeth (#8, #15). It is kept apart from **smile** (ch34) because the saliva signs belong here and the smile hadith sit at a later point in the book.
 - **hair** = ch3 hair + ch4 combing + ch5 grey hair + ch6 dye + the beard from #8. The beard alone was one phrase (كث اللحية), and ch5 counts the white hairs of the head and beard together.
 - **feet** = ch1 feet + gait + ch18 walking. #123 and #124 in ch18 repeat #5 and #7. Only #122 ("the earth seemed folded up for him") is new, so the station stays at the ch1 position. The ch40 swollen-feet hadith (#260) supplies the character link.
-- **kohl (ch7)** gets no station. It is about a practice, not a feature. Suggested additions to the existing **eyes** station:
-  - physical shamail:51: يَكْتَحِلُ قَبْلَ أَنْ يَنَامَ بِالإِثْمِدِ، ثَلاثًا فِي كُلِّ عَيْنٍ ("used to apply antimony before going to sleep, three times in each eye")
-  - physical shamail:225: أَكْحَلُ الْعَيْنَيْنِ، وَلَيْسَ بِأَكْحَلَ ("his eyes looked as if lined with kohl, though they were not")
+- **kohl (ch7)** gets no station. It is about a practice, not a feature. **eyes** shows the natural kohl-dark look instead (shamail:225, أَكْحَلُ الْعَيْنَيْنِ، وَلَيْسَ بِأَكْحَلَ). The practice itself (shamail:51, kohl before sleep, three times in each eye) is not shown.
 - **Not used**: ch8–17 and ch19–32 (clothes, objects, food), ch50 (cupping) and ch54 (death). shamail:326 was skipped as unsuitable for children.
 - **Fragrance** sits between hands and feet, which splits the "hands and feet" pair in the hadith. One option is to move fragrance to just after **face**, since أَزْهَرُ اللَّوْنِ (bright complexion) comes before the forehead in #8.
 
@@ -76,6 +74,7 @@ These are recorded in `corrections.json`. `src/data/texts.ts` applies only the "
 - #41: the surah references are off. عمّ يتساءلون is 78, not 74.
 - #43: the English is garbled ("with a son of mine, who said").
 - #222: "pause periodically" for كلام بيّن فصل ("clear, distinct speech").
+- #225: "his eyes are blackened [with kohl], though and he is not black-eyed" for أكحل العينين وليس بأكحل ("his eyes look lined with kohl, though they are not").
 - #226: "more cheerful countenance" for أكثر تبسما ("smiled more").
 - #230: the English is only "Same as the above hadith", but the Arabic differs (تبسم, not ضحك).
 - #318 vs #319: رجّع is translated "quivering voice" in one and "quavering tone" (negated) in the other.
@@ -91,3 +90,13 @@ These are recorded in `corrections.json`. `src/data/texts.ts` applies only the "
 - **neck**: "turned all the way round" is my reading of الْتَفَتَ مَعًا/جميعا, following the usual commentary.
 - **feet** and **mouth** use saliva and foot-strike reports. The kid lines say "put a little of his saliva" and "struck it with his foot", matching the dataset English.
 - Station phrases were copied from the dataset. `bun run check` checks that each one occurs in its hadith's Arabic, ignoring voweling and punctuation.
+
+## Senses: eyes, mouth, smile, tears
+
+Points for a scholar on these four stations. Grades are shown on the site, so Da'if Shamāʾil reports stay alongside the sound ones; severely weak reports (Da'if Jiddan, munkar, mawdu') are left out.
+
+- **eyes**
+  - أشكل العين (shamail:9): the gloss follows Qāḍī ʿIyāḍ, al-Nihāya and al-Qārī (a red tinge in the white of the eye), not the narrator Simāk's "long-slit eye", which they call a slip. Confirm.
+  - The ʿAlawī route of Hind's description (bayhaqi-dalail:1/285) is cited beside shamail:8 for the downward gaze. Its chain is ungraded.
+  - Qatāda's eye (tabarani-kabir:19/12) is grown-up only, as a battle injury. Badr or Uḥud: al-Bayhaqī (3/251) gives both.
+  - hakim:4274 (Umm Maʿbad): is the corpus grade صحيح al-Dhahabī's or al-Ḥākim's?

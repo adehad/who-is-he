@@ -29,6 +29,13 @@
     "in_book": "Book 35, Hadith 33",
     "grade": "Sahih (Al-Albani)"
   },
+  "abunuaym-dalail:397": {
+    "ar": "حدثنا أحمد بن إسحاق وعبد الله بن محمد قالا: ثنا أبو بكر بن أبي عاصم قال: ثنا أبو بكر بن أبي شيبة قال: ثنا محمد بن بشر ثنا عبد العزيز بن عمر بن عبد العزيز حدثني رجل من بني سلامان بن سعد، عن أمه أن خالها حبيب بن أبي فديك حدثها أن أباه خرج به إلى رسول الله صلى الله عليه وسلم وعيناه مبيضتان لا يبصر بهما [ص: 467] شيئا فسأله ما أصابه قال: إني كنت أمرن جملا لي فوقعت رجلي على بيض حية فأصيب بصري. فنفث رسول الله صلى الله عليه وسلم في عينيه؛ فأبصر. قال: فرأيته يدخل الخيط في الإبرة وإنه لابن ثمانين وإن عينيه لمبيضتان",
+    "source": "abunuaym-dalail",
+    "kind": "hadith",
+    "edition": "الدكتور محمد رواس قلعه جي، عبد البر عباس :: دار النفائس، بيروت (OpenITI v2025.1.9, 0430AbuNucaymIsbahani.DalailNubuwwa.Shamela0010637-ara1)",
+    "heading": "دعاؤه برد بصر أعمى"
+  },
   "adab:255": {
     "ar": "حَدَّثَنَا بِشْرُ بْنُ مُحَمَّدٍ، قَالَ: أَخْبَرَنَا عَبْدُ اللهِ، قَالَ: أَخْبَرَنَا أُسَامَةُ بْنُ زَيْدٍ قَالَ: أَخْبَرَنِي مُوسَى بْنُ مُسْلِمٍ مَوْلَى ابْنَةِ قَارِظٍ، عَنْ أَبِي هُرَيْرَةَ، أَنَّهُ رُبَّمَا حَدَّثَ عَنِ النَّبِيِّ صلى الله عليه وسلم، فَيَقُولُ: حَدَّثَنِيهِ أَهْدَبُ الشُّفْرَيْنِ، أَبْيَضُ الْكَشْحَيْنِ، إِذَا أَقْبَلَ أَقْبَلَ جَمِيعًا، وَإِذَا أَدْبَرَ، أَدْبَرَ جَمِيعًا، لَمْ تَرَ عَيْنٌ مِثْلَهُ، وَلَنْ تَرَاهُ.",
     "narrator": "",
@@ -364,6 +371,16 @@
     "in_book": "Book 78, Hadith 129",
     "grade": null
   },
+  "bukhari:6452": {
+    "ar": "حَدَّثَنِي أَبُو نُعَيْمٍ، بِنَحْوٍ مِنْ نِصْفِ هَذَا الْحَدِيثِ حَدَّثَنَا عُمَرُ بْنُ ذَرٍّ، حَدَّثَنَا مُجَاهِدٌ، أَنَّ أَبَا هُرَيْرَةَ، كَانَ يَقُولُ آللَّهِ الَّذِي لاَ إِلَهَ إِلاَّ هُوَ إِنْ كُنْتُ لأَعْتَمِدُ بِكَبِدِي عَلَى الأَرْضِ مِنَ الْجُوعِ، وَإِنْ كُنْتُ لأَشُدُّ الْحَجَرَ عَلَى بَطْنِي مِنَ الْجُوعِ، وَلَقَدْ قَعَدْتُ يَوْمًا عَلَى طَرِيقِهِمُ الَّذِي يَخْرُجُونَ مِنْهُ، فَمَرَّ أَبُو بَكْرٍ، فَسَأَلْتُهُ عَنْ آيَةٍ مِنْ كِتَابِ اللَّهِ، مَا سَأَلْتُهُ إِلاَّ لِيُشْبِعَنِي، فَمَرَّ وَلَمْ يَفْعَلْ، ثُمَّ مَرَّ بِي عُمَرُ فَسَأَلْتُهُ عَنْ آيَةٍ مِنْ كِتَابِ اللَّهِ، مَا سَأَلْتُهُ إِلاَّ لِيُشْبِعَنِي، فَمَرَّ فَلَمْ يَفْعَلْ، ثُمَّ مَرَّ بِي أَبُو الْقَاسِمِ صلى الله عليه وسلم فَتَبَسَّمَ حِينَ رَآنِي وَعَرَفَ، مَا فِي نَفْسِي وَمَا فِي وَجْهِي ثُمَّ قَالَ \" أَبَا هِرٍّ \". قُلْتُ لَبَّيْكَ يَا رَسُولَ اللَّهِ. قَالَ \" الْحَقْ \". وَمَضَى فَتَبِعْتُهُ، فَدَخَلَ فَاسْتَأْذَنَ، فَأَذِنَ لِي، فَدَخَلَ فَوَجَدَ لَبَنًا فِي قَدَحٍ فَقَالَ \" مِنْ أَيْنَ هَذَا اللَّبَنُ \". قَالُوا أَهْدَاهُ لَكَ فُلاَنٌ أَوْ فُلاَنَةُ. قَالَ \" أَبَا هِرٍّ \". قُلْتُ لَبَّيْكَ يَا رَسُولَ اللَّهِ. قَالَ \" الْحَقْ إِلَى أَهْلِ الصُّفَّةِ فَادْعُهُمْ لِي \". قَالَ وَأَهْلُ الصُّفَّةِ أَضْيَافُ الإِسْلاَمِ، لاَ يَأْوُونَ إِلَى أَهْلٍ وَلاَ مَالٍ، وَلاَ عَلَى أَحَدٍ، إِذَا أَتَتْهُ صَدَقَةٌ بَعَثَ بِهَا إِلَيْهِمْ، وَلَمْ يَتَنَاوَلْ مِنْهَا شَيْئًا، وَإِذَا أَتَتْهُ هَدِيَّةٌ أَرْسَلَ إِلَيْهِمْ، وَأَصَابَ مِنْهَا وَأَشْرَكَهُمْ فِيهَا، فَسَاءَنِي ذَلِكَ فَقُلْتُ وَمَا هَذَا اللَّبَنُ فِي أَهْلِ الصُّفَّةِ كُنْتُ أَحَقُّ أَنَا أَنْ أُصِيبَ مِنْ هَذَا اللَّبَنِ شَرْبَةً أَتَقَوَّى بِهَا، فَإِذَا جَاءَ أَمَرَنِي فَكُنْتُ أَنَا أُعْطِيهِمْ، وَمَا عَسَى أَنْ يَبْلُغَنِي مِنْ هَذَا اللَّبَنِ، وَلَمْ يَكُنْ مِنْ طَاعَةِ اللَّهِ وَطَاعَةِ رَسُولِهِ صلى الله عليه وسلم بُدٌّ، فَأَتَيْتُهُمْ فَدَعَوْتُهُمْ فَأَقْبَلُوا، فَاسْتَأْذَنُوا فَأَذِنَ لَهُمْ، وَأَخَذُوا مَجَالِسَهُمْ مِنَ الْبَيْتِ قَالَ \" يَا أَبَا هِرٍّ \". قُلْتُ لَبَّيْكَ يَا رَسُولَ اللَّهِ. قَالَ \" خُذْ فَأَعْطِهِمْ \". قَالَ فَأَخَذْتُ الْقَدَحَ فَجَعَلْتُ أُعْطِيهِ الرَّجُلَ فَيَشْرَبُ حَتَّى يَرْوَى، ثُمَّ يَرُدُّ عَلَىَّ الْقَدَحَ، فَأُعْطِيهِ الرَّجُلَ فَيَشْرَبُ حَتَّى يَرْوَى، ثُمَّ يَرُدُّ عَلَىَّ الْقَدَحَ فَيَشْرَبُ حَتَّى يَرْوَى، ثُمَّ يَرُدُّ عَلَىَّ الْقَدَحَ، حَتَّى انْتَهَيْتُ إِلَى النَّبِيِّ صلى الله عليه وسلم وَقَدْ رَوِيَ الْقَوْمُ كُلُّهُمْ، فَأَخَذَ الْقَدَحَ فَوَضَعَهُ عَلَى يَدِهِ فَنَظَرَ إِلَىَّ فَتَبَسَّمَ فَقَالَ \" أَبَا هِرٍّ \". قُلْتُ لَبَّيْكَ يَا رَسُولَ اللَّهِ. قَالَ \" بَقِيتُ أَنَا وَأَنْتَ \". قُلْتُ صَدَقْتَ يَا رَسُولَ اللَّهِ. قَالَ \" اقْعُدْ فَاشْرَبْ \". فَقَعَدْتُ فَشَرِبْتُ. فَقَالَ \" اشْرَبْ \". فَشَرِبْتُ، فَمَا زَالَ يَقُولُ \" اشْرَبْ \". حَتَّى قُلْتُ لاَ وَالَّذِي بَعَثَكَ بِالْحَقِّ، مَا أَجِدُ لَهُ مَسْلَكًا. قَالَ \" فَأَرِنِي \". فَأَعْطَيْتُهُ الْقَدَحَ فَحَمِدَ اللَّهَ وَسَمَّى، وَشَرِبَ الْفَضْلَةَ.",
+    "narrator": "Narrated Abu Huraira:",
+    "en": "By Allah except Whom none has the right to- be worshipped, (sometimes) I used to lay (sleep) on the ground on my liver (abdomen) because of hunger, and (sometimes) I used to bind a stone over my belly because of hunger. One day I sat by the way from where they (the Prophet (ﷺ) and his companions) used to come out. When Abu Bakr passed by, I asked him about a Verse from Allah's Book and I asked him only that he might satisfy my hunger, but he passed by and did not do so. Then `Umar passed by me and I asked him about a Verse from Allah's Book, and I asked him only that he might satisfy my hunger, but he passed by without doing so. Finally Abu-l-Qasim (the Prophet (ﷺ) ) passed by me and he smiled when he saw me, for he knew what was in my heart and on my face. He said, \"O Aba Hirr (Abu Huraira)!\" I replied, \"Labbaik, O Allah's Messenger (ﷺ)!\" He said to me, \"Follow me.\" He left and I followed him. Then he entered the house and I asked permission to enter and was admitted. He found milk in a bowl and said, \"From where is this milk?\" They said, \"It has been presented to you by such-and-such man (or by such and such woman).\" He said, \"O Aba Hirr!\" I said, \"Labbaik, O Allah's Messenger (ﷺ)!\" He said, \"Go and call the people of Suffa to me.\" These people of Suffa were the guests of Islam who had no families, nor money, nor anybody to depend upon, and whenever an object of charity was brought to the Prophet, he would send it to them and would not take anything from it, and whenever any present was given to him, he used to send some for them and take some of it for himself. The order of the Prophet upset me, and I said to myself, \"How will this little milk be enough for the people of As- Suffa? though I was more entitled to drink from that milk in order to strengthen myself\", but behold! The Prophet (ﷺ) came to order me to give that milk to them. I wondered what will remain of that milk for me, but anyway, I could not but obey Allah and His Apostle so I went to the people of As-Suffa and called them, and they came and asked the Prophet's permission to enter. They were admitted and took their seats in the house. The Prophet (ﷺ) said, \"O Aba-Hirr!\" I said, \"Labbaik, O Allah's Messenger (ﷺ)!\" He said, \"Take it and give it to them.\" So I took the bowl (of milk) and started giving it to one man who would drink his fill and return it to me, whereupon I would give it to another man who, in his turn, would drink his fill and return it to me, and I would then offer it to another man who would drink his fill and return it to me. Finally, after the whole group had drunk their fill, I reached the Prophet (ﷺ) who took the bowl and put it on his hand, looked at me and smiled and said. \"O Aba Hirr!\" I replied, \"Labbaik, O Allah's Messenger (ﷺ)!\" He said, \"There remain you and I.\" I said, \"You have said the truth, O Allah's Messenger (ﷺ)!\" He said, \"Sit down and drink.\" I sat down and drank. He said, \"Drink,\" and I drank. He kept on telling me repeatedly to drink, till I said, \"No. by Allah Who sent you with the Truth, I have no space for it (in my stomach).\" He said, \"Hand it over to me.\" When I gave him the bowl, he praised Allah and pronounced Allah's Name on it and drank the remaining milk.",
+    "ch": 81,
+    "ch_en": "To make the Heart Tender (Ar-Riqaq)",
+    "ch_ar": "كتاب الرقاق",
+    "in_book": "Book 81, Hadith 41",
+    "grade": null
+  },
   "darimi:14": {
     "ar": "أخبرنا عبد الله بن عمران، حدثنا أبو داود، حدثنا جعفر بن عثمان القرشي، عن عمر بن عروة بن الزبير، عن أبيه، عن أبي ذر الغفاري رضي الله عنه، قال قلت: يا رسول الله كيف علمت أنك نبي حتى استيقنت؟ فقال: \" يا أبا ذر أتاني ملكان وأنا ببعض بطحاء مكة فوقع أحدهما على الأرض، وكان الآخر بين السماء والأرض، فقال أحدهما لصاحبه: أهو هو؟ قال: نعم، قال زنه برجل، فوزنت به فوزنته، ثم قال: فزنه بعشرة، فوزنت بهم فرجحتهم، ثم قال: زنه بمائة، فوزنت بهم فرجحتهم ثم قال: زنه بألف، فوزنت بهم فرجحتهم كأني أنظر إليهم ينتثرون علي من خفة الميزان، قال: فقال أحدهما لصاحبه: لو وزنته بأمته لرجحها \"",
     "source": "darimi",
@@ -525,6 +542,13 @@
     "in_book": "Book 14, Hadith 51",
     "grade": "Hasan (Darussalam)"
   },
+  "quran:53:17": {
+    "ar": "مَا زَاغَ ٱلْبَصَرُ وَمَا طَغَىٰ",
+    "en": "The eye turned not aside nor yet was overbold.",
+    "source": "quran",
+    "kind": "quran",
+    "edition": "Tanzil Quran Text (Uthmani, Version 1.1); translation en.pickthall from Tanzil"
+  },
   "shamail:1": {
     "ar": "حَدَّثَنَا أَبُو رَجَاءٍ قُتَيْبَةُ بْنُ سَعِيدٍ، عَنْ مَالِكِ بْنِ أَنَسٍ، عَنْ رَبِيعَةَ بْنِ أَبِي عَبْدِ الرَّحْمَنِ، عَنْ أَنَسِ بْنِ مَالِكٍ، أَنَّهُ سَمِعَهُ، يَقُولُ: كَانَ رَسُولُ اللهِ صلى الله عليه وسلم، لَيْسَ بِالطَّوِيلِ الْبَائِنِ، وَلاَ بِالْقَصِيرِ، وَلاَ بِالأَبْيَضِ الأَمْهَقِ، وَلاَ بِالآدَمِ، وَلاَ بِالْجَعْدِ الْقَطَطِ، وَلاَ بِالسَّبْطِ، بَعَثَهُ اللَّهُ تَعَالَى عَلَى رَأْسِ أَرْبَعِينَ سَنَةً، فَأَقَامَ بِمَكَّةَ عَشْرَ سِنِينَ، وَبِالْمَدِينَةِ عَشْرَ سِنِينَ، وَتَوَفَّاهُ اللَّهُ تَعَالَى عَلَى رَأْسِ سِتِّينَ سَنَةً، وَلَيْسَ فِي رَأْسِهِ وَلِحْيَتِهِ عِشْرُونَ شَعَرَةً بَيْضَاءَ.",
     "narrator": "Anas ibn Malik (ra) reports:",
@@ -584,6 +608,16 @@
     "ch_ar": "باب ما جاء في خلق رسول الله صلى الله عليه وسلم",
     "in_book": "Book 1, Hadith 7",
     "grade": "Da'if Isnād (Zubair `Aliza'i)"
+  },
+  "shamail:9": {
+    "ar": "حَدَّثَنَا أَبُو مُوسَى مُحَمَّدُ بْنُ الْمُثَنَّى، حَدَّثَنَا مُحَمَّدُ بْنُ جَعْفَرٍ، حَدَّثَنَا شُعْبَةُ، عَنْ سِمَاكِ بْنِ حَرْبٍ، قَالَ: سَمِعْتُ جَابِرَ بْنَ سَمُرَةَ، يَقُولُ: كَانَ رَسُولُ اللهِ صلى الله عليه وسلم ضَلِيعَ الْفَمِ، أَشْكَلَ الْعَيْنِ، مَنْهُوسَ الْعَقِبِ.",
+    "narrator": "Simak ibn Harb said:",
+    "en": "“I heard Jabir ibn Samura say: \"Allah’s Messenger (Allah bless him and give him peace) was dali al-fam, ashkal al-'ain, manhus al-'aqib.” Shu'ba said: “I asked Simak: ‘What is dali al-fam?\" He replied:\"[It means] endowed with a grand and impressive mouth.\" I asked: \"What is ashkal al 'ain?\" He replied: \"[It means] long in the slit of the eye.\" I asked: \"What is manhus al-'aqib?\" He said: \"[It means] endowed with a lean heel.”",
+    "ch": 1,
+    "ch_en": "The Noble Features Of Rasoolullah",
+    "ch_ar": "باب ما جاء في خلق رسول الله صلى الله عليه وسلم",
+    "in_book": "Book 1, Hadith 8",
+    "grade": "Sahih Isnād (Zubair `Aliza'i)"
   },
   "shamail:10": {
     "ar": "حَدَّثَنَا هَنَّادُ بْنُ السَّرِيِّ، قَالَ: حَدَّثَنَا عَبْثَرُ بْنُ الْقَاسِمِ، عَنْ أَشْعَثَ يَعْنِي ابْنَ سَوَّارٍ، عَنْ أَبِي إِسْحَاقَ، عَنْ جَابِرِ بْنِ سَمُرَةَ، قَالَ: رَأَيْتُ رَسُولَ اللهِ صلى الله عليه وسلم، فِي لَيْلَةٍ إِضْحِيَانٍ، وَعَلَيْهِ حُلَّةٌ حَمْرَاءُ، فَجَعَلْتُ أَنْظُرُ إِلَيْهِ وَإِلَى الْقَمَرِ، فَلَهُوَ عِنْدِي أَحْسَنُ مِنَ الْقَمَرِ.",
@@ -845,6 +879,16 @@
     "in_book": "Book 33, Hadith 3",
     "grade": "Da'if Isnād (Zubair `Aliza'i)"
   },
+  "shamail:225": {
+    "ar": "حَدَّثَنَا أَحْمَدُ بْنُ مَنِيعٍ، قَالَ: حَدَّثَنَا عَبَّادُ بْنُ الْعَوَّامِ، قَالَ: أَخْبَرَنَا الْحَجَّاجُ وَهُوَ ابْنُ أَرْطَاةَ، عَنْ سِمَاكِ بْنِ حَرْبٍ، عَنْ جَابِرِ بْنِ سَمُرَةَ، قَالَ: كَانَ فِي سَاقَيْ رَسُولِ اللهِ صلى الله عليه وسلم، حُمُوشَةٌ، وَكَانَ لا يَضْحَكُ إِلا تَبَسُّمًا، فَكُنْتُ إِذَا نَظَرْتُ إِلَيْهِ، قُلْتُ: أَكْحَلُ الْعَيْنَيْنِ، وَلَيْسَ بِأَكْحَلَ..",
+    "narrator": "Jabir ibn Samura said (may Allah be well pleased with him):",
+    "en": "\"There was a slenderness in the legs of Allah’s Messenger (Allah bless him and give him peace), and his laugh always took the form of a joyful smile, so when I looked at him, I said: 'His eyes are blackened [with kohl], though and he is not black-eyed'!”",
+    "ch": 34,
+    "ch_en": "The Laughing Of Rasoolullah",
+    "ch_ar": "باب ما جاء في ضحك رسول الله صلى الله عليه وسلم",
+    "in_book": "Book 34, Hadith 1",
+    "grade": "Da'if Isnād (Zubair `Aliza'i)"
+  },
   "shamail:227": {
     "ar": "حَدَّثَنَا أَحْمَدُ بْنُ خَالِدٍ الْخَلالُ، قَالَ: حَدَّثَنَا يَحْيَى بْنُ إِسْحَاقَ السَّيْلَحَانِيُّ، قَالَ: حَدَّثَنَا لَيْثُ بْنُ سَعْدٍ، عَنْ يَزِيدَ بْنِ أَبِي حَبِيبٍ، عَنْ عَبْدِ اللهِ بْنِ الْحَارِثِ، قَالَ: مَا كَانَ ضَحِكُ رَسُولِ اللهِ صلى الله عليه وسلم إِلا تَبَسُّمًا..",
     "narrator": "Abdullah ibn al-Harith said (may Allah be well pleased with him):",
@@ -1054,6 +1098,15 @@
     "ch_ar": "باب ماجاء في حياء رسول الله صلى الله عليه وسلم",
     "in_book": "Book 49, Hadith 1",
     "grade": "Sahih Isnād (Zubair `Aliza'i)"
+  },
+  "tabarani-kabir:19/12": {
+    "ar": "حدثنا الوليد بن حماد الرملي، ثنا عبد الله بن الفضل، حدثني أبي، عن أبيه عاصم، عن أبيه عمر، عن أبيه قتادة بن النعمان، قال: أهدي إلى رسول الله صلى الله عليه وسلم قوس فدفعها إلي يوم أحد، فرميت بها بين يدي رسول الله صلى الله عليه وسلم حتى اندقت عن سنتها، ولم أزل عن مقامي نصب وجه رسول الله صلى الله عليه وسلم ألقى السهام بوجهي، كلما مال سهم منها إلى وجه رسول الله صلى الله عليه وسلم ميلت رأسي لأقي وجه رسول الله صلى الله عليه وسلم بلا رمي أرميه، فكان آخرها سهما بدرت منه حدقتي على خدي، وتفرق الجمع فأخذت حدقتي بكفي، فسعيت بها في كفي إلى رسول الله صلى الله عليه وسلم، فلما رآها رسول الله صلى الله عليه وسلم في كفي دمعت عيناه، فقال: «اللهم إن قتادة قد أوجه نبيك بوجهه، فاجعلها أحسن عينيه وأحدهما نظرا» ، فكانت أحسن عينيه وأحدهما نظرا",
+    "source": "tabarani-kabir",
+    "kind": "hadith",
+    "edition": "حمدي بن عبد المجيد السلفي :: مكتبة ابن تيمية - القاهرة (OpenITI v2025.1.9, 0360Tabarani.MucjamKabir.Shamela0001733-ara1)",
+    "vol": 19,
+    "page": 8,
+    "heading": "عمر بن قتادة بن النعمان، عن أبيه"
   },
   "tirmidhi:2485": {
     "ar": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، حَدَّثَنَا عَبْدُ الْوَهَّابِ الثَّقَفِيُّ، وَمُحَمَّدُ بْنُ جَعْفَرٍ، وَابْنُ أَبِي عَدِيٍّ، وَيَحْيَى بْنُ سَعِيدٍ، عَنْ عَوْفِ بْنِ أَبِي جَمِيلَةَ الأَعْرَابِيِّ، عَنْ زُرَارَةَ بْنِ أَوْفَى، عَنْ عَبْدِ اللَّهِ بْنِ سَلاَمٍ، قَالَ لَمَّا قَدِمَ رَسُولُ اللَّهِ صلى الله عليه وسلم الْمَدِينَةَ انْجَفَلَ النَّاسُ إِلَيْهِ وَقِيلَ قَدِمَ رَسُولُ اللَّهِ صلى الله عليه وسلم فَجِئْتُ فِي النَّاسِ لأَنْظُرَ إِلَيْهِ فَلَمَّا اسْتَبَنْتُ وَجْهَ رَسُولِ اللَّهِ صلى الله عليه وسلم عَرَفْتُ أَنَّ وَجْهَهُ لَيْسَ بِوَجْهِ كَذَّابٍ وَكَانَ أَوَّلَ شَيْءٍ تَكَلَّمَ بِهِ أَنْ قَالَ \" أَيُّهَا النَّاسُ أَفْشُوا السَّلاَمَ وَأَطْعِمُوا الطَّعَامَ وَصَلُّوا وَالنَّاسُ نِيَامٌ تَدْخُلُونَ الْجَنَّةَ بِسَلاَمٍ \" . قَالَ أَبُو عِيسَى هَذَا حَدِيثٌ صَحِيحٌ .",
