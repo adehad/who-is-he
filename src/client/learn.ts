@@ -262,7 +262,7 @@ function renderAdult(): void {
     h(
       "p",
       { class: "k-explain" },
-      "Numbers, links and grades are sunnah.com’s, matched to our copy of each text. Some detailed descriptions in the Shamāʾil have a weak (ḍaʿīf) chain. Many scholars accept such reports for describing his appearance and manners, while others are stricter, so the grade is shown for grown-ups to weigh.",
+      "For hadith from sunnah.com, numbers, links and grades are sunnah.com’s, matched to our copy of each text. Other works are cited by their editors’ numbering, or by volume and page, with the editor’s grade where one is printed. Some detailed descriptions in the Shamāʾil have a weak (ḍaʿīf) chain. Many scholars accept such reports for describing his appearance and manners, while others are stricter, so the grade is shown for grown-ups to weigh.",
     ),
   );
 }

@@ -1,10 +1,15 @@
 ---
+import { TEXTS } from "@/data/texts";
+import { creditFor } from "@/lib/citation";
+
 interface Props {
   mode: "learn" | "story";
   station: number;
   honourStoredMode: boolean;
 }
 const { mode, station, honourStoredMode } = Astro.props;
+// Each corpus is credited only while the site cites a text from it.
+const credits = new Set(Object.values(TEXTS).map(creditFor));
 ---
 <div class="wrap" id="app" data-mode={mode} data-station={station} data-honour-stored-mode={honourStoredMode ? "1" : "0"}>
   <header class="top">
@@ -72,6 +77,9 @@ const { mode, station, honourStoredMode } = Astro.props;
   </div>
 
   <p class="footnote">All content is draft and awaits scholarly review. Texts, references and grades from <a href="https://sunnah.com">sunnah.com</a>, used with permission.</p>
+  {credits.has("openiti") && <p class="footnote">Arabic texts of classical works from the <a href="https://github.com/OpenITI/RELEASE">OpenITI corpus</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>).</p>}
+  {credits.has("tanzil") && <p class="footnote">Qurʾān text from the Tanzil Quran Text (Uthmani), © Tanzil Project, <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>, copied verbatim: see <a href="https://tanzil.net">tanzil.net</a>. English translation by Pickthall, from Tanzil.</p>}
+  {credits.has("lane") && <p class="footnote">Lane’s Arabic-English Lexicon from the <a href="https://www.perseus.tufts.edu">Perseus Digital Library</a>, as corrected by <a href="https://github.com/laneslexicon/lexicon_xml">laneslexicon</a>. This text may be freely distributed, subject to the following restrictions: You credit Perseus, as follows, whenever you use the document: Text provided by Perseus Digital Library, with funding from The U.S. Department of Education and The Max Planck Society. You leave this availability statement intact. You offer Perseus any modifications you make.</p>}
 </div>
 <script>
   import "@/client/app";

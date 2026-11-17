@@ -35,18 +35,21 @@ function checkTextsShown() {
     if (!used.has(ref) && !INTENTIONALLY_UNUSED.has(ref)) fail(`text not shown: ${ref}`);
 }
 
-// Each station phrase is quoted from its hadith, voweling and punctuation aside.
+// Each station phrase is quoted from its text, voweling and punctuation aside, and has English: the
+// text's own, or the entry's gloss where the text is Arabic only.
 const letters = (s: string) =>
   normaliseArabic(s)
     .replace(/[^\u0621-\u064a ]+/g, " ")
     .replace(/\s+/g, " ")
     .trim();
 function checkPhrasesQuoted() {
-  const texts: Record<string, { ar: string }> = rawTexts;
+  const texts: Record<string, { ar: string; en?: string }> = rawTexts;
   for (const s of STATIONS)
-    for (const p of s.physical)
+    for (const p of s.physical) {
       if (!letters(texts[p.ref]?.ar ?? "").includes(letters(p.phrase)))
         fail(`${s.id}: phrase not in ${p.ref}: ${p.phrase}`);
+      if (!texts[p.ref]?.en && !p.gloss) fail(`${s.id}: ${p.ref} is Arabic only: add a gloss`);
+    }
 }
 
 // og images up to date.

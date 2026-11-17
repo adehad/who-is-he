@@ -16,8 +16,10 @@ const one = {
 };
 
 describe("texts", () => {
-  test("every text has English", () => {
-    for (const [ref, t] of Object.entries(TEXTS)) expect(t.en.length, ref).toBeGreaterThan(0);
+  test("sunnah.com texts have English; other sources only where the source has it", () => {
+    for (const [ref, t] of Object.entries(TEXTS))
+      if (!("source" in t)) expect(t.en.length, ref).toBeGreaterThan(0);
+      else expect(t.en !== undefined, ref).toBe(t.source === "quran" || t.source === "lane");
   });
 
   test("clear corrections applied (6, matching concept build)", () => {
@@ -84,6 +86,22 @@ describe("texts", () => {
       '{"ref":"shamail:1","field":"ar","find":"a","replace":"b","confidence":"x","reason":"r"}',
     );
     expect(() => applyCorrections(t, [bad])).toThrow(/bad field\/confidence/);
+  });
+
+  test("rejects a correction to a field the text lacks", () => {
+    const verse = { "quran:1:1": { ar: "", source: "quran", kind: "quran", edition: "", en: "x" } };
+    expect(() =>
+      applyCorrections(verse, [
+        {
+          ref: "quran:1:1",
+          field: "narrator",
+          find: "x",
+          replace: "y",
+          confidence: "clear",
+          reason: "r",
+        },
+      ]),
+    ).toThrow(/has no narrator/);
   });
 
   test("clear correction without replace throws", () => {

@@ -38,8 +38,8 @@ Edit the typed files, not the generated output:
 
 - `src/data/stations/NN-<id>.ts`: one station per file.
 - `src/data/story/NN-<slug>.ts`: one story beat per file.
-- `data/texts.json`: the cited hadith, keyed by sunnah.com reference (`shamail:8`). Generated; see
-  below.
+- `data/texts.json`: the cited texts, keyed by ref (`shamail:8`, `hakim:4274`, `quran:68:4`).
+  Generated; see below.
 - `data/corrections.json`: translation corrections, applied at build.
 
 Types catch bad references and traits. Run `bun run images` after changing a station card or page
@@ -69,15 +69,18 @@ citing. The add-on is also written in the dataset's own columns to `.cache/corpu
 README on how it was made.
 
 `bun run texts` collects every ref cited in `src/data/stations/` and `src/data/story/` and copies
-those hadith from the corpus. It fails on a ref the corpus lacks. Arabic is the source text; English
-is sunnah.com's, with `data/corrections.json` applied at build.
+those texts from the corpus, from any source below. It fails on a ref the corpus lacks. Arabic is the
+source text; English is sunnah.com's, with `data/corrections.json` applied at build. Other sources
+carry their edition, volume and page, and the editor's grade where printed, and English only where
+the source has it (the Quran and Lane): a physical description citing an Arabic-only text needs a
+`gloss`, which `bun run check` enforces. Each source's citation form is in `src/lib/citation.ts`.
 
 ### Other sources
 
-For research only: the site cites sunnah.com refs alone. `bun run corpus` also downloads these at
-pinned versions (each file checked against its sha256) into `.cache/corpus/downloads/<source>/`
-and writes `.cache/corpus/sources/<source>.jsonl`. `.cache/corpus/sources.json` gives each source's
-kind, edition and licence. Refs are `<source>:<key>`:
+`bun run corpus` also downloads these at pinned versions (each file checked against its sha256) into
+`.cache/corpus/downloads/<source>/` and writes `.cache/corpus/sources/<source>.jsonl`.
+`.cache/corpus/sources.json` gives each source's kind, edition and licence. Refs are
+`<source>:<key>`:
 
 - Hadith, with the editor's numbering: Musnad Ahmad (`ahmad:N`, al-Arna'ut), al-Darimi
   (`darimi:N`, Asad, with his grade), al-Hakim's Mustadrak (`hakim:N`, with al-Dhahabi's Talkhis as
@@ -117,7 +120,7 @@ Texts, references and grades are from [sunnah.com](https://sunnah.com), used wit
 the [freococo/sunnah_dataset](https://huggingface.co/datasets/freococo/sunnah_dataset) dataset
 (CC BY-NC-SA 4.0). The rest of Sahih Muslim comes from
 [fawazahmed0/hadith-api](https://github.com/fawazahmed0/hadith-api) (Unlicense).
-The research corpus adds:
+Texts from other sources come from these; the site credits each only while it cites a text from it:
 
 - Classical Arabic texts from the [OpenITI](https://github.com/OpenITI/RELEASE) corpus, release
   v2025.1.9 (CC BY-NC-SA 4.0).

@@ -2,7 +2,8 @@ import corrections from "#data/corrections.json";
 import rawTexts from "#data/texts.json";
 import type { Ref } from "@/models/ref";
 
-export interface RawText {
+/** A sunnah.com hadith, keyed by its sunnah.com reference (`shamail:8`). */
+export interface SunnahText {
   ar: string;
   narrator: string;
   en: string;
@@ -12,6 +13,22 @@ export interface RawText {
   in_book: string | null;
   grade: string | null;
 }
+/** A record of another corpus source, keyed `<source>:<key>` (`hakim:4274`, `quran:68:4`). */
+export interface SourceText {
+  ar: string;
+  /** Only where the source itself has English: Pickthall for the Quran, Lane's Lexicon. */
+  en?: string;
+  source: string;
+  kind: string;
+  edition: string;
+  vol?: number;
+  page?: number;
+  /** The editor's grade or comment printed with a hadith (al-Dhahabi's, for al-Hakim). */
+  grade?: string;
+  heading?: string;
+  headword?: string;
+}
+export type RawText = SunnahText | SourceText;
 export interface Correction {
   ref: string;
   field: "en" | "narrator";
@@ -20,9 +37,9 @@ export interface Correction {
   confidence: "clear" | "scholar-check";
   reason: string;
 }
-export interface Text extends RawText {
+export type Text = RawText & {
   corrected?: { original: string; replacement: string; reason: string }[];
-}
+};
 
 const occurrences = (s: string, find: string) => s.split(find).length - 1;
 
@@ -32,7 +49,7 @@ const occurrences = (s: string, find: string) => s.split(find).length - 1;
  * Corrections for refs we do not hold are counted as skipped. Throws listing every bad correction.
  */
 export function applyCorrections(
-  texts: Record<string, RawText & Partial<Text>>,
+  texts: Record<string, Text>,
   list: readonly Correction[],
 ): { applied: number; skipped: number } {
   const errors: string[] = [];
@@ -51,7 +68,14 @@ export function applyCorrections(
       skipped++; // not used on the site
       continue;
     }
-    const n = occurrences(t[c.field], c.find);
+    // A Quran verse or a lexicon entry has no narrator, and an Arabic-only text no English.
+    const fields: Partial<Record<Correction["field"], string>> = t;
+    const value = fields[c.field];
+    if (value === undefined) {
+      errors.push(`${c.ref}: has no ${c.field}`);
+      continue;
+    }
+    const n = occurrences(value, c.find);
     if (n !== 1) {
       errors.push(`${c.ref} ${c.field}: find occurs ${n} times: ${JSON.stringify(c.find)}`);
       continue;
@@ -61,7 +85,7 @@ export function applyCorrections(
       errors.push(`${c.ref}: clear correction needs a replace`);
       continue;
     }
-    t[c.field] = t[c.field].replace(c.find, () => c.replace ?? "");
+    fields[c.field] = value.replace(c.find, () => c.replace ?? "");
     t.corrected = [
       ...(t.corrected ?? []),
       { original: c.find, replacement: c.replace, reason: c.reason },
