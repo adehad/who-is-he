@@ -16,9 +16,9 @@ export default defineStation({
         "It was neither crisply curled nor lank. His hair used to reach the lobes of his ears.",
     },
     {
-      ref: "shamail:31",
-      phrase: "ذَا ضَفَائِرَ أَرْبَعٍ",
-      gloss: "With four braids of hair.",
+      ref: "abudawud:4191",
+      phrase: "وَلَهُ أَرْبَعُ غَدَائِرَ",
+      gloss: "He had four plaits of hair.",
     },
     {
       ref: "shamail:8",
@@ -34,8 +34,8 @@ export default defineStation({
   character: [
     {
       trait: "Neat",
-      line: "He often oiled his hair and combed his beard.",
-      ref: "shamail:33",
+      line: "He liked to start with his right side when he combed his hair, put on his sandals and made wuḍū’.",
+      ref: "bukhari:168",
       basis: "reflection",
       review: draft(),
     },
