@@ -6,6 +6,6 @@ export default defineBeat({
   prop: "heart",
   lines: ["Give the mirror your biggest smile. When he laughed, it was usually a happy smile."],
   prompt: "Whose day will your smile brighten?",
-  refs: ["shamail:222"],
+  refs: ["shamail:227"],
   stations: ["smile"],
 });

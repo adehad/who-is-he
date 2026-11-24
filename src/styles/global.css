@@ -678,6 +678,9 @@ button {
 .grown .adult {
   display: grid;
 }
+.grown-only {
+  gap: 12px;
+}
 .meta {
   display: flex;
   flex-wrap: wrap;

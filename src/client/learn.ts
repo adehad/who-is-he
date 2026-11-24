@@ -3,7 +3,7 @@ import { PROPS } from "@/art/props";
 import { KINDS } from "@/data/kinds";
 import { STATIONS, type StationId } from "@/data/stations";
 import { STORY } from "@/data/story";
-import type { Kind, Station } from "@/models/station";
+import { byAudience, type Character, type Kind, type Sign, type Station } from "@/models/station";
 import { sourceBlock } from "./cite";
 import { $, $as, h, raw, replay } from "./dom";
 import { pathFor, push } from "./router";
@@ -58,6 +58,70 @@ function renderDots(): void {
     .join("");
 }
 
+const grownLabel = (): HTMLElement => h("span", { class: "badge" }, "For grown-ups");
+
+/** Grown-up-only cards, after the children's ones; absent (not just empty) for children. */
+const grownOnly = (cards: HTMLElement[]): HTMLElement[] =>
+  cards.length ? [h("div", { class: "adult grown-only" }, ...cards)] : [];
+
+function characterCard(c: Character): HTMLElement {
+  return h(
+    "article",
+    { class: "card" },
+    h("h3", {}, h("span", { class: "pill k-trait" }, c.trait), c.grownUp ? grownLabel() : null),
+    h("p", {}, c.line),
+    h(
+      "div",
+      { class: "adult" },
+      c.note ? h("p", { class: "note" }, c.note) : null,
+      c.ref
+        ? sourceBlock(c.ref, [
+            h(
+              "span",
+              { class: "badge" },
+              c.basis === "classical" ? "Classical link" : "Our reflection",
+            ),
+          ])
+        : null,
+    ),
+  );
+}
+
+function signGroups(signs: Sign[]): HTMLElement[] {
+  const kinds = Object.keys(KINDS) as Kind[];
+  return kinds.flatMap((kind) => {
+    const group = signs.filter((g) => g.kind === kind);
+    if (!group.length) return [];
+    return [
+      h(
+        "div",
+        { class: "group" },
+        h("h3", { class: "group-head" }, h("span", { class: `pill k-${kind}` }, KINDS[kind].label)),
+        h("p", { class: "k-explain" }, KINDS[kind].explain),
+        ...group.map((g) =>
+          h(
+            "article",
+            { class: `card ${kind === "research" ? "research" : ""}` },
+            h("h3", {}, g.title, g.grownUp ? grownLabel() : null),
+            h("p", {}, g.line),
+            g.trait
+              ? h("p", { class: "k-explain" }, `Reminds us he was ${g.trait.toLowerCase()}.`)
+              : null,
+            g.ref
+              ? h(
+                  "div",
+                  { class: "adult" },
+                  g.note ? h("p", { class: "note" }, g.note) : null,
+                  sourceBlock(g.ref, [h("span", { class: "badge" }, "Category: ours")]),
+                )
+              : null,
+          ),
+        ),
+      ),
+    ];
+  });
+}
+
 function renderStage(animate: boolean): void {
   const s = current();
   $("icon").innerHTML = ICONS[s.icon];
@@ -72,8 +136,8 @@ function renderStage(animate: boolean): void {
 function renderChips(): void {
   const s = current();
   const tabs: { id: Tab; label: string; n: number | null; cls: string }[] = [
-    { id: "char", label: "Character", n: s.character.length, cls: "c-char" },
-    { id: "sign", label: "Special signs", n: s.signs.length, cls: "c-sign" },
+    { id: "char", label: "Character", n: byAudience(s.character).kids.length, cls: "c-char" },
+    { id: "sign", label: "Special signs", n: byAudience(s.signs).kids.length, cls: "c-sign" },
     { id: "mirror", label: "Mirror", n: null, cls: "c-mirror" },
   ];
   const chips = $("chips");
@@ -121,28 +185,8 @@ function renderCards(): void {
   }
   let cards: HTMLElement[] = [];
   if (state.tab === "char") {
-    cards = s.character.map((c) =>
-      h(
-        "article",
-        { class: "card" },
-        h("h3", {}, h("span", { class: "pill k-trait" }, c.trait)),
-        h("p", {}, c.line),
-        h(
-          "div",
-          { class: "adult" },
-          c.note ? h("p", { class: "note" }, c.note) : null,
-          c.ref
-            ? sourceBlock(c.ref, [
-                h(
-                  "span",
-                  { class: "badge" },
-                  c.basis === "classical" ? "Classical link" : "Our reflection",
-                ),
-              ])
-            : null,
-        ),
-      ),
-    );
+    const { kids, grown } = byAudience(s.character);
+    cards = kids.map(characterCard);
     if (!cards.length)
       cards = [
         h(
@@ -152,43 +196,10 @@ function renderCards(): void {
           h("p", {}, "We are still looking for checked reports that link this to his character."),
         ),
       ];
+    cards.push(...grownOnly(grown.map(characterCard)));
   } else if (state.tab === "sign") {
-    const kinds = Object.keys(KINDS) as Kind[];
-    cards = kinds.flatMap((kind) => {
-      const group = s.signs.filter((g) => g.kind === kind);
-      if (!group.length) return [];
-      return [
-        h(
-          "div",
-          { class: "group" },
-          h(
-            "h3",
-            { class: "group-head" },
-            h("span", { class: `pill k-${kind}` }, KINDS[kind].label),
-          ),
-          h("p", { class: "k-explain" }, KINDS[kind].explain),
-          ...group.map((g) =>
-            h(
-              "article",
-              { class: `card ${kind === "research" ? "research" : ""}` },
-              h("h3", {}, g.title),
-              h("p", {}, g.line),
-              g.trait
-                ? h("p", { class: "k-explain" }, `Reminds us he was ${g.trait.toLowerCase()}.`)
-                : null,
-              g.ref
-                ? h(
-                    "div",
-                    { class: "adult" },
-                    g.note ? h("p", { class: "note" }, g.note) : null,
-                    sourceBlock(g.ref, [h("span", { class: "badge" }, "Category: ours")]),
-                  )
-                : null,
-            ),
-          ),
-        ),
-      ];
-    });
+    const { kids, grown } = byAudience(s.signs);
+    cards = [...signGroups(kids), ...grownOnly(signGroups(grown))];
   } else {
     // Story beats that link here (and have a prompt) replace the station's own mirror line.
     cards = STORY.map((b, k) => [b, k + 1] as const)
@@ -229,6 +240,7 @@ function renderCards(): void {
 
 function renderAdult(): void {
   const s = current();
+  const { kids: kidsPhysical, grown: grownPhysical } = byAudience(s.physical);
   $("adult").replaceChildren(
     h(
       "div",
@@ -236,10 +248,11 @@ function renderAdult(): void {
       "Draft. Awaiting scholarly review. Links to character are our own reflections unless marked “Classical link”, and sign categories are ours unless a source states one.",
     ),
     h("h2", {}, "What the Companions described"),
-    ...s.physical.map((p) =>
+    ...[...kidsPhysical, ...grownPhysical].map((p) =>
       h(
         "article",
         { class: "card quote" },
+        p.grownUp ? h("p", {}, grownLabel()) : null,
         h("p", { lang: "ar" }, p.phrase),
         p.gloss ? h("p", {}, p.gloss) : null,
         p.note ? h("p", { class: "note" }, p.note) : null,
@@ -249,7 +262,7 @@ function renderAdult(): void {
     h(
       "p",
       { class: "k-explain" },
-      "Numbers, links and grades are sunnah.com’s, matched to our copy of each text. Some detailed descriptions in the Shamāʾil have a weak (ḍaʿīf) chain. Many scholars accept such reports for describing his appearance and manners, while others are stricter, so the grade is shown for grown-ups to weigh.",
+      "For hadith from sunnah.com, numbers, links and grades are sunnah.com’s, matched to our copy of each text. Other works are cited by their editors’ numbering, or by volume and page, with the editor’s grade where one is printed. Some detailed descriptions in the Shamāʾil have a weak (ḍaʿīf) chain. Many scholars accept such reports for describing his appearance and manners, while others are stricter, so the grade is shown for grown-ups to weigh.",
     ),
   );
 }

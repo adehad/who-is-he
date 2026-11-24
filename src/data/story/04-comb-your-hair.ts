@@ -8,6 +8,6 @@ export default defineBeat({
     "Start on the right side. He loved to begin with the right: when combing, putting on shoes, and washing for prayer.",
   ],
   prompt: "Which side did you start with?",
-  refs: ["shamail:83"],
+  refs: ["shamail:84"],
   stations: ["hair"],
 });

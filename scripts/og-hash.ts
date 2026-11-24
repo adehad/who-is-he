@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { STATIONS } from "@/data/stations";
+import { leadTrait } from "@/models/station";
 import pkg from "../package.json";
 
 // Anything that changes a card's pixels goes into its hash.
@@ -32,7 +33,7 @@ export function ogHashes(): Record<string, string> {
         phrase: s.phrase,
         title: s.title,
         line: s.line,
-        trait: s.character[0]?.trait,
+        trait: leadTrait(s),
       });
       return [s.id, createHash("sha256").update(shared).update(card).digest("hex").slice(0, 16)];
     }),

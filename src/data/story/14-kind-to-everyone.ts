@@ -6,6 +6,6 @@ export default defineBeat({
   prop: "gift",
   lines: ["He visited people who were sick, and he said yes to invitations even from servants."],
   prompt: "Is there someone you could visit or help this week?",
-  refs: ["shamail:320"],
+  refs: ["shamail:331"],
   stations: ["hands", "feet"],
 });

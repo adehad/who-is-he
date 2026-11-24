@@ -10,6 +10,6 @@ export default defineBeat({
     "Say the waking du‘ā’ like he did: “Praise be to Allah, who gave us life again.”",
   ],
   prompt: "What is the first thing your eyes see today?",
-  refs: ["shamail:247", "shamail:310", "shamail:313", "shamail:315"],
+  refs: ["shamail:255", "shamail:321", "shamail:324", "shamail:326"],
   stations: ["eyes", "tears"],
 });

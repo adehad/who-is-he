@@ -1,12 +1,12 @@
 ---
 import { ICONS } from "@/art/icons";
-import type { Station } from "@/models/station";
+import { leadTrait, type Station } from "@/models/station";
 
 interface Props {
   station: Station;
 }
 const { station: s } = Astro.props;
-const trait = s.character[0]?.trait;
+const trait = leadTrait(s);
 ---
 <div class="share">
   <div class="share-left">
